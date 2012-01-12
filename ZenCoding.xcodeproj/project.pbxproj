@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5994E5E14BF52030067B42B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
+		A5994E6814BF52030067B42B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5994E6614BF52030067B42B /* InfoPlist.strings */; };
+		A5994E6A14BF52030067B42B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5994E6914BF52030067B42B /* main.m */; };
+		A5994E6E14BF52030067B42B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A5994E6C14BF52030067B42B /* Credits.rtf */; };
+		A5994E7114BF52030067B42B /* ZenCodingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */; };
+		A5994E7414BF52030067B42B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5994E7214BF52030067B42B /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A5994E5914BF52030067B42B /* ZenCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A5994E6014BF52030067B42B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		A5994E6114BF52030067B42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A5994E6214BF52030067B42B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		A5994E6514BF52030067B42B /* ZenCoding-Info.plist */ = {isa = PBXFileReference; path = "ZenCoding-Info.plist"; sourceTree = "<group>"; };
+		A5994E6714BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5994E6914BF52030067B42B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5994E6B14BF52030067B42B /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
+		A5994E6D14BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		A5994E6F14BF52030067B42B /* ZenCodingAppDelegate.h */ = {isa = PBXFileReference; path = ZenCodingAppDelegate.h; sourceTree = "<group>"; };
+		A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenCodingAppDelegate.m; sourceTree = "<group>"; };
+		A5994E7314BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5994E5614BF52030067B42B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5994E5E14BF52030067B42B /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5994E4E14BF52020067B42B = {
+			isa = PBXGroup;
+			children = (
+				A5994E6314BF52030067B42B /* ZenCoding */,
+				A5994E5C14BF52030067B42B /* Frameworks */,
+				A5994E5A14BF52030067B42B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5994E5A14BF52030067B42B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5994E5914BF52030067B42B /* ZenCoding.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5994E5C14BF52030067B42B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5994E5D14BF52030067B42B /* Cocoa.framework */,
+				A5994E5F14BF52030067B42B /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5994E5F14BF52030067B42B /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5994E6014BF52030067B42B /* AppKit.framework */,
+				A5994E6114BF52030067B42B /* CoreData.framework */,
+				A5994E6214BF52030067B42B /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		A5994E6314BF52030067B42B /* ZenCoding */ = {
+			isa = PBXGroup;
+			children = (
+				A5994E6F14BF52030067B42B /* ZenCodingAppDelegate.h */,
+				A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */,
+				A5994E7214BF52030067B42B /* MainMenu.xib */,
+				A5994E6414BF52030067B42B /* Supporting Files */,
+			);
+			path = ZenCoding;
+			sourceTree = "<group>";
+		};
+		A5994E6414BF52030067B42B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5994E6514BF52030067B42B /* ZenCoding-Info.plist */,
+				A5994E6614BF52030067B42B /* InfoPlist.strings */,
+				A5994E6914BF52030067B42B /* main.m */,
+				A5994E6B14BF52030067B42B /* ZenCoding-Prefix.pch */,
+				A5994E6C14BF52030067B42B /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5994E5814BF52030067B42B /* ZenCoding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5994E7714BF52030067B42B /* Build configuration list for PBXNativeTarget "ZenCoding" */;
+			buildPhases = (
+				A5994E5514BF52030067B42B /* Sources */,
+				A5994E5614BF52030067B42B /* Frameworks */,
+				A5994E5714BF52030067B42B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZenCoding;
+			productName = ZenCoding;
+			productReference = A5994E5914BF52030067B42B /* ZenCoding.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5994E5014BF52020067B42B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Аймобилко";
+			};
+			buildConfigurationList = A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A5994E4E14BF52020067B42B;
+			productRefGroup = A5994E5A14BF52030067B42B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5994E5814BF52030067B42B /* ZenCoding */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5994E5714BF52030067B42B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5994E6814BF52030067B42B /* InfoPlist.strings in Resources */,
+				A5994E6E14BF52030067B42B /* Credits.rtf in Resources */,
+				A5994E7414BF52030067B42B /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5994E5514BF52030067B42B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5994E6A14BF52030067B42B /* main.m in Sources */,
+				A5994E7114BF52030067B42B /* ZenCodingAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A5994E6614BF52030067B42B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5994E6714BF52030067B42B /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5994E6C14BF52030067B42B /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5994E6D14BF52030067B42B /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		A5994E7214BF52030067B42B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5994E7314BF52030067B42B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5994E7514BF52030067B42B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A5994E7614BF52030067B42B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A5994E7814BF52030067B42B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
+				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		A5994E7914BF52030067B42B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
+				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5994E7514BF52030067B42B /* Debug */,
+				A5994E7614BF52030067B42B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5994E7714BF52030067B42B /* Build configuration list for PBXNativeTarget "ZenCoding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5994E7814BF52030067B42B /* Debug */,
+				A5994E7914BF52030067B42B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5994E5014BF52020067B42B /* Project object */;
+}
