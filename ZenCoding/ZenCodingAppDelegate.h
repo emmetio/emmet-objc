@@ -7,9 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ZenCoding.h"
 
 @interface ZenCodingAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;
+	
+	IBOutlet NSTextView *textArea;
+	ZenCoding *zc;
 }
 
 @property (assign) IBOutlet NSWindow *window;

@@ -7,28 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A563EC4B14E31951009472C9 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
 		A5994E5E14BF52030067B42B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A5994E6814BF52030067B42B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5994E6614BF52030067B42B /* InfoPlist.strings */; };
 		A5994E6A14BF52030067B42B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5994E6914BF52030067B42B /* main.m */; };
 		A5994E6E14BF52030067B42B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = A5994E6C14BF52030067B42B /* Credits.rtf */; };
 		A5994E7114BF52030067B42B /* ZenCodingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */; };
 		A5994E7414BF52030067B42B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5994E7214BF52030067B42B /* MainMenu.xib */; };
+		A5994E7B14BF52140067B42B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E7A14BF52140067B42B /* Carbon.framework */; };
+		A5994E8514BF52E30067B42B /* DDHotKeyCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = A5994E8214BF52E30067B42B /* DDHotKeyCenter.m */; };
+		A5B91ACD14E82A92002FA697 /* zencoding.js in Resources */ = {isa = PBXBuildFile; fileRef = A5B91ACA14E82952002FA697 /* zencoding.js */; };
+		A5B91ACE14E82A92002FA697 /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
+		A5B91AD114E849CF002FA697 /* ZCTabStop.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B91AD014E849CF002FA697 /* ZCTabStop.m */; };
+		A5B91AD414E852BE002FA697 /* ZCTabStopGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A5B91AD314E852BE002FA697 /* ZCTabStopGroup.m */; };
+		A5CCC3DB14E03E05002BBA24 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
+		A5CCC3EA14E03E05002BBA24 /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */; };
+		A5CCC3EB14E03E05002BBA24 /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D014E03E05002BBA24 /* JSCocoaFFIArgument.m */; };
+		A5CCC3EC14E03E05002BBA24 /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
+		A5CCC3ED14E03E05002BBA24 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
+		A5CCC3EE14E03E05002BBA24 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
+		A5CCC3FA14E04346002BBA24 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5CCC3F914E04345002BBA24 /* JavaScriptCore.framework */; };
+		A5CCC3FC14E043A2002BBA24 /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
+		A5CCC3FD14E043A5002BBA24 /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
+		A5CCC40514E05ADB002BBA24 /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
+		A5DF411414E85651002EBDE4 /* ZCTabStopStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DF411314E85651002EBDE4 /* ZCTabStopStructure.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
+		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
 		A5994E5914BF52030067B42B /* ZenCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A5994E6014BF52030067B42B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A5994E6114BF52030067B42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A5994E6214BF52030067B42B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		A5994E6514BF52030067B42B /* ZenCoding-Info.plist */ = {isa = PBXFileReference; path = "ZenCoding-Info.plist"; sourceTree = "<group>"; };
+		A5994E6514BF52030067B42B /* ZenCoding-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZenCoding-Info.plist"; sourceTree = "<group>"; };
 		A5994E6714BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5994E6914BF52030067B42B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A5994E6B14BF52030067B42B /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
+		A5994E6B14BF52030067B42B /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
 		A5994E6D14BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		A5994E6F14BF52030067B42B /* ZenCodingAppDelegate.h */ = {isa = PBXFileReference; path = ZenCodingAppDelegate.h; sourceTree = "<group>"; };
+		A5994E6F14BF52030067B42B /* ZenCodingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZenCodingAppDelegate.h; sourceTree = "<group>"; };
 		A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenCodingAppDelegate.m; sourceTree = "<group>"; };
 		A5994E7314BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A5994E7A14BF52140067B42B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		A5994E8114BF52E30067B42B /* DDHotKeyCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHotKeyCenter.h; sourceTree = "<group>"; };
+		A5994E8214BF52E30067B42B /* DDHotKeyCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHotKeyCenter.m; sourceTree = "<group>"; };
+		A5B91ACA14E82952002FA697 /* zencoding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zencoding.js; sourceTree = "<group>"; };
+		A5B91ACF14E849CF002FA697 /* ZCTabStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTabStop.h; sourceTree = "<group>"; };
+		A5B91AD014E849CF002FA697 /* ZCTabStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabStop.m; sourceTree = "<group>"; };
+		A5B91AD214E852BE002FA697 /* ZCTabStopGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTabStopGroup.h; sourceTree = "<group>"; };
+		A5B91AD314E852BE002FA697 /* ZCTabStopGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabStopGroup.m; sourceTree = "<group>"; };
+		A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
+		A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
+		A5CCC3AC14E03E05002BBA24 /* class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = class.js; sourceTree = "<group>"; };
+		A5CCC3C814E03E05002BBA24 /* JSCocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoa.h; sourceTree = "<group>"; };
+		A5CCC3CD14E03E05002BBA24 /* JSCocoaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaController.h; sourceTree = "<group>"; };
+		A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaController.m; sourceTree = "<group>"; };
+		A5CCC3CF14E03E05002BBA24 /* JSCocoaFFIArgument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaFFIArgument.h; sourceTree = "<group>"; };
+		A5CCC3D014E03E05002BBA24 /* JSCocoaFFIArgument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaFFIArgument.m; sourceTree = "<group>"; };
+		A5CCC3D114E03E05002BBA24 /* JSCocoaFFIClosure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaFFIClosure.h; sourceTree = "<group>"; };
+		A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaFFIClosure.m; sourceTree = "<group>"; };
+		A5CCC3D314E03E05002BBA24 /* JSCocoaLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaLib.h; sourceTree = "<group>"; };
+		A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaLib.m; sourceTree = "<group>"; };
+		A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaPrivateObject.h; sourceTree = "<group>"; };
+		A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaPrivateObject.m; sourceTree = "<group>"; };
+		A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jslint-jscocoa.js"; sourceTree = "<group>"; };
+		A5CCC3F914E04345002BBA24 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		A5CCC40114E04E8A002BBA24 /* ZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenEditor.h; sourceTree = "<group>"; };
+		A5CCC40314E05ADB002BBA24 /* NSTextView+ZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+ZenEditor.h"; sourceTree = "<group>"; };
+		A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+ZenEditor.m"; sourceTree = "<group>"; };
+		A5DF411214E85651002EBDE4 /* ZCTabStopStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTabStopStructure.h; sourceTree = "<group>"; };
+		A5DF411314E85651002EBDE4 /* ZCTabStopStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabStopStructure.m; sourceTree = "<group>"; };
+		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5CCC3FA14E04346002BBA24 /* JavaScriptCore.framework in Frameworks */,
+				A5994E7B14BF52140067B42B /* Carbon.framework in Frameworks */,
 				A5994E5E14BF52030067B42B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +98,7 @@
 		A5994E4E14BF52020067B42B = {
 			isa = PBXGroup;
 			children = (
+				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
 				A5994E6314BF52030067B42B /* ZenCoding */,
 				A5994E5C14BF52030067B42B /* Frameworks */,
 				A5994E5A14BF52030067B42B /* Products */,
@@ -63,6 +116,8 @@
 		A5994E5C14BF52030067B42B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5CCC3F914E04345002BBA24 /* JavaScriptCore.framework */,
+				A5994E7A14BF52140067B42B /* Carbon.framework */,
 				A5994E5D14BF52030067B42B /* Cocoa.framework */,
 				A5994E5F14BF52030067B42B /* Other Frameworks */,
 			);
@@ -82,10 +137,24 @@
 		A5994E6314BF52030067B42B /* ZenCoding */ = {
 			isa = PBXGroup;
 			children = (
+				A5994E8014BF52CE0067B42B /* Global hotkey */,
 				A5994E6F14BF52030067B42B /* ZenCodingAppDelegate.h */,
 				A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */,
 				A5994E7214BF52030067B42B /* MainMenu.xib */,
+				A5CCC40114E04E8A002BBA24 /* ZenEditor.h */,
+				A5CCC40314E05ADB002BBA24 /* NSTextView+ZenEditor.h */,
+				A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */,
+				A563EC4914E31951009472C9 /* ZenCoding.h */,
+				A563EC4A14E31951009472C9 /* ZenCoding.m */,
+				A5B91ACA14E82952002FA697 /* zencoding.js */,
+				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A5994E6414BF52030067B42B /* Supporting Files */,
+				A5B91ACF14E849CF002FA697 /* ZCTabStop.h */,
+				A5B91AD014E849CF002FA697 /* ZCTabStop.m */,
+				A5B91AD214E852BE002FA697 /* ZCTabStopGroup.h */,
+				A5B91AD314E852BE002FA697 /* ZCTabStopGroup.m */,
+				A5DF411214E85651002EBDE4 /* ZCTabStopStructure.h */,
+				A5DF411314E85651002EBDE4 /* ZCTabStopStructure.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -100,6 +169,37 @@
 				A5994E6C14BF52030067B42B /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5994E8014BF52CE0067B42B /* Global hotkey */ = {
+			isa = PBXGroup;
+			children = (
+				A5994E8114BF52E30067B42B /* DDHotKeyCenter.h */,
+				A5994E8214BF52E30067B42B /* DDHotKeyCenter.m */,
+			);
+			name = "Global hotkey";
+			sourceTree = "<group>";
+		};
+		A5CCC3A914E03E05002BBA24 /* JSCocoa */ = {
+			isa = PBXGroup;
+			children = (
+				A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */,
+				A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */,
+				A5CCC3AC14E03E05002BBA24 /* class.js */,
+				A5CCC3C814E03E05002BBA24 /* JSCocoa.h */,
+				A5CCC3CD14E03E05002BBA24 /* JSCocoaController.h */,
+				A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */,
+				A5CCC3CF14E03E05002BBA24 /* JSCocoaFFIArgument.h */,
+				A5CCC3D014E03E05002BBA24 /* JSCocoaFFIArgument.m */,
+				A5CCC3D114E03E05002BBA24 /* JSCocoaFFIClosure.h */,
+				A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */,
+				A5CCC3D314E03E05002BBA24 /* JSCocoaLib.h */,
+				A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */,
+				A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */,
+				A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */,
+				A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */,
+			);
+			path = JSCocoa;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +228,7 @@
 		A5994E5014BF52020067B42B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = "Аймобилко";
 			};
 			buildConfigurationList = A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */;
@@ -136,6 +237,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				English,
 			);
 			mainGroup = A5994E4E14BF52020067B42B;
 			productRefGroup = A5994E5A14BF52030067B42B /* Products */;
@@ -152,9 +254,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5B91ACD14E82A92002FA697 /* zencoding.js in Resources */,
+				A5B91ACE14E82A92002FA697 /* objc-zeneditor-wrap.js in Resources */,
 				A5994E6814BF52030067B42B /* InfoPlist.strings in Resources */,
 				A5994E6E14BF52030067B42B /* Credits.rtf in Resources */,
 				A5994E7414BF52030067B42B /* MainMenu.xib in Resources */,
+				A5CCC3FC14E043A2002BBA24 /* class.js in Resources */,
+				A5CCC3FD14E043A5002BBA24 /* jslint-jscocoa.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +273,18 @@
 			files = (
 				A5994E6A14BF52030067B42B /* main.m in Sources */,
 				A5994E7114BF52030067B42B /* ZenCodingAppDelegate.m in Sources */,
+				A5994E8514BF52E30067B42B /* DDHotKeyCenter.m in Sources */,
+				A5CCC3DB14E03E05002BBA24 /* BridgeSupportController.m in Sources */,
+				A5CCC3EA14E03E05002BBA24 /* JSCocoaController.m in Sources */,
+				A5CCC3EB14E03E05002BBA24 /* JSCocoaFFIArgument.m in Sources */,
+				A5CCC3EC14E03E05002BBA24 /* JSCocoaFFIClosure.m in Sources */,
+				A5CCC3ED14E03E05002BBA24 /* JSCocoaLib.m in Sources */,
+				A5CCC3EE14E03E05002BBA24 /* JSCocoaPrivateObject.m in Sources */,
+				A5CCC40514E05ADB002BBA24 /* NSTextView+ZenEditor.m in Sources */,
+				A563EC4B14E31951009472C9 /* ZenCoding.m in Sources */,
+				A5B91AD114E849CF002FA697 /* ZCTabStop.m in Sources */,
+				A5B91AD414E852BE002FA697 /* ZCTabStopGroup.m in Sources */,
+				A5DF411414E85651002EBDE4 /* ZCTabStopStructure.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,9 +338,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -240,8 +358,8 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
@@ -251,7 +369,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
 				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				OTHER_LDFLAGS = "-lffi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -262,7 +382,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
 				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				OTHER_LDFLAGS = "-lffi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -286,6 +408,7 @@
 				A5994E7914BF52030067B42B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
