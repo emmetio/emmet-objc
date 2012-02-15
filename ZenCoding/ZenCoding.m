@@ -12,6 +12,17 @@
 
 @synthesize context;
 
+static ZenCoding *instance = nil;
+
++(ZenCoding *) sharedInstance {
+	@synchronized(self) {
+		if (instance == nil) {
+			instance = [[ZenCoding alloc] init];
+		}
+		return instance;
+	}
+}
+
 - (id)init {
     self = [super init];
     if (self) {
@@ -34,12 +45,24 @@
 	}
 }
 
--(BOOL)runAction:(id)name {
+- (BOOL)runAction:(id)name {
 	[jsc setObject:name withName:@"__objcActionName"];
 	JSValueRef returnVal = [jsc callJSFunctionNamed:@"objcRunAction" withArguments:name, nil];
 	[jsc removeObjectWithName:@"__objcActionName"];
 	return [jsc toBool:returnVal];
 }
+
+- (NSString *)processBeforePaste:(NSString *)text withDelegate:(id<ZenCodingTextProcessorDelegate>)delegate {
+	[jsc setObject:text withName:@"__objcParam1"];
+	[jsc setObject:delegate withName:@"__objcParam2"];
+	
+	JSValueRef returnVal = [jsc callJSFunctionNamed:@"objcProcessTextBeforePasteWithDelegate" withArguments:text, delegate, nil];
+	[jsc removeObjectWithName:@"__objcParam1"];
+	[jsc removeObjectWithName:@"__objcParam2"];
+	
+	return [jsc toString:returnVal];
+}
+
 
 - (void)dealloc {
 	[jsc release];

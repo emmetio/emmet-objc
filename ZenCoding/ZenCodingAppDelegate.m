@@ -9,6 +9,7 @@
 #import "ZenCodingAppDelegate.h"
 #import "JSCocoa.h"
 #import "NSTextView+ZenEditor.h"
+#import "ZenCodingTextProcessor.h"
 
 @implementation ZenCodingAppDelegate
 
@@ -17,7 +18,13 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-	zc = [ZenCoding new];
+//	zc = [ZenCoding new];
+//	
+//	NSString *example = @"hello ${1} ${world}";
+//	ZenCodingTextProcessor *proc = [[ZenCodingTextProcessor alloc] initWithText:example andJSController:zc];
+//	
+//	NSLog(@"Processed data: %@", proc.processedText);
+//	[proc release];
 }
 
 - (IBAction)showCaretPos:(id)sender {
@@ -42,15 +49,15 @@
 	NSLog(@"Selection: %@", [textArea selection]);
 }
 - (IBAction)replaceText:(id)sender {
-	[textArea replaceContentWithValue:@"Hello" from:1 to:3];
+	[textArea replaceContentWithValue:@"Hello" from:1 to:3 withoutIndentation:YES];
 }
 - (IBAction)expandAbbreviation:(id)sender {
+	ZenCoding *zc = [ZenCoding sharedInstance];
 	[zc setContext:textArea];
 	[zc runAction:@"expand_abbreviation"];
 }
 
 - (void)dealloc {
-	[zc release];
 	[super dealloc];
 }
 

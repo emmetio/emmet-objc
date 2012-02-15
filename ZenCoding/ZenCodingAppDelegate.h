@@ -13,7 +13,6 @@
     NSWindow *window;
 	
 	IBOutlet NSTextView *textArea;
-	ZenCoding *zc;
 }
 
 @property (assign) IBOutlet NSWindow *window;

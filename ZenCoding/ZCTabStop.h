@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) NSUInteger length;
 
 - (id)initWithStart:(NSUInteger)startIx andEnd:(NSUInteger)endIx;
+- (NSRange)range;
+- (NSRange)rangeWithOffset:(int)offset;
 
 - (BOOL)isZeroWidth;
 

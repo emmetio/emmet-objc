@@ -7,6 +7,7 @@
 //
 
 #import "NSTextView+ZenEditor.h"
+#import "ZenCodingTextProcessor.h"
 
 @implementation NSTextView (NSTextView_ZenEditor)
 
@@ -55,8 +56,16 @@
 - (void) replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent{
 	// check if range is in bounds
 	if (end <= [[self string] length]) {
+		ZenCodingTextProcessor *proc = [[ZenCodingTextProcessor alloc] initWithText:value];
 		
-		[self replaceCharactersInRange:NSMakeRange(start, end - start) withString:value];
+		[self replaceCharactersInRange:NSMakeRange(start, end - start) withString:proc.processedText];
+		
+		ZCTabStop *firstTabStop = [proc.tabStops firstTabStop];
+		if (firstTabStop != nil) {
+			[self setSelectionRange:[firstTabStop rangeWithOffset:(int)start]];
+		}
+		
+		[proc release];
 	}
 }
 

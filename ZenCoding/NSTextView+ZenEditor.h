@@ -8,6 +8,7 @@
 
 #import <AppKit/AppKit.h>
 #import "ZenEditor.h"
+#import "ZenCoding.h"
 
 #define DEFAULT_PROFILE @"xhtml"
 #define DEFAULT_SYNTAX @"html"

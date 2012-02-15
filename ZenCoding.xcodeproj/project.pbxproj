@@ -31,6 +31,8 @@
 		A5CCC3FD14E043A5002BBA24 /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
 		A5CCC40514E05ADB002BBA24 /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
 		A5DF411414E85651002EBDE4 /* ZCTabStopStructure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DF411314E85651002EBDE4 /* ZCTabStopStructure.m */; };
+		A5DF411814E99D1B002EBDE4 /* ZenCodingTextProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DF411714E99D1B002EBDE4 /* ZenCodingTextProcessor.m */; };
+		A5DF411B14E99D5F002EBDE4 /* ZenCodingPlaceholder.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DF411A14E99D5F002EBDE4 /* ZenCodingPlaceholder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,11 @@
 		A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+ZenEditor.m"; sourceTree = "<group>"; };
 		A5DF411214E85651002EBDE4 /* ZCTabStopStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTabStopStructure.h; sourceTree = "<group>"; };
 		A5DF411314E85651002EBDE4 /* ZCTabStopStructure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTabStopStructure.m; sourceTree = "<group>"; };
+		A5DF411614E99D1B002EBDE4 /* ZenCodingTextProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingTextProcessor.h; sourceTree = "<group>"; };
+		A5DF411714E99D1B002EBDE4 /* ZenCodingTextProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingTextProcessor.m; sourceTree = "<group>"; };
+		A5DF411914E99D5F002EBDE4 /* ZenCodingPlaceholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPlaceholder.h; sourceTree = "<group>"; };
+		A5DF411A14E99D5F002EBDE4 /* ZenCodingPlaceholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPlaceholder.m; sourceTree = "<group>"; };
+		A5EA741714EC33A10098142A /* ZenCodingTextProcessorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingTextProcessorDelegate.h; sourceTree = "<group>"; };
 		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -155,6 +162,11 @@
 				A5B91AD314E852BE002FA697 /* ZCTabStopGroup.m */,
 				A5DF411214E85651002EBDE4 /* ZCTabStopStructure.h */,
 				A5DF411314E85651002EBDE4 /* ZCTabStopStructure.m */,
+				A5DF411614E99D1B002EBDE4 /* ZenCodingTextProcessor.h */,
+				A5DF411714E99D1B002EBDE4 /* ZenCodingTextProcessor.m */,
+				A5DF411914E99D5F002EBDE4 /* ZenCodingPlaceholder.h */,
+				A5DF411A14E99D5F002EBDE4 /* ZenCodingPlaceholder.m */,
+				A5EA741714EC33A10098142A /* ZenCodingTextProcessorDelegate.h */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -285,6 +297,8 @@
 				A5B91AD114E849CF002FA697 /* ZCTabStop.m in Sources */,
 				A5B91AD414E852BE002FA697 /* ZCTabStopGroup.m in Sources */,
 				A5DF411414E85651002EBDE4 /* ZCTabStopStructure.m in Sources */,
+				A5DF411814E99D1B002EBDE4 /* ZenCodingTextProcessor.m in Sources */,
+				A5DF411B14E99D5F002EBDE4 /* ZenCodingPlaceholder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

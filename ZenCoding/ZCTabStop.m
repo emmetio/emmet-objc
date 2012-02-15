@@ -29,4 +29,13 @@
 	return self.start == self.end;
 }
 
+- (NSRange)range {
+	return [self rangeWithOffset:0];
+}
+
+
+- (NSRange)rangeWithOffset:(int)offset {
+	return NSMakeRange(offset + self.start, self.length);
+}
+
 @end

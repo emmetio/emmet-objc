@@ -10,14 +10,10 @@
 #import "ZCTabStopGroup.h"
 
 @interface ZCTabStopStructure : NSObject {
-	NSString *_text;
-	NSString *_cleanText;
 	NSDictionary *_groups;
 	
 }
 
-- (id)initWithText:(NSString *)text;
-- (NSString *)text;
 - (void)addTabStopToGroup:(NSString *)groupName start:(NSUInteger)start end:(NSUInteger)end;
 - (NSDictionary *)groups;
 - (NSUInteger)tabStopsCount;

@@ -10,17 +10,12 @@
 
 @implementation ZCTabStopStructure
 
-- (id)initWithText:(NSString *)text {
+- (id)init {
 	if (self = [super init]) {
-		_text = [text retain];
 		_groups = [NSMutableDictionary new];
 	}
 	
 	return self;
-}
-
-- (NSString *)text {
-	return _text;
 }
 
 - (void)addTabStopToGroup:(NSString *)groupName start:(NSUInteger)start end:(NSUInteger)end {
@@ -69,7 +64,6 @@
 }
 
 - (void)dealloc {
-	[_text release];
 	[_groups release];
 }
 
