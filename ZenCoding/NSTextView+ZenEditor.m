@@ -71,15 +71,11 @@
 			NSDictionary *firstTabstop = [tabstops objectAtIndex:0];
 			
 			if (firstTabstop) {
-				NSRange selRange = NSMakeRange(
-											   (NSUInteger)[firstTabstop valueForKey:@"start"] + start, 
-											   (NSUInteger)[firstTabstop valueForKey:@"end"] 
-											   - (NSUInteger)[firstTabstop valueForKey:@"start"] 
-											   + start);
+				NSNumber *tsStart = (NSNumber *)[firstTabstop objectForKey:@"start"];
+				NSNumber *tsEnd = (NSNumber *)[firstTabstop objectForKey:@"end"];
+				NSRange selRange = NSMakeRange([tsStart unsignedIntegerValue] + start, [tsEnd unsignedIntegerValue] - [tsStart unsignedIntegerValue]);
 
 				[self setSelectionRange:selRange];
-			} else {
-				NSLog(@"No first tabstop");
 			}
 		}
 	}
