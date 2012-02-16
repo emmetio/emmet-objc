@@ -17,14 +17,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+	
     // Insert code here to initialize your application
-//	zc = [ZenCoding new];
-//	
-//	NSString *example = @"hello ${1} ${world}";
-//	ZenCodingTextProcessor *proc = [[ZenCodingTextProcessor alloc] initWithText:example andJSController:zc];
-//	
-//	NSLog(@"Processed data: %@", proc.processedText);
-//	[proc release];
 }
 
 - (IBAction)showCaretPos:(id)sender {

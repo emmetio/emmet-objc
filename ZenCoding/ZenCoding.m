@@ -10,7 +10,7 @@
 
 @implementation ZenCoding
 
-@synthesize context;
+@synthesize context, jsc;
 
 static ZenCoding *instance = nil;
 
@@ -26,7 +26,8 @@ static ZenCoding *instance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        jsc = [JSCocoa new];
+        self->jsc = [JSCocoa new];
+		
 		jsc.useAutoCall = NO;
 		jsc.useJSLint = NO;
 		[jsc evalJSFile:[[NSBundle mainBundle] pathForResource:@"zencoding" ofType:@"js"]];
@@ -46,26 +47,47 @@ static ZenCoding *instance = nil;
 }
 
 - (BOOL)runAction:(id)name {
-	[jsc setObject:name withName:@"__objcActionName"];
-	JSValueRef returnVal = [jsc callJSFunctionNamed:@"objcRunAction" withArguments:name, nil];
-	[jsc removeObjectWithName:@"__objcActionName"];
-	return [jsc toBool:returnVal];
+	return [jsc toBool:[self evalFunction:@"objcRunAction" withArguments:name, nil]];
 }
 
-- (NSString *)processBeforePaste:(NSString *)text withDelegate:(id<ZenCodingTextProcessorDelegate>)delegate {
-	[jsc setObject:text withName:@"__objcParam1"];
-	[jsc setObject:delegate withName:@"__objcParam2"];
+- (JSValueRef)evalFunction:(NSString *)funcName withArguments:(id)firstArg, ... {
+	// Convert args to array
+	id arg;
+	NSMutableArray *arguments = [NSMutableArray array];
+	NSMutableArray *argNames = [NSMutableArray array];
 	
-	JSValueRef returnVal = [jsc callJSFunctionNamed:@"objcProcessTextBeforePasteWithDelegate" withArguments:text, delegate, nil];
-	[jsc removeObjectWithName:@"__objcParam1"];
-	[jsc removeObjectWithName:@"__objcParam2"];
+	if (firstArg) {
+		[arguments addObject:firstArg];
+		
+		va_list	args;
+		va_start(args, firstArg);
+		while ((arg = va_arg(args, id)))	
+			[arguments addObject:arg];
+		va_end(args);
+	}
 	
-	return [jsc toString:returnVal];
+	// register all arguments in JS context
+	for (NSUInteger i = 0; i < [arguments count]; i++) {
+		[argNames addObject:[NSString stringWithFormat:@"__objcArg%d", i]];
+		[jsc setObject:[arguments objectAtIndex:i] withName:[argNames lastObject]];
+	}
+	
+	// create JS string to evaluate
+	NSString *jsString = [NSString stringWithFormat:@"%@(%@)", funcName, [argNames componentsJoinedByString:@", "]];
+	
+	NSLog(@"Eval JS: %@", jsString);
+	JSValueRef result = [jsc evalJSString:jsString];
+	
+	// unregister all arguments from JS context
+	for (NSString *argName in argNames) {
+		[jsc removeObjectWithName:argName];
+	}
+	
+	return result;
 }
 
 
 - (void)dealloc {
-	[jsc release];
 	[super dealloc];
 }
 

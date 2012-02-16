@@ -10,14 +10,12 @@
 #import "JSCocoa.h"
 #import "ZenCodingTextProcessorDelegate.h"
 
-@interface ZenCoding : NSObject {
-	JSCocoa* jsc;
-}
+@interface ZenCoding : NSObject
 
 @property (nonatomic, retain) id context;
+@property (nonatomic, readonly, retain) JSCocoa *jsc;
 
 + (ZenCoding *)sharedInstance;
 - (BOOL)runAction:name;
-- (NSString *)processBeforePaste:(NSString *)text withDelegate:(id<ZenCodingTextProcessorDelegate>)delegate;
-
+- (JSValueRef)evalFunction:(NSString *)funcName withArguments:arguments, ... NS_REQUIRES_NIL_TERMINATION;
 @end

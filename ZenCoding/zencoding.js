@@ -1767,7 +1767,6 @@ var zen_settings = {
 			var filters = this.require('filters');
 			var utils = this.require('utils');
 			var transform = this.require('transform');
-			var parser = this.require('parser');
 			
 			var data = filters.extractFromAbbreviation(abbr);
 			var outputTree = transform.transform(data[0], syntax, contextNode);
@@ -1803,6 +1802,43 @@ zen_coding.define('utils', function(require, _) {
 	 * generated output 
 	 */
 	var caretPlaceholder = '{%::zen-caret::%}';
+	
+	/**
+	 * A simple string builder, optimized for faster text concatenation
+	 * @param {String} value Initial value
+	 */
+	function StringBuilder(value) {
+		this._data = [];
+		this.length = 0;
+		
+		if (value)
+			this.append(value);
+	}
+	
+	StringBuilder.prototype = {
+		/**
+		 * Append string
+		 * @param {String} text
+		 */
+		append: function(text) {
+			this._data.push(text);
+			this.length += text.length;
+		},
+		
+		/**
+		 * @returns {String}
+		 */
+		toString: function() {
+			return this._data.join('');
+		},
+		
+		/**
+		 * @returns {String}
+		 */
+		valueOf: function() {
+			return this.toString();
+		}
+	};
 	
 	return {
 		/** @memberOf zen_coding.utils */
@@ -2171,6 +2207,15 @@ zen_coding.define('utils', function(require, _) {
 		 */
 		prettifyNumber: function(num, fraction) {
 			return num.toFixed(typeof fraction == 'undefined' ? 2 : fraction).replace(/\.?0+$/, '');
+		},
+		
+		/**
+		 * A simple mutable string shim, optimized for faster text concatenation
+		 * @param {String} value Initial value
+		 * @returns {StringBuilder}
+		 */
+		stringBuilder: function(value) {
+			return new StringBuilder(value);
 		}
 	};
 });
@@ -2911,109 +2956,6 @@ zen_coding.define('editorUtils', function(require, _) {
 			}
 			
 			return counter;
-		},
-		
-		/**
-		 * Process text that should be pasted into editor: clear escaped text and
-		 * handle tabstops
-		 * @param {String} text
-		 * @param {Function} escapeFn Handle escaped character. Must return
-		 * replaced value
-		 * @param {Function} tabstopFn Callback function that will be called on every
-		 * tabstob occurrence, passing <b>index</b>, <code>number</code> and 
-		 * <b>value</b> (if exists) arguments. This function must return 
-		 * replacement value
-		 * @return {String} 
-		 */
-		processTextBeforePaste: function(text, escapeFn, tabstopFn) {
-			var i = 0, il = text.length, startIx, _i;
-			var strBuilder = [];
-				
-			var nextWhile = function(ix, fn) {
-				while (ix < il) if (!fn(text.charAt(ix++))) break;
-				return ix - 1;
-			};
-			
-			var utils = require('utils');
-			
-			while (i < il) {
-				var ch = text.charAt(i);
-				if (ch == '\\' && i + 1 < il) {
-					// handle escaped character
-					strBuilder.push(escapeFn(text.charAt(i + 1)));
-					i += 2;
-					continue;
-				} else if (ch == '$') {
-					// looks like a tabstop
-					var next_ch = text.charAt(i + 1) || '';
-					_i = i;
-					if (utils.isNumeric(next_ch)) {
-						// $N placeholder
-						startIx = i + 1;
-						i = nextWhile(startIx, utils.isNumeric);
-						if (startIx < i) {
-							strBuilder.push(tabstopFn(_i, text.substring(startIx, i)));
-							continue;
-						}
-					} else if (next_ch == '{') {
-						// ${N:value} or ${N} placeholder
-						var braceCount = 1;
-						startIx = i + 2;
-						i = nextWhile(startIx, utils.isNumeric);
-						
-						if (i > startIx) {
-							if (text.charAt(i) == '}') {
-								strBuilder.push(tabstopFn(_i, text.substring(startIx, i)));
-								i++; // handle closing brace
-								continue;
-							} else if (text.charAt(i) == ':') {
-								var valStart = i + 2;
-								i = nextWhile(valStart, function(c) {
-									if (c == '{') braceCount++;
-									else if (c == '}') braceCount--;
-									return !!braceCount;
-								});
-								strBuilder.push(tabstopFn(_i, text.substring(startIx, valStart - 2), text.substring(valStart - 1, i)));
-								i++; // handle closing brace
-								continue;
-							}
-						}
-					}
-					i = _i;
-				}
-				
-				// push current character to stack
-				strBuilder.push(ch);
-				i++;
-			}
-			
-			return strBuilder.join('');
-		},
-		
-		/**
-		 * Upgrades tabstops in zen node in order to prevent naming conflicts
-		 * @param {ZenNode} node
-		 * @param {Number} offset Tab index offset
-		 * @returns {Number} Maximum tabstop index in element
-		 */
-		upgradeTabstops: function(node, offset) {
-			var maxNum = 0;
-			var escapeFn = function(ch){ return '\\' + ch; };
-			var tabstopFn = function(i, num, value) {
-				num = parseInt(num);
-				if (num > maxNum) maxNum = num;
-					
-				if (value)
-					return '${' + (num + offset) + ':' + value + '}';
-				else
-					return '$' + (num + offset);
-			};
-			
-			_.each(['start', 'end', 'content'], function(p) {
-				node[p] = this.processTextBeforePaste(node[p], escapeFn, tabstopFn);
-			}, this);
-			
-			return maxNum;
 		},
 		
 		/**
@@ -3992,6 +3934,265 @@ zen_coding.define('elements', function(require, _) {
 	});
 	
 	return result;
+});/**
+ * Utility module for handling tabstops tokens generated by Zen Coding's 
+ * "Expand Abbreviation" action. The main <code>extract</code> method will take
+ * raw text (for example: <i>${0} some ${1:text}</i>), find all tabstops 
+ * occurrences, replace them with tokens suitable for your editor of choice and 
+ * return object with processed text and list of found tabstops and their ranges.
+ * For sake of portability (Objective-C/Java) the tabstops list is a plain 
+ * sorted array with plain objects.
+ * 
+ * Placeholders with the same are meant to be <i>linked</i> in your editor.
+ * @param {Function} require
+ * @param {Underscore} _  
+ */
+zen_coding.define('tabStops', function(require, _) {
+	
+	var defaultOptions = {
+		replaceCarets: true,
+		escape: function(ch) {
+			return ch;
+		}
+	};
+	
+	return {
+		/**
+		 * Main function that looks for a tabstops in provided <code>text</code>
+		 * and returns a processed version of <code>text</code> and list of
+		 * tabstops found.
+		 * @param {String} text Text to process
+		 * @param {Object} options List of processor options:<br>
+		 * 
+		 * <b>replaceCarets</b> : <code>Boolean</code> — replace all default
+		 * caret placeholders (like <i>{%::zen-caret::%}</i>) with <i>${0:caret}</i><br>
+		 * 
+		 * <b>escape</b> : <code>Function</code> — function that handle escaped
+		 * characters (mostly '$'). By default, it returns the character itself 
+		 * to be displayed as is in output, but sometimes you will use 
+		 * <code>extract</code> method as intermediate solution for further 
+		 * processing and want to keep character escaped. Thus, you should override
+		 * <code>escape</code> method to return escaped symbol (e.g. '\\$')<br>
+		 * 
+		 * <b>tabstop</b> : <code>Function</code> – a tabstop handler. Receives 
+		 * a single argument – an object describing token: its position, number 
+		 * group, placeholder and token itself. Should return a replacement 
+		 * string that will appear in final output
+		 * 
+		 * @returns {Object} Object with processed <code>text</code> property
+		 * and array of <code>tabstops</code> found
+		 * @memberOf zen_coding.tabStops
+		 */
+		extract: function(text, options) {
+			// prepare defaults
+			var utils = require('utils');
+			var placeholders = {};
+			var marks = [];
+			
+			options = _.extend({}, defaultOptions, options, {
+				tabstop: function(data) {
+					var ret = '';
+					if (data.placeholder == 'cursor') {
+						marks.push({
+							start: data.start,
+							end: data.start + data.token.length,
+							group: 'carets',
+							value: ''
+						});
+					} else {
+						// unify placeholder value for single group
+						if ('placeholder' in data)
+							placeholders[data.group] = data.placeholder;
+						
+						if (data.group in placeholders)
+							ret = placeholders[data.group];
+						
+						marks.push({
+							start: data.start,
+							end: data.start + data.token.length,
+							group: data.group,
+							value: ret
+						});
+					}
+					
+					return data.token;
+				}
+			});
+			
+			if (options.replaceCarets) {
+				text = text.replace(new RegExp(utils.getCaretPlaceholder(), 'g'), '${0:cursor}');
+			}
+			
+			// locate tabstops and unify group's placeholders
+			text = this.processText(text, options);
+			
+			// now, replace all tabstops with placeholders
+			var tabStops = [], lastIx = 0;
+			
+			/** @type MutableString */
+			var buf = utils.stringBuilder();
+			
+			_.each(marks, function(mark) {
+				buf.append(text.substring(lastIx, mark.start));
+				
+				var ph = '';
+				if (mark.group != 'carets' && mark.group in placeholders)
+					ph = placeholders[mark.group];
+				
+				tabStops.push({
+					group: mark.group,
+					start: buf.length,
+					end:  buf.length + ph.length
+				});
+				
+				buf.append(ph);
+				lastIx = mark.end;
+			});
+			
+			buf.append(text.substring(lastIx));
+			
+			// sort tabstops by their positions
+			tabStops.sort(function(a, b) {
+				return a.start - b.start;
+			});
+			
+			return {
+				text: buf.toString(),
+				tabstops: tabStops
+			};
+		},
+		
+		/**
+		 * Text processing routine. Locates escaped characters and tabstops and
+		 * replaces them with values returned by handlers defined in 
+		 * <code>options</code>
+		 * @param {String} text
+		 * @param {Object} options See <code>extract</code> method options 
+		 * description
+		 * @returns {String}
+		 */
+		processText: function(text, options) {
+			var utils = require('utils');
+			var strBuilder = utils.stringBuilder();
+			
+			// provide safe defaults
+			options = _.extend({}, defaultOptions, {
+				tabstop: function(data) {
+					return data.token;
+				}
+			}, options);
+			
+			var i = 0, il = text.length, startIx, tokenStart;
+				
+			var nextWhile = function(ix, fn) {
+				while (ix < il) if (!fn(text.charAt(ix++))) break;
+				return ix - 1;
+			};
+			
+			
+			while (i < il) {
+				var ch = text.charAt(i);
+				if (ch == '\\' && i + 1 < il) {
+					// handle escaped character
+					strBuilder.append(options.escape(text.charAt(i + 1)));
+					i += 2;
+					continue;
+				} else if (ch == '$') {
+					// looks like a tabstop
+					var nextCh = text.charAt(i + 1) || '';
+					
+					// remember token start position
+					tokenStart = i;
+					
+					if (utils.isNumeric(nextCh)) {
+						// $N placeholder
+						startIx = i + 1;
+						i = nextWhile(startIx, utils.isNumeric);
+						if (startIx < i) {
+							strBuilder.append(options.tabstop({
+								start: tokenStart, 
+								group: text.substring(startIx, i),
+								token: text.substring(tokenStart, i)
+							}));
+							continue;
+						}
+					} else if (nextCh == '{') {
+						// ${N:value} or ${N} placeholder
+						var braceCount = 1;
+						startIx = i + 2;
+						i = nextWhile(startIx, utils.isNumeric);
+						
+						if (i > startIx) {
+							if (text.charAt(i) == '}') {
+								strBuilder.append(options.tabstop({
+									start: tokenStart, 
+									group: text.substring(startIx, i),
+									token: text.substring(tokenStart, i + 1)
+								}));
+								
+								i++; // handle closing brace
+								continue;
+							} else if (text.charAt(i) == ':') {
+								var valStart = i + 2;
+								i = nextWhile(valStart, function(c) {
+									if (c == '{') braceCount++;
+									else if (c == '}') braceCount--;
+									return !!braceCount;
+								});
+								
+								strBuilder.append(options.tabstop({
+									start: tokenStart, 
+									group: text.substring(startIx, valStart - 2), 
+									placeholder: text.substring(valStart - 1, i),
+									token: text.substring(tokenStart, i + 1)
+								}));
+								
+								i++; // handle closing brace
+								continue;
+							}
+						}
+					}
+					i = tokenStart;
+				}
+				
+				// push current character to stack
+				strBuilder.append(ch);
+				i++;
+			}
+			
+			return strBuilder.toString();
+		},
+		
+		/**
+		 * Upgrades tabstops in zen node in order to prevent naming conflicts
+		 * @param {ZenNode} node
+		 * @param {Number} offset Tab index offset
+		 * @returns {Number} Maximum tabstop index in element
+		 */
+		upgrade: function(node, offset) {
+			var maxNum = 0;
+			var options = {
+				escape: function(ch) {
+					return '\\' + ch;
+				},
+				tabstop: function(data) {
+					var group = parseInt(data.group);
+					if (group > maxNum) maxNum = group;
+						
+					if (data.placeholder)
+						return '${' + (group + offset) + ':' + data.placeholder + '}';
+					else
+						return '$' + (group + offset);
+				}
+			};
+			
+			_.each(['start', 'end', 'content'], function(p) {
+				node[p] = this.processText(node[p], options);
+			}, this);
+			
+			return maxNum;
+		}
+	};
 });/**
  * Zen Coding abbreviation parser. This module is designed to be stand-alone
  * (e.g. without any dependencies) so authors can copy this file into their
@@ -6367,8 +6568,9 @@ zen_coding.define('parserUtils', function(require, _) {
 			node.parent = this;
 			
 			// check for implicit name
-			if (node.has_implicit_name && this.isInline())
+			if (node.has_implicit_name && this.source.name && this.isInline()) {
 				node.name = 'span';
+			}
 			
 			var lastChild = _.last(this.children);
 			if (lastChild) {
@@ -6394,12 +6596,11 @@ zen_coding.define('parserUtils', function(require, _) {
 		/**
 		 * Get attribute's value.
 		 * @param {String} name
-		 * @return {String} Returns <code>null</code> if attribute wasn't found
+		 * @return {String|null} Returns <code>null</code> if attribute wasn't found
 		 */
 		getAttribute: function(name) {
-			var _ = zen_coding.require('_');
 			var attr = this._getAttr(name);
-			return _.isUndefined(attr) ? null : attr.value;
+			return attr && attr.value;
 		},
 		
 		/**
@@ -7383,6 +7584,8 @@ zen_coding.require('filters').add('c', (function() {
 (function(){
 	var child_token = '${child}',
 		tabstops = 0;
+	
+	var startPlaceholderNum = 100;
 		
 	/**
 	 * Returns proper string case, depending on profile value
@@ -7445,10 +7648,10 @@ zen_coding.require('filters').add('c', (function() {
 		item.start = item.start.replace('%s', utils.padString(start, padding));
 		item.end = item.end.replace('%s', utils.padString(end, padding));
 		
-		var startPlaceholderNum = 100;
 		var placeholderMemo = {};
 		
 		// replace variables ID and CLASS
+		// TODO should extract into external post-processor
 		var cb = function(str, varName) {
 			var attr = item.getAttribute(varName);
 			if (attr !== null)
@@ -7542,11 +7745,15 @@ zen_coding.require('filters').add('c', (function() {
 		if (level == 0) {
 			tree = zen_coding.require('filters').apply(tree, '_format', profile);
 			tabstops = 0;
+			
+			// reset placeholder counter
+			startPlaceholderNum = 100;
 		}
 		
 		var utils = zen_coding.require('utils');
 		var editorUtils = zen_coding.require('editorUtils');
 		var elements = zen_coding.require('elements');
+		var tabStops = zen_coding.require('tabStops');
 		
 		for (var i = 0, il = tree.children.length; i < il; i++) {
 			/** @type {ZenNode} */
@@ -7562,7 +7769,7 @@ zen_coding.require('filters').add('c', (function() {
 			item.end = utils.unescapeText(utils.replaceCounter(item.end, counter));
 			item.content = utils.unescapeText(utils.replaceCounter(item.content, counter));
 			
-			tabstops += editorUtils.upgradeTabstops(item, tabstops) + 1;
+			tabstops += tabStops.upgrade(item, tabstops) + 1;
 			
 			process(item, profile, level + 1);
 		}
@@ -7945,10 +8152,11 @@ zen_coding.require('actions').add('evaluate_math_expression', function(editor) {
 	actions.add('expand_abbreviation', function(editor, syntax, profile) {
 		syntax = String(syntax || editor.getSyntax());
 		profile = String(profile || editor.getProfileName());
-				
+		
 		var caretPos = editor.getSelectionRange().end;
 		var abbr;
 		var content = '';
+			
 		if ( (abbr = findAbbreviation(editor)) ) {
 			content = zen_coding.expandAbbreviation(abbr, syntax, profile, 
 					zen_coding.require('actionUtils').captureContext(editor));
@@ -9668,276 +9876,4 @@ zen_coding.require('resources').addGenerator(/^(.+)\!$/, function(match, node, s
 		
 		return result.join(' ');
 	}
-})();/**
- * Short-hand functions for Java wrapper
- * @author Sergey Chikuyonok (serge.che@gmail.com)
- * @link http://chikuyonok.ru
- * 
- * @include "../../javascript/zen_resources.js"
- */
-
-/**
- * Runs Zen Coding action
- * @param {ZenEditor} editor
- * @param {String} action_name
- * @return {Boolean}
- */
-function runZenCodingAction(editor, action_name){
-	var args = [editor];
-	for (var i = 2, il = arguments.length; i < il; i++) {
-		args.push(arguments[i]);
-	}
-	
-	return zen_coding.require('actions').run(action_name, args);
-}
-
-/**
- * Removes all user defined settings
- */
-function resetUserSettings() {
-	zen_coding.require('resources').setVocabulary({}, 'user');
-}
-
-/**
- * Adds user defined resource (abbreviation or snippet)
- * @param {String} syntax
- * @param {String} type
- * @param {String} abbr
- * @param {String} value
- */
-function addUserResource(syntax, type, abbr, value) {
-	var res = zen_coding.require('resources');
-	var voc = res.getVocabulary('user') || {};
-	if (!(syntax in voc))
-		voc[syntax] = {};
-		
-	if (!(type in voc[syntax]))
-		voc[syntax][type] = {};
-		
-	voc[syntax][type][abbr] = value;
-	
-	res.setVocabulary(voc, 'user');
-}
-
-function hasZenCodingVariable(name) {
-	return !!zen_coding.require('resources').getVariable(name);
-}
-
-function tryBoolean(val) {
-	var str_val = String(val || '').toLowerCase();
-	if (str_val == 'true')
-		return true;
-	if (str_val == 'false')
-		return false;
-		
-	var int_val = parseInt(str_val, 10);
-	if (!isNaN(int_val))
-		return int_val;
-	
-	return str_val;
-}
-
-function setupOutputProfile(name, profile_obj, editor) {
-	var map = {
-		tag_case: 'getTagCase',
-		attr_case: 'getAttrCase',
-		attr_quotes: 'getAttrQuotes',
-		tag_nl: 'getTagNewline',
-		place_cursor: 'isPlaceCaret',
-		indent: 'isIndentTags',
-		inline_break: 'getInlineBreak',
-		self_closing_tag: 'getSelfClosing',
-		filters: 'getFilters'
-	};
-	
-	name = String(name);
-	
-	var profile = {};
-		
-	for (var p in map) if (map.hasOwnProperty(p)) {
-		profile[p] = tryBoolean(profile_obj[map[p]]());
-	}
-	
-	zen_coding.require('profile').create(name, profile);
-}
-
-function addUserVariable(name, value) {
-	zen_coding.require('resources').setVariable(name, value);
-}
-
-function previewWrapWithAbbreviation(editor, abbr) {
-	var syntax = String(editor.getSyntax());
-	var profileName = String(editor.getProfileName());
-	abbr = String(abbr);
-	
-	var range = editor.getSelectionRange(),
-		startOffset = range.start,
-		endOffset = range.end,
-		content = String(editor.getContent());
-		
-		
-	if (!abbr)
-		return null;
-	
-	var editorUtils = zen_coding.require('editorUtils');
-	var utils = zen_coding.require('utils');
-	
-	if (startOffset == endOffset) {
-		// no selection, find tag pair
-		range = zen_coding.require('html_matcher')(content, startOffset, profileName);
-		
-		if (!range || range[0] == -1) // nothing to wrap
-			return null;
-		
-		var narrowedSel = editorUtils.narrowToNonSpace(content, range[0], range[1]);
-		startOffset = narrowedSel[0];
-		endOffset = narrowedSel[1];
-	}
-	
-	var wrapAction = zen_coding.require('actions').get('wrap_with_abbreviation');
-	var result = null;
-	if (wrapAction) {
-		
-		var newContent = utils.escapeText(content.substring(startOffset, endOffset));
-		result = wrapAction.fn.wrap(abbr, editorUtils.unindent(editor, newContent), syntax, profileName);
-	}
-	
-	return result || null;
-}
-/**
- * Zen Coding file I/O interface implementation using Java classes 
- * (for Mozilla Rhino)
- *
- * @author Sergey Chikuyonok (serge.che@gmail.com)
- * @link http://chikuyonok.ru
- * @version 0.65
- */
-zen_coding.define('file', function(require, _) {
-	return {
-		/**
-		 * Read file content and return it
-		 * @param {String} path File's relative or absolute path
-		 * @return {String}
-		 * @memberOf __zenFileJava
-		 */
-		read: function(path) {
-			var File = Packages.java.io.File;
-			var f = new File(path),
-				input_stream, c, content = [];
-				
-			if (f.exists() && f.isFile() && f.canRead()) {
-				input_stream = new Packages.java.io.FileInputStream(f);
-				while ((c = input_stream.read()) != -1) {
-					content.push(String.fromCharCode(c));
-				}
-				
-				input_stream.close();
-			}
-
-			return content.join('');
-		},
-
-		/**
-		 * Locate <code>file_name</code> file that relates to <code>editor_file</code>.
-		 * File name may be absolute or relative path
-		 *
-		 * <b>Dealing with absolute path.</b>
-		 * Many modern editors has a "project" support as information unit, but you
-		 * should not rely on project path to find file with absolute path. First,
-		 * it requires user to create a project before using this method (and this
-		 * is not acutually Zen). Second, project path doesn't always points to
-		 * to website's document root folder: it may point, for example, to an
-		 * upper folder which contains server-side scripts.
-		 *
-		 * For better result, you should use the following algorithm in locating
-		 * absolute resources:
-		 * 1) Get parent folder for <code>editor_file</code> as a start point
-		 * 2) Append required <code>file_name</code> to start point and test if
-		 * file exists
-		 * 3) If it doesn't exists, move start point one level up (to parent folder)
-		 * and repeat step 2.
-		 *
-		 * @param {String} editor_file
-		 * @param {String} file_name
-		 * @return {String|null} Returns null if <code>file_name</code> cannot be located
-		 */
-		locateFile: function(editor_file, file_name) {
-			var File = Packages.java.io.File;
-			var f = new File(editor_file),
-				result = '',
-				tmp;
-				
-			// traverse upwards to find image uri
-			while (f.getParent()) {
-				tmp = new File(this.createPath(f.getParent(), file_name));
-				if (tmp.exists()) {
-					result = tmp.getCanonicalPath();
-					break;
-				}
-				
-				f = new File(f.getParent());
-			}
-			
-			return result;
-		},
-
-		/**
-		 * Creates absolute path by concatenating <code>parent</code> and <code>file_name</code>.
-		 * If <code>parent</code> points to file, its parent directory is used
-		 * @param {String} parent
-		 * @param {String} file_name
-		 * @return {String}
-		 */
-		createPath: function(parent, file_name) {
-			var File = Packages.java.io.File,
-				f = new File(parent),
-				result = '';
-				
-			if (f.exists()) {
-				if (f.isFile()) {
-					parent = f.getParent();
-				}
-				
-				var req_file = new File(parent, file_name);
-				result = req_file.getCanonicalPath();
-			}
-			
-			return result;
-		},
-
-		/**
-		 * Saves <code>content</code> as <code>file</code>
-		 * @param {String} file File's asolute path
-		 * @param {String} content File content
-		 */
-		save: function(file, content) {
-			content = content || '';
-			file = String(file);
-			
-			var File = Packages.java.io.File,
-				f = new File(file);
-				
-			if (file.indexOf('/') != -1) {
-				var f_parent = new File(f.getParent());
-				f_parent.mkdirs();
-			}
-			
-			var stream = new Packages.java.io.FileOutputStream(file);
-			for (var i = 0, il = content.length; i < il; i++) {
-				stream.write(content.charCodeAt(i));
-			}
-				
-			stream.close();
-		},
-
-		/**
-		 * Returns file extention in lower case
-		 * @param {String} file
-		 * @return {String}
-		 */
-		getExt: function(file) {
-			var m = (file || '').match(/\.([\w\-]+)$/);
-			return m ? m[1].toLowerCase() : '';
-		}
-	};
-});
+})();

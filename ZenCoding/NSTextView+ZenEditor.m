@@ -56,16 +56,32 @@
 - (void) replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent{
 	// check if range is in bounds
 	if (end <= [[self string] length]) {
-		ZenCodingTextProcessor *proc = [[ZenCodingTextProcessor alloc] initWithText:value];
 		
-		[self replaceCharactersInRange:NSMakeRange(start, end - start) withString:proc.processedText];
+		// extract tabstops and clean-up output
+		ZenCoding *zc = [ZenCoding sharedInstance];
+		JSValueRef output = [zc evalFunction:@"zen_coding.require('tabStops').extract" withArguments:value, nil];
 		
-		ZCTabStop *firstTabStop = [proc.tabStops firstTabStop];
-		if (firstTabStop != nil) {
-			[self setSelectionRange:[firstTabStop rangeWithOffset:(int)start]];
+		NSDictionary *tabstopData = [zc.jsc toObject:output];
+		value = [tabstopData valueForKey:@"text"];
+		[self replaceCharactersInRange:NSMakeRange(start, end - start) withString:value];
+		
+		// locate first tabstop and place cursor in it
+		NSArray *tabstops = [tabstopData objectForKey:@"tabstops"];
+		if (tabstops != nil) {			
+			NSDictionary *firstTabstop = [tabstops objectAtIndex:0];
+			
+			if (firstTabstop) {
+				NSRange selRange = NSMakeRange(
+											   (NSUInteger)[firstTabstop valueForKey:@"start"] + start, 
+											   (NSUInteger)[firstTabstop valueForKey:@"end"] 
+											   - (NSUInteger)[firstTabstop valueForKey:@"start"] 
+											   + start);
+
+				[self setSelectionRange:selRange];
+			} else {
+				NSLog(@"No first tabstop");
+			}
 		}
-		
-		[proc release];
 	}
 }
 
