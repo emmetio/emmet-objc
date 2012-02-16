@@ -180,15 +180,3 @@ function objcRunAction(name) {
 function objcSetContext(ctx) {
 	objcZenEditor.setContext(ctx);
 }
-
-function objcProcessTextBeforePasteWithDelegate(text, delegate) {
-	var _ = zen_coding.require('_');
-	var escapeFn = function(ch){
-		return delegate.handleEscape(ch);
-	};
-	var tabstopFn = function(ix, num, placeholder) {
-		return delegate.handleTabstopAt_withNumber_andPlaceholder(ix, num, placeholder);
-	};
-
-	return zen_coding.require('editorUtils').processTextBeforePaste(String(text), escapeFn, tabstopFn);
-}

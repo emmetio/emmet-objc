@@ -9,7 +9,6 @@
 #import "ZenCodingAppDelegate.h"
 #import "JSCocoa.h"
 #import "NSTextView+ZenEditor.h"
-#import "ZenCodingTextProcessor.h"
 
 @implementation ZenCodingAppDelegate
 

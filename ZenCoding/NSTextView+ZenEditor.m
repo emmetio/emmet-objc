@@ -7,7 +7,6 @@
 //
 
 #import "NSTextView+ZenEditor.h"
-#import "ZenCodingTextProcessor.h"
 
 @implementation NSTextView (NSTextView_ZenEditor)
 

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "JSCocoa.h"
-#import "ZenCodingTextProcessorDelegate.h"
 
 @interface ZenCoding : NSObject
 
