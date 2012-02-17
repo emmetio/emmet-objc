@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ZenCoding.h"
+#import "ZenCodingPromptDialogController.h"
 
 @interface ZenCodingAppDelegate : NSObject <NSApplicationDelegate> {
     NSWindow *window;

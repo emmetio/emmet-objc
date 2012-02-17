@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A55EC49D14EE560E00F9A09B /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
 		A563EC4B14E31951009472C9 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
 		A5994E5E14BF52030067B42B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A5994E6814BF52030067B42B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5994E6614BF52030067B42B /* InfoPlist.strings */; };
@@ -15,6 +16,7 @@
 		A5994E7114BF52030067B42B /* ZenCodingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */; };
 		A5994E7414BF52030067B42B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5994E7214BF52030067B42B /* MainMenu.xib */; };
 		A5994E7B14BF52140067B42B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E7A14BF52140067B42B /* Carbon.framework */; };
+		A5AB74E614EE56BE00A59617 /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
 		A5B91ACD14E82A92002FA697 /* zencoding.js in Resources */ = {isa = PBXBuildFile; fileRef = A5B91ACA14E82952002FA697 /* zencoding.js */; };
 		A5B91ACE14E82A92002FA697 /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A5CCC3DB14E03E05002BBA24 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPromptDialogController.h; sourceTree = "<group>"; };
+		A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPromptDialogController.m; sourceTree = "<group>"; };
 		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
 		A5994E5914BF52030067B42B /* ZenCoding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCoding.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +50,7 @@
 		A5994E7014BF52030067B42B /* ZenCodingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenCodingAppDelegate.m; sourceTree = "<group>"; };
 		A5994E7314BF52030067B42B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A5994E7A14BF52140067B42B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		A5AB74E514EE56BE00A59617 /* PromptDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptDialog.xib; sourceTree = "<group>"; };
 		A5B91ACA14E82952002FA697 /* zencoding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zencoding.js; sourceTree = "<group>"; };
 		A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
 		A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
@@ -133,9 +138,12 @@
 				A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */,
 				A563EC4914E31951009472C9 /* ZenCoding.h */,
 				A563EC4A14E31951009472C9 /* ZenCoding.m */,
+				A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */,
+				A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */,
 				A5B91ACA14E82952002FA697 /* zencoding.js */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A5994E6414BF52030067B42B /* Supporting Files */,
+				A5AB74E514EE56BE00A59617 /* PromptDialog.xib */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -233,6 +241,7 @@
 				A5994E7414BF52030067B42B /* MainMenu.xib in Resources */,
 				A5CCC3FC14E043A2002BBA24 /* class.js in Resources */,
 				A5CCC3FD14E043A5002BBA24 /* jslint-jscocoa.js in Resources */,
+				A5AB74E614EE56BE00A59617 /* PromptDialog.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +262,7 @@
 				A5CCC3EE14E03E05002BBA24 /* JSCocoaPrivateObject.m in Sources */,
 				A5CCC40514E05ADB002BBA24 /* NSTextView+ZenEditor.m in Sources */,
 				A563EC4B14E31951009472C9 /* ZenCoding.m in Sources */,
+				A55EC49D14EE560E00F9A09B /* ZenCodingPromptDialogController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

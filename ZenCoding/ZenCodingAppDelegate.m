@@ -9,14 +9,13 @@
 #import "ZenCodingAppDelegate.h"
 #import "JSCocoa.h"
 #import "NSTextView+ZenEditor.h"
+#import "ZenCodingPromptDialogController.h"
 
 @implementation ZenCodingAppDelegate
 
 @synthesize window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-	
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 }
 
@@ -48,6 +47,10 @@
 	ZenCoding *zc = [ZenCoding sharedInstance];
 	[zc setContext:textArea];
 	[zc runAction:@"expand_abbreviation"];
+}
+
+- (IBAction)showModal:(id)sender {
+	NSLog(@"Entered value: %@", [ZenCodingPromptDialogController prompt:@"Hello world"]);
 }
 
 - (void)dealloc {

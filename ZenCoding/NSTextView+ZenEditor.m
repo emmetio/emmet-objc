@@ -7,6 +7,7 @@
 //
 
 #import "NSTextView+ZenEditor.h"
+#import "ZenCodingPromptDialogController.h"
 
 @implementation NSTextView (NSTextView_ZenEditor)
 
@@ -80,8 +81,8 @@
 	}
 }
 
-- (NSString *)prompt:(NSString *)label {
-	return @"not implemented yet";
+- (NSString *)prompt:(NSString *)label {	
+	return [ZenCodingPromptDialogController prompt:label];
 }
 
 - (NSString *)filePath {
