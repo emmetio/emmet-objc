@@ -30,8 +30,10 @@ static ZenCoding *instance = nil;
 		
 		jsc.useAutoCall = NO;
 		jsc.useJSLint = NO;
-		[jsc evalJSFile:[[NSBundle mainBundle] pathForResource:@"zencoding" ofType:@"js"]];
-		[jsc evalJSFile:[[NSBundle mainBundle] pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
+		
+		NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+		[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
+		[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
     }
     
     return self;

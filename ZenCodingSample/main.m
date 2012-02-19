@@ -1,8 +1,8 @@
 //
 //  main.m
-//  ZenCoding
+//  ZenCodingSample
 //
-//  Created by Сергей Чикуёнок on 1/12/12.
+//  Created by Сергей Чикуёнок on 2/18/12.
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
@@ -10,5 +10,5 @@
 
 int main(int argc, char *argv[])
 {
-    return NSApplicationMain(argc, (const char **)argv);
+	return NSApplicationMain(argc, (const char **)argv);
 }
