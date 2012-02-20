@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "JSCocoa.h"
 
-@interface ZenCoding : NSObject
+@interface ZenCoding : NSObject {
+	id context;
+	JSCocoa *jsc;
+}
 
 @property (nonatomic, retain) id context;
 @property (nonatomic, readonly, retain) JSCocoa *jsc;

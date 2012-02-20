@@ -13,7 +13,10 @@
 
 #define MODAL_DEFAULT_LABEL @"Enter value"
 
-@interface ZenCodingPromptDialogController : NSWindowController
+@interface ZenCodingPromptDialogController : NSWindowController {
+	NSTextField *label;
+	NSTextField *inputField;
+}
 
 @property (assign) IBOutlet NSTextField *label;
 @property (assign) IBOutlet NSTextField *inputField;

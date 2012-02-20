@@ -50,7 +50,6 @@
 		A5D2755E14F0057B00B3816D /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
 		A5D2755F14F006A500B3816D /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
 		A5D2757714F009B100B3816D /* ZenCoding-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757514F009B100B3816D /* ZenCoding-Info.plist */; };
-		A5D2757814F009B100B3816D /* ZenCoding-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757514F009B100B3816D /* ZenCoding-Info.plist */; };
 		A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */; };
 		A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
 		A5D2757D14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
@@ -360,7 +359,6 @@
 				A5D2755C14F0057400B3816D /* zencoding.js in Resources */,
 				A5D2755D14F0057700B3816D /* objc-zeneditor-wrap.js in Resources */,
 				A5D2755E14F0057B00B3816D /* PromptDialog.xib in Resources */,
-				A5D2757814F009B100B3816D /* ZenCoding-Info.plist in Resources */,
 				A5D2757D14F009D700B3816D /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -444,7 +442,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -465,6 +463,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lffi";
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -472,7 +471,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -486,6 +485,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_LDFLAGS = "-lffi";
 				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
@@ -516,14 +516,18 @@
 		A5D2754A14F004A800B3816D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -531,14 +535,18 @@
 		A5D2754B14F004A800B3816D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				INSTALL_PATH = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -562,6 +570,7 @@
 				A5D2752514F000FA00B3816D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5D2754914F004A800B3816D /* Build configuration list for PBXNativeTarget "ZenCoding" */ = {
 			isa = XCConfigurationList;
@@ -570,6 +579,7 @@
 				A5D2754B14F004A800B3816D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
