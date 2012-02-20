@@ -22,6 +22,9 @@
 - (IBAction)performCancel:(id)sender;
 
 + (NSString *)prompt:(NSString *)labelText;
++ (NSString *)promptForWindow:(NSWindow *)wnd withLabel:(NSString *)labelText;
+
 - (NSString *)promptWithLabel:(NSString *)labelText;
+- (NSString *)promptForWindow:(NSWindow *)wnd withLabel:(NSString *)labelText;
 
 @end

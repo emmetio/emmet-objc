@@ -54,6 +54,12 @@
 		A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */; };
 		A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
 		A5D2757D14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
+		A5D275A914F156A300B3816D /* JSCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3C814E03E05002BBA24 /* JSCocoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D275AD14F156CB00B3816D /* JSCocoaFFIArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3CF14E03E05002BBA24 /* JSCocoaFFIArgument.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D275AE14F156CF00B3816D /* JSCocoaFFIClosure.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D114E03E05002BBA24 /* JSCocoaFFIClosure.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D275AF14F156D300B3816D /* JSCocoaLib.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D314E03E05002BBA24 /* JSCocoaLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D275B014F156D600B3816D /* JSCocoaPrivateObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,7 +252,13 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D275A914F156A300B3816D /* JSCocoa.h in Headers */,
+				A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */,
 				A5D2755514F0053D00B3816D /* JSCocoaController.h in Headers */,
+				A5D275AD14F156CB00B3816D /* JSCocoaFFIArgument.h in Headers */,
+				A5D275AE14F156CF00B3816D /* JSCocoaFFIClosure.h in Headers */,
+				A5D275AF14F156D300B3816D /* JSCocoaLib.h in Headers */,
+				A5D275B014F156D600B3816D /* JSCocoaPrivateObject.h in Headers */,
 				A5D2755614F0055100B3816D /* ZenEditor.h in Headers */,
 				A5D2755714F0055200B3816D /* ZenCoding.h in Headers */,
 				A5D2755814F0055C00B3816D /* ZenCodingPromptDialogController.h in Headers */,

@@ -13,7 +13,6 @@
 @synthesize inputField;
 
 - (id)init {
-	[self loadWindow];
 	return [self initWithWindowNibName:@"PromptDialog"];
 }
 
@@ -26,13 +25,21 @@
 }
 
 + (NSString *)prompt:(NSString *)labelText {
+	return [ZenCodingPromptDialogController promptForWindow:[NSApp mainWindow] withLabel:labelText];
+}
+
++ (NSString *)promptForWindow:(NSWindow *)wnd withLabel :(NSString *)labelText {
 	ZenCodingPromptDialogController *dialog = [ZenCodingPromptDialogController new];
-	NSString *value = [dialog promptWithLabel:labelText];
+	NSString *value = [dialog promptForWindow:wnd withLabel:labelText];
 	[dialog release];
 	return value;
 }
 
 - (NSString *)promptWithLabel:(NSString *)labelText {
+	return [self promptForWindow:[NSApp mainWindow] withLabel:labelText];
+}
+
+- (NSString *)promptForWindow:(NSWindow *)wnd withLabel:(NSString *)labelText {
 	NSWindow *w = [self window];
 	if (labelText != nil)
 		[label setStringValue:labelText];
@@ -40,7 +47,7 @@
 		[label setStringValue:MODAL_DEFAULT_LABEL];
 	
 	[NSApp beginSheet:w
-	   modalForWindow:[NSApp mainWindow]
+	   modalForWindow:wnd
 		modalDelegate:nil 
 	   didEndSelector:nil
 		  contextInfo:nil];
@@ -52,7 +59,7 @@
 	if (code == MODAL_ACTION_OK) {
 		return [inputField stringValue];
 	}
-		
+	
 	return nil;
 }
 
