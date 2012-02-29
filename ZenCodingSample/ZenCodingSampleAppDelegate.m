@@ -14,8 +14,19 @@
 
 @synthesize window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	[NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^NSEvent* (NSEvent *event) {
+		if ([event keyCode] == 48) {
+			ZenCoding *zc = [ZenCoding sharedInstance];
+			[zc setContext:textArea];
+			[zc runAction:@"expand_abbreviation"];
+			return nil;
+		}
+		
+		return event;
+	}];
+	
+	
 	// Insert code here to initialize your application
 }
 
