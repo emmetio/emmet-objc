@@ -19,6 +19,8 @@
 @property (readonly, retain) NSDictionary *outputPrefsDict;
 @property (assign) IBOutlet NSArrayController *syntaxList;
 @property (assign) IBOutlet NSTextField *extensionsPathField;
+
 - (IBAction)pickExtensionsFolder:(id)sender;
++ (void)loadDefaults;
 
 @end

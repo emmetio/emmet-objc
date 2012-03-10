@@ -15,6 +15,11 @@
 
 @synthesize window;
 
++ (void)initialize {
+	// Load Zen Coding preferences defaults
+	[ZenCodingPreferences loadDefaults];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	// Insert code here to initialize your application

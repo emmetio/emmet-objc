@@ -1401,19 +1401,19 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: outputPrefs</string>
+						<string key="label">contentArray: values.outputPreferences</string>
 						<reference key="source" ref="390738074"/>
-						<reference key="destination" ref="1001"/>
+						<reference key="destination" ref="244325389"/>
 						<object class="NSNibBindingConnector" key="connector">
 							<reference key="NSSource" ref="390738074"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">contentArray: outputPrefs</string>
+							<reference key="NSDestination" ref="244325389"/>
+							<string key="NSLabel">contentArray: values.outputPreferences</string>
 							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">outputPrefs</string>
+							<string key="NSKeyPath">values.outputPreferences</string>
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">1172</int>
+					<int key="connectionID">1230</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3538,7 +3538,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1227</int>
+			<int key="maxID">1230</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

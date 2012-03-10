@@ -23,11 +23,7 @@
 {
     self = [super initWithWindow:window];
     if (self) {
-		
-		NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"OutputDefaults" ofType:@"plist"];
-		NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
-        self->outputPrefs = [[prefs objectForKey:@"Syntaxes"] retain];
-		[prefs release];
+		NSLog(@"Output: %@", [[NSUserDefaults standardUserDefaults] valueForKey:@"outputPreferences"]);
 		
 		ZenCodingArrayTransformer *caseTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
 		
@@ -77,4 +73,13 @@
 	}];
 	
 }
++ (void)loadDefaults {
+	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults" ofType:@"plist"];
+	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+	
+	[[NSUserDefaults standardUserDefaults] registerDefaults:prefs];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:prefs];
+	[prefs release];
+}
+
 @end

@@ -8,9 +8,15 @@
 
 #import "ZenCoding.h"
 
+@interface ZenCoding ()
+
+- (void)setupJSContext;
+
+@end
+
 @implementation ZenCoding
 
-@synthesize context, jsc;
+@synthesize context, jsc, extensionsPath;
 
 static ZenCoding *instance = nil;
 
@@ -24,19 +30,53 @@ static ZenCoding *instance = nil;
 }
 
 - (id)init {
-    self = [super init];
-    if (self) {
-        self->jsc = [JSCocoa new];
-		
-		jsc.useAutoCall = NO;
-		jsc.useJSLint = NO;
-		
-		NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-		[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
-		[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
+    if (self = [super init]) {
+        [self setupJSContext];
     }
     
     return self;
+}
+
+- (id)initWithExtensionsPath:(NSString *)path {
+	if (self = [super init]) {
+		self.extensionsPath = path;
+	}
+	
+	return self;
+}
+
+- (void)setupJSContext {
+	if (self->jsc != nil) {
+		[self->jsc release];
+	}
+	
+	self->jsc = [JSCocoa new];
+	
+	jsc.useAutoCall = NO;
+	jsc.useJSLint = NO;
+	
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
+	[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
+	
+	if (extensionsPath) {
+		NSString *path = extensionsPath;
+		if ([path hasPrefix:@"~"]) {
+			path = [path stringByExpandingTildeInPath];
+		}
+		
+		NSFileManager *fm = [NSFileManager defaultManager];
+		if ([fm fileExistsAtPath:path isDirectory:YES]) {
+			NSDirectoryEnumerator *dirEnum = [fm enumeratorAtPath:path];
+			
+			NSString *file;
+			while (file = [dirEnum nextObject]) {
+				if ([[[file pathExtension] lowercaseString] isEqualToString: @"js"]) {
+					[jsc evalJSFile:[path stringByAppendingPathComponent:file]];
+				}
+			}
+		}
+	}
 }
 
 - (void)setContext:(id)ctx {
@@ -45,6 +85,15 @@ static ZenCoding *instance = nil;
 		self->context = [ctx retain];
 		[jsc setObject:ctx withName:@"__objcContext"];
 		[jsc callJSFunctionNamed:@"objcSetContext" withArguments:ctx, nil];
+	}
+}
+
+- (void)setExtensionsPath:(NSString *)path {
+	if (extensionsPath != nil && ![extensionsPath isEqualToString:path]) {
+		[extensionsPath release];
+		extensionsPath = [path retain];
+		
+		[self setupJSContext];
 	}
 }
 
@@ -90,6 +139,7 @@ static ZenCoding *instance = nil;
 
 
 - (void)dealloc {
+	[extensionsPath release];
 	[super dealloc];
 }
 

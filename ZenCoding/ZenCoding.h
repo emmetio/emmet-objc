@@ -12,10 +12,12 @@
 @interface ZenCoding : NSObject {
 	id context;
 	JSCocoa *jsc;
+	NSString *extensionsPath;
 }
 
 @property (nonatomic, retain) id context;
 @property (nonatomic, readonly, retain) JSCocoa *jsc;
+@property (nonatomic, retain) NSString *extensionsPath;
 
 + (ZenCoding *)sharedInstance;
 - (BOOL)runAction:name;
