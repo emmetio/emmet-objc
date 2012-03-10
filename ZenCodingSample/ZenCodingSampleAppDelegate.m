@@ -9,6 +9,7 @@
 #import "ZenCodingSampleAppDelegate.h"
 #import "ZenCoding.h"
 #import "ZenCodingPromptDialogController.h"
+#import "ZenCodingPreferences.h"
 
 @implementation ZenCodingSampleAppDelegate
 
@@ -28,4 +29,13 @@
 - (IBAction)showPrompt:(id)sender {
 	NSLog(@"Entered value: %@", [ZenCodingPromptDialogController prompt:@"Hello world"]);
 }
+
+- (IBAction)showPreferences:(id)sender {
+	if (prefs == nil) {
+		prefs = [[ZenCodingPreferences alloc] init];
+	}
+	
+	[prefs showWindow:self];
+}
+
 @end

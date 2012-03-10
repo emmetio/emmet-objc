@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5639FCD150A48EF00388173 /* ZenCodingPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */; };
+		A5639FCE150A48EF00388173 /* ZenCodingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */; };
+		A5639FCF150A48EF00388173 /* ZenCodingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */; };
+		A5639FD6150AA15100388173 /* OutputDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5639FD5150AA15100388173 /* OutputDefaults.plist */; };
+		A5639FD7150AA15100388173 /* OutputDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5639FD5150AA15100388173 /* OutputDefaults.plist */; };
+		A5639FDA150AAB3000388173 /* ZenCodingArrayTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FD8150AAB3000388173 /* ZenCodingArrayTransformer.h */; };
+		A5639FDB150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */; };
+		A5639FDC150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */; };
+		A5639FEF150B70A700388173 /* ZenCodingTildePathTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */; };
+		A5639FF0150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */; };
+		A5639FF1150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */; };
+		A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
+		A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A5D2751614F000FA00B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2751414F000FA00B3816D /* InfoPlist.strings */; };
 		A5D2751814F000FA00B3816D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D2751714F000FA00B3816D /* main.m */; };
@@ -64,6 +77,13 @@
 /* Begin PBXFileReference section */
 		A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPromptDialogController.h; sourceTree = "<group>"; };
 		A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPromptDialogController.m; sourceTree = "<group>"; };
+		A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPreferences.h; sourceTree = "<group>"; };
+		A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPreferences.m; sourceTree = "<group>"; };
+		A5639FD5150AA15100388173 /* OutputDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OutputDefaults.plist; sourceTree = "<group>"; };
+		A5639FD8150AAB3000388173 /* ZenCodingArrayTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingArrayTransformer.h; sourceTree = "<group>"; };
+		A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingArrayTransformer.m; sourceTree = "<group>"; };
+		A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingTildePathTransformer.h; sourceTree = "<group>"; };
+		A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingTildePathTransformer.m; sourceTree = "<group>"; };
 		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
 		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -73,6 +93,7 @@
 		A5994E7A14BF52140067B42B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		A5AB74E514EE56BE00A59617 /* PromptDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptDialog.xib; sourceTree = "<group>"; };
 		A5B91ACA14E82952002FA697 /* zencoding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zencoding.js; sourceTree = "<group>"; };
+		A5C6BD80150A2BC200507968 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
 		A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
 		A5CCC3AC14E03E05002BBA24 /* class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = class.js; sourceTree = "<group>"; };
@@ -184,7 +205,14 @@
 				A5B91ACA14E82952002FA697 /* zencoding.js */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A5AB74E514EE56BE00A59617 /* PromptDialog.xib */,
+				A5C6BD80150A2BC200507968 /* Preferences.xib */,
+				A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */,
+				A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
+				A5639FD8150AAB3000388173 /* ZenCodingArrayTransformer.h */,
+				A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */,
+				A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */,
+				A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -237,6 +265,7 @@
 		A5D2757414F0096200B3816D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5639FD5150AA15100388173 /* OutputDefaults.plist */,
 				A5D2757514F009B100B3816D /* ZenCoding-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
 				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
@@ -263,6 +292,9 @@
 				A5D2755814F0055C00B3816D /* ZenCodingPromptDialogController.h in Headers */,
 				A5D2755914F0056000B3816D /* NSTextView+ZenEditor.h in Headers */,
 				A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */,
+				A5639FCD150A48EF00388173 /* ZenCodingPreferences.h in Headers */,
+				A5639FDA150AAB3000388173 /* ZenCodingArrayTransformer.h in Headers */,
+				A5639FEF150B70A700388173 /* ZenCodingTildePathTransformer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +342,7 @@
 		A5994E5014BF52020067B42B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = "Аймобилко";
 			};
 			buildConfigurationList = A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */;
@@ -347,6 +379,8 @@
 				A5D2753614F0042000B3816D /* jslint-jscocoa.js in Resources */,
 				A5D2757714F009B100B3816D /* ZenCoding-Info.plist in Resources */,
 				A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */,
+				A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */,
+				A5639FD6150AA15100388173 /* OutputDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +394,8 @@
 				A5D2755D14F0057700B3816D /* objc-zeneditor-wrap.js in Resources */,
 				A5D2755E14F0057B00B3816D /* PromptDialog.xib in Resources */,
 				A5D2757D14F009D700B3816D /* InfoPlist.strings in Resources */,
+				A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */,
+				A5639FD7150AA15100388173 /* OutputDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +417,9 @@
 				A5D2753114F001A400B3816D /* ZenCodingPromptDialogController.m in Sources */,
 				A5D2751814F000FA00B3816D /* main.m in Sources */,
 				A5D2751F14F000FA00B3816D /* ZenCodingSampleAppDelegate.m in Sources */,
+				A5639FCE150A48EF00388173 /* ZenCodingPreferences.m in Sources */,
+				A5639FDB150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */,
+				A5639FF0150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +436,9 @@
 				A5D2755414F0052F00B3816D /* NSTextView+ZenEditor.m in Sources */,
 				A5D2755F14F006A500B3816D /* ZenCoding.m in Sources */,
 				A5D2755314F0052D00B3816D /* ZenCodingPromptDialogController.m in Sources */,
+				A5639FCF150A48EF00388173 /* ZenCodingPreferences.m in Sources */,
+				A5639FDC150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */,
+				A5639FF1150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
