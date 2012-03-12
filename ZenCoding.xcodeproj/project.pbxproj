@@ -20,6 +20,9 @@
 		A5639FEF150B70A700388173 /* ZenCodingTildePathTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */; };
 		A5639FF0150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */; };
 		A5639FF1150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */; };
+		A5639FFF150E9A2700388173 /* ZenCodingSnippetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */; };
+		A563A000150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
+		A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
 		A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -87,6 +90,8 @@
 		A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingArrayTransformer.m; sourceTree = "<group>"; };
 		A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingTildePathTransformer.h; sourceTree = "<group>"; };
 		A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingTildePathTransformer.m; sourceTree = "<group>"; };
+		A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingSnippetEditor.h; sourceTree = "<group>"; };
+		A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSnippetEditor.m; sourceTree = "<group>"; };
 		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
 		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -209,6 +214,7 @@
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A5AB74E514EE56BE00A59617 /* PromptDialog.xib */,
 				A5C6BD80150A2BC200507968 /* Preferences.xib */,
+				A51BD42D150E62C40041002F /* SnippetEditor.xib */,
 				A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */,
 				A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
@@ -216,7 +222,8 @@
 				A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */,
 				A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */,
 				A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */,
-				A51BD42D150E62C40041002F /* SnippetEditor.xib */,
+				A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */,
+				A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -299,6 +306,7 @@
 				A5639FCD150A48EF00388173 /* ZenCodingPreferences.h in Headers */,
 				A5639FDA150AAB3000388173 /* ZenCodingArrayTransformer.h in Headers */,
 				A5639FEF150B70A700388173 /* ZenCodingTildePathTransformer.h in Headers */,
+				A5639FFF150E9A2700388173 /* ZenCodingSnippetEditor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +434,7 @@
 				A5639FCE150A48EF00388173 /* ZenCodingPreferences.m in Sources */,
 				A5639FDB150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */,
 				A5639FF0150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
+				A563A000150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +454,7 @@
 				A5639FCF150A48EF00388173 /* ZenCodingPreferences.m in Sources */,
 				A5639FDC150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */,
 				A5639FF1150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
+				A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
