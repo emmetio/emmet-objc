@@ -20,10 +20,19 @@
     return [super initWithWindowNibName:@"SnippetEditor"];
 }
 
+- (NSDictionary *)openAddDialogForWindow:(NSWindow *)wnd {
+	NSDictionary *editObj = [NSDictionary dictionaryWithObjectsAndKeys:
+							 @"", @"name", 
+							 @"", @"syntax", 
+							 @"", @"value", nil];
+	
+	return [self openEditDialog:editObj forWindow:wnd];
+}
+
 - (NSDictionary *)openEditDialog:(NSDictionary *)editObj forWindow:(NSWindow *)wnd {
 	NSWindow *w = [self window];
 	
-	editObject = [editObj copy];
+	editObject = [NSMutableDictionary dictionaryWithDictionary:editObj];
 	
 	[NSApp beginSheet:w
 	   modalForWindow:wnd
@@ -39,9 +48,9 @@
 		return editObject;
 	}
 	
-	// return initial value
+	// return nil to indicate that user cancelled operation
 	[editObject release];
-	return editObj;
+	return nil;
 }
 
 - (void)closeDialogWithCode:(int)code {

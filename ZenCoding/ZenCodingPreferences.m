@@ -9,10 +9,12 @@
 #import "ZenCodingPreferences.h"
 #import "ZenCodingArrayTransformer.h"
 #import "ZenCodingTildePathTransformer.h"
+#import "ZenCodingSnippetEditor.h"
 
 @implementation ZenCodingPreferences
 @synthesize syntaxList;
 @synthesize extensionsPathField;
+@synthesize snippets;
 @synthesize outputPrefs, outputPrefsDict;
 
 - (id)init {
@@ -47,7 +49,6 @@
 	NSWindow *window = [self window];
     [window setHidesOnDeactivate:NO];
     [window setExcludedFromWindowsMenu:YES];
-    [window setIdentifier:@"ZenCodingPreferences"];
 	[super windowDidLoad];
 }
 
@@ -80,6 +81,15 @@
 	[[NSUserDefaults standardUserDefaults] registerDefaults:prefs];
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:prefs];
 	[prefs release];
+}
+
+- (IBAction)addSnippet:(id)sender {
+	ZenCodingSnippetEditor *editor = [ZenCodingSnippetEditor new];
+	NSDictionary *snippet = [editor openAddDialogForWindow:[self window]];
+	NSLog(@"Received snippet: %@", snippet);
+	if (snippet != nil) {
+		[snippets addObject:snippet];
+	}
 }
 
 @end

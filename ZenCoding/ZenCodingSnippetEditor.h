@@ -12,9 +12,10 @@
 #define SNIPPET_EDITOR_CANCEL 1
 
 @interface ZenCodingSnippetEditor : NSWindowController {
-	NSDictionary *editObject;
+	NSMutableDictionary *editObject;
 }
 
+- (NSDictionary *)openAddDialogForWindow:(NSWindow *)wnd;
 - (NSDictionary *)openEditDialog:(NSDictionary *)editObj forWindow:(NSWindow *)wnd;
 
 @end
