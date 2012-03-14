@@ -77,6 +77,8 @@
 		A5D275AF14F156D300B3816D /* JSCocoaLib.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D314E03E05002BBA24 /* JSCocoaLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D275B014F156D600B3816D /* JSCocoaPrivateObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5DB23441510DABD009979C2 /* PreferencesDefaults2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */; };
+		A5DB23451510DABD009979C2 /* PreferencesDefaults2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +136,7 @@
 		A5D2757514F009B100B3816D /* ZenCoding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZenCoding-Info.plist"; sourceTree = "<group>"; };
 		A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2757B14F009D700B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults2.plist; sourceTree = "<group>"; };
 		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,6 +283,7 @@
 				A5D2757514F009B100B3816D /* ZenCoding-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
 				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
+				A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -394,6 +398,7 @@
 				A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */,
 				A5639FD6150AA15100388173 /* PreferencesDefaults.plist in Resources */,
 				A51BD42E150E62C40041002F /* SnippetEditor.xib in Resources */,
+				A5DB23441510DABD009979C2 /* PreferencesDefaults2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +415,7 @@
 				A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */,
 				A5639FD7150AA15100388173 /* PreferencesDefaults.plist in Resources */,
 				A51BD42F150E62C40041002F /* SnippetEditor.xib in Resources */,
+				A5DB23451510DABD009979C2 /* PreferencesDefaults2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

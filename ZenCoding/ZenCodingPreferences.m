@@ -15,7 +15,7 @@
 @synthesize syntaxList;
 @synthesize extensionsPathField;
 @synthesize snippets;
-@synthesize outputPrefs, outputPrefsDict;
+@synthesize snippetsView;
 
 - (id)init {
     return [super initWithWindowNibName:@"Preferences"];
@@ -25,8 +25,6 @@
 {
     self = [super initWithWindow:window];
     if (self) {
-		NSLog(@"Output: %@", [[NSUserDefaults standardUserDefaults] valueForKey:@"outputPreferences"]);
-		
 		ZenCodingArrayTransformer *caseTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
 		
 		ZenCodingArrayTransformer *quotesTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
@@ -49,6 +47,10 @@
 	NSWindow *window = [self window];
     [window setHidesOnDeactivate:NO];
     [window setExcludedFromWindowsMenu:YES];
+	
+	[snippetsView setTarget:self];
+	[snippetsView setDoubleAction:@selector(editSnippet:)];
+	
 	[super windowDidLoad];
 }
 
@@ -75,7 +77,7 @@
 	
 }
 + (void)loadDefaults {
-	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults" ofType:@"plist"];
+	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults2" ofType:@"plist"];
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:prefs];
@@ -86,10 +88,36 @@
 - (IBAction)addSnippet:(id)sender {
 	ZenCodingSnippetEditor *editor = [ZenCodingSnippetEditor new];
 	NSDictionary *snippet = [editor openAddDialogForWindow:[self window]];
-	NSLog(@"Received snippet: %@", snippet);
-	if (snippet != nil) {
+	if (snippet) {
 		[snippets addObject:snippet];
+		[snippet release];
 	}
+	[editor release];
+}
+
+- (IBAction)removeSnippet:(id)sender {
+	NSArray *selectedSnippets = [snippets selectedObjects];
+	if ([selectedSnippets count]) {
+		[snippets removeObjects:selectedSnippets];
+	}
+}
+
+- (void)editSnippet:(id)sender {
+	ZenCodingSnippetEditor *editor = [ZenCodingSnippetEditor new];
+	NSDictionary *snippet = [[snippets selectedObjects] objectAtIndex:0];
+	
+	if (snippet) {
+		NSDictionary *editedSnippet = [editor openEditDialog:snippet forWindow:[self window]];
+		if (editedSnippet) {
+			[editedSnippet enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop){
+				[snippet setValue:value forKey:key];
+			}];
+			
+			[editedSnippet release];
+		}
+	}
+	
+	[editor release];
 }
 
 @end

@@ -4,6 +4,7 @@
 <dict>
 	<key>expandWithTab</key>
 	<false/>
+	<key>syntax</key>
 	<array>
 		<dict>
 			<key>id</key>
@@ -18,59 +19,68 @@
 			<string>HTML</string>
 		</dict>
 		<dict>
-			<key>id</key>
-			<string>common</string>
-			<key>title</key>
-			<string>Default</string>
-		</dict>
-	</array>
-	<key>outputPreferences</key>
-	<array>
-		<dict>
-			<key>syntax</key>
-			<string>Default</string>
-			<key>id</key>
-			<string>common</string>
-			<key>tagCase</key>
-			<string>asis</string>
-			<key>attributeCase</key>
-			<string>asis</string>
-			<key>attributeQuote</key>
-			<string>double</string>
-			<key>indent</key>
-			<true/>
-			<key>inlineBreaks</key>
-			<integer>3</integer>
-			<key>selfClosing</key>
-			<string>xhtml</string>
-			<key>filters</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>syntax</key>
-			<string>HTML</string>
-			<key>id</key>
-			<string>html</string>
-			<key>tagCase</key>
-			<string>lower</string>
-			<key>attributeCase</key>
-			<string>lower</string>
-			<key>attributeQuote</key>
-			<string>double</string>
-			<key>indent</key>
-			<true/>
-			<key>inlineBreaks</key>
-			<integer>3</integer>
-			<key>selfClosing</key>
-			<string>xhtml</string>
-			<key>filters</key>
-			<string></string>
-		</dict>
-		<dict>
-			<key>syntax</key>
-			<string>CSS</string>
 			<key>id</key>
 			<string>css</string>
+			<key>title</key>
+			<string>CSS</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>xml</string>
+			<key>title</key>
+			<string>XML</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>xsl</string>
+			<key>title</key>
+			<string>XSL</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>haml</string>
+			<key>title</key>
+			<string>HAML</string>
+		</dict>
+	</array>
+	<key>output</key>
+	<dict>
+		<key>common</key>
+		<dict>
+			<key>tagCase</key>
+			<string>asis</string>
+			<key>attributeCase</key>
+			<string>asis</string>
+			<key>attributeQuote</key>
+			<string>double</string>
+			<key>indent</key>
+			<true/>
+			<key>inlineBreaks</key>
+			<integer>3</integer>
+			<key>selfClosing</key>
+			<string>xhtml</string>
+			<key>filters</key>
+			<string></string>
+		</dict>
+		<key>html</key>
+		<dict>
+			<key>tagCase</key>
+			<string>lower</string>
+			<key>attributeCase</key>
+			<string>lower</string>
+			<key>attributeQuote</key>
+			<string>double</string>
+			<key>indent</key>
+			<true/>
+			<key>inlineBreaks</key>
+			<integer>3</integer>
+			<key>selfClosing</key>
+			<string>xhtml</string>
+			<key>filters</key>
+			<string></string>
+		</dict>
+		<key>css</key>
+		<dict>
 			<key>tagCase</key>
 			<string>upper</string>
 			<key>attributeCase</key>
@@ -86,11 +96,8 @@
 			<key>filters</key>
 			<string>css</string>
 		</dict>
+		<key>xml</key>
 		<dict>
-			<key>syntax</key>
-			<string>XML</string>
-			<key>id</key>
-			<string>xml</string>
 			<key>tagCase</key>
 			<string>asis</string>
 			<key>attributeCase</key>
@@ -106,11 +113,8 @@
 			<key>filters</key>
 			<string></string>
 		</dict>
+		<key>xsl</key>
 		<dict>
-			<key>syntax</key>
-			<string>XSL</string>
-			<key>id</key>
-			<string>xsl</string>
 			<key>tagCase</key>
 			<string>asis</string>
 			<key>attributeCase</key>
@@ -126,11 +130,8 @@
 			<key>filters</key>
 			<string>html, xsl</string>
 		</dict>
+		<key>haml</key>
 		<dict>
-			<key>syntax</key>
-			<string>HAML</string>
-			<key>id</key>
-			<string>haml</string>
 			<key>tagCase</key>
 			<string>lower</string>
 			<key>attributeCase</key>
@@ -146,6 +147,6 @@
 			<key>filters</key>
 			<string></string>
 		</dict>
-	</array>
+	</dict>
 </dict>
 </plist>

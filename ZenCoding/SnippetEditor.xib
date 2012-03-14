@@ -12,7 +12,6 @@
 		</object>
 		<array key="IBDocument.IntegratedClassDependencies">
 			<string>NSUserDefaultsController</string>
-			<string>NSDictionaryController</string>
 			<string>NSPopUpButton</string>
 			<string>NSArrayController</string>
 			<string>NSMenuItem</string>
@@ -301,23 +300,6 @@
 			<object class="NSUserDefaultsController" id="955086164">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
-			<object class="NSDictionaryController" id="395817900">
-				<bool key="NSEditable">YES</bool>
-				<bool key="NSAvoidsEmptySelection">YES</bool>
-				<bool key="NSPreservesSelection">YES</bool>
-				<bool key="NSSelectsInsertedObjects">YES</bool>
-				<bool key="NSFilterRestrictsInsertion">YES</bool>
-				<array key="NSSortDescriptors">
-					<object class="NSSortDescriptor">
-						<string key="NSKey">key</string>
-						<bool key="NSAscending">YES</bool>
-						<string key="NSSelector">compare:</string>
-					</object>
-				</array>
-				<bool key="NSClearsFilterPredicateOnInsertion">YES</bool>
-				<string key="NSInitialKey">key</string>
-				<string key="NSInitialValue">value</string>
-			</object>
 		</array>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<array class="NSMutableArray" key="connectionRecords">
@@ -367,40 +349,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">359</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentValues: arrangedObjects.syntax</string>
-						<reference key="source" ref="401729508"/>
-						<reference key="destination" ref="627535186"/>
-						<object class="NSNibBindingConnector" key="connector" id="968616954">
-							<reference key="NSSource" ref="401729508"/>
-							<reference key="NSDestination" ref="627535186"/>
-							<string key="NSLabel">contentValues: arrangedObjects.syntax</string>
-							<string key="NSBinding">contentValues</string>
-							<string key="NSKeyPath">arrangedObjects.syntax</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">346</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">selectedIndex: selection.syntax</string>
-						<reference key="source" ref="401729508"/>
-						<reference key="destination" ref="395817900"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="401729508"/>
-							<reference key="NSDestination" ref="395817900"/>
-							<string key="NSLabel">selectedIndex: selection.syntax</string>
-							<string key="NSBinding">selectedIndex</string>
-							<string key="NSKeyPath">selection.syntax</string>
-							<reference key="NSPreviousConnector" ref="968616954"/>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">349</int>
+					<int key="connectionID">368</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -416,7 +365,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">361</int>
+					<int key="connectionID">370</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
@@ -433,22 +382,6 @@
 						</object>
 					</object>
 					<int key="connectionID">294</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentDictionary: editObject</string>
-						<reference key="source" ref="395817900"/>
-						<reference key="destination" ref="1001"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="395817900"/>
-							<reference key="NSDestination" ref="1001"/>
-							<string key="NSLabel">contentDictionary: editObject</string>
-							<string key="NSBinding">contentDictionary</string>
-							<string key="NSKeyPath">editObject</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">336</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -617,12 +550,6 @@
 						<reference key="object" ref="955086164"/>
 						<reference key="parent" ref="0"/>
 					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">333</int>
-						<reference key="object" ref="395817900"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Edit Object Controller</string>
-					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -641,7 +568,6 @@
 				<string key="292.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="NO" key="3.NSWindowTemplate.visibleAtLaunch"/>
-				<string key="333.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="35.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -656,7 +582,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">361</int>
+			<int key="maxID">370</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
