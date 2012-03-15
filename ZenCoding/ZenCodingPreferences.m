@@ -11,11 +11,19 @@
 #import "ZenCodingTildePathTransformer.h"
 #import "ZenCodingSnippetEditor.h"
 
+@interface ZenCodingPreferences ()
+- (void)updateOutputPrefsContext;
+@end
+
 @implementation ZenCodingPreferences
+@synthesize outputContext;
+@synthesize outputPreferences;
+@synthesize sampleController;
 @synthesize syntaxList;
 @synthesize extensionsPathField;
 @synthesize snippets;
 @synthesize snippetsView;
+@synthesize syntaxPopup;
 
 - (id)init {
     return [super initWithWindowNibName:@"Preferences"];
@@ -51,6 +59,13 @@
 	[snippetsView setTarget:self];
 	[snippetsView setDoubleAction:@selector(editSnippet:)];
 	
+	[syntaxList addObserver:self 
+				  forKeyPath:@"selectionIndexes" 
+					 options:NSKeyValueObservingOptionNew 
+					 context:NULL];
+	
+	[self updateOutputPrefsContext];
+	
 	[super windowDidLoad];
 }
 
@@ -77,6 +92,15 @@
 	
 }
 + (void)loadDefaults {
+	//// reset defaults
+//	NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+//	for (NSString *key in [defaultsDictionary allKeys]) {
+//		[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+//	}
+//	[[NSUserDefaults standardUserDefaults] synchronize];
+	//// /reset defaults
+	
+	
 	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults2" ofType:@"plist"];
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
 	
@@ -120,4 +144,51 @@
 	[editor release];
 }
 
+- (IBAction)showDebugInfo:(id)sender {
+	NSLog(@"controller info: %@", [syntaxList selectedObjects]);
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+	if ([keyPath isEqual:@"selectionIndexes"] && object == syntaxList) {
+		[self updateOutputPrefsContext];
+	}
+}
+
+- (void)updateOutputPrefsContext {
+	for (id obj in [outputContext selectedObjects]) {
+		NSLog(@"Obj class: %@", [obj className]);
+	}
+	NSLog(@"Output: %@", [outputContext selectedObjects]);
+	return;
+	NSArray *syntaxArr = [syntaxList selectedObjects];
+	if (syntaxArr && [syntaxArr count]) {
+		NSDictionary *syntax = [[syntaxList selectedObjects] objectAtIndex:0];
+		NSString *syntaxId = [syntax valueForKey:@"id"];
+		
+		
+		NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
+		id outputData = [[defaults values] valueForKey:@"output"];
+		[outputContext setContent:[outputData objectForKey:syntaxId]];
+		
+		
+		// output preferences test
+		NSArray *arrangedObjects = [outputPreferences arrangedObjects];
+		id obj;
+		BOOL selectionChanged = NO;
+		for (int i = 0; i < [arrangedObjects count]; i++) {
+			obj = [arrangedObjects objectAtIndex:i];
+			if ([[obj key] isEqual:syntaxId]) {
+				[outputPreferences setSelectionIndex:i];
+				selectionChanged = YES;
+				NSLog(@"Obj: %@", obj);
+				break;
+			}
+		}
+//		for (id pair in arObj) {
+//			
+//		}
+//		NSLog(@"arranged objects: %@", [outputPreferences arrangedObjects]);
+		
+	}
+}
 @end
