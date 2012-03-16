@@ -17,37 +17,40 @@
 
 @implementation ZenCodingPreferences
 @synthesize outputContext;
-@synthesize outputPreferences;
-@synthesize sampleController;
 @synthesize syntaxList;
 @synthesize extensionsPathField;
 @synthesize snippets;
 @synthesize snippetsView;
 @synthesize syntaxPopup;
 
++ (void)initialize {
+	ZenCodingArrayTransformer *caseTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
+	
+	ZenCodingArrayTransformer *quotesTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
+	
+	ZenCodingArrayTransformer *selfClosingTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"html", @"xml", @"xhtml", nil]] autorelease];
+	ZenCodingTildePathTransformer *pathTransformer = [[ZenCodingTildePathTransformer new] autorelease];
+	
+	
+	[NSValueTransformer setValueTransformer:caseTransformer forName:@"ZenCodingCaseTransformer"];
+	[NSValueTransformer setValueTransformer:quotesTransformer forName:@"ZenCodingQuotesTransformer"];
+	[NSValueTransformer setValueTransformer:selfClosingTransformer forName:@"ZenCodingSelfClosingTransformer"];
+	[NSValueTransformer setValueTransformer:pathTransformer forName:@"ZenCodingTildePathTransformer"];
+}
+
 - (id)init {
     return [super initWithWindowNibName:@"Preferences"];
 }
 
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-		ZenCodingArrayTransformer *caseTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
-		
-		ZenCodingArrayTransformer *quotesTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
-		
-		ZenCodingArrayTransformer *selfClosingTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"html", @"xml", @"xhtml", nil]] autorelease];
-		ZenCodingTildePathTransformer *pathTransformer = [[ZenCodingTildePathTransformer new] autorelease];
-		
-		
-		[NSValueTransformer setValueTransformer:caseTransformer forName:@"ZenCodingCaseTransformer"];
-		[NSValueTransformer setValueTransformer:quotesTransformer forName:@"ZenCodingQuotesTransformer"];
-		[NSValueTransformer setValueTransformer:selfClosingTransformer forName:@"ZenCodingSelfClosingTransformer"];
-		[NSValueTransformer setValueTransformer:pathTransformer forName:@"ZenCodingTildePathTransformer"];
-    }
-    
-    return self;
+- (void)awakeFromNib {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSDictionary *output = [defaults dictionaryForKey:@"output"];
+	
+	if (output) {
+		outputPreferences = [output mutableCopy];
+	} else {
+		outputPreferences = [NSMutableDictionary new];
+	}
 }
 
 - (void)windowDidLoad
@@ -70,6 +73,9 @@
 }
 
 - (BOOL)windowShouldClose:(NSWindow *)window {
+	// save output preferences
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	[defaults setObject:outputPreferences forKey:@"output"];
     return [window makeFirstResponder:nil]; // validate editing
 }
 
@@ -113,6 +119,7 @@
 	ZenCodingSnippetEditor *editor = [ZenCodingSnippetEditor new];
 	NSDictionary *snippet = [editor openAddDialogForWindow:[self window]];
 	if (snippet) {
+		NSLog(@"Add snippet: %@", snippet);
 		[snippets addObject:snippet];
 		[snippet release];
 	}
@@ -144,10 +151,6 @@
 	[editor release];
 }
 
-- (IBAction)showDebugInfo:(id)sender {
-	NSLog(@"controller info: %@", [syntaxList selectedObjects]);
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if ([keyPath isEqual:@"selectionIndexes"] && object == syntaxList) {
 		[self updateOutputPrefsContext];
@@ -155,40 +158,17 @@
 }
 
 - (void)updateOutputPrefsContext {
-	for (id obj in [outputContext selectedObjects]) {
-		NSLog(@"Obj class: %@", [obj className]);
-	}
-	NSLog(@"Output: %@", [outputContext selectedObjects]);
-	return;
 	NSArray *syntaxArr = [syntaxList selectedObjects];
 	if (syntaxArr && [syntaxArr count]) {
 		NSDictionary *syntax = [[syntaxList selectedObjects] objectAtIndex:0];
 		NSString *syntaxId = [syntax valueForKey:@"id"];
-		
-		
-		NSUserDefaultsController *defaults = [NSUserDefaultsController sharedUserDefaultsController];
-		id outputData = [[defaults values] valueForKey:@"output"];
-		[outputContext setContent:[outputData objectForKey:syntaxId]];
-		
-		
-		// output preferences test
-		NSArray *arrangedObjects = [outputPreferences arrangedObjects];
-		id obj;
-		BOOL selectionChanged = NO;
-		for (int i = 0; i < [arrangedObjects count]; i++) {
-			obj = [arrangedObjects objectAtIndex:i];
-			if ([[obj key] isEqual:syntaxId]) {
-				[outputPreferences setSelectionIndex:i];
-				selectionChanged = YES;
-				NSLog(@"Obj: %@", obj);
-				break;
-			}
-		}
-//		for (id pair in arObj) {
-//			
-//		}
-//		NSLog(@"arranged objects: %@", [outputPreferences arrangedObjects]);
-		
+		[outputContext setContent:[outputPreferences objectForKey:syntaxId]];
 	}
 }
+
+- (void)dealloc {
+	[outputPreferences release];
+	[super dealloc];
+}
+
 @end

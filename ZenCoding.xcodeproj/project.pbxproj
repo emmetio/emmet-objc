@@ -79,6 +79,9 @@
 		A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5DB23441510DABD009979C2 /* PreferencesDefaults2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */; };
 		A5DB23451510DABD009979C2 /* PreferencesDefaults2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */; };
+		A5DB235A15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DB235815133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h */; };
+		A5DB235B15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */; };
+		A5DB235C15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +140,8 @@
 		A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2757B14F009D700B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults2.plist; sourceTree = "<group>"; };
+		A5DB235815133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingSyntaxNameTransformer.h; sourceTree = "<group>"; };
+		A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSyntaxNameTransformer.m; sourceTree = "<group>"; };
 		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,12 +226,9 @@
 				A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */,
 				A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
-				A5639FD8150AAB3000388173 /* ZenCodingArrayTransformer.h */,
-				A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */,
-				A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */,
-				A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */,
 				A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */,
 				A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */,
+				A5DB235615133CF6009979C2 /* Transformers */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -288,6 +290,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A5DB235615133CF6009979C2 /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				A5639FD8150AAB3000388173 /* ZenCodingArrayTransformer.h */,
+				A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */,
+				A5639FED150B70A700388173 /* ZenCodingTildePathTransformer.h */,
+				A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */,
+				A5DB235815133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h */,
+				A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */,
+			);
+			name = Transformers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -311,6 +326,7 @@
 				A5639FDA150AAB3000388173 /* ZenCodingArrayTransformer.h in Headers */,
 				A5639FEF150B70A700388173 /* ZenCodingTildePathTransformer.h in Headers */,
 				A5639FFF150E9A2700388173 /* ZenCodingSnippetEditor.h in Headers */,
+				A5DB235A15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,6 +457,7 @@
 				A5639FDB150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */,
 				A5639FF0150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
 				A563A000150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */,
+				A5DB235B15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +478,7 @@
 				A5639FDC150AAB3000388173 /* ZenCodingArrayTransformer.m in Sources */,
 				A5639FF1150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
 				A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */,
+				A5DB235C15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

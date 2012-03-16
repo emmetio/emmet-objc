@@ -25,7 +25,7 @@
 - (id)initWithWindow:(NSWindow *)window {
 	editObject = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
 				  @"", @"name", 
-				  @"", @"syntax", 
+				  SNIPPET_DEFAULT_SYNTAX, @"syntax", 
 				  @"", @"value", nil];
 	
 	return [super initWithWindow:window];
@@ -39,7 +39,14 @@
 	// copy edited objet value or reset the current object
 	[editObject enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
 		NSString *val = [obj objectForKey:key];
-		[editObject setValue:(val != nil) ? val : @"" forKey:key];
+		if (val == nil) {
+			if ([key isEqual:@"syntax"]) {
+				val = SNIPPET_DEFAULT_SYNTAX;
+			} else {
+				val = @"";
+			}	
+		}
+		[editObject setValue:val forKey:key];
 	}];
 	
 	NSWindow *w = [self window];

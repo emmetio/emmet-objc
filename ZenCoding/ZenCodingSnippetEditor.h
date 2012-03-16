@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
-#define SNIPPET_EDITOR_OK     0
-#define SNIPPET_EDITOR_CANCEL 1
+#define SNIPPET_EDITOR_OK      0
+#define SNIPPET_EDITOR_CANCEL  1
+#define SNIPPET_DEFAULT_SYNTAX @"common"
 
 @interface ZenCodingSnippetEditor : NSWindowController {
 	NSMutableDictionary *editObject;
