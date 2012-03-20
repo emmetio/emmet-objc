@@ -14,8 +14,10 @@
 
 @interface ZenCodingSnippetEditor : NSWindowController {
 	NSMutableDictionary *editObject;
+	NSTextView *textView;
 }
 
+@property (assign) IBOutlet NSTextView *textView;
 - (NSDictionary *)openAddDialogForWindow:(NSWindow *)wnd;
 - (NSDictionary *)openEditDialog:(NSDictionary *)editObj forWindow:(NSWindow *)wnd;
 

@@ -17,6 +17,7 @@
 @end
 
 @implementation ZenCodingSnippetEditor
+@synthesize textView;
 
 - (id)init {
     return [super initWithWindowNibName:@"SnippetEditor"];
@@ -29,6 +30,13 @@
 				  @"", @"value", nil];
 	
 	return [super initWithWindow:window];
+}
+
+- (void)awakeFromNib {
+	[textView setFont:[NSFont userFixedPitchFontOfSize:0.0]];
+	[[textView textContainer] setContainerSize:NSMakeSize(FLT_MAX, FLT_MAX)];
+	[[textView textContainer] setWidthTracksTextView:NO];
+	[textView setHorizontallyResizable:YES];
 }
 
 - (NSDictionary *)openAddDialogForWindow:(NSWindow *)wnd {

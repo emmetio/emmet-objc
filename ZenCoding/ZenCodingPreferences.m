@@ -10,17 +10,26 @@
 #import "ZenCodingArrayTransformer.h"
 #import "ZenCodingTildePathTransformer.h"
 #import "ZenCodingSnippetEditor.h"
+#import "ZenCodingDefaultsKeys.h"
+#import "ZenCodingNotifications.h"
 
 @interface ZenCodingPreferences ()
 - (void)updateOutputPrefsContext;
+- (NSArrayController *)contextControllerFromSender:(id)sender;
+- (NSString *)nibNameFromSender:(id)sender;
+- (NSMutableArray *)contentForController:(NSString *)preferenceName;
 @end
 
 @implementation ZenCodingPreferences
 @synthesize outputContext;
+@synthesize snippetsController;
+@synthesize abbreviationsController;
+@synthesize variablesController;
 @synthesize syntaxList;
 @synthesize extensionsPathField;
-@synthesize snippets;
 @synthesize snippetsView;
+@synthesize abbreviationsView;
+@synthesize variablesView;
 @synthesize syntaxPopup;
 
 + (void)initialize {
@@ -44,13 +53,17 @@
 
 - (void)awakeFromNib {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSDictionary *output = [defaults dictionaryForKey:@"output"];
+	NSDictionary *output = [defaults dictionaryForKey:Output];
 	
 	if (output) {
 		outputPreferences = [output mutableCopy];
 	} else {
 		outputPreferences = [NSMutableDictionary new];
 	}
+	
+	[snippetsController setContent:[self contentForController:Snippets]];
+	[abbreviationsController setContent:[self contentForController:Abbreviations]];
+	[variablesController setContent:[self contentForController:Variables]];
 }
 
 - (void)windowDidLoad
@@ -62,12 +75,20 @@
 	[snippetsView setTarget:self];
 	[snippetsView setDoubleAction:@selector(editSnippet:)];
 	
+	[abbreviationsView setTarget:self];
+	[abbreviationsView setDoubleAction:@selector(editSnippet:)];
+	
+	[variablesView setTarget:self];
+	[variablesView setDoubleAction:@selector(editSnippet:)];
+	
 	[syntaxList addObserver:self 
-				  forKeyPath:@"selectionIndexes" 
-					 options:NSKeyValueObservingOptionNew 
-					 context:NULL];
+				 forKeyPath:@"selectionIndexes" 
+					options:NSKeyValueObservingOptionNew 
+					context:NULL];
 	
 	[self updateOutputPrefsContext];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:PreferencesWindowOpened object:self];
 	
 	[super windowDidLoad];
 }
@@ -75,7 +96,13 @@
 - (BOOL)windowShouldClose:(NSWindow *)window {
 	// save output preferences
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:outputPreferences forKey:@"output"];
+	[defaults setObject:outputPreferences forKey:Output];
+	[defaults setObject:[snippetsController content] forKey:Snippets];
+	[defaults setObject:[abbreviationsController content] forKey:Abbreviations];
+	[defaults setObject:[variablesController content] forKey:Variables];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:PreferencesWindowClosed object:self];
+	
     return [window makeFirstResponder:nil]; // validate editing
 }
 
@@ -90,7 +117,7 @@
 			NSURL *url = [[panel URLs] objectAtIndex:0];
 			if (url != nil) {
 				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-				[defaults setValue:[url path] forKey:@"extensionsPath"];
+				[defaults setValue:[url path] forKey:ExtensionsPath];
 			}
 			
 	    }
@@ -115,40 +142,53 @@
 	[prefs release];
 }
 
+
+#pragma mark Snippet editing
 - (IBAction)addSnippet:(id)sender {
-	ZenCodingSnippetEditor *editor = [ZenCodingSnippetEditor new];
-	NSDictionary *snippet = [editor openAddDialogForWindow:[self window]];
-	if (snippet) {
-		NSLog(@"Add snippet: %@", snippet);
-		[snippets addObject:snippet];
-		[snippet release];
+	contextController = [self contextControllerFromSender:sender];
+	
+	if (contextController) {
+		ZenCodingSnippetEditor *editor = [[ZenCodingSnippetEditor alloc] initWithWindowNibName:[self nibNameFromSender:sender]];
+		NSDictionary *snippet = [editor openAddDialogForWindow:[self window]];
+		if (snippet) {
+			[contextController addObject:snippet];
+			[snippet release];
+		}
+		[editor release];
 	}
-	[editor release];
 }
 
 - (IBAction)removeSnippet:(id)sender {
-	NSArray *selectedSnippets = [snippets selectedObjects];
-	if ([selectedSnippets count]) {
-		[snippets removeObjects:selectedSnippets];
-	}
-}
-
-- (void)editSnippet:(id)sender {
-	ZenCodingSnippetEditor *editor = [ZenCodingSnippetEditor new];
-	NSDictionary *snippet = [[snippets selectedObjects] objectAtIndex:0];
+	contextController = [self contextControllerFromSender:sender];
 	
-	if (snippet) {
-		NSDictionary *editedSnippet = [editor openEditDialog:snippet forWindow:[self window]];
-		if (editedSnippet) {
-			[editedSnippet enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop){
-				[snippet setValue:value forKey:key];
-			}];
-			
-			[editedSnippet release];
+	if (contextController) {
+		NSArray *selectedSnippets = [contextController selectedObjects];
+		if ([selectedSnippets count]) {
+			[contextController removeObjects:selectedSnippets];
 		}
 	}
 	
-	[editor release];
+}
+
+- (void)editSnippet:(id)sender {
+	contextController = [self contextControllerFromSender:sender];
+	if (contextController) {
+		ZenCodingSnippetEditor *editor = [[ZenCodingSnippetEditor alloc] initWithWindowNibName:[self nibNameFromSender:sender]];
+		NSDictionary *snippet = [[contextController selectedObjects] objectAtIndex:0];
+		
+		if (snippet) {
+			NSDictionary *editedSnippet = [editor openEditDialog:snippet forWindow:[self window]];
+			if (editedSnippet) {
+				[editedSnippet enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop){
+					[snippet setValue:value forKey:key];
+				}];
+				
+				[editedSnippet release];
+			}
+		}
+		
+		[editor release];
+	}
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -164,6 +204,41 @@
 		NSString *syntaxId = [syntax valueForKey:@"id"];
 		[outputContext setContent:[outputPreferences objectForKey:syntaxId]];
 	}
+}
+
+- (NSArrayController *)contextControllerFromSender:(id)sender {
+	switch ([sender tag]) {
+		case 1:
+			return abbreviationsController;
+		case 2:
+			return snippetsController;
+		case 3:
+			return variablesController;
+	}
+	
+	return nil;
+}
+
+
+- (NSString *)nibNameFromSender:(id)sender {
+	if ([sender tag] == 3) {
+		return @"VariableEditor";
+	}
+	
+	return @"SnippetEditor";
+}
+
+- (NSMutableArray *)contentForController:(NSString *)preferenceName {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSArray *_val = [defaults arrayForKey:preferenceName];
+	NSMutableArray *result;
+	if (_val) {
+		result = [_val mutableCopy];
+	} else {
+		result = [NSMutableArray new];
+	}
+	
+	return [result autorelease];
 }
 
 - (void)dealloc {
