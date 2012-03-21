@@ -136,7 +136,7 @@
 	//// /reset defaults
 	
 	
-	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults2" ofType:@"plist"];
+	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults" ofType:@"plist"];
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:prefs];

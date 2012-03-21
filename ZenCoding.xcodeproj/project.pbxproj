@@ -88,8 +88,8 @@
 		A5D275AF14F156D300B3816D /* JSCocoaLib.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D314E03E05002BBA24 /* JSCocoaLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D275B014F156D600B3816D /* JSCocoaPrivateObject.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5DB23441510DABD009979C2 /* PreferencesDefaults2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */; };
-		A5DB23451510DABD009979C2 /* PreferencesDefaults2.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */; };
+		A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
+		A5DB23451510DABD009979C2 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
 		A5DB235A15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DB235815133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h */; };
 		A5DB235B15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */; };
 		A5DB235C15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */; };
@@ -158,7 +158,7 @@
 		A5D2757514F009B100B3816D /* ZenCoding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZenCoding-Info.plist"; sourceTree = "<group>"; };
 		A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2757B14F009D700B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults2.plist; sourceTree = "<group>"; };
+		A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults.plist; sourceTree = "<group>"; };
 		A5DB235815133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingSyntaxNameTransformer.h; sourceTree = "<group>"; };
 		A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSyntaxNameTransformer.m; sourceTree = "<group>"; };
 		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
@@ -247,24 +247,22 @@
 				A563EC4A14E31951009472C9 /* ZenCoding.m */,
 				A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */,
 				A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */,
-				A5B91ACA14E82952002FA697 /* zencoding.js */,
-				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A5AB74E514EE56BE00A59617 /* PromptDialog.xib */,
 				A5C6BD80150A2BC200507968 /* Preferences.xib */,
 				A51BD42D150E62C40041002F /* SnippetEditor.xib */,
 				A596302515187FCE000D1A01 /* VariableEditor.xib */,
 				A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */,
 				A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */,
-				A5D2757414F0096200B3816D /* Supporting Files */,
 				A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */,
 				A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */,
-				A5DB235615133CF6009979C2 /* Transformers */,
 				A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */,
 				A596302E15189A07000D1A01 /* ZenCodingNotifications.h */,
 				A596306115190222000D1A01 /* NSDictionary+Merge.h */,
 				A596306215190223000D1A01 /* NSDictionary+Merge.m */,
 				A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */,
 				A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */,
+				A5D2757414F0096200B3816D /* Supporting Files */,
+				A5DB235615133CF6009979C2 /* Transformers */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -320,7 +318,9 @@
 				A5D2757514F009B100B3816D /* ZenCoding-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
 				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
-				A5DB23431510DABD009979C2 /* PreferencesDefaults2.plist */,
+				A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */,
+				A5B91ACA14E82952002FA697 /* zencoding.js */,
+				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 				A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */,
 				A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */,
 				A51BD42E150E62C40041002F /* SnippetEditor.xib in Resources */,
-				A5DB23441510DABD009979C2 /* PreferencesDefaults2.plist in Resources */,
+				A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */,
 				A596302615187FCE000D1A01 /* VariableEditor.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,7 +470,7 @@
 				A5D2757D14F009D700B3816D /* InfoPlist.strings in Resources */,
 				A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */,
 				A51BD42F150E62C40041002F /* SnippetEditor.xib in Resources */,
-				A5DB23451510DABD009979C2 /* PreferencesDefaults2.plist in Resources */,
+				A5DB23451510DABD009979C2 /* PreferencesDefaults.plist in Resources */,
 				A596302715187FCE000D1A01 /* VariableEditor.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
