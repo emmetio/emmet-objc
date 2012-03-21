@@ -443,17 +443,17 @@
 			files = (
 				A5D2751614F000FA00B3816D /* InfoPlist.strings in Resources */,
 				A5D2751C14F000FA00B3816D /* Credits.rtf in Resources */,
-				A5D2752214F000FA00B3816D /* MainMenu.xib in Resources */,
-				A5D2753214F0041000B3816D /* PromptDialog.xib in Resources */,
 				A5D2753314F0041600B3816D /* zencoding.js in Resources */,
 				A5D2753414F0041800B3816D /* objc-zeneditor-wrap.js in Resources */,
 				A5D2753514F0041D00B3816D /* class.js in Resources */,
 				A5D2753614F0042000B3816D /* jslint-jscocoa.js in Resources */,
+				A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */,
 				A5D2757714F009B100B3816D /* ZenCoding-Info.plist in Resources */,
 				A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */,
+				A5D2752214F000FA00B3816D /* MainMenu.xib in Resources */,
+				A5D2753214F0041000B3816D /* PromptDialog.xib in Resources */,
 				A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */,
 				A51BD42E150E62C40041002F /* SnippetEditor.xib in Resources */,
-				A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */,
 				A596302615187FCE000D1A01 /* VariableEditor.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

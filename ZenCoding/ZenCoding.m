@@ -250,7 +250,7 @@ static ZenCoding *instance = nil;
 	[result addEntriesFromDictionary:ctx];
 	[ctx release];
 	
-	return result;
+	return [result autorelease];
 }
 
 - (void)shouldReloadContext:(NSNotification *)notification {

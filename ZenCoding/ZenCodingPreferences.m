@@ -154,7 +154,6 @@
 		NSDictionary *snippet = [editor openAddDialogForWindow:[self window]];
 		if (snippet) {
 			[contextController addObject:snippet];
-			[snippet release];
 		}
 		[editor release];
 	}
@@ -184,8 +183,6 @@
 				[editedSnippet enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop){
 					[snippet setValue:value forKey:key];
 				}];
-				
-				[editedSnippet release];
 			}
 		}
 		

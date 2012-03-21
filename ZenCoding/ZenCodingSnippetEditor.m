@@ -72,8 +72,6 @@
 		NSDictionary *result = [self normalize:editObject];
 		if (![self isEmpty:result])
 			return result;
-		
-		[result release];
 	}
 	
 	
@@ -110,7 +108,7 @@
 							 [NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
 	[normalizedSnippet setValue:trimmedName forKey:@"name"];
-	return normalizedSnippet;
+	return [normalizedSnippet autorelease];
 }
 
 - (BOOL)windowShouldClose:(NSWindow *)window {
