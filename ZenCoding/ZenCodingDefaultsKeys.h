@@ -9,6 +9,7 @@
 #ifndef ZenCoding_ZenCodingDefaultsKeys_h
 #define ZenCoding_ZenCodingDefaultsKeys_h
 
+#define ExpandWithTabKey @"expandWithTab"
 #define ExtensionsPath @"extensionsPath"
 #define Snippets @"snippets"
 #define Abbreviations @"abbreviations"

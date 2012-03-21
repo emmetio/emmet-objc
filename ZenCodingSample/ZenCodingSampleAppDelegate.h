@@ -11,6 +11,7 @@
 
 @interface ZenCodingSampleAppDelegate : NSObject <NSApplicationDelegate> {
 	NSWindow *window;
+	NSTextView *tv;
 	IBOutlet NSTextView *textArea;
 	ZenCodingPreferences *prefs;
 }

@@ -10,6 +10,10 @@
 #import "ZenCoding.h"
 #import "ZenCodingPromptDialogController.h"
 #import "ZenCodingPreferences.h"
+#import "ZenCodingDefaultsKeys.h"
+
+#define TabKeyCode 48
+#define NoFlags (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask)
 
 @implementation ZenCodingSampleAppDelegate
 
@@ -20,9 +24,30 @@
 	[ZenCodingPreferences loadDefaults];
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-	// Insert code here to initialize your application
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+	// Implementing abbreviation expand by Tab key
+	// This logic should be implemented for each editor independently,
+	// because it should also check if current editor state allow Tab key
+	// interception (e.g. if it contains tabstops)
+	[NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^(NSEvent *event) {
+		// handle event only for key text view
+		if ([window isKeyWindow] && [window firstResponder] == textArea) {
+			if ([event keyCode] == TabKeyCode && ([event modifierFlags] & NoFlags) == 0 && [[NSUserDefaults standardUserDefaults] boolForKey:ExpandWithTabKey]) {
+				
+				ZenCoding *zc = [ZenCoding sharedInstance];
+				[zc setContext:textArea];
+				
+				// if abbreviation expanded successfully, stop event
+				// otherwise, pass it further
+				if ([zc runAction:@"expand_abbreviation"]) {
+					return (NSEvent *)nil;
+				}
+			}
+		}
+		
+		return event;
+	}];
+	
 }
 
 - (IBAction)expandAbbreviation:(id)sender {
