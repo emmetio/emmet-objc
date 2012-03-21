@@ -13,6 +13,8 @@
 #import "ZenCodingDefaultsKeys.h"
 #import "ZenCodingNotifications.h"
 
+#define ChangeObserving @"ChangeObserving"
+
 @interface ZenCodingPreferences ()
 - (void)updateOutputPrefsContext;
 - (NSArrayController *)contextControllerFromSender:(id)sender;

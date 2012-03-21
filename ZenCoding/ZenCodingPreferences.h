@@ -25,6 +25,8 @@
 	
 	// pointer to currently edited array controller (snippets or abbreviations)
 	NSArrayController *contextController;
+	
+	BOOL isPreferencesUpdated;
 }
 
 @property (assign) IBOutlet NSArrayController *syntaxList;

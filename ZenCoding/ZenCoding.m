@@ -7,16 +7,21 @@
 //
 
 #import "ZenCoding.h"
+#import "ZenCodingDefaultsKeys.h"
+#import "ZenCodingNotifications.h"
+#import "NSMutableDictionary+ZCUtils.h"
+#import "JSONKit.h"
 
 @interface ZenCoding ()
-
 - (void)setupJSContext;
-
+- (void)loadUserData;
+- (NSDictionary *)settingsFromDefaults;
+- (void)shouldReloadContext:(NSNotification *)notification;
 @end
 
 @implementation ZenCoding
 
-@synthesize context, jsc, extensionsPath;
+@synthesize context, jsc, extensionsPath=_extensionsPath;
 
 static ZenCoding *instance = nil;
 
@@ -32,6 +37,16 @@ static ZenCoding *instance = nil;
 - (id)init {
     if (self = [super init]) {
         [self setupJSContext];
+		// subscribe for user preferences change notifications:
+		// we have to re-create JS context in order to load the latest
+		// user preferences.
+		// Right now, the only easy way to understand if anything is changed
+		// is to listen to "close" event of preferences window
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(shouldReloadContext:) 
+													 name:PreferencesWindowClosed 
+												   object:nil];
+		
     }
     
     return self;
@@ -59,39 +74,67 @@ static ZenCoding *instance = nil;
 	[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
 	[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
 	
+	// load Zen Coding extensions
 	if (extensionsPath) {
-		NSString *path = extensionsPath;
-		if ([path hasPrefix:@"~"]) {
-			path = [path stringByExpandingTildeInPath];
-		}
-		
+		NSString *extPath = extensionsPath;
+		BOOL isDir;
 		NSFileManager *fm = [NSFileManager defaultManager];
-		if ([fm fileExistsAtPath:path isDirectory:YES]) {
-			NSDirectoryEnumerator *dirEnum = [fm enumeratorAtPath:path];
+		if ([fm fileExistsAtPath:extPath isDirectory:&isDir] && isDir) {
+			NSDirectoryEnumerator *dirEnum = [fm enumeratorAtPath:extPath];
 			
+			// find all JS files and eval them
 			NSString *file;
 			while (file = [dirEnum nextObject]) {
 				if ([[[file pathExtension] lowercaseString] isEqualToString: @"js"]) {
-					[jsc evalJSFile:[path stringByAppendingPathComponent:file]];
+					[jsc evalJSFile:[extPath stringByAppendingPathComponent:file]];
 				}
 			}
 		}
 	}
+	
+	// load user preferences
+	// TODO load output profiles
+	[self loadUserData];
 }
 
 - (void)setContext:(id)ctx {
 	if (self->context != ctx) {
+		if (self->context)
+			[self->context release];
+		
 		self->context = nil;
-		self->context = [ctx retain];
-		[jsc setObject:ctx withName:@"__objcContext"];
-		[jsc callJSFunctionNamed:@"objcSetContext" withArguments:ctx, nil];
+		if (ctx) {
+			self->context = [ctx retain];
+			[self evalFunction:@"objcSetContext" withArguments:ctx, nil];
+		}
 	}
 }
 
+- (NSString *)extensionsPath {
+	NSString *path = self->_extensionsPath;
+	if (path == nil || [path isEqual:@""]) {
+		path = [[NSUserDefaults standardUserDefaults] stringForKey:ExtensionsPath];
+	}
+	
+	if (path != nil && ![path isEqual:@""]) {
+		path = [path stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+		if ([path hasPrefix:@"~"]) {
+			path = [path stringByExpandingTildeInPath];
+		}
+		
+		return path;
+	}
+	
+	return nil;
+}
+
 - (void)setExtensionsPath:(NSString *)path {
-	if (extensionsPath != nil && ![extensionsPath isEqualToString:path]) {
-		[extensionsPath release];
-		extensionsPath = [path retain];
+	if (![extensionsPath isEqual:path]) {
+		if (self->_extensionsPath != nil) {
+			[self->_extensionsPath release];
+		}
+		
+		self->_extensionsPath = [path retain];
 		
 		[self setupJSContext];
 	}
@@ -137,9 +180,83 @@ static ZenCoding *instance = nil;
 	return result;
 }
 
+- (void)loadUserData {
+	NSString *settingsContents = @"{}";
+	
+	// check if settings.json exists in extensions path
+	if (extensionsPath) {
+		NSString *settingsFile = [extensionsPath stringByAppendingPathComponent:@"settings.json"];
+		if ([[NSFileManager defaultManager] isReadableFileAtPath:settingsFile]) {
+			settingsContents = [NSString stringWithContentsOfFile:settingsFile encoding:NSUTF8StringEncoding error:nil];
+		}
+	}
+	
+	// pass data as JSON strings for safer internal types conversion
+	[self evalFunction:@"objcLoadUserPrefs" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
+}
+
+- (NSDictionary *)settingsFromDefaults {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSMutableDictionary *result = [NSMutableDictionary new];
+	NSMutableDictionary *ctx;
+	
+	// read variables
+	NSArray *defaultsCtx = [defaults arrayForKey:Variables];
+	if (defaultsCtx) {
+		ctx = [NSMutableDictionary new];
+		for (NSDictionary *item in defaultsCtx) {
+			[ctx setObject:[item objectForKey:@"value"] forKey:[item objectForKey:@"name"]];
+		}
+		
+		[result setObject:ctx forKey:@"variables"];
+		[ctx release];
+		defaultsCtx = nil;
+	}
+	
+	// Read abbreviations and snippets. Since they share the same syntax
+	// context, we need to create single context for both of them
+	ctx = [NSMutableDictionary new];
+	NSMutableDictionary *syntaxCtx;
+	NSString *syntax;
+	
+	defaultsCtx = [defaults arrayForKey:Abbreviations];
+	if (defaultsCtx) {
+		for (NSDictionary *item in defaultsCtx) {
+			syntax = [item objectForKey:@"syntax"];			
+			syntaxCtx = [[ctx dictionaryForKey:syntax] dictionaryForKey:@"abbreviations"];
+			[syntaxCtx setObject:[item objectForKey:@"value"] forKey:[item objectForKey:@"name"]];
+		}
+	}
+	
+	defaultsCtx = [defaults arrayForKey:Snippets];
+	if (defaultsCtx) {
+		for (NSDictionary *item in defaultsCtx) {
+			syntax = [item objectForKey:@"syntax"];			
+			syntaxCtx = [[ctx dictionaryForKey:syntax] dictionaryForKey:@"snippets"];
+			[syntaxCtx setObject:[item objectForKey:@"value"] forKey:[item objectForKey:@"name"]];
+		}
+	}
+	
+	[result addEntriesFromDictionary:ctx];
+	[ctx release];
+	
+	return result;
+}
+
+- (void)shouldReloadContext:(NSNotification *)notification {
+	NSLog(@"Reloading context");
+	// remember previously saved context
+	id ctx = self.context;
+	self.context = nil;
+	[self setupJSContext];
+	self.context = ctx;
+}
 
 - (void)dealloc {
-	[extensionsPath release];
+	if (self->_extensionsPath) {
+		[self->_extensionsPath release];
+	}
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[super dealloc];
 }
 

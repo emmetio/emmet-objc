@@ -25,6 +25,15 @@
 		A596302715187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */; };
 		A596302F15189A08000D1A01 /* ZenCodingNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302E15189A07000D1A01 /* ZenCodingNotifications.h */; };
+		A596306315190223000D1A01 /* NSDictionary+Merge.h in Headers */ = {isa = PBXBuildFile; fileRef = A596306115190222000D1A01 /* NSDictionary+Merge.h */; };
+		A596306415190223000D1A01 /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
+		A596306515190223000D1A01 /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
+		A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */; };
+		A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A596306E1519F594000D1A01 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A596306C1519F594000D1A01 /* JSONKit.h */; };
+		A596306F1519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
+		A59630701519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -103,6 +112,12 @@
 		A596302515187FCE000D1A01 /* VariableEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariableEditor.xib; sourceTree = "<group>"; };
 		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
 		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
+		A596306115190222000D1A01 /* NSDictionary+Merge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Merge.h"; sourceTree = "<group>"; };
+		A596306215190223000D1A01 /* NSDictionary+Merge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Merge.m"; sourceTree = "<group>"; };
+		A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+ZCUtils.h"; sourceTree = "<group>"; };
+		A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ZCUtils.m"; sourceTree = "<group>"; };
+		A596306C1519F594000D1A01 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		A596306D1519F594000D1A01 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A5994E6014BF52030067B42B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A5994E6114BF52030067B42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -171,9 +186,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A596306B1519F582000D1A01 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				A596306C1519F594000D1A01 /* JSONKit.h */,
+				A596306D1519F594000D1A01 /* JSONKit.m */,
+			);
+			name = JSONKit;
+			sourceTree = "<group>";
+		};
 		A5994E4E14BF52020067B42B = {
 			isa = PBXGroup;
 			children = (
+				A596306B1519F582000D1A01 /* JSONKit */,
 				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
 				A5994E6314BF52030067B42B /* ZenCoding */,
 				A5D2751114F000FA00B3816D /* ZenCodingSample */,
@@ -236,6 +261,10 @@
 				A5DB235615133CF6009979C2 /* Transformers */,
 				A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */,
 				A596302E15189A07000D1A01 /* ZenCodingNotifications.h */,
+				A596306115190222000D1A01 /* NSDictionary+Merge.h */,
+				A596306215190223000D1A01 /* NSDictionary+Merge.m */,
+				A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */,
+				A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -335,6 +364,9 @@
 				A5DB235A15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.h in Headers */,
 				A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */,
 				A596302F15189A08000D1A01 /* ZenCodingNotifications.h in Headers */,
+				A596306315190223000D1A01 /* NSDictionary+Merge.h in Headers */,
+				A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */,
+				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +498,9 @@
 				A5639FF0150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
 				A563A000150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */,
 				A5DB235B15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */,
+				A596306415190223000D1A01 /* NSDictionary+Merge.m in Sources */,
+				A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +522,9 @@
 				A5639FF1150B70A700388173 /* ZenCodingTildePathTransformer.m in Sources */,
 				A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */,
 				A5DB235C15133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m in Sources */,
+				A596306515190223000D1A01 /* NSDictionary+Merge.m in Sources */,
+				A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +620,10 @@
 		A5D2752414F000FA00B3816D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCodingSample/ZenCodingSample-Prefix.pch";
 				INFOPLIST_FILE = "ZenCodingSample/ZenCodingSample-Info.plist";
@@ -594,6 +636,10 @@
 		A5D2752514F000FA00B3816D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCodingSample/ZenCodingSample-Prefix.pch";
 				INFOPLIST_FILE = "ZenCodingSample/ZenCodingSample-Info.plist";
@@ -609,6 +655,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
@@ -628,6 +678,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";

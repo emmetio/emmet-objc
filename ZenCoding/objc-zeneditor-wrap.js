@@ -174,9 +174,31 @@ var objcZenEditor = (function() {
 })();
 
 function objcRunAction(name) {
+	log('Running ' + String(name));
 	return zen_coding.require('actions').run(String(name), objcZenEditor);
 }
 
 function objcSetContext(ctx) {
 	objcZenEditor.setContext(ctx);
+}
+
+function objcToJSON(data) {
+	// do non-strict parsing of JSON data
+	if (_.isString(data)) {
+		try {
+			return (new Function('return ' + data))();
+		} catch(e) {
+			return {};
+		}
+	}
+	
+	return data;
+}
+
+function objcLoadUserPrefs(settingsData, userDefaults) {
+	settingsData = objcToJSON(String(settingsData));
+	userDefaults = objcToJSON(String(userDefaults));
+	var utils = zen_coding.require('utils');
+	var data = utils.deepMerge({}, settingsData, userDefaults);
+	zen_coding.require('resources').setVocabulary(data, 'user');
 }
