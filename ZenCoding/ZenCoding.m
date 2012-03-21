@@ -17,6 +17,7 @@
 - (void)loadUserData;
 - (NSDictionary *)settingsFromDefaults;
 - (void)shouldReloadContext:(NSNotification *)notification;
+- (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
 @end
 
 @implementation ZenCoding
@@ -169,7 +170,7 @@ static ZenCoding *instance = nil;
 	// create JS string to evaluate
 	NSString *jsString = [NSString stringWithFormat:@"%@(%@)", funcName, [argNames componentsJoinedByString:@", "]];
 	
-	NSLog(@"Eval JS: %@", jsString);
+//	NSLog(@"Eval JS: %@", jsString);
 	JSValueRef result = [jsc evalJSString:jsString];
 	
 	// unregister all arguments from JS context
@@ -192,6 +193,7 @@ static ZenCoding *instance = nil;
 	}
 	
 	// pass data as JSON strings for safer internal types conversion
+//	NSLog(@"Defaults data: %@", [[self settingsFromDefaults] JSONString]);
 	[self evalFunction:@"objcLoadUserPrefs" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
 }
 
@@ -237,6 +239,14 @@ static ZenCoding *instance = nil;
 		}
 	}
 	
+	// add output profiles
+	NSDictionary *output = [defaults dictionaryForKey:Output];
+	if (output) {
+		[output enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
+			[[ctx dictionaryForKey:key] setObject:[self createOutputProfileFromDict:obj] forKey:@"profile"];
+		}];
+	}
+	
 	[result addEntriesFromDictionary:ctx];
 	[ctx release];
 	
@@ -250,6 +260,27 @@ static ZenCoding *instance = nil;
 	self.context = nil;
 	[self setupJSContext];
 	self.context = ctx;
+}
+
+- (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict {
+	NSMutableDictionary *result = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+								   [dict objectForKey:@"tagCase"], @"tag_case",
+								   [dict objectForKey:@"attributeCase"], @"attr_case",
+								   [dict objectForKey:@"attributeQuote"], @"attr_quotes",
+								   [dict objectForKey:@"indent"], @"indent",
+								   [dict objectForKey:@"inline_break"], @"inlineBreaks",
+								   [dict objectForKey:@"filters"], @"filters",
+								  nil];
+	
+	if ([[dict objectForKey:@"selfClosing"] isEqual:@"html"]) {
+		[result setObject:[NSNumber numberWithBool:NO] forKey:@"self_closing_tag"];
+	} else if ([[dict objectForKey:@"selfClosing"] isEqual:@"xml"]) {
+		[result setObject:[NSNumber numberWithBool:YES] forKey:@"self_closing_tag"];
+	} else {
+		[result setObject:@"xhtml" forKey:@"self_closing_tag"];
+	}
+	
+	return result;
 }
 
 - (void)dealloc {
