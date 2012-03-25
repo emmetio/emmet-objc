@@ -254,7 +254,6 @@ static ZenCoding *instance = nil;
 }
 
 - (void)shouldReloadContext:(NSNotification *)notification {
-	NSLog(@"Reloading context");
 	// remember previously saved context
 	id ctx = self.context;
 	self.context = nil;
@@ -268,6 +267,7 @@ static ZenCoding *instance = nil;
 								   [dict objectForKey:@"attributeCase"], @"attr_case",
 								   [dict objectForKey:@"attributeQuote"], @"attr_quotes",
 								   [dict objectForKey:@"indent"], @"indent",
+								   [dict objectForKey:@"tagNewline"], @"tag_nl",
 								   [dict objectForKey:@"inline_break"], @"inlineBreaks",
 								   [dict objectForKey:@"filters"], @"filters",
 								  nil];

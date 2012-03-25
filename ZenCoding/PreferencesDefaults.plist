@@ -53,6 +53,8 @@
 			<string>asis</string>
 			<key>attributeQuote</key>
 			<string>double</string>
+			<key>tagNewline</key>
+			<string>decide</string>
 			<key>indent</key>
 			<true/>
 			<key>inlineBreaks</key>
@@ -70,6 +72,8 @@
 			<string>lower</string>
 			<key>attributeQuote</key>
 			<string>double</string>
+			<key>tagNewline</key>
+			<string>decide</string>
 			<key>indent</key>
 			<true/>
 			<key>inlineBreaks</key>
@@ -87,6 +91,8 @@
 			<string>lower</string>
 			<key>attributeQuote</key>
 			<string>double</string>
+			<key>tagNewline</key>
+			<string>decide</string>
 			<key>indent</key>
 			<true/>
 			<key>inlineBreaks</key>
@@ -104,6 +110,8 @@
 			<string>asis</string>
 			<key>attributeQuote</key>
 			<string>double</string>
+			<key>tagNewline</key>
+			<string>yes</string>
 			<key>indent</key>
 			<true/>
 			<key>inlineBreaks</key>
@@ -121,6 +129,8 @@
 			<string>asis</string>
 			<key>attributeQuote</key>
 			<string>double</string>
+			<key>tagNewline</key>
+			<string>yes</string>
 			<key>indent</key>
 			<true/>
 			<key>inlineBreaks</key>
@@ -138,6 +148,8 @@
 			<string>lower</string>
 			<key>attributeQuote</key>
 			<string>double</string>
+			<key>tagNewline</key>
+			<string>yes</string>
 			<key>indent</key>
 			<true/>
 			<key>inlineBreaks</key>
