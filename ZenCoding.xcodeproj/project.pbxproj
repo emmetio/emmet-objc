@@ -21,6 +21,8 @@
 		A5639FFF150E9A2700388173 /* ZenCodingSnippetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */; };
 		A563A000150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
 		A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
+		A57C4A03158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
+		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A596302615187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302715187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */; };
@@ -109,6 +111,7 @@
 		A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSnippetEditor.m; sourceTree = "<group>"; };
 		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
+		A57C4A02158BEED300566A1C /* snippets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snippets.json; sourceTree = "<group>"; };
 		A596302515187FCE000D1A01 /* VariableEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariableEditor.xib; sourceTree = "<group>"; };
 		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
 		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
@@ -319,6 +322,7 @@
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
 				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
 				A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */,
+				A57C4A02158BEED300566A1C /* snippets.json */,
 				A5B91ACA14E82952002FA697 /* zencoding.js */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 			);
@@ -455,6 +459,7 @@
 				A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */,
 				A51BD42E150E62C40041002F /* SnippetEditor.xib in Resources */,
 				A596302615187FCE000D1A01 /* VariableEditor.xib in Resources */,
+				A57C4A03158BEED300566A1C /* snippets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +477,7 @@
 				A51BD42F150E62C40041002F /* SnippetEditor.xib in Resources */,
 				A5DB23451510DABD009979C2 /* PreferencesDefaults.plist in Resources */,
 				A596302715187FCE000D1A01 /* VariableEditor.xib in Resources */,
+				A57C4A04158BEED300566A1C /* snippets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

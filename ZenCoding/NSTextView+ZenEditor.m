@@ -56,7 +56,6 @@
 - (void) replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent{
 	// check if range is in bounds
 	if (end <= [[self string] length]) {
-		
 		// extract tabstops and clean-up output
 		ZenCoding *zc = [ZenCoding sharedInstance];
 		JSValueRef output = [zc evalFunction:@"zen_coding.require('tabStops').extract" withArguments:value, nil];
@@ -67,17 +66,20 @@
 		
 		// locate first tabstop and place cursor in it
 		NSArray *tabstops = [tabstopData objectForKey:@"tabstops"];
-		if (tabstops != nil) {			
+		if (tabstops != nil && [tabstops count]) {
 			NSDictionary *firstTabstop = [tabstops objectAtIndex:0];
-			
 			if (firstTabstop) {
 				NSNumber *tsStart = (NSNumber *)[firstTabstop objectForKey:@"start"];
 				NSNumber *tsEnd = (NSNumber *)[firstTabstop objectForKey:@"end"];
 				NSRange selRange = NSMakeRange([tsStart unsignedIntegerValue] + start, [tsEnd unsignedIntegerValue] - [tsStart unsignedIntegerValue]);
 
 				[self setSelectionRange:selRange];
+				return;
 			}
 		}
+		
+		// unable to locate tabstops, place caret at the end of content
+		[self setCaretPos:start + [value length]];
 	}
 }
 

@@ -17,9 +17,6 @@
 }
 
 @property (assign) IBOutlet NSWindow *window;
-
-- (IBAction)expandAbbreviation:(id)sender;
-- (IBAction)showPrompt:(id)sender;
 - (IBAction)showPreferences:(id)sender;
 
 @end

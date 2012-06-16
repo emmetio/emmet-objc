@@ -18,6 +18,7 @@
 - (NSDictionary *)settingsFromDefaults;
 - (void)shouldReloadContext:(NSNotification *)notification;
 - (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
+- (void)createMenuItemsFromDict:(NSDictionary *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target;
 @end
 
 @implementation ZenCoding
@@ -75,6 +76,14 @@ static ZenCoding *instance = nil;
 	[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
 	[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
 	
+	// load system snippets
+	NSString *snippetsJSON = [NSString 
+						  stringWithContentsOfFile:[bundle pathForResource:@"snippets" ofType:@"json"] 
+						  encoding:NSUTF8StringEncoding 
+						  error:nil];
+	
+	[self evalFunction:@"objcLoadSystemSnippets" withArguments:snippetsJSON, nil];
+	
 	// load Zen Coding extensions
 	if (extensionsPath) {
 		NSString *extPath = extensionsPath;
@@ -94,7 +103,6 @@ static ZenCoding *instance = nil;
 	}
 	
 	// load user preferences
-	// TODO load output profiles
 	[self loadUserData];
 }
 
@@ -181,20 +189,32 @@ static ZenCoding *instance = nil;
 	return result;
 }
 
-- (void)loadUserData {
-	NSString *settingsContents = @"{}";
-	
-	// check if settings.json exists in extensions path
+- (NSString *)readUserJSON:(NSString *)fileName {
+	// check if json exists in extensions path
 	if (extensionsPath) {
-		NSString *settingsFile = [extensionsPath stringByAppendingPathComponent:@"settings.json"];
-		if ([[NSFileManager defaultManager] isReadableFileAtPath:settingsFile]) {
-			settingsContents = [NSString stringWithContentsOfFile:settingsFile encoding:NSUTF8StringEncoding error:nil];
+		NSString *outputFile = [extensionsPath stringByAppendingPathComponent:fileName];
+		if ([[NSFileManager defaultManager] isReadableFileAtPath:outputFile]) {
+			return [NSString stringWithContentsOfFile:outputFile encoding:NSUTF8StringEncoding error:nil];
 		}
 	}
 	
+	// file not fount or unavailable
+	return nil;
+}
+
+- (void)loadUserData {
+	NSString *settingsContents = [self readUserJSON:@"snippets.json"];
+	if (settingsContents == nil) {
+		settingsContents = @"{}";
+	}
+	
 	// pass data as JSON strings for safer internal types conversion
-//	NSLog(@"Defaults data: %@", [[self settingsFromDefaults] JSONString]);
-	[self evalFunction:@"objcLoadUserPrefs" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
+	[self evalFunction:@"objcLoadUserSnippets" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
+	
+	NSString *preferencesContents = [self readUserJSON:@"preferences.json"];
+	if (preferencesContents) {
+		[self evalFunction:@"objcLoadUserPreferences" withArguments:preferencesContents, nil];
+	}
 }
 
 - (NSDictionary *)settingsFromDefaults {
@@ -270,6 +290,7 @@ static ZenCoding *instance = nil;
 								   [dict objectForKey:@"tagNewline"], @"tag_nl",
 								   [dict objectForKey:@"inline_break"], @"inlineBreaks",
 								   [dict objectForKey:@"filters"], @"filters",
+								   [NSNumber numberWithBool:YES], @"place_cursor",
 								  nil];
 	
 	if ([[dict objectForKey:@"selfClosing"] isEqual:@"html"]) {
@@ -281,6 +302,53 @@ static ZenCoding *instance = nil;
 	}
 	
 	return result;
+}
+
+// returns Zen Coding actions as menu
+- (NSMenu *)actionsMenu {
+	return [self actionsMenuWithAction:@selector(performMenuAction:) forTarget:self];
+}
+
+- (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target {
+	NSMenu *rootMenu = [[NSMenu alloc] initWithTitle:@"Zen Coding"];
+	
+	NSDictionary *items = [jsc toObject:[self evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil]];
+	[self createMenuItemsFromDict:items forMenu:rootMenu withAction:action ofTarget:target];
+	return rootMenu;
+}
+
+- (void)createMenuItemsFromDict:(NSDictionary *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target {
+	[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		NSDictionary *objDict = (NSDictionary *)obj;
+		if ([[objDict objectForKey:@"type"] isEqual:@"submenu"]) {
+			// create submenu
+			NSMenu *submenu = [[NSMenu alloc] initWithTitle:key];
+			[self createMenuItemsFromDict:[objDict objectForKey:@"items"] forMenu:submenu withAction:action ofTarget:target];
+			
+			NSMenuItem *submenuItem = [[NSMenuItem alloc] initWithTitle:key action:NULL keyEquivalent:@""];
+			[menu addItem:submenuItem];
+			[submenuItem setSubmenu:submenu];
+			
+			[submenu release];
+			[submenuItem release];
+		} else {
+			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:key action:action keyEquivalent:@""];
+			[actionItem setTarget:target];
+			[menu addItem:actionItem];
+			[actionItem release];
+		}
+	}];
+}
+
+- (void)performMenuAction:(id)sender {
+	if ([sender isKindOfClass:[NSMenuItem class]]) {
+		NSString *title = [(NSMenuItem *)sender title];
+		id actionName = [jsc unboxJSValueRef:[self evalFunction:@"zen_coding.require('actions').getActionNameForMenuTitle" withArguments:title, nil]];
+		
+		if (actionName != nil) {
+			[self runAction:actionName];
+		}
+	}
 }
 
 - (void)dealloc {

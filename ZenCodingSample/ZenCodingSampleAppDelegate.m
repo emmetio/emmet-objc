@@ -37,7 +37,7 @@
 				ZenCoding *zc = [ZenCoding sharedInstance];
 				[zc setContext:textArea];
 				
-				// if abbreviation expanded successfully, stop event
+				// if abbreviation expanded successfully, stop event.
 				// otherwise, pass it further
 				if ([zc runAction:@"expand_abbreviation"]) {
 					return (NSEvent *)nil;
@@ -48,16 +48,21 @@
 		return event;
 	}];
 	
+	// add actions as global menu item	
+	NSMenu *mainMenu = [NSApp mainMenu];
+	NSMenu *actionsMenu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) forTarget:self];
+	NSMenuItem *actionsItem = [[NSMenuItem alloc] initWithTitle:[actionsMenu title] action:NULL keyEquivalent:@""];
+	[actionsItem setSubmenu:actionsMenu];
+	[mainMenu insertItem:actionsItem atIndex:4];
+	
+	[actionsMenu release];
+	[actionsItem release];
 }
 
-- (IBAction)expandAbbreviation:(id)sender {
+- (void)performMenuAction:(id)sender {
 	ZenCoding *zc = [ZenCoding sharedInstance];
 	[zc setContext:textArea];
-	[zc runAction:@"expand_abbreviation"];
-}
-
-- (IBAction)showPrompt:(id)sender {
-	NSLog(@"Entered value: %@", [ZenCodingPromptDialogController prompt:@"Hello world"]);
+	[zc performMenuAction:sender];
 }
 
 - (IBAction)showPreferences:(id)sender {

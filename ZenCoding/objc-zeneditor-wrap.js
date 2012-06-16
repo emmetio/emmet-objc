@@ -104,16 +104,17 @@ var objcZenEditor = (function() {
 		 * @param {String} value Content you want to paste
 		 * @param {Number} [start] Start index of editor's content
 		 * @param {Number} [end] End index of editor's content
-		 * @param {Boolean} [no_indent] Do not auto indent <code>value</code>
+		 * @param {Boolean} [noIndent] Do not auto indent <code>value</code>
 		 */
-		replaceContent: function(value, start, end, no_indent) {
-			var _ = zen_coding.require('_');
+		replaceContent: function(value, start, end, noIndent) {
 			var content = this.getContent();
 			var caretPos = this.getCaretPos();
-			start = start || 0;
-			end = _.isUndefined(end) ? content.length : end;
-					 
-			ctx.replaceContentWithValue_from_to_withoutIndentation(value, start, end, !!no_indent);
+
+			if (_.isUndefined(end)) 
+				end = _.isUndefined(start) ? content.length : start;
+			if (_.isUndefined(start)) start = 0;
+			
+			ctx.replaceContentWithValue_from_to_withoutIndentation(value, start, end, !!noIndent);
 		},
 		
 		/**
@@ -184,21 +185,28 @@ function objcSetContext(ctx) {
 
 function objcToJSON(data) {
 	// do non-strict parsing of JSON data
-	if (_.isString(data)) {
-		try {
-			return (new Function('return ' + data))();
-		} catch(e) {
-			return {};
-		}
+	try {
+		return (new Function('return ' + String(data)))();
+	} catch(e) {
+		return {};
 	}
-	
-	return data;
 }
 
-function objcLoadUserPrefs(settingsData, userDefaults) {
-	settingsData = objcToJSON(String(settingsData));
-	userDefaults = objcToJSON(String(userDefaults));
+function objcLoadUserSnippets(settingsData, userDefaults) {
+	settingsData = objcToJSON(settingsData);
+	userDefaults = objcToJSON(userDefaults);
 	var utils = zen_coding.require('utils');
 	var data = utils.deepMerge({}, settingsData, userDefaults);
 	zen_coding.require('resources').setVocabulary(data, 'user');
+}
+
+function objcLoadUserPreferences(data) {
+	if (data)
+		zen_coding.require('preferences').load(objcToJSON(data));
+}
+
+function objcLoadSystemSnippets(data) {
+	if (data) {
+		zen_coding.require('resources').setVocabulary(objcToJSON(data), 'system');
+	}
 }

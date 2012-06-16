@@ -22,4 +22,9 @@
 + (ZenCoding *)sharedInstance;
 - (BOOL)runAction:name;
 - (JSValueRef)evalFunction:(NSString *)funcName withArguments:arguments, ... NS_REQUIRES_NIL_TERMINATION;
+
+// returns Zen Coding actions as menu
+- (NSMenu *)actionsMenu;
+- (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target;
+- (void)performMenuAction:(id)sender;
 @end
