@@ -71,8 +71,7 @@
 	[variablesController setContent:[self contentForController:Variables]];
 }
 
-- (void)windowDidLoad
-{
+- (void)windowDidLoad {
 	NSWindow *window = [self window];
     [window setHidesOnDeactivate:NO];
     [window setExcludedFromWindowsMenu:YES];

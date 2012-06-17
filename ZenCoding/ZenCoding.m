@@ -282,16 +282,25 @@ static ZenCoding *instance = nil;
 }
 
 - (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict {
-	NSMutableDictionary *result = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-								   [dict objectForKey:@"tagCase"], @"tag_case",
-								   [dict objectForKey:@"attributeCase"], @"attr_case",
-								   [dict objectForKey:@"attributeQuote"], @"attr_quotes",
-								   [dict objectForKey:@"indent"], @"indent",
-								   [dict objectForKey:@"tagNewline"], @"tag_nl",
-								   [dict objectForKey:@"inline_break"], @"inlineBreaks",
-								   [dict objectForKey:@"filters"], @"filters",
-								   [NSNumber numberWithBool:YES], @"place_cursor",
-								  nil];
+	NSDictionary *keysMap = [NSDictionary dictionaryWithObjectsAndKeys:
+							 @"tag_case", @"tagCase",
+							 @"attr_case", @"attributeCase",
+							 @"attr_quotes", @"attributeQuote",
+							 @"indent", @"indent",
+							 @"tag_nl", @"tagNewline",
+							 @"inline_break", @"inlineBreaks",
+							 @"filters", @"filters",
+							 nil];
+	
+	
+	
+	NSMutableDictionary *result = [NSMutableDictionary dictionary];
+	
+	[keysMap enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+		if ([dict objectForKey:key]) {
+			[result setObject:[dict objectForKey:key] forKey:obj];
+		}
+	}];
 	
 	if ([[dict objectForKey:@"selfClosing"] isEqual:@"html"]) {
 		[result setObject:[NSNumber numberWithBool:NO] forKey:@"self_closing_tag"];
