@@ -23,6 +23,38 @@
 		A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
 		A57C4A03158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
+		A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
+		A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */; };
+		A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAD158DC75D00566A1C /* CodaPlugin.m */; };
+		A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */; };
+		A57C4BB2158DCEB400566A1C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
+		A57C4BB3158DCEB400566A1C /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
+		A57C4BB4158DCEB400566A1C /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */; };
+		A57C4BB5158DCEB400566A1C /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D014E03E05002BBA24 /* JSCocoaFFIArgument.m */; };
+		A57C4BB6158DCEB400566A1C /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
+		A57C4BB7158DCEB400566A1C /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
+		A57C4BB8158DCEB400566A1C /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
+		A57C4BB9158DCEB400566A1C /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
+		A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
+		A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
+		A57C4BBC158DCEB400566A1C /* ZenCodingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */; };
+		A57C4BBD158DCEB400566A1C /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
+		A57C4BBE158DCEB400566A1C /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
+		A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A57C4BC0158DCEB400566A1C /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FD9150AAB3000388173 /* ZenCodingArrayTransformer.m */; };
+		A57C4BC1158DCEB400566A1C /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FEE150B70A700388173 /* ZenCodingTildePathTransformer.m */; };
+		A57C4BC2158DCEB400566A1C /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DB235915133D7C009979C2 /* ZenCodingSyntaxNameTransformer.m */; };
+		A57C4BC3158DCEC000566A1C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2752614F0011200B3816D /* JavaScriptCore.framework */; };
+		A57C4BC4158DCF0A00566A1C /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
+		A57C4BC5158DCF0A00566A1C /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
+		A57C4BC6158DCF0A00566A1C /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
+		A57C4BC7158DCF0A00566A1C /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
+		A57C4BC8158DCF0A00566A1C /* SnippetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51BD42D150E62C40041002F /* SnippetEditor.xib */; };
+		A57C4BC9158DCF0A00566A1C /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
+		A57C4BCA158DCF0A00566A1C /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
+		A57C4BCB158DCF0A00566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
+		A57C4BCC158DCF0A00566A1C /* zencoding.js in Resources */ = {isa = PBXBuildFile; fileRef = A5B91ACA14E82952002FA697 /* zencoding.js */; };
+		A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A596302615187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302715187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -113,6 +145,15 @@
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
 		A57C4A02158BEED300566A1C /* snippets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snippets.json; sourceTree = "<group>"; };
 		A57C4A5B158CE0A500566A1C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCoding.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CodaPlugin-Info.plist"; sourceTree = "<group>"; };
+		A57C4BA5158DC6BB00566A1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A57C4BA7158DC6BB00566A1C /* CodaPlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodaPlugin-Prefix.pch"; sourceTree = "<group>"; };
+		A57C4BAB158DC75D00566A1C /* CodaPlugInsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaPlugInsController.h; sourceTree = "<group>"; };
+		A57C4BAC158DC75D00566A1C /* CodaPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaPlugin.h; sourceTree = "<group>"; };
+		A57C4BAD158DC75D00566A1C /* CodaPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaPlugin.m; sourceTree = "<group>"; };
+		A57C4BAE158DC75D00566A1C /* CodaZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaZenEditor.h; sourceTree = "<group>"; };
+		A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaZenEditor.m; sourceTree = "<group>"; };
 		A596302515187FCE000D1A01 /* VariableEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariableEditor.xib; sourceTree = "<group>"; };
 		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
 		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
@@ -169,6 +210,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A57C4B9C158DC6BB00566A1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A57C4BC3158DCEC000566A1C /* JavaScriptCore.framework in Frameworks */,
+				A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5D2750B14F000FA00B3816D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,6 +240,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A57C4BA1158DC6BB00566A1C /* CodaPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				A57C4BAB158DC75D00566A1C /* CodaPlugInsController.h */,
+				A57C4BAC158DC75D00566A1C /* CodaPlugin.h */,
+				A57C4BAD158DC75D00566A1C /* CodaPlugin.m */,
+				A57C4BAE158DC75D00566A1C /* CodaZenEditor.h */,
+				A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */,
+				A57C4BA2158DC6BB00566A1C /* Supporting Files */,
+			);
+			path = CodaPlugin;
+			sourceTree = "<group>";
+		};
+		A57C4BA2158DC6BB00566A1C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */,
+				A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */,
+				A57C4BA7158DC6BB00566A1C /* CodaPlugin-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A596306B1519F582000D1A01 /* JSONKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +280,7 @@
 				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
 				A5994E6314BF52030067B42B /* ZenCoding */,
 				A5D2751114F000FA00B3816D /* ZenCodingSample */,
+				A57C4BA1158DC6BB00566A1C /* CodaPlugin */,
 				A5994E5C14BF52030067B42B /* Frameworks */,
 				A5994E5A14BF52030067B42B /* Products */,
 			);
@@ -217,6 +291,7 @@
 			children = (
 				A5D2750E14F000FA00B3816D /* ZenCodingSample.app */,
 				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
+				A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -379,6 +454,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A57C4B9E158DC6BB00566A1C /* CodaPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */;
+			buildPhases = (
+				A57C4B9B158DC6BB00566A1C /* Sources */,
+				A57C4B9C158DC6BB00566A1C /* Frameworks */,
+				A57C4B9D158DC6BB00566A1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CodaPlugin;
+			productName = CodaPlugin;
+			productReference = A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
 		A5D2750D14F000FA00B3816D /* ZenCodingSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "ZenCodingSample" */;
@@ -438,11 +530,30 @@
 			targets = (
 				A5D2750D14F000FA00B3816D /* ZenCodingSample */,
 				A5D2753C14F004A800B3816D /* ZenCoding */,
+				A57C4B9E158DC6BB00566A1C /* CodaPlugin */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A57C4B9D158DC6BB00566A1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A57C4BC4158DCF0A00566A1C /* class.js in Resources */,
+				A57C4BC5158DCF0A00566A1C /* jslint-jscocoa.js in Resources */,
+				A57C4BC6158DCF0A00566A1C /* PromptDialog.xib in Resources */,
+				A57C4BC7158DCF0A00566A1C /* Preferences.xib in Resources */,
+				A57C4BC8158DCF0A00566A1C /* SnippetEditor.xib in Resources */,
+				A57C4BC9158DCF0A00566A1C /* VariableEditor.xib in Resources */,
+				A57C4BCA158DCF0A00566A1C /* PreferencesDefaults.plist in Resources */,
+				A57C4BCB158DCF0A00566A1C /* snippets.json in Resources */,
+				A57C4BCC158DCF0A00566A1C /* zencoding.js in Resources */,
+				A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */,
+				A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5D2750C14F000FA00B3816D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -486,6 +597,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A57C4B9B158DC6BB00566A1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A57C4BB2158DCEB400566A1C /* JSONKit.m in Sources */,
+				A57C4BB3158DCEB400566A1C /* BridgeSupportController.m in Sources */,
+				A57C4BB4158DCEB400566A1C /* JSCocoaController.m in Sources */,
+				A57C4BB5158DCEB400566A1C /* JSCocoaFFIArgument.m in Sources */,
+				A57C4BB6158DCEB400566A1C /* JSCocoaFFIClosure.m in Sources */,
+				A57C4BB7158DCEB400566A1C /* JSCocoaLib.m in Sources */,
+				A57C4BB8158DCEB400566A1C /* JSCocoaPrivateObject.m in Sources */,
+				A57C4BB9158DCEB400566A1C /* NSTextView+ZenEditor.m in Sources */,
+				A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */,
+				A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */,
+				A57C4BBC158DCEB400566A1C /* ZenCodingPreferences.m in Sources */,
+				A57C4BBD158DCEB400566A1C /* ZenCodingSnippetEditor.m in Sources */,
+				A57C4BBE158DCEB400566A1C /* NSDictionary+Merge.m in Sources */,
+				A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A57C4BC0158DCEB400566A1C /* ZenCodingArrayTransformer.m in Sources */,
+				A57C4BC1158DCEB400566A1C /* ZenCodingTildePathTransformer.m in Sources */,
+				A57C4BC2158DCEB400566A1C /* ZenCodingSyntaxNameTransformer.m in Sources */,
+				A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */,
+				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5D2750A14F000FA00B3816D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -539,6 +676,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A57C4BA5158DC6BB00566A1C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A5D2751414F000FA00B3816D /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -574,6 +719,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A57C4BA9158DC6BB00566A1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CodaPlugin/CodaPlugin-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = ZenCoding;
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = codaplugin;
+			};
+			name = Debug;
+		};
+		A57C4BAA158DC6BB00566A1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CodaPlugin/CodaPlugin-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = ZenCoding;
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = codaplugin;
+			};
+			name = Release;
+		};
 		A5994E7514BF52030067B42B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -692,6 +869,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A57C4BA9158DC6BB00566A1C /* Debug */,
+				A57C4BAA158DC6BB00566A1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
