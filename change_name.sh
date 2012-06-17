@@ -1,0 +1,1 @@
+install_name_tool -id @loader_path/../Frameworks/ZenCoding.framework/Versions/A/ZenCoding ./ZenCoding 

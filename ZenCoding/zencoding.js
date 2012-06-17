@@ -9068,9 +9068,10 @@ zen_coding.define('wrapWithAbbreviation', function(require, _) {
 			if (!range || range[0] == -1) // nothing to wrap
 				return false;
 			
+			/** @type Range */
 			var narrowedSel = utils.narrowToNonSpace(info.content, range[0], range[1]);
-			startOffset = narrowedSel[0];
-			endOffset = narrowedSel[1];
+			startOffset = narrowedSel.start;
+			endOffset = narrowedSel.end;
 		}
 		
 		var newContent = utils.escapeText(info.content.substring(startOffset, endOffset));

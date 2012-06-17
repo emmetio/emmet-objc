@@ -23,7 +23,7 @@
 
 @implementation ZenCoding
 
-@synthesize context, jsc, extensionsPath=_extensionsPath;
+@synthesize context, jsc, extensionsPath;
 
 static ZenCoding *instance = nil;
 
@@ -120,7 +120,7 @@ static ZenCoding *instance = nil;
 }
 
 - (NSString *)extensionsPath {
-	NSString *path = self->_extensionsPath;
+	NSString *path = self->extensionsPath;
 	if (path == nil || [path isEqual:@""]) {
 		path = [[NSUserDefaults standardUserDefaults] stringForKey:ExtensionsPath];
 	}
@@ -139,11 +139,11 @@ static ZenCoding *instance = nil;
 
 - (void)setExtensionsPath:(NSString *)path {
 	if (![extensionsPath isEqual:path]) {
-		if (self->_extensionsPath != nil) {
-			[self->_extensionsPath release];
+		if (self->extensionsPath != nil) {
+			[self->extensionsPath release];
 		}
 		
-		self->_extensionsPath = [path retain];
+		self->extensionsPath = [path retain];
 		
 		[self setupJSContext];
 	}
@@ -314,7 +314,7 @@ static ZenCoding *instance = nil;
 	
 	NSDictionary *items = [jsc toObject:[self evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil]];
 	[self createMenuItemsFromDict:items forMenu:rootMenu withAction:action ofTarget:target];
-	return rootMenu;
+	return [rootMenu autorelease];
 }
 
 - (void)createMenuItemsFromDict:(NSDictionary *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target {
@@ -352,8 +352,8 @@ static ZenCoding *instance = nil;
 }
 
 - (void)dealloc {
-	if (self->_extensionsPath) {
-		[self->_extensionsPath release];
+	if (self->extensionsPath) {
+		[self->extensionsPath release];
 	}
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[super dealloc];

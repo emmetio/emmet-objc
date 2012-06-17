@@ -39,6 +39,7 @@
 @property (assign) IBOutlet NSArrayController *variablesController;
 
 + (void)loadDefaults;
++ (void)resetDefaults;
 
 - (IBAction)pickExtensionsFolder:(id)sender;
 - (IBAction)addSnippet:(id)sender;

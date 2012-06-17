@@ -55,7 +55,6 @@
 	[actionsItem setSubmenu:actionsMenu];
 	[mainMenu insertItem:actionsItem atIndex:4];
 	
-	[actionsMenu release];
 	[actionsItem release];
 }
 

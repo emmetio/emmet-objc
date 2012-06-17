@@ -130,21 +130,21 @@
 	
 }
 + (void)loadDefaults {
-	//// reset defaults
-//	NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-//	for (NSString *key in [defaultsDictionary allKeys]) {
-//		[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-//	}
-//	[[NSUserDefaults standardUserDefaults] synchronize];
-	//// /reset defaults
-	
-	
-	NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PreferencesDefaults" ofType:@"plist"];
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *plistPath = [bundle pathForResource:@"PreferencesDefaults" ofType:@"plist"];
 	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
 	
 	[[NSUserDefaults standardUserDefaults] registerDefaults:prefs];
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:prefs];
 	[prefs release];
+}
+
++ (void)resetDefaults {
+	NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+	for (NSString *key in [defaultsDictionary allKeys]) {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+	}
+	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 

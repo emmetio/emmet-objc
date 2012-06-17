@@ -7,6 +7,8 @@ var objcZenEditor = (function() {
 			end: range.location + range.length
 		};
 	}
+					 
+	var autoHandleIndent = true;
 
 	return {
 		/**
@@ -17,6 +19,10 @@ var objcZenEditor = (function() {
 		 */
 		setContext: function(context) {
 			ctx = context;
+		},
+					 
+		setAutoHandleIndent: function(val) {
+			autoHandleIndent = val;
 		},
 		
 		/**
@@ -66,7 +72,7 @@ var objcZenEditor = (function() {
 		 * Returns current caret position
 		 * @return {Number}
 		 */
-		getCaretPos: function(){
+		getCaretPos: function() {
 			return Number(ctx.caretPos());
 		},
 		
@@ -74,7 +80,7 @@ var objcZenEditor = (function() {
 		 * Set new caret position
 		 * @param {Number} pos Caret position
 		 */
-		setCaretPos: function(pos){
+		setCaretPos: function(pos) {
 			ctx.setCaretPos(pos);
 		},
 		
@@ -113,6 +119,12 @@ var objcZenEditor = (function() {
 			if (_.isUndefined(end)) 
 				end = _.isUndefined(start) ? content.length : start;
 			if (_.isUndefined(start)) start = 0;
+					 
+			if (!noIndent && autoHandleIndent) {
+				var utils = zen_coding.require('utils');
+				var lineRange = utils.findNewlineBounds(String(content), start);
+				value = utils.padString(value, utils.getLinePadding(lineRange.substring(content)));
+			}
 			
 			ctx.replaceContentWithValue_from_to_withoutIndentation(value, start, end, !!noIndent);
 		},
@@ -175,7 +187,6 @@ var objcZenEditor = (function() {
 })();
 
 function objcRunAction(name) {
-	log('Running ' + String(name));
 	return zen_coding.require('actions').run(String(name), objcZenEditor);
 }
 

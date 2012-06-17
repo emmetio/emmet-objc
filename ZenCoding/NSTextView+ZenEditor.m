@@ -53,7 +53,7 @@
 	return [[self content] substringWithRange:[self currentLineRange]];
 }
 
-- (void) replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent{
+- (void) replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)noIndent {
 	// check if range is in bounds
 	if (end <= [[self string] length]) {
 		// extract tabstops and clean-up output
