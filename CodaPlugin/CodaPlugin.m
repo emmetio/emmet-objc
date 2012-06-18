@@ -17,7 +17,7 @@
 
 - (id)initWithController:(CodaPlugInsController*)inController;
 - (void)createMenu;
-- (void)createCodaMenuItemsFromMenu:(NSMenu *)menu forSubmenuWithTitle:(NSString *)submenu;
+- (void)createCodaMenuItemsFromArray:(NSArray *)items forSubmenuWithTitle:(NSString *)submenu withShortcuts:(NSDictionary *)shortcuts;
 
 @end
 
@@ -29,12 +29,14 @@
 
 //2.0 and lower
 - (id)initWithPlugInController:(CodaPlugInsController*)aController bundle:(NSBundle*)aBundle {
-    return [self initWithController:aController];
+	keyboardShortcutsPlist = [aBundle pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
+	return [self initWithController:aController];
 }
 
 
 //2.0.1 and higher
 - (id)initWithPlugInController:(CodaPlugInsController*)aController plugInBundle:(NSObject <CodaPlugInBundle> *)plugInBundle {
+	keyboardShortcutsPlist = [plugInBundle pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
     return [self initWithController:aController];
 }
 
@@ -75,22 +77,35 @@
 }
 
 - (void)createMenu {
-	NSMenu *menu = [[ZenCoding sharedInstance] actionsMenu];
-	[self createCodaMenuItemsFromMenu:menu forSubmenuWithTitle:nil];
+	NSArray *actions = [[ZenCoding sharedInstance] actionsList];
+	
+	NSDictionary *shortcuts = nil;
+	if (keyboardShortcutsPlist) {
+		shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
+	}
+	
+	[self createCodaMenuItemsFromArray:actions forSubmenuWithTitle:nil withShortcuts:shortcuts];
 	[controller registerActionWithTitle:@"Preferences..." target:self selector:@selector(showPreferences:)];
 }
 
-- (void)createCodaMenuItemsFromMenu:(NSMenu *)menu forSubmenuWithTitle:(NSString *)submenu {
-	[[menu itemArray] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		NSMenuItem *item = (NSMenuItem *)obj;
-		if ([item submenu]) {
-			[self createCodaMenuItemsFromMenu:[item submenu] forSubmenuWithTitle:[item title]];
+- (void)createCodaMenuItemsFromArray:(NSArray *)items forSubmenuWithTitle:(NSString *)submenu withShortcuts:(NSDictionary *)shortcuts {
+	[items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		NSDictionary *item = (NSDictionary *)obj;
+		if ([[item objectForKey:@"type"] isEqual:@"submenu"]) {
+			[self createCodaMenuItemsFromArray:[item objectForKey:@"items"] forSubmenuWithTitle:[item objectForKey:@"name"] withShortcuts:shortcuts];
 		} else {
-			if (submenu != nil) {
-				[controller registerActionWithTitle:[item title] underSubmenuWithTitle:submenu target:self selector:@selector(performMenuAction:) representedObject:nil keyEquivalent:@"" pluginName:[self name]];
-			} else {
-				[controller registerActionWithTitle:[item title] target:self selector:@selector(performMenuAction:)];
+			NSString *shortcut = @"";
+			if (shortcuts && [shortcuts objectForKey:[item objectForKey:@"name"]]) {
+				shortcut = [shortcuts objectForKey:[item objectForKey:@"name"]];
 			}
+			
+			[controller registerActionWithTitle:[item objectForKey:@"label"] underSubmenuWithTitle:submenu target:self selector:@selector(performMenuAction:) representedObject:nil keyEquivalent:shortcut pluginName:[self name]];
+			
+//			if (submenu != nil) {
+//				[controller registerActionWithTitle:[item objectForKey:@"label"] underSubmenuWithTitle:submenu target:self selector:@selector(performMenuAction:) representedObject:nil keyEquivalent:shortcut pluginName:[self name]];
+//			} else {
+//				[controller registerActionWithTitle:[item objectForKey:@"label"] target:self selector:@selector(performMenuAction:)];
+//			}
 		}
 	}];
 }

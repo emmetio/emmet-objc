@@ -15,6 +15,7 @@
 	CodaPlugInsController* controller;
 	CodaZenEditor *editor;
 	ZenCodingPreferences *prefs;
+	NSString *keyboardShortcutsPlist;
 }
 
 - (void)performMenuAction:(id)sender;

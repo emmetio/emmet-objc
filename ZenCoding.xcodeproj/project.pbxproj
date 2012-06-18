@@ -68,6 +68,7 @@
 		A596306E1519F594000D1A01 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A596306C1519F594000D1A01 /* JSONKit.h */; };
 		A596306F1519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A59630701519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
+		A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
 		A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -168,6 +169,7 @@
 		A5994E6114BF52030067B42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A5994E6214BF52030067B42B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A5994E7A14BF52140067B42B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
 		A5AB74E514EE56BE00A59617 /* PromptDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptDialog.xib; sourceTree = "<group>"; };
 		A5B91ACA14E82952002FA697 /* zencoding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zencoding.js; sourceTree = "<group>"; };
 		A5C6BD80150A2BC200507968 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 				A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */,
 				A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */,
 				A57C4BA7158DC6BB00566A1C /* CodaPlugin-Prefix.pch */,
+				A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				A57C4BCC158DCF0A00566A1C /* zencoding.js in Resources */,
 				A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */,
 				A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */,
+				A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -876,6 +880,7 @@
 				A57C4BAA158DC6BB00566A1C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */ = {
 			isa = XCConfigurationList;
