@@ -100,7 +100,7 @@
 			<key>selfClosing</key>
 			<string>xhtml</string>
 			<key>filters</key>
-			<string>css</string>
+			<string></string>
 		</dict>
 		<key>xml</key>
 		<dict>

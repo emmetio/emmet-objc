@@ -2743,10 +2743,10 @@ zen_coding.define('actions', function(require, _, zc) {
 		 * CSS/Reflect Value) and grouped with other items
 		 * @param {Array} skipActions List of action identifiers that should be 
 		 * skipped from menu
-		 * @returns {Object}
+		 * @returns {Array}
 		 */
 		getMenu: function(skipActions) {
-			var result = {};
+			var result = [];
 			skipActions = skipActions || [];
 			_.each(this.getList(), function(action) {
 				if (action.options.hidden || _.include(skipActions, action.name))
@@ -2759,23 +2759,30 @@ zen_coding.define('actions', function(require, _, zc) {
 					actionName = parts.pop();
 					
 					// create submenus, if needed
-					var menuName;
+					var menuName, submenu;
 					while (menuName = parts.shift()) {
-						if (!(menuName in ctx)) {
-							ctx[menuName] = {
+						submenu = _.find(ctx, function(item) {
+							return item.type == 'submenu' && item.name == menuName;
+						});
+						
+						if (!submenu) {
+							submenu = {
+								name: menuName,
 								type: 'submenu',
-								items: {}
+								items: []
 							};
+							ctx.push(submenu);
 						}
 						
-						ctx = ctx[menuName].items;
+						ctx = submenu.items;
 					}
 				}
 				
-				ctx[actionName] = {
+				ctx.push({
 					type: 'action',
-					name: action.name
-				};
+					name: action.name,
+					label: actionName
+				});
 			});
 			
 			return result;
@@ -2788,9 +2795,9 @@ zen_coding.define('actions', function(require, _, zc) {
 		 */
 		getActionNameForMenuTitle: function(title, menu) {
 			var item = null;
-			_.find(menu || this.getMenu(), function(val, key) {
+			_.find(menu || this.getMenu(), function(val) {
 				if (val.type == 'action') {
-					if (key == title || val.name == title) {
+					if (val.label == title || val.name == title) {
 						return item = val.name;
 					}
 				} else {
@@ -6865,6 +6872,11 @@ zen_coding.define('cssEditTree', function(require, _) {
 			
 			tokens.push(token);
 		}
+		
+		// reached the end of tokens list
+		if (tokens.length) {
+			return range(tokens[0].start, _.last(tokens).end - tokens[0].start);
+		}
 	}
 	
 	/**
@@ -7156,9 +7168,9 @@ zen_coding.define('cssEditTree', function(require, _) {
 			// search right for full rule set
 			while (offset < len) {
 				ch = content.charAt(offset);
-				if (ch == '{')
+				if (ch == '{') {
 					bracePos = offset;
-				else if (ch == '}') {
+				} else if (ch == '}') {
 					if (bracePos != -1)
 						result = content.substring(bracePos, offset + 1);
 					break;
@@ -7179,7 +7191,7 @@ zen_coding.define('cssEditTree', function(require, _) {
 				
 				// also trim whitespace
 				selector = content.substring(offset + 1, bracePos).replace(/^[\s\n\r]+/m, '');
-				return require('range').create(bracePos - selector.length, bracePos + result.length);
+				return require('range').create(bracePos - selector.length, result.length + selector.length);
 			}
 			
 			return null;
@@ -7446,271 +7458,6 @@ zen_coding.define('xmlEditTree', function(require, _) {
 		}
 	};
 });/**
- * Encodes/decodes image under cursor to/from base64
- * @param {IZenEditor} editor
- * @since 0.65
- * 
- * @memberOf __base64ActionDefine
- * @constructor
- * @param {Function} require
- * @param {Underscore} _
- */
-zen_coding.exec(function(require, _) {
-	require('actions').add('encode_decode_data_url', function(editor) {
-		var data = String(editor.getSelection());
-		var caretPos = editor.getCaretPos();
-			
-		if (!data) {
-			// no selection, try to find image bounds from current caret position
-			var text = String(editor.getContent()),  m;
-			while (caretPos-- >= 0) {
-				if (startsWith('src=', text, caretPos)) { // found <img src="">
-					if (m = text.substr(caretPos).match(/^(src=(["'])?)([^'"<>\s]+)\1?/)) {
-						data = m[3];
-						caretPos += m[1].length;
-					}
-					break;
-				} else if (startsWith('url(', text, caretPos)) { // found CSS url() pattern
-					if (m = text.substr(caretPos).match(/^(url\((['"])?)([^'"\)\s]+)\1?/)) {
-						data = m[3];
-						caretPos += m[1].length;
-					}
-					break;
-				}
-			}
-		}
-		
-		if (data) {
-			if (startsWith('data:', data))
-				return decodeFromBase64(editor, data, caretPos);
-			else
-				return encodeToBase64(editor, data, caretPos);
-		}
-		
-		return false;
-	}, {label: 'Encode\\Decode data:URL image'});
-	
-	/**
-	 * Test if <code>text</code> starts with <code>token</code> at <code>pos</code>
-	 * position. If <code>pos</code> is ommited, search from beginning of text 
-	 * @param {String} token Token to test
-	 * @param {String} text Where to search
-	 * @param {Number} pos Position where to start search
-	 * @return {Boolean}
-	 * @since 0.65
-	 */
-	function startsWith(token, text, pos) {
-		pos = pos || 0;
-		return text.charAt(pos) == token.charAt(0) && text.substr(pos, token.length) == token;
-	}
-	
-	/**
-	 * Encodes image to base64
-	 * @requires zen_file
-	 * 
-	 * @param {zen_editor} editor
-	 * @param {String} imgPath Path to image
-	 * @param {Number} pos Caret position where image is located in the editor
-	 * @return {Boolean}
-	 */
-	function encodeToBase64(editor, imgPath, pos) {
-		var file = require('file');
-		var actionUtils = require('actionUtils');
-		
-		var editorFile = editor.getFilePath();
-		var defaultMimeType = 'application/octet-stream';
-			
-		if (editorFile === null) {
-			throw "You should save your file before using this action";
-		}
-		
-		// locate real image path
-		var realImgPath = file.locateFile(editorFile, imgPath);
-		if (realImgPath === null) {
-			throw "Can't find " + imgPath + ' file';
-		}
-		
-		var b64 = require('base64').encode(String(file.read(realImgPath)));
-		if (!b64) {
-			throw "Can't encode file content to base64";
-		}
-		
-		b64 = 'data:' + (actionUtils.mimeTypes[String(file.getExt(realImgPath))] || defaultMimeType) +
-			';base64,' + b64;
-			
-		editor.replaceContent('$0' + b64, pos, pos + imgPath.length);
-		return true;
-	}
-
-	/**
-	 * Decodes base64 string back to file.
-	 * @param {IZenEditor} editor
-	 * @param {String} data Base64-encoded file content
-	 * @param {Number} pos Caret position where image is located in the editor
-	 */
-	function decodeFromBase64(editor, data, pos) {
-		// ask user to enter path to file
-		var filePath = String(editor.prompt('Enter path to file (absolute or relative)'));
-		if (!filePath)
-			return false;
-			
-		var file = require('file');
-		var absPath = file.createPath(editor.getFilePath(), filePath);
-		if (!absPath) {
-			throw "Can't save file";
-		}
-		
-		file.save(absPath, require('base64').decode( data.replace(/^data\:.+?;.+?,/, '') ));
-		editor.replaceContent('$0' + filePath, pos, pos + data.length);
-		return true;
-	}
-});
-/**
- * Move between next/prev edit points. 'Edit points' are places between tags 
- * and quotes of empty attributes in html
- * @constructor
- * 
- * @memberOf __editPointActionDefine
- * @param {Function} require
- * @param {Underscore} _
- */
-zen_coding.exec(function(require, _) {
-	/**
-	 * Search for new caret insertion point
-	 * @param {zen_editor} editor Editor instance
-	 * @param {Number} inc Search increment: -1 — search left, 1 — search right
-	 * @param {Number} offset Initial offset relative to current caret position
-	 * @return {Number} Returns -1 if insertion point wasn't found
-	 */
-	function findNewEditPoint(editor, inc, offset) {
-		inc = inc || 1;
-		offset = offset || 0;
-		
-		var curPoint = editor.getCaretPos() + offset;
-		var content = String(editor.getContent());
-		var maxLen = content.length;
-		var nextPoint = -1;
-		var reEmptyLine = /^\s+$/;
-		
-		function getLine(ix) {
-			var start = ix;
-			while (start >= 0) {
-				var c = content.charAt(start);
-				if (c == '\n' || c == '\r')
-					break;
-				start--;
-			}
-			
-			return content.substring(start, ix);
-		}
-			
-		while (curPoint <= maxLen && curPoint >= 0) {
-			curPoint += inc;
-			var curChar = content.charAt(curPoint);
-			var nextChar = content.charAt(curPoint + 1);
-			var prevChar = content.charAt(curPoint - 1);
-				
-			switch (curChar) {
-				case '"':
-				case '\'':
-					if (nextChar == curChar && prevChar == '=') {
-						// empty attribute
-						nextPoint = curPoint + 1;
-					}
-					break;
-				case '>':
-					if (nextChar == '<') {
-						// between tags
-						nextPoint = curPoint + 1;
-					}
-					break;
-				case '\n':
-				case '\r':
-					// empty line
-					if (reEmptyLine.test(getLine(curPoint - 1))) {
-						nextPoint = curPoint;
-					}
-					break;
-			}
-			
-			if (nextPoint != -1)
-				break;
-		}
-		
-		return nextPoint;
-	}
-	
-	/** @type zen_coding.actions */
-	var actions = require('actions');
-	
-	/**
-	 * Move caret to previous edit point
-	 * @param {IZenEditor} editor Editor instance
-	 */
-	actions.add('prev_edit_point', function(editor) {
-		var curPos = editor.getCaretPos();
-		var newPoint = findNewEditPoint(editor, -1);
-			
-		if (newPoint == curPos)
-			// we're still in the same point, try searching from the other place
-			newPoint = findNewEditPoint(editor, -1, -2);
-		
-		if (newPoint != -1) {
-			editor.setCaretPos(newPoint);
-			return true;
-		}
-		
-		return false;
-	}, {label: 'Previous Edit Point'});
-	
-	/**
-	 * Move caret to next edit point
-	 * @param {IZenEditor} editor Editor instance
-	 */
-	actions.add('next_edit_point', function(editor) {
-		var newPoint = findNewEditPoint(editor, 1);
-		if (newPoint != -1)
-			editor.setCaretPos(newPoint);
-	});
-});/**
- * Evaluates simple math expression under caret
- * @param {Function} require
- * @param {Underscore} _ 
- */
-zen_coding.exec(function(require, _) {
-	require('actions').add('evaluate_math_expression', function(editor) {
-		var actionUtils = require('actionUtils');
-		var utils = require('utils');
-		
-		var content = String(editor.getContent());
-		var chars = '.+-*/\\';
-		
-		/** @type Range */
-		var sel = require('range').create(editor.getSelectionRange());
-		if (!sel.length()) {
-			sel = actionUtils.findExpressionBounds(editor, function(ch) {
-				return utils.isNumeric(ch) || chars.indexOf(ch) != -1;
-			});
-		}
-		
-		if (sel && sel.length()) {
-			var expr = sel.substring(content);
-			
-			// replace integral division: 11\2 => Math.round(11/2) 
-			expr = expr.replace(/([\d\.\-]+)\\([\d\.\-]+)/g, 'Math.round($1/$2)');
-			
-			try {
-				var result = utils.prettifyNumber(new Function('return ' + expr)());
-				editor.replaceContent(result, sel.start, sel.end);
-				editor.setCaretPos(sel.start + result.length);
-				return true;
-			} catch (e) {}
-		}
-		
-		return false;
-	}, {label: 'Numbers/Evaluate Math Expression'});
-});
-/**
  * 'Expand abbreviation' editor action: extracts abbreviation from current caret 
  * position and replaces it with formatted output. 
  * <br><br>
@@ -7826,516 +7573,402 @@ zen_coding.define('expandAbbreviation', function(require, _) {
 		}
 	};
 });/**
- * Increment/decrement number under cursor
- * @param {Function} require
- * @param {Underscore} _
- */
-zen_coding.exec(function(require, _) {
-	/**
-	 * Extract number from current caret position of the <code>editor</code> and
-	 * increment it by <code>step</code>
-	 * @param {IZenEditor} editor
-	 * @param {Number} step Increment step (may be negative)
-	 */
-	function incrementNumber(editor, step) {
-		var utils = require('utils');
-		var actionUtils = require('actionUtils');
-		
-		var hasSign = false;
-		var hasDecimal = false;
-			
-		var r = actionUtils.findExpressionBounds(editor, function(ch, pos, content) {
-			if (utils.isNumeric(ch))
-				return true;
-			if (ch == '.') {
-				// make sure that next character is numeric too
-				if (!utils.isNumeric(content.charAt(pos + 1)))
-					return false;
-				
-				return hasDecimal ? false : hasDecimal = true;
-			}
-			if (ch == '-')
-				return hasSign ? false : hasSign = true;
-				
-			return false;
-		});
-			
-		if (r && r.length()) {
-			var num = parseFloat(r.substring(String(editor.getContent())));
-			if (!isNaN(num)) {
-				num = utils.prettifyNumber(num + step);
-				editor.replaceContent(num, r.start, r.end);
-				editor.createSelection(r.start, r.start + num.length);
-				return true;
-			}
-		}
-		
-		return false;
-	}
-	
-	var actions = require('actions');
-	_.each([1, -1, 10, -10, 0.1, -0.1], function(num) {
-		var prefix = num > 0 ? 'increment' : 'decrement';
-		
-		actions.add(prefix + '_number_by_' + String(Math.abs(num)).replace('.', '').substring(0, 2), function(editor) {
-			return incrementNumber(editor, num);
-		}, {label: 'Numbers/' + prefix.charAt(0).toUpperCase() + prefix.substring(1) + ' number by ' + Math.abs(num)});
-	});
-});/**
- * Actions to insert line breaks. Some simple editors (like browser's 
- * &lt;textarea&gt;, for example) do not provide such simple things
- * @param {Function} require
- * @param {Underscore} _
- */
-zen_coding.exec(function(require, _) {
-	var actions = require('actions');
-	/** @type zen_coding.preferences */
-	var prefs = require('preferences');
-	
-	// setup default preferences
-	prefs.set('css.closeBraceIndentation', '\n',
-			'Indentation before closing brace of CSS rule. Some users prefere' 
-			+ 'indented closing brace of CSS rule for better readability. '
-			+ 'This preference’s value will be automatically inserted before '
-			+ 'closing brace when user adds newline in newly created CSS rule '
-			+ '(e.g. when “Insert formatted linebreak” action will be performed ' 
-			+ 'in CSS file). If you’re such user, you may want to write put a value ' 
-			+ 'like <code>\\n\\t</code> in this preference.');
-	
-	/**
-	 * Inserts newline character with proper indentation in specific positions only.
-	 * @param {IZenEditor} editor
-	 * @return {Boolean} Returns <code>true</code> if line break was inserted 
-	 */
-	actions.add('insert_formatted_line_break_only', function(editor) {
-		var utils = require('utils');
-		/** @type zen_coding.resources */
-		var res = require('resources');
-		
-		var info = require('editorUtils').outputInfo(editor);
-		var caretPos = editor.getCaretPos();
-		var nl = utils.getNewline();
-		
-		if (info.syntax == 'html') {
-			var pad = res.getVariable('indentation');
-			// let's see if we're breaking newly created tag
-			var pair = require('html_matcher').getTags(info.content, caretPos, info.profile);
-			
-			if (pair[0] && pair[1] && pair[0].type == 'tag' && pair[0].end == caretPos && pair[1].start == caretPos) {
-				editor.replaceContent(nl + pad + utils.getCaretPlaceholder() + nl, caretPos);
-				return true;
-			}
-		} else if (info.syntax == 'css') {
-			/** @type String */
-			var content = info.content;
-			if (caretPos && content.charAt(caretPos - 1) == '{') {
-				var append = prefs.get('css.closeBraceIndentation');
-				var pad = res.getVariable('indentation');
-				
-				var hasCloseBrace = content.charAt(caretPos) == '}';
-				if (!hasCloseBrace) {
-					// do we really need special formatting here?
-					// check if this is really a newly created rule,
-					// look ahead for a closing brace
-					for (var i = caretPos, il = content.length, ch; i < il; i++) {
-						ch = content.charAt(i);
-						if (ch == '{') {
-							// ok, this is a new rule without closing brace
-							break;
-						}
-						
-						if (ch == '}') {
-							// not a new rule, just add indentation
-							append = '';
-							hasCloseBrace = true;
-							break;
-						}
-					}
-				}
-				
-				if (!hasCloseBrace) {
-					append += '}';
-				}
-				
-				// defining rule set
-				var insValue = nl + pad + utils.getCaretPlaceholder() + append;
-				editor.replaceContent(insValue, caretPos);
-				return true;
-			}
-		}
-			
-		return false;
-	}, {hidden: true});
-	
-	/**
-	 * Inserts newline character with proper indentation. This action is used in
-	 * editors that doesn't have indentation control (like textarea element) to 
-	 * provide proper indentation
-	 * @param {IZenEditor} editor Editor instance
-	 */
-	actions.add('insert_formatted_line_break', function(editor) {
-		if (!actions.run('insert_formatted_line_break_only', editor)) {
-			var utils = require('utils');
-			
-			var curPadding = require('editorUtils').getCurrentLinePadding(editor);
-			var content = String(editor.getContent());
-			var caretPos = editor.getCaretPos();
-			var len = content.length;
-			var nl = utils.getNewline();
-				
-			// check out next line padding
-			var lineRange = editor.getCurrentLineRange();
-			var nextPadding = '';
-				
-			for (var i = lineRange.end + 1, ch; i < len; i++) {
-				ch = content.charAt(i);
-				if (ch == ' ' || ch == '\t')
-					nextPadding += ch;
-				else
-					break;
-			}
-			
-			if (nextPadding.length > curPadding.length)
-				editor.replaceContent(nl + nextPadding, caretPos, caretPos, true);
-			else
-				editor.replaceContent(nl, caretPos);
-		}
-		
-		return true;
-	}, {hidden: true});
-});/**
- * HTML pair matching (balancing) actions
+ * Action that wraps content with abbreviation. For convenience, action is 
+ * defined as reusable module
  * @constructor
- * @memberOf __matchPairActionDefine
- * @param {Function} require
- * @param {Underscore} _
+ * @memberOf __wrapWithAbbreviationDefine
  */
-zen_coding.exec(function(require, _) {
-	/** @type zen_coding.actions */
-	var actions = require('actions');
-	var matcher = require('html_matcher');
-	
+zen_coding.define('wrapWithAbbreviation', function(require, _) {
 	/**
-	 * Find and select HTML tag pair
-	 * @param {IZenEditor} editor Editor instance
-	 * @param {String} direction Direction of pair matching: 'in' or 'out'. 
-	 * Default is 'out'
+	 * Wraps content with abbreviation
+	 * @param {IZenEditor} Editor instance
+	 * @param {String} abbr Abbreviation to wrap with
+	 * @param {String} syntax Syntax type (html, css, etc.)
+	 * @param {String} profile Output profile name (html, xml, xhtml)
 	 */
-	function matchPair(editor, direction, syntax) {
-		direction = String((direction || 'out').toLowerCase());
-		var info = require('editorUtils').outputInfo(editor, syntax);
-		syntax = info.syntax;
-		
-		var range = require('range');
-		/** @type Range */
-		var selRange = range.create(editor.getSelectionRange());
-		var content = info.content;
-		/** @type Range */
-		var tagRange = null;
-		/** @type Range */
-		var _r;
-		
-		var oldOpenTag = matcher.last_match['opening_tag'];
-		var oldCloseTag = matcher.last_match['closing_tag'];
-			
-		if (direction == 'in' && oldOpenTag && selRange.length()) {
-//			user has previously selected tag and wants to move inward
-			if (!oldCloseTag) {
-//				unary tag was selected, can't move inward
-				return false;
-			} else if (oldOpenTag.start == selRange.start) {
-				if (content.charAt(oldOpenTag.end) == '<') {
-//					test if the first inward tag matches the entire parent tag's content
-					_r = range.create(matcher.find(content, oldOpenTag.end + 1, syntax));
-					if (_r.start == oldOpenTag.end && _r.end == oldCloseTag.start) {
-						tagRange = range.create(matcher(content, oldOpenTag.end + 1, syntax));
-					} else {
-						tagRange = range.create(oldOpenTag.end, oldCloseTag.start - oldOpenTag.end);
-					}
-				} else {
-					tagRange = range.create(oldOpenTag.end, oldCloseTag.start - oldOpenTag.end);
-				}
-			} else {
-				var newCursor = content.substring(0, oldCloseTag.start).indexOf('<', oldOpenTag.end);
-				var searchPos = newCursor != -1 ? newCursor + 1 : oldOpenTag.end;
-				tagRange = range.create(matcher(content, searchPos, syntax));
-			}
-		} else {
-			tagRange = range.create(matcher(content, selRange.end, syntax));
-		}
-		
-		if (tagRange && tagRange.start != -1) {
-			editor.createSelection(tagRange.start, tagRange.end);
-			return true;
-		}
-		
-		return false;
-	}
-	
-	actions.add('match_pair', matchPair, {hidden: true});
-	actions.add('match_pair_inward', function(editor){
-		return matchPair(editor, 'in');
-	}, {label: 'HTML/Match Pair Tag (inward)'});
-
-	actions.add('match_pair_outward', function(editor){
-		return matchPair(editor, 'out');
-	}, {label: 'HTML/Match Pair Tag (outward)'});
-	
-	/**
-	 * Moves caret to matching opening or closing tag
-	 * @param {IZenEditor} editor
-	 */
-	actions.add('matching_pair', function(editor) {
-		var content = String(editor.getContent());
-		var caretPos = editor.getCaretPos();
-		
-		if (content.charAt(caretPos) == '<') 
-			// looks like caret is outside of tag pair  
-			caretPos++;
-			
-		var tags = matcher.getTags(content, caretPos, String(editor.getProfileName()));
-			
-		if (tags && tags[0]) {
-			// match found
-			var openTag = tags[0];
-			var closeTag = tags[1];
-				
-			if (closeTag) { // exclude unary tags
-				if (openTag.start <= caretPos && openTag.end >= caretPos) {
-					editor.setCaretPos(closeTag.start);
-					return true;
-				} else if (closeTag.start <= caretPos && closeTag.end >= caretPos){
-					editor.setCaretPos(openTag.start);
-					return true;
-				}
-			}
-		}
-		
-		return false;
-	}, {label: 'HTML/Go To Matching Tag Pair'});
-});/**
- * Merges selected lines or lines between XHTML tag pairs
- * @param {Function} require
- * @param {Underscore} _
- */
-zen_coding.exec(function(require, _) {
-	require('actions').add('merge_lines', function(editor) {
-		var matcher = require('html_matcher');
+	require('actions').add('wrap_with_abbreviation', function (editor, abbr, syntax, profile) {
+		var info = require('editorUtils').outputInfo(editor, syntax, profile);
 		var utils = require('utils');
+		/** @type zen_coding.editorUtils */
 		var editorUtils = require('editorUtils');
-		var info = editorUtils.outputInfo(editor);
+		var matcher = require('html_matcher');
 		
-		/** @type Range */
-		var selection = require('range').create(editor.getSelectionRange());
-		if (!selection.length()) {
-			// find matching tag
-			var pair = matcher(info.content, editor.getCaretPos(), info.profile);
-			if (pair) {
-				selection.start = pair[0];
-				selection.end = pair[1];
-			}
+		abbr = abbr || editor.prompt("Enter abbreviation");
+		
+		if (!abbr) 
+			return null;
+		
+		abbr = String(abbr);
+		
+		var range = editor.getSelectionRange();
+		var startOffset = range.start;
+		var endOffset = range.end;
+		
+		if (startOffset == endOffset) {
+			// no selection, find tag pair
+			range = matcher(info.content, startOffset, info.profile);
+			
+			if (!range || range[0] == -1) // nothing to wrap
+				return false;
+			
+			/** @type Range */
+			var narrowedSel = utils.narrowToNonSpace(info.content, range[0], range[1] - range[0]);
+			startOffset = narrowedSel.start;
+			endOffset = narrowedSel.end;
 		}
 		
-		if (selection.length()) {
-			// got range, merge lines
-			var text =  selection.substring(info.content);
-			var lines = utils.splitByLines(text);
-			
-			for (var i = 1; i < lines.length; i++) {
-				lines[i] = lines[i].replace(/^\s+/, '');
-			}
-			
-			text = lines.join('').replace(/\s{2,}/, ' ');
-			editor.replaceContent(text, selection.start, selection.end);
-			editor.createSelection(selection.start, selection.start + text.length);
-			
+		var newContent = utils.escapeText(info.content.substring(startOffset, endOffset));
+		var result = require('wrapWithAbbreviation').wrap(abbr, editorUtils.unindent(editor, newContent), info.syntax, info.profile);
+		
+		if (result) {
+//			editor.setCaretPos(endOffset);
+			editor.replaceContent(result, startOffset, endOffset);
 			return true;
 		}
 		
 		return false;
 	});
-});/**
- * Reflect CSS value: takes rule's value under caret and pastes it for the same 
- * rules with vendor prefixes
- * @constructor
- * @memberOf __reflectCSSActionDefine
- * @param {Function} require
- * @param {Underscore} _
- */
-zen_coding.define('reflectCSSValue', function(require, _) {
-	/**
-	 * @type HandlerList List of registered handlers
-	 */
-	var handlers = require('handlerList').create();
-	
-	require('actions').add('reflect_css_value', function(editor) {
-		if (editor.getSyntax() != 'css') return false;
-		
-		return require('actionUtils').compoundUpdate(editor, doCSSReflection(editor));
-	}, {label: 'CSS/Reflect Value'});
-	
-	function doCSSReflection(editor) {
-		/** @type zen_coding.cssEditTree */
-		var cssEditTree = require('cssEditTree');
-		var outputInfo = require('editorUtils').outputInfo(editor);
-		var caretPos = editor.getCaretPos();
-		
-		var cssRule = cssEditTree.parseFromPosition(outputInfo.content, caretPos);
-		if (!cssRule) return;
-		
-		var property = cssRule.itemFromPosition(caretPos, true);
-		// no property under cursor, nothing to reflect
-		if (!property) return;
-		
-		var oldRule = cssRule.source;
-		var offset = cssRule.options.offset;
-		var caretDelta = caretPos - offset - property.range().start;
-		
-		handlers.exec(false, [property]);
-		
-		if (oldRule !== cssRule.source) {
-			return {
-				data:  cssRule.source,
-				start: offset,
-				end:   offset + oldRule.length,
-				caret: offset + property.range().start + caretDelta
-			};
-		}
-	}
-	
-	/**
-	 * Returns regexp that should match reflected CSS property names
-	 * @param {String} name Current CSS property name
-	 * @return {RegExp}
-	 */
-	function getReflectedCSSName(name) {
-		name = require('cssEditTree').baseName(name);
-		var vendorPrefix = '^(?:\\-\\w+\\-)?', m;
-		
-		if (name == 'opacity' || name == 'filter') {
-			return new RegExp(vendorPrefix + '(?:opacity|filter)$');
-		} else if (m = name.match(/^border-radius-(top|bottom)(left|right)/)) {
-			// Mozilla-style border radius
-			return new RegExp(vendorPrefix + '(?:' + name + '|border-' + m[1] + '-' + m[2] + '-radius)$');
-		} else if (m = name.match(/^border-(top|bottom)-(left|right)-radius/)) { 
-			return new RegExp(vendorPrefix + '(?:' + name + '|border-radius-' + m[1] + m[2] + ')$');
-		}
-		
-		return new RegExp(vendorPrefix + name + '$');
-	}
-	
-	/**
-	 * Reflects value from <code>donor</code> into <code>receiver</code>
-	 * @param {CSSProperty} donor Donor CSS property from which value should
-	 * be reflected
-	 * @param {CSSProperty} receiver Property that should receive reflected 
-	 * value from donor
-	 */
-	function reflectValue(donor, receiver) {
-		var value = getReflectedValue(donor.name(), donor.value(), 
-				receiver.name(), receiver.value());
-		
-		receiver.value(value);
-	}
-	
-	/**
-	 * Returns value that should be reflected for <code>refName</code> CSS property
-	 * from <code>curName</code> property. This function is used for special cases,
-	 * when the same result must be achieved with different properties for different
-	 * browsers. For example: opаcity:0.5; → filter:alpha(opacity=50);<br><br>
-	 * 
-	 * This function does value conversion between different CSS properties
-	 * 
-	 * @param {String} curName Current CSS property name
-	 * @param {String} curValue Current CSS property value
-	 * @param {String} refName Receiver CSS property's name 
-	 * @param {String} refValue Receiver CSS property's value
-	 * @return {String} New value for receiver property
-	 */
-	function getReflectedValue(curName, curValue, refName, refValue) {
-		var cssEditTree = require('cssEditTree');
-		var utils = require('utils');
-		curName = cssEditTree.baseName(curName);
-		refName = cssEditTree.baseName(refName);
-		
-		if (curName == 'opacity' && refName == 'filter') {
-			return refValue.replace(/opacity=[^)]*/i, 'opacity=' + Math.floor(parseFloat(curValue) * 100));
-		} else if (curName == 'filter' && refName == 'opacity') {
-			var m = curValue.match(/opacity=([^)]*)/i);
-			return m ? utils.prettifyNumber(parseInt(m[1]) / 100) : refValue;
-		}
-		
-		return curValue;
-	}
-	
-	// XXX add default handler
-	handlers.add(function(property) {
-		var reName = getReflectedCSSName(property.name());
-		_.each(property.parent.list(), function(p) {
-			if (reName.test(p.name())) {
-				reflectValue(property, p);
-			}
-		});
-	}, {order: -1});
 	
 	return {
 		/**
-		 * Adds custom reflect handler. The passed function will receive matched
-		 * CSS property (as <code>CSSEditElement</code> object) and should
-		 * return <code>true</code> if it was performed successfully (handled 
-		 * reflection), <code>false</code> otherwise.
-		 * @param {Function} fn
-		 * @param {Object} options
+		 * Wraps passed text with abbreviation. Text will be placed inside last
+		 * expanded element
+		 * @memberOf zen_coding.wrapWithAbbreviation
+		 * @param {String} abbr Abbreviation
+		 * @param {String} text Text to wrap
+		 * @param {String} syntax Document type (html, xml, etc.). Default is 'html'
+		 * @param {String} profile Output profile's name. Default is 'plain'
+		 * @return {String}
 		 */
-		addHandler: function(fn, options) {
-			handlers.add(fn, options);
-		},
-		
-		/**
-		 * Removes registered handler
-		 * @returns
-		 */
-		removeHandler: function(fn) {
-			handlers.remove(fn, options);
+		wrap: function(abbr, text, syntax, profile) {
+			/** @type zen_coding.filters */
+			var filters = require('filters');
+			/** @type zen_coding.utils */
+			var utils = require('utils');
+			/** @type zen_coding.transform */
+			var transform = require('transform');
+			
+			var pasted = false;
+			
+			syntax = syntax || zen_coding.defaultSyntax();
+			profile = profile || zen_coding.defaultProfile();
+			
+			var data = filters.extractFromAbbreviation(abbr);
+			var parsedTree = transform.createParsedTree(data[0], syntax);
+			if (parsedTree) {
+				if (parsedTree.multiply_elem) {
+					// we have a repeating element, put content in
+					parsedTree.multiply_elem.setPasteContent(text);
+					parsedTree.multiply_elem.repeat_by_lines = pasted = true;
+				}
+				
+				var outputTree = transform.rolloutTree(parsedTree);
+				if (!pasted) 
+					outputTree.pasteContent(text);
+				
+				var filtersList = filters.composeList(syntax, profile, data[1]);
+				filters.apply(outputTree, filtersList, profile);
+				return utils.replaceVariables(outputTree.toString());
+			}
+			
+			return null;
 		}
 	};
 });/**
- * Gracefully removes tag under cursor
+ * Toggles HTML and CSS comments depending on current caret context. Unlike
+ * the same action in most editors, this action toggles comment on currently
+ * matched item—HTML tag or CSS selector—when nothing is selected.
  * 
  * @param {Function} require
- * @param {Underscore} _ 
+ * @param {Underscore} _
+ * @memberOf __toggleCommentAction
+ * @constructor
  */
 zen_coding.exec(function(require, _) {
-	require('actions').add('remove_tag', function(editor) {
-		var utils = require('utils');
+	/**
+	 * Toggle HTML comment on current selection or tag
+	 * @param {IZenEditor} editor
+	 * @return {Boolean} Returns <code>true</code> if comment was toggled
+	 */
+	function toggleHTMLComment(editor) {
+		/** @type Range */
+		var range = require('range').create(editor.getSelectionRange());
 		var info = require('editorUtils').outputInfo(editor);
-		
-		// search for tag
-		var pair = require('html_matcher').getTags(info.content, editor.getCaretPos(), info.profile);
-		if (pair && pair[0]) {
-			if (!pair[1]) {
-				// simply remove unary tag
-				editor.replaceContent(utils.getCaretPlaceholder(), pair[0].start, pair[0].end);
-			} else {
-				// remove tag and its newlines
-				/** @type Range */
-				var tagContentRange = utils.narrowToNonSpace(info.content, pair[0].end, pair[1].start - pair[0].end);
-				/** @type Range */
-				var startLineBounds = utils.findNewlineBounds(info.content, tagContentRange.start);
-				var startLinePad = utils.getLinePadding(startLineBounds.substring(info.content));
-				var tagContent = tagContentRange.substring(info.content);
-				
-				tagContent = utils.unindentString(tagContent, startLinePad);
-				editor.replaceContent(utils.getCaretPlaceholder() + tagContent, pair[0].start, pair[1].end);
-			}
 			
+		if (!range.length()) {
+			// no selection, find matching tag
+			var pair = require('html_matcher').getTags(info.content, editor.getCaretPos(), info.profile);
+			if (pair && pair[0]) { // found pair
+				range.start = pair[0].start;
+				range.end = pair[1] ? pair[1].end : pair[0].end;
+			}
+		}
+		
+		return genericCommentToggle(editor, '<!--', '-->', range);
+	}
+
+	/**
+	 * Simple CSS commenting
+	 * @param {IZenEditor} editor
+	 * @return {Boolean} Returns <code>true</code> if comment was toggled
+	 */
+	function toggleCSSComment(editor) {
+		/** @type Range */
+		var range = require('range').create(editor.getSelectionRange());
+		var info = require('editorUtils').outputInfo(editor);
+			
+		if (!range.length()) {
+			// no selection, try to get current rule
+			/** @type CSSRule */
+			var rule = require('cssEditTree').parseFromPosition(info.content, editor.getCaretPos());
+			if (rule) {
+				var property = rule.itemFromPosition(editor.getCaretPos(), true);
+				range = property 
+					? property.range(true) 
+					: require('range').create(rule.nameRange(true).start, rule.source);
+			}
+		}
+		
+		if (!range.length()) {
+			// still no selection, get current line
+			range = require('range').create(editor.getCurrentLineRange());
+			require('utils').narrowToNonSpace(info.content, range);
+		}
+		
+		return genericCommentToggle(editor, '/*', '*/', range);
+	}
+
+	/**
+	 * Search for nearest comment in <code>str</code>, starting from index <code>from</code>
+	 * @param {String} text Where to search
+	 * @param {Number} from Search start index
+	 * @param {String} start_token Comment start string
+	 * @param {String} end_token Comment end string
+	 * @return {Range} Returns null if comment wasn't found
+	 */
+	function searchComment(text, from, startToken, endToken) {
+		var commentStart = -1;
+		var commentEnd = -1;
+		
+		var hasMatch = function(str, start) {
+			return text.substr(start, str.length) == str;
+		};
+			
+		// search for comment start
+		while (from--) {
+			if (hasMatch(startToken, from)) {
+				commentStart = from;
+				break;
+			}
+		}
+		
+		if (commentStart != -1) {
+			// search for comment end
+			from = commentStart;
+			var contentLen = text.length;
+			while (contentLen >= from++) {
+				if (hasMatch(endToken, from)) {
+					commentEnd = from + endToken.length;
+					break;
+				}
+			}
+		}
+		
+		return (commentStart != -1 && commentEnd != -1) 
+			? require('range').create(commentStart, commentEnd - commentStart) 
+			: null;
+	}
+
+	/**
+	 * Generic comment toggling routine
+	 * @param {zen_editor} editor
+	 * @param {String} commentStart Comment start token
+	 * @param {String} commentEnd Comment end token
+	 * @param {Range} range Selection range
+	 * @return {Boolean}
+	 */
+	function genericCommentToggle(editor, commentStart, commentEnd, range) {
+		var editorUtils = require('editorUtils');
+		var content = editorUtils.outputInfo(editor).content;
+		var caretPos = editor.getCaretPos();
+		var newContent = null;
+		
+		var utils = require('utils');
+			
+		/**
+		 * Remove comment markers from string
+		 * @param {Sting} str
+		 * @return {String}
+		 */
+		function removeComment(str) {
+			return str
+				.replace(new RegExp('^' + utils.escapeForRegexp(commentStart) + '\\s*'), function(str){
+					caretPos -= str.length;
+					return '';
+				}).replace(new RegExp('\\s*' + utils.escapeForRegexp(commentEnd) + '$'), '');
+		}
+		
+		// first, we need to make sure that this substring is not inside 
+		// comment
+		var commentRange = searchComment(content, caretPos, commentStart, commentEnd);
+		if (commentRange && commentRange.overlap(range)) {
+			// we're inside comment, remove it
+			range = commentRange;
+			newContent = removeComment(range.substring(content));
+		} else {
+			// should add comment
+			// make sure that there's no comment inside selection
+			newContent = commentStart + ' ' +
+				range.substring(content)
+					.replace(new RegExp(utils.escapeForRegexp(commentStart) + '\\s*|\\s*' + utils.escapeForRegexp(commentEnd), 'g'), '') +
+				' ' + commentEnd;
+				
+			// adjust caret position
+			caretPos += commentStart.length + 1;
+		}
+
+		// replace editor content
+		if (newContent !== null) {
+			editor.setCaretPos(range.start);
+			editor.replaceContent(editorUtils.unindent(editor, newContent), range.start, range.end);
+			editor.setCaretPos(caretPos);
 			return true;
 		}
 		
 		return false;
-	}, {label: 'HTML/Remove Tag'});
-});
-/**
+	}
+	
+	/**
+	 * Toggle comment on current editor's selection or HTML tag/CSS rule
+	 * @param {IZenEditor} editor
+	 */
+	require('actions').add('toggle_comment', function(editor) {
+		var info = require('editorUtils').outputInfo(editor);
+		if (info.syntax == 'css') {
+			// in case our editor is good enough and can recognize syntax from 
+			// current token, we have to make sure that cursor is not inside
+			// 'style' attribute of html element
+			var caretPos = editor.getCaretPos();
+			var pair = require('html_matcher').getTags(info.content, caretPos);
+			if (pair && pair[0] && pair[0].type == 'tag' && 
+					pair[0].start <= caretPos && pair[0].end >= caretPos) {
+				info.syntax = 'html';
+			}
+		}
+		
+		if (info.syntax == 'css')
+			return toggleCSSComment(editor);
+		
+		return toggleHTMLComment(editor);
+	});
+});/**
+ * Move between next/prev edit points. 'Edit points' are places between tags 
+ * and quotes of empty attributes in html
+ * @constructor
+ * 
+ * @memberOf __editPointActionDefine
+ * @param {Function} require
+ * @param {Underscore} _
+ */
+zen_coding.exec(function(require, _) {
+	/**
+	 * Search for new caret insertion point
+	 * @param {zen_editor} editor Editor instance
+	 * @param {Number} inc Search increment: -1 — search left, 1 — search right
+	 * @param {Number} offset Initial offset relative to current caret position
+	 * @return {Number} Returns -1 if insertion point wasn't found
+	 */
+	function findNewEditPoint(editor, inc, offset) {
+		inc = inc || 1;
+		offset = offset || 0;
+		
+		var curPoint = editor.getCaretPos() + offset;
+		var content = String(editor.getContent());
+		var maxLen = content.length;
+		var nextPoint = -1;
+		var reEmptyLine = /^\s+$/;
+		
+		function getLine(ix) {
+			var start = ix;
+			while (start >= 0) {
+				var c = content.charAt(start);
+				if (c == '\n' || c == '\r')
+					break;
+				start--;
+			}
+			
+			return content.substring(start, ix);
+		}
+			
+		while (curPoint <= maxLen && curPoint >= 0) {
+			curPoint += inc;
+			var curChar = content.charAt(curPoint);
+			var nextChar = content.charAt(curPoint + 1);
+			var prevChar = content.charAt(curPoint - 1);
+				
+			switch (curChar) {
+				case '"':
+				case '\'':
+					if (nextChar == curChar && prevChar == '=') {
+						// empty attribute
+						nextPoint = curPoint + 1;
+					}
+					break;
+				case '>':
+					if (nextChar == '<') {
+						// between tags
+						nextPoint = curPoint + 1;
+					}
+					break;
+				case '\n':
+				case '\r':
+					// empty line
+					if (reEmptyLine.test(getLine(curPoint - 1))) {
+						nextPoint = curPoint;
+					}
+					break;
+			}
+			
+			if (nextPoint != -1)
+				break;
+		}
+		
+		return nextPoint;
+	}
+	
+	/** @type zen_coding.actions */
+	var actions = require('actions');
+	
+	/**
+	 * Move caret to previous edit point
+	 * @param {IZenEditor} editor Editor instance
+	 */
+	actions.add('prev_edit_point', function(editor) {
+		var curPos = editor.getCaretPos();
+		var newPoint = findNewEditPoint(editor, -1);
+			
+		if (newPoint == curPos)
+			// we're still in the same point, try searching from the other place
+			newPoint = findNewEditPoint(editor, -1, -2);
+		
+		if (newPoint != -1) {
+			editor.setCaretPos(newPoint);
+			return true;
+		}
+		
+		return false;
+	}, {label: 'Previous Edit Point'});
+	
+	/**
+	 * Move caret to next edit point
+	 * @param {IZenEditor} editor Editor instance
+	 */
+	actions.add('next_edit_point', function(editor) {
+		var newPoint = findNewEditPoint(editor, 1);
+		if (newPoint != -1)
+			editor.setCaretPos(newPoint);
+	});
+});/**
  * Actions that use stream parsers and tokenizers for traversing:
  * -- Search for next/previous items in HTML
  * -- Search for next/previous items in CSS
@@ -8776,6 +8409,152 @@ zen_coding.exec(function(require, _) {
 			return findPrevHTMLItem(editor);
 	});
 });/**
+ * HTML pair matching (balancing) actions
+ * @constructor
+ * @memberOf __matchPairActionDefine
+ * @param {Function} require
+ * @param {Underscore} _
+ */
+zen_coding.exec(function(require, _) {
+	/** @type zen_coding.actions */
+	var actions = require('actions');
+	var matcher = require('html_matcher');
+	
+	/**
+	 * Find and select HTML tag pair
+	 * @param {IZenEditor} editor Editor instance
+	 * @param {String} direction Direction of pair matching: 'in' or 'out'. 
+	 * Default is 'out'
+	 */
+	function matchPair(editor, direction, syntax) {
+		direction = String((direction || 'out').toLowerCase());
+		var info = require('editorUtils').outputInfo(editor, syntax);
+		syntax = info.syntax;
+		
+		var range = require('range');
+		/** @type Range */
+		var selRange = range.create(editor.getSelectionRange());
+		var content = info.content;
+		/** @type Range */
+		var tagRange = null;
+		/** @type Range */
+		var _r;
+		
+		var oldOpenTag = matcher.last_match['opening_tag'];
+		var oldCloseTag = matcher.last_match['closing_tag'];
+			
+		if (direction == 'in' && oldOpenTag && selRange.length()) {
+//			user has previously selected tag and wants to move inward
+			if (!oldCloseTag) {
+//				unary tag was selected, can't move inward
+				return false;
+			} else if (oldOpenTag.start == selRange.start) {
+				if (content.charAt(oldOpenTag.end) == '<') {
+//					test if the first inward tag matches the entire parent tag's content
+					_r = range.create(matcher.find(content, oldOpenTag.end + 1, syntax));
+					if (_r.start == oldOpenTag.end && _r.end == oldCloseTag.start) {
+						tagRange = range.create(matcher(content, oldOpenTag.end + 1, syntax));
+					} else {
+						tagRange = range.create(oldOpenTag.end, oldCloseTag.start - oldOpenTag.end);
+					}
+				} else {
+					tagRange = range.create(oldOpenTag.end, oldCloseTag.start - oldOpenTag.end);
+				}
+			} else {
+				var newCursor = content.substring(0, oldCloseTag.start).indexOf('<', oldOpenTag.end);
+				var searchPos = newCursor != -1 ? newCursor + 1 : oldOpenTag.end;
+				tagRange = range.create(matcher(content, searchPos, syntax));
+			}
+		} else {
+			tagRange = range.create(matcher(content, selRange.end, syntax));
+		}
+		
+		if (tagRange && tagRange.start != -1) {
+			editor.createSelection(tagRange.start, tagRange.end);
+			return true;
+		}
+		
+		return false;
+	}
+	
+	actions.add('match_pair', matchPair, {hidden: true});
+	actions.add('match_pair_inward', function(editor){
+		return matchPair(editor, 'in');
+	}, {label: 'HTML/Match Pair Tag (inward)'});
+
+	actions.add('match_pair_outward', function(editor){
+		return matchPair(editor, 'out');
+	}, {label: 'HTML/Match Pair Tag (outward)'});
+	
+	/**
+	 * Moves caret to matching opening or closing tag
+	 * @param {IZenEditor} editor
+	 */
+	actions.add('matching_pair', function(editor) {
+		var content = String(editor.getContent());
+		var caretPos = editor.getCaretPos();
+		
+		if (content.charAt(caretPos) == '<') 
+			// looks like caret is outside of tag pair  
+			caretPos++;
+			
+		var tags = matcher.getTags(content, caretPos, String(editor.getProfileName()));
+			
+		if (tags && tags[0]) {
+			// match found
+			var openTag = tags[0];
+			var closeTag = tags[1];
+				
+			if (closeTag) { // exclude unary tags
+				if (openTag.start <= caretPos && openTag.end >= caretPos) {
+					editor.setCaretPos(closeTag.start);
+					return true;
+				} else if (closeTag.start <= caretPos && closeTag.end >= caretPos){
+					editor.setCaretPos(openTag.start);
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}, {label: 'HTML/Go To Matching Tag Pair'});
+});/**
+ * Gracefully removes tag under cursor
+ * 
+ * @param {Function} require
+ * @param {Underscore} _ 
+ */
+zen_coding.exec(function(require, _) {
+	require('actions').add('remove_tag', function(editor) {
+		var utils = require('utils');
+		var info = require('editorUtils').outputInfo(editor);
+		
+		// search for tag
+		var pair = require('html_matcher').getTags(info.content, editor.getCaretPos(), info.profile);
+		if (pair && pair[0]) {
+			if (!pair[1]) {
+				// simply remove unary tag
+				editor.replaceContent(utils.getCaretPlaceholder(), pair[0].start, pair[0].end);
+			} else {
+				// remove tag and its newlines
+				/** @type Range */
+				var tagContentRange = utils.narrowToNonSpace(info.content, pair[0].end, pair[1].start - pair[0].end);
+				/** @type Range */
+				var startLineBounds = utils.findNewlineBounds(info.content, tagContentRange.start);
+				var startLinePad = utils.getLinePadding(startLineBounds.substring(info.content));
+				var tagContent = tagContentRange.substring(info.content);
+				
+				tagContent = utils.unindentString(tagContent, startLinePad);
+				editor.replaceContent(utils.getCaretPlaceholder() + tagContent, pair[0].start, pair[1].end);
+			}
+			
+			return true;
+		}
+		
+		return false;
+	}, {label: 'HTML/Remove Tag'});
+});
+/**
  * Splits or joins tag, e.g. transforms it into a short notation and vice versa:<br>
  * &lt;div&gt;&lt;/div&gt; → &lt;div /&gt; : join<br>
  * &lt;div /&gt; → &lt;div&gt;&lt;/div&gt; : split
@@ -8843,295 +8622,528 @@ zen_coding.exec(function(require, _) {
 		return false;
 	}, {label: 'HTML/Split\\Join Tag Declaration'});
 });/**
- * Toggles HTML and CSS comments depending on current caret context. Unlike
- * the same action in most editors, this action toggles comment on currently
- * matched item—HTML tag or CSS selector—when nothing is selected.
- * 
+ * Reflect CSS value: takes rule's value under caret and pastes it for the same 
+ * rules with vendor prefixes
+ * @constructor
+ * @memberOf __reflectCSSActionDefine
  * @param {Function} require
  * @param {Underscore} _
- * @memberOf __toggleCommentAction
- * @constructor
+ */
+zen_coding.define('reflectCSSValue', function(require, _) {
+	/**
+	 * @type HandlerList List of registered handlers
+	 */
+	var handlers = require('handlerList').create();
+	
+	require('actions').add('reflect_css_value', function(editor) {
+		if (editor.getSyntax() != 'css') return false;
+		
+		return require('actionUtils').compoundUpdate(editor, doCSSReflection(editor));
+	}, {label: 'CSS/Reflect Value'});
+	
+	function doCSSReflection(editor) {
+		/** @type zen_coding.cssEditTree */
+		var cssEditTree = require('cssEditTree');
+		var outputInfo = require('editorUtils').outputInfo(editor);
+		var caretPos = editor.getCaretPos();
+		
+		var cssRule = cssEditTree.parseFromPosition(outputInfo.content, caretPos);
+		if (!cssRule) return;
+		
+		var property = cssRule.itemFromPosition(caretPos, true);
+		// no property under cursor, nothing to reflect
+		if (!property) return;
+		
+		var oldRule = cssRule.source;
+		var offset = cssRule.options.offset;
+		var caretDelta = caretPos - offset - property.range().start;
+		
+		handlers.exec(false, [property]);
+		
+		if (oldRule !== cssRule.source) {
+			return {
+				data:  cssRule.source,
+				start: offset,
+				end:   offset + oldRule.length,
+				caret: offset + property.range().start + caretDelta
+			};
+		}
+	}
+	
+	/**
+	 * Returns regexp that should match reflected CSS property names
+	 * @param {String} name Current CSS property name
+	 * @return {RegExp}
+	 */
+	function getReflectedCSSName(name) {
+		name = require('cssEditTree').baseName(name);
+		var vendorPrefix = '^(?:\\-\\w+\\-)?', m;
+		
+		if (name == 'opacity' || name == 'filter') {
+			return new RegExp(vendorPrefix + '(?:opacity|filter)$');
+		} else if (m = name.match(/^border-radius-(top|bottom)(left|right)/)) {
+			// Mozilla-style border radius
+			return new RegExp(vendorPrefix + '(?:' + name + '|border-' + m[1] + '-' + m[2] + '-radius)$');
+		} else if (m = name.match(/^border-(top|bottom)-(left|right)-radius/)) { 
+			return new RegExp(vendorPrefix + '(?:' + name + '|border-radius-' + m[1] + m[2] + ')$');
+		}
+		
+		return new RegExp(vendorPrefix + name + '$');
+	}
+	
+	/**
+	 * Reflects value from <code>donor</code> into <code>receiver</code>
+	 * @param {CSSProperty} donor Donor CSS property from which value should
+	 * be reflected
+	 * @param {CSSProperty} receiver Property that should receive reflected 
+	 * value from donor
+	 */
+	function reflectValue(donor, receiver) {
+		var value = getReflectedValue(donor.name(), donor.value(), 
+				receiver.name(), receiver.value());
+		
+		receiver.value(value);
+	}
+	
+	/**
+	 * Returns value that should be reflected for <code>refName</code> CSS property
+	 * from <code>curName</code> property. This function is used for special cases,
+	 * when the same result must be achieved with different properties for different
+	 * browsers. For example: opаcity:0.5; → filter:alpha(opacity=50);<br><br>
+	 * 
+	 * This function does value conversion between different CSS properties
+	 * 
+	 * @param {String} curName Current CSS property name
+	 * @param {String} curValue Current CSS property value
+	 * @param {String} refName Receiver CSS property's name 
+	 * @param {String} refValue Receiver CSS property's value
+	 * @return {String} New value for receiver property
+	 */
+	function getReflectedValue(curName, curValue, refName, refValue) {
+		var cssEditTree = require('cssEditTree');
+		var utils = require('utils');
+		curName = cssEditTree.baseName(curName);
+		refName = cssEditTree.baseName(refName);
+		
+		if (curName == 'opacity' && refName == 'filter') {
+			return refValue.replace(/opacity=[^)]*/i, 'opacity=' + Math.floor(parseFloat(curValue) * 100));
+		} else if (curName == 'filter' && refName == 'opacity') {
+			var m = curValue.match(/opacity=([^)]*)/i);
+			return m ? utils.prettifyNumber(parseInt(m[1]) / 100) : refValue;
+		}
+		
+		return curValue;
+	}
+	
+	// XXX add default handler
+	handlers.add(function(property) {
+		var reName = getReflectedCSSName(property.name());
+		_.each(property.parent.list(), function(p) {
+			if (reName.test(p.name())) {
+				reflectValue(property, p);
+			}
+		});
+	}, {order: -1});
+	
+	return {
+		/**
+		 * Adds custom reflect handler. The passed function will receive matched
+		 * CSS property (as <code>CSSEditElement</code> object) and should
+		 * return <code>true</code> if it was performed successfully (handled 
+		 * reflection), <code>false</code> otherwise.
+		 * @param {Function} fn
+		 * @param {Object} options
+		 */
+		addHandler: function(fn, options) {
+			handlers.add(fn, options);
+		},
+		
+		/**
+		 * Removes registered handler
+		 * @returns
+		 */
+		removeHandler: function(fn) {
+			handlers.remove(fn, options);
+		}
+	};
+});/**
+ * Evaluates simple math expression under caret
+ * @param {Function} require
+ * @param {Underscore} _ 
+ */
+zen_coding.exec(function(require, _) {
+	require('actions').add('evaluate_math_expression', function(editor) {
+		var actionUtils = require('actionUtils');
+		var utils = require('utils');
+		
+		var content = String(editor.getContent());
+		var chars = '.+-*/\\';
+		
+		/** @type Range */
+		var sel = require('range').create(editor.getSelectionRange());
+		if (!sel.length()) {
+			sel = actionUtils.findExpressionBounds(editor, function(ch) {
+				return utils.isNumeric(ch) || chars.indexOf(ch) != -1;
+			});
+		}
+		
+		if (sel && sel.length()) {
+			var expr = sel.substring(content);
+			
+			// replace integral division: 11\2 => Math.round(11/2) 
+			expr = expr.replace(/([\d\.\-]+)\\([\d\.\-]+)/g, 'Math.round($1/$2)');
+			
+			try {
+				var result = utils.prettifyNumber(new Function('return ' + expr)());
+				editor.replaceContent(result, sel.start, sel.end);
+				editor.setCaretPos(sel.start + result.length);
+				return true;
+			} catch (e) {}
+		}
+		
+		return false;
+	}, {label: 'Numbers/Evaluate Math Expression'});
+});
+/**
+ * Increment/decrement number under cursor
+ * @param {Function} require
+ * @param {Underscore} _
  */
 zen_coding.exec(function(require, _) {
 	/**
-	 * Toggle HTML comment on current selection or tag
+	 * Extract number from current caret position of the <code>editor</code> and
+	 * increment it by <code>step</code>
 	 * @param {IZenEditor} editor
-	 * @return {Boolean} Returns <code>true</code> if comment was toggled
+	 * @param {Number} step Increment step (may be negative)
 	 */
-	function toggleHTMLComment(editor) {
-		/** @type Range */
-		var range = require('range').create(editor.getSelectionRange());
-		var info = require('editorUtils').outputInfo(editor);
+	function incrementNumber(editor, step) {
+		var utils = require('utils');
+		var actionUtils = require('actionUtils');
+		
+		var hasSign = false;
+		var hasDecimal = false;
 			
-		if (!range.length()) {
-			// no selection, find matching tag
-			var pair = require('html_matcher').getTags(info.content, editor.getCaretPos(), info.profile);
-			if (pair && pair[0]) { // found pair
-				range.start = pair[0].start;
-				range.end = pair[1] ? pair[1].end : pair[0].end;
+		var r = actionUtils.findExpressionBounds(editor, function(ch, pos, content) {
+			if (utils.isNumeric(ch))
+				return true;
+			if (ch == '.') {
+				// make sure that next character is numeric too
+				if (!utils.isNumeric(content.charAt(pos + 1)))
+					return false;
+				
+				return hasDecimal ? false : hasDecimal = true;
+			}
+			if (ch == '-')
+				return hasSign ? false : hasSign = true;
+				
+			return false;
+		});
+			
+		if (r && r.length()) {
+			var num = parseFloat(r.substring(String(editor.getContent())));
+			if (!isNaN(num)) {
+				num = utils.prettifyNumber(num + step);
+				editor.replaceContent(num, r.start, r.end);
+				editor.createSelection(r.start, r.start + num.length);
+				return true;
 			}
 		}
 		
-		return genericCommentToggle(editor, '<!--', '-->', range);
+		return false;
 	}
-
+	
+	var actions = require('actions');
+	_.each([1, -1, 10, -10, 0.1, -0.1], function(num) {
+		var prefix = num > 0 ? 'increment' : 'decrement';
+		
+		actions.add(prefix + '_number_by_' + String(Math.abs(num)).replace('.', '').substring(0, 2), function(editor) {
+			return incrementNumber(editor, num);
+		}, {label: 'Numbers/' + prefix.charAt(0).toUpperCase() + prefix.substring(1) + ' number by ' + Math.abs(num)});
+	});
+});/**
+ * Actions to insert line breaks. Some simple editors (like browser's 
+ * &lt;textarea&gt;, for example) do not provide such simple things
+ * @param {Function} require
+ * @param {Underscore} _
+ */
+zen_coding.exec(function(require, _) {
+	var actions = require('actions');
+	/** @type zen_coding.preferences */
+	var prefs = require('preferences');
+	
+	// setup default preferences
+	prefs.set('css.closeBraceIndentation', '\n',
+			'Indentation before closing brace of CSS rule. Some users prefere' 
+			+ 'indented closing brace of CSS rule for better readability. '
+			+ 'This preference’s value will be automatically inserted before '
+			+ 'closing brace when user adds newline in newly created CSS rule '
+			+ '(e.g. when “Insert formatted linebreak” action will be performed ' 
+			+ 'in CSS file). If you’re such user, you may want to write put a value ' 
+			+ 'like <code>\\n\\t</code> in this preference.');
+	
 	/**
-	 * Simple CSS commenting
+	 * Inserts newline character with proper indentation in specific positions only.
 	 * @param {IZenEditor} editor
-	 * @return {Boolean} Returns <code>true</code> if comment was toggled
+	 * @return {Boolean} Returns <code>true</code> if line break was inserted 
 	 */
-	function toggleCSSComment(editor) {
-		/** @type Range */
-		var range = require('range').create(editor.getSelectionRange());
+	actions.add('insert_formatted_line_break_only', function(editor) {
+		var utils = require('utils');
+		/** @type zen_coding.resources */
+		var res = require('resources');
+		
 		var info = require('editorUtils').outputInfo(editor);
+		var caretPos = editor.getCaretPos();
+		var nl = utils.getNewline();
+		
+		if (info.syntax == 'html') {
+			var pad = res.getVariable('indentation');
+			// let's see if we're breaking newly created tag
+			var pair = require('html_matcher').getTags(info.content, caretPos, info.profile);
 			
-		if (!range.length()) {
-			// no selection, try to get current rule
-			/** @type CSSRule */
-			var rule = require('cssEditTree').parseFromPosition(info.content, editor.getCaretPos());
-			if (rule) {
-				var property = rule.itemFromPosition(editor.getCaretPos(), true);
-				range = property 
-					? property.range(true) 
-					: require('range').create(rule.nameRange(true).start, rule.source);
+			if (pair[0] && pair[1] && pair[0].type == 'tag' && pair[0].end == caretPos && pair[1].start == caretPos) {
+				editor.replaceContent(nl + pad + utils.getCaretPlaceholder() + nl, caretPos);
+				return true;
+			}
+		} else if (info.syntax == 'css') {
+			/** @type String */
+			var content = info.content;
+			if (caretPos && content.charAt(caretPos - 1) == '{') {
+				var append = prefs.get('css.closeBraceIndentation');
+				var pad = res.getVariable('indentation');
+				
+				var hasCloseBrace = content.charAt(caretPos) == '}';
+				if (!hasCloseBrace) {
+					// do we really need special formatting here?
+					// check if this is really a newly created rule,
+					// look ahead for a closing brace
+					for (var i = caretPos, il = content.length, ch; i < il; i++) {
+						ch = content.charAt(i);
+						if (ch == '{') {
+							// ok, this is a new rule without closing brace
+							break;
+						}
+						
+						if (ch == '}') {
+							// not a new rule, just add indentation
+							append = '';
+							hasCloseBrace = true;
+							break;
+						}
+					}
+				}
+				
+				if (!hasCloseBrace) {
+					append += '}';
+				}
+				
+				// defining rule set
+				var insValue = nl + pad + utils.getCaretPlaceholder() + append;
+				editor.replaceContent(insValue, caretPos);
+				return true;
 			}
 		}
-		
-		if (!range.length()) {
-			// still no selection, get current line
-			range = require('range').create(editor.getCurrentLineRange());
-			require('utils').narrowToNonSpace(info.content, range);
-		}
-		
-		return genericCommentToggle(editor, '/*', '*/', range);
-	}
-
+			
+		return false;
+	}, {hidden: true});
+	
 	/**
-	 * Search for nearest comment in <code>str</code>, starting from index <code>from</code>
-	 * @param {String} text Where to search
-	 * @param {Number} from Search start index
-	 * @param {String} start_token Comment start string
-	 * @param {String} end_token Comment end string
-	 * @return {Range} Returns null if comment wasn't found
+	 * Inserts newline character with proper indentation. This action is used in
+	 * editors that doesn't have indentation control (like textarea element) to 
+	 * provide proper indentation
+	 * @param {IZenEditor} editor Editor instance
 	 */
-	function searchComment(text, from, startToken, endToken) {
-		var commentStart = -1;
-		var commentEnd = -1;
-		
-		var hasMatch = function(str, start) {
-			return text.substr(start, str.length) == str;
-		};
+	actions.add('insert_formatted_line_break', function(editor) {
+		if (!actions.run('insert_formatted_line_break_only', editor)) {
+			var utils = require('utils');
 			
-		// search for comment start
-		while (from--) {
-			if (hasMatch(startToken, from)) {
-				commentStart = from;
-				break;
+			var curPadding = require('editorUtils').getCurrentLinePadding(editor);
+			var content = String(editor.getContent());
+			var caretPos = editor.getCaretPos();
+			var len = content.length;
+			var nl = utils.getNewline();
+				
+			// check out next line padding
+			var lineRange = editor.getCurrentLineRange();
+			var nextPadding = '';
+				
+			for (var i = lineRange.end + 1, ch; i < len; i++) {
+				ch = content.charAt(i);
+				if (ch == ' ' || ch == '\t')
+					nextPadding += ch;
+				else
+					break;
+			}
+			
+			if (nextPadding.length > curPadding.length)
+				editor.replaceContent(nl + nextPadding, caretPos, caretPos, true);
+			else
+				editor.replaceContent(nl, caretPos);
+		}
+		
+		return true;
+	}, {hidden: true});
+});/**
+ * Merges selected lines or lines between XHTML tag pairs
+ * @param {Function} require
+ * @param {Underscore} _
+ */
+zen_coding.exec(function(require, _) {
+	require('actions').add('merge_lines', function(editor) {
+		var matcher = require('html_matcher');
+		var utils = require('utils');
+		var editorUtils = require('editorUtils');
+		var info = editorUtils.outputInfo(editor);
+		
+		/** @type Range */
+		var selection = require('range').create(editor.getSelectionRange());
+		if (!selection.length()) {
+			// find matching tag
+			var pair = matcher(info.content, editor.getCaretPos(), info.profile);
+			if (pair) {
+				selection.start = pair[0];
+				selection.end = pair[1];
 			}
 		}
 		
-		if (commentStart != -1) {
-			// search for comment end
-			from = commentStart;
-			var contentLen = text.length;
-			while (contentLen >= from++) {
-				if (hasMatch(endToken, from)) {
-					commentEnd = from + endToken.length;
+		if (selection.length()) {
+			// got range, merge lines
+			var text =  selection.substring(info.content);
+			var lines = utils.splitByLines(text);
+			
+			for (var i = 1; i < lines.length; i++) {
+				lines[i] = lines[i].replace(/^\s+/, '');
+			}
+			
+			text = lines.join('').replace(/\s{2,}/, ' ');
+			editor.replaceContent(text, selection.start, selection.end);
+			editor.createSelection(selection.start, selection.start + text.length);
+			
+			return true;
+		}
+		
+		return false;
+	});
+});/**
+ * Encodes/decodes image under cursor to/from base64
+ * @param {IZenEditor} editor
+ * @since 0.65
+ * 
+ * @memberOf __base64ActionDefine
+ * @constructor
+ * @param {Function} require
+ * @param {Underscore} _
+ */
+zen_coding.exec(function(require, _) {
+	require('actions').add('encode_decode_data_url', function(editor) {
+		var data = String(editor.getSelection());
+		var caretPos = editor.getCaretPos();
+			
+		if (!data) {
+			// no selection, try to find image bounds from current caret position
+			var text = String(editor.getContent()),  m;
+			while (caretPos-- >= 0) {
+				if (startsWith('src=', text, caretPos)) { // found <img src="">
+					if (m = text.substr(caretPos).match(/^(src=(["'])?)([^'"<>\s]+)\1?/)) {
+						data = m[3];
+						caretPos += m[1].length;
+					}
+					break;
+				} else if (startsWith('url(', text, caretPos)) { // found CSS url() pattern
+					if (m = text.substr(caretPos).match(/^(url\((['"])?)([^'"\)\s]+)\1?/)) {
+						data = m[3];
+						caretPos += m[1].length;
+					}
 					break;
 				}
 			}
 		}
 		
-		return (commentStart != -1 && commentEnd != -1) 
-			? require('range').create(commentStart, commentEnd - commentStart) 
-			: null;
-	}
-
+		if (data) {
+			if (startsWith('data:', data))
+				return decodeFromBase64(editor, data, caretPos);
+			else
+				return encodeToBase64(editor, data, caretPos);
+		}
+		
+		return false;
+	}, {label: 'Encode\\Decode data:URL image'});
+	
 	/**
-	 * Generic comment toggling routine
+	 * Test if <code>text</code> starts with <code>token</code> at <code>pos</code>
+	 * position. If <code>pos</code> is ommited, search from beginning of text 
+	 * @param {String} token Token to test
+	 * @param {String} text Where to search
+	 * @param {Number} pos Position where to start search
+	 * @return {Boolean}
+	 * @since 0.65
+	 */
+	function startsWith(token, text, pos) {
+		pos = pos || 0;
+		return text.charAt(pos) == token.charAt(0) && text.substr(pos, token.length) == token;
+	}
+	
+	/**
+	 * Encodes image to base64
+	 * @requires zen_file
+	 * 
 	 * @param {zen_editor} editor
-	 * @param {String} commentStart Comment start token
-	 * @param {String} commentEnd Comment end token
-	 * @param {Range} range Selection range
+	 * @param {String} imgPath Path to image
+	 * @param {Number} pos Caret position where image is located in the editor
 	 * @return {Boolean}
 	 */
-	function genericCommentToggle(editor, commentStart, commentEnd, range) {
-		var editorUtils = require('editorUtils');
-		var content = editorUtils.outputInfo(editor).content;
-		var caretPos = editor.getCaretPos();
-		var newContent = null;
+	function encodeToBase64(editor, imgPath, pos) {
+		var file = require('file');
+		var actionUtils = require('actionUtils');
 		
-		var utils = require('utils');
+		var editorFile = editor.getFilePath();
+		var defaultMimeType = 'application/octet-stream';
 			
-		/**
-		 * Remove comment markers from string
-		 * @param {Sting} str
-		 * @return {String}
-		 */
-		function removeComment(str) {
-			return str
-				.replace(new RegExp('^' + utils.escapeForRegexp(commentStart) + '\\s*'), function(str){
-					caretPos -= str.length;
-					return '';
-				}).replace(new RegExp('\\s*' + utils.escapeForRegexp(commentEnd) + '$'), '');
+		if (editorFile === null) {
+			throw "You should save your file before using this action";
 		}
 		
-		// first, we need to make sure that this substring is not inside 
-		// comment
-		var commentRange = searchComment(content, caretPos, commentStart, commentEnd);
-		if (commentRange && commentRange.overlap(range)) {
-			// we're inside comment, remove it
-			range = commentRange;
-			newContent = removeComment(range.substring(content));
-		} else {
-			// should add comment
-			// make sure that there's no comment inside selection
-			newContent = commentStart + ' ' +
-				range.substring(content)
-					.replace(new RegExp(utils.escapeForRegexp(commentStart) + '\\s*|\\s*' + utils.escapeForRegexp(commentEnd), 'g'), '') +
-				' ' + commentEnd;
-				
-			// adjust caret position
-			caretPos += commentStart.length + 1;
-		}
-
-		// replace editor content
-		if (newContent !== null) {
-			editor.setCaretPos(range.start);
-			editor.replaceContent(editorUtils.unindent(editor, newContent), range.start, range.end);
-			editor.setCaretPos(caretPos);
-			return true;
+		// locate real image path
+		var realImgPath = file.locateFile(editorFile, imgPath);
+		if (realImgPath === null) {
+			throw "Can't find " + imgPath + ' file';
 		}
 		
-		return false;
+		var b64 = require('base64').encode(String(file.read(realImgPath)));
+		if (!b64) {
+			throw "Can't encode file content to base64";
+		}
+		
+		b64 = 'data:' + (actionUtils.mimeTypes[String(file.getExt(realImgPath))] || defaultMimeType) +
+			';base64,' + b64;
+			
+		editor.replaceContent('$0' + b64, pos, pos + imgPath.length);
+		return true;
 	}
-	
+
 	/**
-	 * Toggle comment on current editor's selection or HTML tag/CSS rule
+	 * Decodes base64 string back to file.
 	 * @param {IZenEditor} editor
+	 * @param {String} data Base64-encoded file content
+	 * @param {Number} pos Caret position where image is located in the editor
 	 */
-	require('actions').add('toggle_comment', function(editor) {
-		var info = require('editorUtils').outputInfo(editor);
-		if (info.syntax == 'css') {
-			// in case our editor is good enough and can recognize syntax from 
-			// current token, we have to make sure that cursor is not inside
-			// 'style' attribute of html element
-			var caretPos = editor.getCaretPos();
-			var pair = require('html_matcher').getTags(info.content, caretPos);
-			if (pair && pair[0] && pair[0].type == 'tag' && 
-					pair[0].start <= caretPos && pair[0].end >= caretPos) {
-				info.syntax = 'html';
-			}
+	function decodeFromBase64(editor, data, pos) {
+		// ask user to enter path to file
+		var filePath = String(editor.prompt('Enter path to file (absolute or relative)'));
+		if (!filePath)
+			return false;
+			
+		var file = require('file');
+		var absPath = file.createPath(editor.getFilePath(), filePath);
+		if (!absPath) {
+			throw "Can't save file";
 		}
 		
-		if (info.syntax == 'css')
-			return toggleCSSComment(editor);
-		
-		return toggleHTMLComment(editor);
-	});
-});/**
- * Action that wraps content with abbreviation. For convenience, action is 
- * defined as reusable module
- * @constructor
- * @memberOf __wrapWithAbbreviationDefine
- */
-zen_coding.define('wrapWithAbbreviation', function(require, _) {
-	/**
-	 * Wraps content with abbreviation
-	 * @param {IZenEditor} Editor instance
-	 * @param {String} abbr Abbreviation to wrap with
-	 * @param {String} syntax Syntax type (html, css, etc.)
-	 * @param {String} profile Output profile name (html, xml, xhtml)
-	 */
-	require('actions').add('wrap_with_abbreviation', function (editor, abbr, syntax, profile) {
-		var info = require('editorUtils').outputInfo(editor, syntax, profile);
-		var utils = require('utils');
-		/** @type zen_coding.editorUtils */
-		var editorUtils = require('editorUtils');
-		var matcher = require('html_matcher');
-		
-		abbr = abbr || editor.prompt("Enter abbreviation");
-		
-		if (!abbr) 
-			return null;
-		
-		abbr = String(abbr);
-		
-		var range = editor.getSelectionRange();
-		var startOffset = range.start;
-		var endOffset = range.end;
-		
-		if (startOffset == endOffset) {
-			// no selection, find tag pair
-			range = matcher(info.content, startOffset, info.profile);
-			
-			if (!range || range[0] == -1) // nothing to wrap
-				return false;
-			
-			/** @type Range */
-			var narrowedSel = utils.narrowToNonSpace(info.content, range[0], range[1]);
-			startOffset = narrowedSel.start;
-			endOffset = narrowedSel.end;
-		}
-		
-		var newContent = utils.escapeText(info.content.substring(startOffset, endOffset));
-		var result = require('wrapWithAbbreviation').wrap(abbr, editorUtils.unindent(editor, newContent), info.syntax, info.profile);
-		
-		if (result) {
-			editor.setCaretPos(endOffset);
-			editor.replaceContent(result, startOffset, endOffset);
-			return true;
-		}
-		
-		return false;
-	});
-	
-	return {
-		/**
-		 * Wraps passed text with abbreviation. Text will be placed inside last
-		 * expanded element
-		 * @memberOf zen_coding.wrapWithAbbreviation
-		 * @param {String} abbr Abbreviation
-		 * @param {String} text Text to wrap
-		 * @param {String} syntax Document type (html, xml, etc.). Default is 'html'
-		 * @param {String} profile Output profile's name. Default is 'plain'
-		 * @return {String}
-		 */
-		wrap: function(abbr, text, syntax, profile) {
-			/** @type zen_coding.filters */
-			var filters = require('filters');
-			/** @type zen_coding.utils */
-			var utils = require('utils');
-			/** @type zen_coding.transform */
-			var transform = require('transform');
-			
-			var pasted = false;
-			
-			syntax = syntax || zen_coding.defaultSyntax();
-			profile = profile || zen_coding.defaultProfile();
-			
-			var data = filters.extractFromAbbreviation(abbr);
-			var parsedTree = transform.createParsedTree(data[0], syntax);
-			if (parsedTree) {
-				if (parsedTree.multiply_elem) {
-					// we have a repeating element, put content in
-					parsedTree.multiply_elem.setPasteContent(text);
-					parsedTree.multiply_elem.repeat_by_lines = pasted = true;
-				}
-				
-				var outputTree = transform.rolloutTree(parsedTree);
-				if (!pasted) 
-					outputTree.pasteContent(text);
-				
-				var filtersList = filters.composeList(syntax, profile, data[1]);
-				filters.apply(outputTree, filtersList, profile);
-				return utils.replaceVariables(outputTree.toString());
-			}
-			
-			return null;
-		}
-	};
-});/**
+		file.save(absPath, require('base64').decode( data.replace(/^data\:.+?;.+?,/, '') ));
+		editor.replaceContent('$0' + filePath, pos, pos + data.length);
+		return true;
+	}
+});
+/**
  * Automatically updates image size attributes in HTML's &lt;img&gt; element or
  * CSS rule
  * @param {Function} require

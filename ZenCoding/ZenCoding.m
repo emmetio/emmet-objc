@@ -18,7 +18,7 @@
 - (NSDictionary *)settingsFromDefaults;
 - (void)shouldReloadContext:(NSNotification *)notification;
 - (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
-- (void)createMenuItemsFromDict:(NSDictionary *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target;
+- (void)createMenuItemsFromArray:(NSArray *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target;
 @end
 
 @implementation ZenCoding
@@ -313,6 +313,10 @@ static ZenCoding *instance = nil;
 	return result;
 }
 
+- (NSArray *)actionsList {
+	return [jsc toObject:[self evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil]];
+}
+
 // returns Zen Coding actions as menu
 - (NSMenu *)actionsMenu {
 	return [self actionsMenuWithAction:@selector(performMenuAction:) forTarget:self];
@@ -320,28 +324,27 @@ static ZenCoding *instance = nil;
 
 - (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target {
 	NSMenu *rootMenu = [[NSMenu alloc] initWithTitle:@"Zen Coding"];
-	
-	NSDictionary *items = [jsc toObject:[self evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil]];
-	[self createMenuItemsFromDict:items forMenu:rootMenu withAction:action ofTarget:target];
+	[self createMenuItemsFromArray:[self actionsList] forMenu:rootMenu withAction:action ofTarget:target];
 	return [rootMenu autorelease];
 }
 
-- (void)createMenuItemsFromDict:(NSDictionary *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target {
-	[dict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+- (void)createMenuItemsFromArray:(NSArray *)items forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target {
+	[items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		NSDictionary *objDict = (NSDictionary *)obj;
 		if ([[objDict objectForKey:@"type"] isEqual:@"submenu"]) {
 			// create submenu
-			NSMenu *submenu = [[NSMenu alloc] initWithTitle:key];
-			[self createMenuItemsFromDict:[objDict objectForKey:@"items"] forMenu:submenu withAction:action ofTarget:target];
+			NSString *submenuName = [objDict valueForKey:@"name"];
+			NSMenu *submenu = [[NSMenu alloc] initWithTitle:submenuName];
+			[self createMenuItemsFromArray:[objDict objectForKey:@"items"] forMenu:submenu withAction:action ofTarget:target];
 			
-			NSMenuItem *submenuItem = [[NSMenuItem alloc] initWithTitle:key action:NULL keyEquivalent:@""];
+			NSMenuItem *submenuItem = [[NSMenuItem alloc] initWithTitle:submenuName action:NULL keyEquivalent:@""];
 			[menu addItem:submenuItem];
 			[submenuItem setSubmenu:submenu];
 			
 			[submenu release];
 			[submenuItem release];
 		} else {
-			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:key action:action keyEquivalent:@""];
+			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:[objDict valueForKey:@"label"] action:action keyEquivalent:@""];
 			[actionItem setTarget:target];
 			[menu addItem:actionItem];
 			[actionItem release];

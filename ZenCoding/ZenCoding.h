@@ -24,6 +24,7 @@
 - (JSValueRef)evalFunction:(NSString *)funcName withArguments:arguments, ... NS_REQUIRES_NIL_TERMINATION;
 
 // returns Zen Coding actions as menu
+- (NSArray *)actionsList;
 - (NSMenu *)actionsMenu;
 - (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target;
 - (void)performMenuAction:(id)sender;
