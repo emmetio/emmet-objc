@@ -11,6 +11,7 @@
 #import "ZenCodingPromptDialogController.h"
 #import "ZenCodingPreferences.h"
 #import "ZenCodingDefaultsKeys.h"
+#import "ZenCodingFile.h"
 
 #define TabKeyCode 48
 #define NoFlags (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask)

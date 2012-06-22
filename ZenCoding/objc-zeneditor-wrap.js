@@ -178,10 +178,7 @@ var objcZenEditor = (function() {
 		 * @since 0.65 
 		 */
 		getFilePath: function() {
-			if ('filePath' in ctx)
-				return ctx.filePath();
-
-			return '';
+			return ctx.filePath();
 		}
 	};
 })();

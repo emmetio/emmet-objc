@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		A51BD42E150E62C40041002F /* SnippetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51BD42D150E62C40041002F /* SnippetEditor.xib */; };
 		A51BD42F150E62C40041002F /* SnippetEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51BD42D150E62C40041002F /* SnippetEditor.xib */; };
+		A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A562B88B1595007C007F9044 /* ZenCodingFile.h */; };
+		A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
+		A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
+		A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
+		A562B89615951696007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
+		A562B897159516A8007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
+		A562B898159516B1007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A5639FCD150A48EF00388173 /* ZenCodingPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5639FCE150A48EF00388173 /* ZenCodingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */; };
 		A5639FCF150A48EF00388173 /* ZenCodingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */; };
@@ -134,6 +141,9 @@
 		A51BD42D150E62C40041002F /* SnippetEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SnippetEditor.xib; sourceTree = "<group>"; };
 		A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPromptDialogController.h; sourceTree = "<group>"; };
 		A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPromptDialogController.m; sourceTree = "<group>"; };
+		A562B88B1595007C007F9044 /* ZenCodingFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingFile.h; sourceTree = "<group>"; };
+		A562B88C1595007C007F9044 /* ZenCodingFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingFile.m; sourceTree = "<group>"; };
+		A562B8921595022F007F9044 /* file-interface.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "file-interface.js"; sourceTree = "<group>"; };
 		A5639FCB150A48EF00388173 /* ZenCodingPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPreferences.h; sourceTree = "<group>"; };
 		A5639FCC150A48EF00388173 /* ZenCodingPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPreferences.m; sourceTree = "<group>"; };
 		A5639FD8150AAB3000388173 /* ZenCodingArrayTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingArrayTransformer.h; sourceTree = "<group>"; };
@@ -346,6 +356,8 @@
 				A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
 				A5DB235615133CF6009979C2 /* Transformers */,
+				A562B88B1595007C007F9044 /* ZenCodingFile.h */,
+				A562B88C1595007C007F9044 /* ZenCodingFile.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -405,6 +417,7 @@
 				A57C4A02158BEED300566A1C /* snippets.json */,
 				A5B91ACA14E82952002FA697 /* zencoding.js */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
+				A562B8921595022F007F9044 /* file-interface.js */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -451,6 +464,7 @@
 				A596306315190223000D1A01 /* NSDictionary+Merge.h in Headers */,
 				A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */,
 				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
+				A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A562B898159516B1007F9044 /* file-interface.js in Resources */,
 				A57C4BC4158DCF0A00566A1C /* class.js in Resources */,
 				A57C4BC5158DCF0A00566A1C /* jslint-jscocoa.js in Resources */,
 				A57C4BC6158DCF0A00566A1C /* PromptDialog.xib in Resources */,
@@ -562,6 +577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A562B89615951696007F9044 /* file-interface.js in Resources */,
 				A5D2751614F000FA00B3816D /* InfoPlist.strings in Resources */,
 				A5D2751C14F000FA00B3816D /* Credits.rtf in Resources */,
 				A5D2753314F0041600B3816D /* zencoding.js in Resources */,
@@ -584,6 +600,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A562B897159516A8007F9044 /* file-interface.js in Resources */,
 				A5D2755A14F0056F00B3816D /* class.js in Resources */,
 				A5D2755B14F0057200B3816D /* jslint-jscocoa.js in Resources */,
 				A5D2755C14F0057400B3816D /* zencoding.js in Resources */,
@@ -624,6 +641,7 @@
 				A57C4BC2158DCEB400566A1C /* ZenCodingSyntaxNameTransformer.m in Sources */,
 				A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */,
 				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
+				A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +668,7 @@
 				A596306415190223000D1A01 /* NSDictionary+Merge.m in Sources */,
 				A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
+				A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -674,6 +693,7 @@
 				A596306515190223000D1A01 /* NSDictionary+Merge.m in Sources */,
 				A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
+				A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

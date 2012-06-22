@@ -9,6 +9,7 @@
 #import "ZenCoding.h"
 #import "ZenCodingDefaultsKeys.h"
 #import "ZenCodingNotifications.h"
+#import "ZenCodingFile.h"
 #import "NSMutableDictionary+ZCUtils.h"
 #import "JSONKit.h"
 
@@ -74,7 +75,10 @@ static ZenCoding *instance = nil;
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
+	[jsc evalJSFile:[bundle pathForResource:@"file-interface" ofType:@"js"]];
 	[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
+	
+	[self evalFunction:@"zen_coding.require('file').setContext" withArguments:[ZenCodingFile class], nil];
 	
 	// load system snippets
 	NSString *snippetsJSON = [NSString 
