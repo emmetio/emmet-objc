@@ -58,7 +58,7 @@
 	if (end <= [[self string] length]) {
 		// extract tabstops and clean-up output
 		ZenCoding *zc = [ZenCoding sharedInstance];
-		JSValueRef output = [zc evalFunction:@"zen_coding.require('tabStops').extract" withArguments:value, nil];
+		JSValueRef output = [zc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
 		NSDictionary *tabstopData = [zc.jsc toObject:output];
 		value = [tabstopData valueForKey:@"text"];

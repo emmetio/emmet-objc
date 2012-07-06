@@ -89,7 +89,7 @@ var objcZenEditor = (function() {
 		 * @return {String}
 		 */
 		getCurrentLine: function() {
-			return ctx.currentLine();
+			return objcToString(ctx.currentLine());
 		},
 		
 		/**
@@ -134,7 +134,7 @@ var objcZenEditor = (function() {
 		 * @return {String}
 		 */
 		getContent: function(){
-			return ctx.content();
+			return objcToString(ctx.content());
 		},
 		
 		/**
@@ -142,7 +142,7 @@ var objcZenEditor = (function() {
 		 * @return {String}
 		 */
 		getSyntax: function(){
-			return ctx.syntax();
+			return objcToString(ctx.syntax());
 		},
 		
 		/**
@@ -150,7 +150,7 @@ var objcZenEditor = (function() {
 		 * @return {String}
 		 */
 		getProfileName: function() {
-			return ctx.profileName();
+			return objcToString(ctx.profileName());
 		},
 		
 		/**
@@ -169,7 +169,7 @@ var objcZenEditor = (function() {
 		 * @since 0.65
 		 */
 		getSelection: function() {
-			return ctx.selection();
+			return objcToString(ctx.selection());
 		},
 		
 		/**
@@ -182,6 +182,12 @@ var objcZenEditor = (function() {
 		}
 	};
 })();
+
+function  objcToString(str) {
+	return str && str.length() 
+		? String(str) 
+		: '';
+}
 
 function objcRunAction(name) {
 	return zen_coding.require('actions').run(String(name), objcZenEditor);
@@ -217,4 +223,12 @@ function objcLoadSystemSnippets(data) {
 	if (data) {
 		zen_coding.require('resources').setVocabulary(objcToJSON(data), 'system');
 	}
+}
+
+function objcExtractTabstopsOnInsert(text) {
+	return zen_coding.require('tabStops').extract(String(text), {
+	  escpe: function(ch) {
+		  return ch;
+	  }
+	});
 }
