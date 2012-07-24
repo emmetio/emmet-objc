@@ -7,21 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JSCocoa.h"
+#import "ZenCodingJSContext.h"
 
 @interface ZenCoding : NSObject {
 	id context;
-	JSCocoa *jsc;
+	id<ZenCodingJSContext> jsc;
 	NSString *extensionsPath;
 }
 
 @property (nonatomic, retain) id context;
-@property (nonatomic, readonly, retain) JSCocoa *jsc;
+@property (nonatomic, readonly, retain) id<ZenCodingJSContext> jsc;
 @property (nonatomic, retain) NSString *extensionsPath;
 
 + (ZenCoding *)sharedInstance;
++ (void)setJSContextDelegateClass:(Class)class;
+
+// runs Zen Coding’s JS action
 - (BOOL)runAction:name;
-- (JSValueRef)evalFunction:(NSString *)funcName withArguments:arguments, ... NS_REQUIRES_NIL_TERMINATION;
 
 // returns Zen Coding actions as menu
 - (NSArray *)actionsList;

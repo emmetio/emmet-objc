@@ -12,6 +12,7 @@
 #import "ZenCodingPreferences.h"
 #import "ZenCodingDefaultsKeys.h"
 #import "ZenCodingFile.h"
+#import "JSCocoaDelegate.h"
 
 #define TabKeyCode 48
 #define NoFlags (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask)
@@ -21,6 +22,7 @@
 @synthesize window;
 
 + (void)initialize {
+	[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
 	// Load Zen Coding preferences defaults
 	[ZenCodingPreferences loadDefaults];
 }

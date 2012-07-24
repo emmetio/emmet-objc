@@ -58,9 +58,10 @@
 	if (end <= [[self string] length]) {
 		// extract tabstops and clean-up output
 		ZenCoding *zc = [ZenCoding sharedInstance];
-		JSValueRef output = [zc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
-		NSDictionary *tabstopData = [zc.jsc toObject:output];
+		id output = [zc.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
+		
+		NSDictionary *tabstopData = [zc.jsc convertJSObject:output toNativeType:@"object"];
 		value = [tabstopData valueForKey:@"text"];
 		[self replaceCharactersInRange:NSMakeRange(start, end - start) withString:value];
 		

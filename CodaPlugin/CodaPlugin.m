@@ -8,6 +8,7 @@
 
 #import "CodaPlugin.h"
 #import "CodaZenEditor.h"
+#import "JSCocoaDelegate.h"
 #import <ZenCoding/ZenCoding.h>
 
 #define TabKeyCode 48
@@ -43,6 +44,7 @@
 - (id)initWithController:(CodaPlugInsController *)aController {
 	if ((self = [super init]) != nil) {
 		controller = aController;
+		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
 		[ZenCodingPreferences loadDefaults];
 		editor = [[CodaZenEditor alloc] initWithCodaView:nil];
 		[[ZenCoding sharedInstance] setContext:editor];

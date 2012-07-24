@@ -24,6 +24,8 @@
 	<string>1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2012 Sergey Chikuyonok. All rights reserved.</string>
+	<key>ZCJavascriptDelegateClass</key>
+	<string>ZenCodingJSContext</string>
 	<key>NSPrincipalClass</key>
 	<string>ZenCoding</string>
 </dict>

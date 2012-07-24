@@ -52,7 +52,8 @@
 	if ([self filePath]) {
 		NSString *ext = [[[self filePath] pathExtension] lowercaseString];
 		ZenCoding *zc = [ZenCoding sharedInstance];
-		if ([zc.jsc toBool:[zc evalFunction:@"zen_coding.require('resources').hasSyntax" withArguments:ext, nil]]) {
+		id jsSyntax = [zc.jsc evalFunction:@"zen_coding.require('resources').hasSyntax" withArguments:ext, nil];
+		if ([zc.jsc convertJSObject:jsSyntax toNativeType:@"bool"]) {
 			return ext;
 		}
 	}
@@ -80,9 +81,10 @@
 		
 		// extract tabstops and clean-up output
 		ZenCoding *zc = [ZenCoding sharedInstance];
-		JSValueRef output = [zc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
-		NSDictionary *tabstopData = [zc.jsc toObject:output];
+		id output = [zc.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
+		
+		NSDictionary *tabstopData = [zc.jsc convertJSObject:output toNativeType:@"object"];
 		value = [tabstopData valueForKey:@"text"];
 		[self.tv replaceCharactersInRange:NSMakeRange(start, end - start) withString:value];
 		

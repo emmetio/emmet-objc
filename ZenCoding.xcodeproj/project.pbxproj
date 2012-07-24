@@ -28,6 +28,7 @@
 		A5639FFF150E9A2700388173 /* ZenCodingSnippetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5639FFD150E9A2700388173 /* ZenCodingSnippetEditor.h */; };
 		A563A000150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
 		A563A001150E9A2700388173 /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */; };
+		A5692A8C159795680015FA68 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A57C4A03158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -76,6 +77,11 @@
 		A596306F1519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A59630701519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
+		A5BE71DB15BF403E009CF514 /* ZenCodingJSContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */; };
+		A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */; };
+		A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
+		A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
+		A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A5C6BD81150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5C6BD82150A2BC200507968 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C6BD80150A2BC200507968 /* Preferences.xib */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -154,8 +160,20 @@
 		A5639FFE150E9A2700388173 /* ZenCodingSnippetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSnippetEditor.m; sourceTree = "<group>"; };
 		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
+		A5692A8B159795680015FA68 /* Zen Coding.sugar */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Zen Coding.sugar"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5692A8F159795680015FA68 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		A5692A90159795680015FA68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5692A97159796590015FA68 /* EspressoActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoActions.h; sourceTree = "<group>"; };
+		A5692A98159796590015FA68 /* EspressoDocumentActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoDocumentActions.h; sourceTree = "<group>"; };
+		A5692A99159796590015FA68 /* EspressoFileActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoFileActions.h; sourceTree = "<group>"; };
+		A5692A9A159796590015FA68 /* EspressoItemizerCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoItemizerCore.h; sourceTree = "<group>"; };
+		A5692A9B159796590015FA68 /* EspressoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoSDK.h; sourceTree = "<group>"; };
+		A5692A9C159796590015FA68 /* EspressoSyntaxCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoSyntaxCore.h; sourceTree = "<group>"; };
+		A5692A9D159796590015FA68 /* EspressoTextActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoTextActions.h; sourceTree = "<group>"; };
+		A5692A9E159796590015FA68 /* EspressoTextCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoTextCore.h; sourceTree = "<group>"; };
+		A5692A9F159796590015FA68 /* MRRangeSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRRangeSet.h; sourceTree = "<group>"; };
+		A5692AA0159796590015FA68 /* NSString+MRFoundation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MRFoundation.h"; sourceTree = "<group>"; };
 		A57C4A02158BEED300566A1C /* snippets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snippets.json; sourceTree = "<group>"; };
-		A57C4A5B158CE0A500566A1C /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCoding.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CodaPlugin-Info.plist"; sourceTree = "<group>"; };
 		A57C4BA5158DC6BB00566A1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -182,6 +200,9 @@
 		A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
 		A5AB74E514EE56BE00A59617 /* PromptDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptDialog.xib; sourceTree = "<group>"; };
 		A5B91ACA14E82952002FA697 /* zencoding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zencoding.js; sourceTree = "<group>"; };
+		A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingJSContext.h; sourceTree = "<group>"; };
+		A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaDelegate.h; sourceTree = "<group>"; };
+		A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaDelegate.m; sourceTree = "<group>"; };
 		A5C6BD80150A2BC200507968 /* Preferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Preferences.xib; sourceTree = "<group>"; };
 		A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
 		A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
@@ -222,6 +243,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A5692A87159795680015FA68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5692A8C159795680015FA68 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A57C4B9C158DC6BB00566A1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -252,6 +281,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5692A8D159795680015FA68 /* EspressoPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				A5692A96159796490015FA68 /* Headers */,
+				A5692A91159795680015FA68 /* XML Based */,
+				A5692A8E159795680015FA68 /* Supporting Files */,
+			);
+			path = EspressoPlugin;
+			sourceTree = "<group>";
+		};
+		A5692A8E159795680015FA68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5692A8F159795680015FA68 /* Prefix.pch */,
+				A5692A90159795680015FA68 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5692A91159795680015FA68 /* XML Based */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "XML Based";
+			sourceTree = "<group>";
+		};
+		A5692A96159796490015FA68 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A5692A97159796590015FA68 /* EspressoActions.h */,
+				A5692A98159796590015FA68 /* EspressoDocumentActions.h */,
+				A5692A99159796590015FA68 /* EspressoFileActions.h */,
+				A5692A9A159796590015FA68 /* EspressoItemizerCore.h */,
+				A5692A9B159796590015FA68 /* EspressoSDK.h */,
+				A5692A9C159796590015FA68 /* EspressoSyntaxCore.h */,
+				A5692A9D159796590015FA68 /* EspressoTextActions.h */,
+				A5692A9E159796590015FA68 /* EspressoTextCore.h */,
+				A5692A9F159796590015FA68 /* MRRangeSet.h */,
+				A5692AA0159796590015FA68 /* NSString+MRFoundation.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
 		A57C4BA1158DC6BB00566A1C /* CodaPlugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,12 +360,13 @@
 		A5994E4E14BF52020067B42B = {
 			isa = PBXGroup;
 			children = (
-				A57C4A5B158CE0A500566A1C /* JavaScriptCore.framework */,
 				A596306B1519F582000D1A01 /* JSONKit */,
 				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
+				A5BE71DE15BF437E009CF514 /* JSCocoa Delegate */,
 				A5994E6314BF52030067B42B /* ZenCoding */,
 				A5D2751114F000FA00B3816D /* ZenCodingSample */,
 				A57C4BA1158DC6BB00566A1C /* CodaPlugin */,
+				A5692A8D159795680015FA68 /* EspressoPlugin */,
 				A5994E5C14BF52030067B42B /* Frameworks */,
 				A5994E5A14BF52030067B42B /* Products */,
 			);
@@ -305,6 +378,7 @@
 				A5D2750E14F000FA00B3816D /* ZenCodingSample.app */,
 				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
 				A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */,
+				A5692A8B159795680015FA68 /* Zen Coding.sugar */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -358,8 +432,18 @@
 				A5DB235615133CF6009979C2 /* Transformers */,
 				A562B88B1595007C007F9044 /* ZenCodingFile.h */,
 				A562B88C1595007C007F9044 /* ZenCodingFile.m */,
+				A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */,
 			);
 			path = ZenCoding;
+			sourceTree = "<group>";
+		};
+		A5BE71DE15BF437E009CF514 /* JSCocoa Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */,
+				A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */,
+			);
+			path = "JSCocoa Delegate";
 			sourceTree = "<group>";
 		};
 		A5CCC3A914E03E05002BBA24 /* JSCocoa */ = {
@@ -465,12 +549,32 @@
 				A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */,
 				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
 				A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */,
+				A5BE71DB15BF403E009CF514 /* ZenCodingJSContext.h in Headers */,
+				A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A5692A8A159795680015FA68 /* EspressoPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5692A94159795680015FA68 /* Build configuration list for PBXNativeTarget "EspressoPlugin" */;
+			buildPhases = (
+				A5692A86159795680015FA68 /* Sources */,
+				A5692A87159795680015FA68 /* Frameworks */,
+				A5692A88159795680015FA68 /* Resources */,
+				A5692A89159795680015FA68 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EspressoPlugin;
+			productName = EspressoPlugin;
+			productReference = A5692A8B159795680015FA68 /* Zen Coding.sugar */;
+			productType = "com.apple.product-type.bundle";
+		};
 		A57C4B9E158DC6BB00566A1C /* CodaPlugin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */;
@@ -548,11 +652,19 @@
 				A5D2750D14F000FA00B3816D /* ZenCodingSample */,
 				A5D2753C14F004A800B3816D /* ZenCoding */,
 				A57C4B9E158DC6BB00566A1C /* CodaPlugin */,
+				A5692A8A159795680015FA68 /* EspressoPlugin */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A5692A88159795680015FA68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A57C4B9D158DC6BB00566A1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -617,7 +729,30 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A5692A89159795680015FA68 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Copy all files in the \"XML Based\" folder into the root of the final Sugar\nrsync -a --exclude=\".*\"  \"$SRCROOT/$PRODUCT_NAME/XML Based/\" \"$TARGET_BUILD_DIR/$WRAPPER_NAME/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		A5692A86159795680015FA68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A57C4B9B158DC6BB00566A1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -642,6 +777,7 @@
 				A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */,
 				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
 				A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */,
+				A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,6 +805,7 @@
 				A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */,
+				A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +831,7 @@
 				A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */,
+				A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +881,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A5692A92159795680015FA68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				ESPRESSO_PATH = /Applications/Espresso.app;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = EspressoPlugin/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BUILD_32_LIKE_64;
+				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
+				INFOPLIST_FILE = EspressoPlugin/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "Zen Coding";
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = sugar;
+			};
+			name = Debug;
+		};
+		A5692A93159795680015FA68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ESPRESSO_PATH = /Applications/Espresso.app;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = EspressoPlugin/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BUILD_32_LIKE_64;
+				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
+				INFOPLIST_FILE = EspressoPlugin/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "Zen Coding";
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = sugar;
+			};
+			name = Release;
+		};
 		A57C4BA9158DC6BB00566A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -893,6 +1069,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A5692A94159795680015FA68 /* Build configuration list for PBXNativeTarget "EspressoPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5692A92159795680015FA68 /* Debug */,
+				A5692A93159795680015FA68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

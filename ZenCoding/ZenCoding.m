@@ -13,6 +13,7 @@
 #import "NSMutableDictionary+ZCUtils.h"
 #import "JSONKit.h"
 
+
 @interface ZenCoding ()
 - (void)setupJSContext;
 - (void)loadUserData;
@@ -27,11 +28,16 @@
 @synthesize context, jsc, extensionsPath;
 
 static ZenCoding *instance = nil;
+static Class jsCtxDelegateClass = nil;
 
-+(ZenCoding *) sharedInstance {
++ (void)setJSContextDelegateClass:(Class)class {
+	jsCtxDelegateClass = class;
+}
+
++ (ZenCoding *)sharedInstance {
 	@synchronized(self) {
 		if (instance == nil) {
-			instance = [[ZenCoding alloc] init];
+			instance = [ZenCoding new];
 		}
 		return instance;
 	}
@@ -68,17 +74,21 @@ static ZenCoding *instance = nil;
 		[self->jsc release];
 	}
 	
-	self->jsc = [JSCocoa new];
-	
-	jsc.useAutoCall = NO;
-	jsc.useJSLint = NO;
+	if (jsCtxDelegateClass != nil) {
+		self->jsc = [jsCtxDelegateClass new];
+	} else {
+		// get JS delegate class name from bundle Info.plist
+		NSString *jscClassName = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"ZCJavascriptDelegate"];
+		
+		self->jsc = [NSClassFromString(jscClassName) new];
+	}
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	[jsc evalJSFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
-	[jsc evalJSFile:[bundle pathForResource:@"file-interface" ofType:@"js"]];
-	[jsc evalJSFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
+	[jsc evalFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
+	[jsc evalFile:[bundle pathForResource:@"file-interface" ofType:@"js"]];
+	[jsc evalFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
 	
-	[self evalFunction:@"zen_coding.require('file').setContext" withArguments:[ZenCodingFile class], nil];
+	[jsc evalFunction:@"zen_coding.require('file').setContext" withArguments:[ZenCodingFile class], nil];
 	
 	// load system snippets
 	NSString *snippetsJSON = [NSString 
@@ -86,7 +96,7 @@ static ZenCoding *instance = nil;
 						  encoding:NSUTF8StringEncoding 
 						  error:nil];
 	
-	[self evalFunction:@"objcLoadSystemSnippets" withArguments:snippetsJSON, nil];
+	[jsc evalFunction:@"objcLoadSystemSnippets" withArguments:snippetsJSON, nil];
 	
 	// load Zen Coding extensions
 	if (extensionsPath) {
@@ -100,7 +110,7 @@ static ZenCoding *instance = nil;
 			NSString *file;
 			while (file = [dirEnum nextObject]) {
 				if ([[[file pathExtension] lowercaseString] isEqualToString: @"js"]) {
-					[jsc evalJSFile:[extPath stringByAppendingPathComponent:file]];
+					[jsc evalFile:[extPath stringByAppendingPathComponent:file]];
 				}
 			}
 		}
@@ -118,7 +128,7 @@ static ZenCoding *instance = nil;
 		self->context = nil;
 		if (ctx) {
 			self->context = [ctx retain];
-			[self evalFunction:@"objcSetContext" withArguments:ctx, nil];
+			[jsc evalFunction:@"objcSetContext" withArguments:ctx, nil];
 		}
 	}
 }
@@ -154,43 +164,8 @@ static ZenCoding *instance = nil;
 }
 
 - (BOOL)runAction:(id)name {
-	return [jsc toBool:[self evalFunction:@"objcRunAction" withArguments:name, nil]];
-}
-
-- (JSValueRef)evalFunction:(NSString *)funcName withArguments:(id)firstArg, ... {
-	// Convert args to array
-	id arg;
-	NSMutableArray *arguments = [NSMutableArray array];
-	NSMutableArray *argNames = [NSMutableArray array];
-	
-	if (firstArg) {
-		[arguments addObject:firstArg];
-		
-		va_list	args;
-		va_start(args, firstArg);
-		while ((arg = va_arg(args, id)))	
-			[arguments addObject:arg];
-		va_end(args);
-	}
-	
-	// register all arguments in JS context
-	for (NSUInteger i = 0; i < [arguments count]; i++) {
-		[argNames addObject:[NSString stringWithFormat:@"__objcArg%d", i]];
-		[jsc setObject:[arguments objectAtIndex:i] withName:[argNames lastObject]];
-	}
-	
-	// create JS string to evaluate
-	NSString *jsString = [NSString stringWithFormat:@"%@(%@)", funcName, [argNames componentsJoinedByString:@", "]];
-	
-//	NSLog(@"Eval JS: %@", jsString);
-	JSValueRef result = [jsc evalJSString:jsString];
-	
-	// unregister all arguments from JS context
-	for (NSString *argName in argNames) {
-		[jsc removeObjectWithName:argName];
-	}
-	
-	return result;
+	id result = [jsc evalFunction:@"objcRunAction" withArguments:name, nil];
+	return (BOOL)[jsc convertJSObject:result toNativeType:@"bool"];
 }
 
 - (NSString *)readUserJSON:(NSString *)fileName {
@@ -213,11 +188,11 @@ static ZenCoding *instance = nil;
 	}
 	
 	// pass data as JSON strings for safer internal types conversion
-	[self evalFunction:@"objcLoadUserSnippets" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
+	[jsc evalFunction:@"objcLoadUserSnippets" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
 	
 	NSString *preferencesContents = [self readUserJSON:@"preferences.json"];
 	if (preferencesContents) {
-		[self evalFunction:@"objcLoadUserPreferences" withArguments:preferencesContents, nil];
+		[jsc evalFunction:@"objcLoadUserPreferences" withArguments:preferencesContents, nil];
 	}
 }
 
@@ -318,7 +293,9 @@ static ZenCoding *instance = nil;
 }
 
 - (NSArray *)actionsList {
-	return [jsc toObject:[self evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil]];
+	id result = [jsc evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil];
+	
+	return [jsc convertJSObject:result toNativeType:@"object"];
 }
 
 // returns Zen Coding actions as menu
@@ -359,7 +336,8 @@ static ZenCoding *instance = nil;
 - (void)performMenuAction:(id)sender {
 	if ([sender isKindOfClass:[NSMenuItem class]]) {
 		NSString *title = [(NSMenuItem *)sender title];
-		id actionName = [jsc unboxJSValueRef:[self evalFunction:@"zen_coding.require('actions').getActionNameForMenuTitle" withArguments:title, nil]];
+		id jsActionName = [jsc evalFunction:@"zen_coding.require('actions').getActionNameForMenuTitle" withArguments:title, nil];
+		id actionName = [jsc convertJSObject:jsActionName toNativeType:@"string"];
 		
 		if (actionName != nil) {
 			[self runAction:actionName];
