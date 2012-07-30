@@ -9,7 +9,8 @@
 #ifndef ZenCoding_ZenCodingNotifications_h
 #define ZenCoding_ZenCodingNotifications_h
 
-#define PreferencesWindowOpened @"PreferencesWindowOpened"
-#define PreferencesWindowClosed @"PreferencesWindowClosed"
+#define PreferencesWindowOpened @"ZC_PreferencesWindowOpened"
+#define PreferencesWindowClosed @"ZC_PreferencesWindowClosed"
+#define JSContextLoaded @"ZC_JSContextLoaded"
 
 #endif

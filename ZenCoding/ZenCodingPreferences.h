@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ZenCodingCorePreferencesController.h"
 
 @interface ZenCodingPreferences : NSWindowController {
     NSButton *pickExtensionsFolder;
@@ -20,11 +21,14 @@
 	NSArrayController *snippetsController;
 	NSArrayController *abbreviationsController;
 	NSArrayController *variablesController;
+	NSArrayController *preferencesController;
+	NSTableView *corePreferencesView;
 	
 	NSMutableDictionary *outputPreferences;
 	
 	// pointer to currently edited array controller (snippets or abbreviations)
 	NSArrayController *contextController;
+	ZenCodingCorePreferencesController *_prefsController;
 }
 
 @property (assign) IBOutlet NSArrayController *syntaxList;
@@ -37,6 +41,9 @@
 @property (assign) IBOutlet NSArrayController *snippetsController;
 @property (assign) IBOutlet NSArrayController *abbreviationsController;
 @property (assign) IBOutlet NSArrayController *variablesController;
+@property (assign) IBOutlet NSArrayController *preferencesController;
+@property (assign) IBOutlet NSTableView *corePreferencesView;
+
 
 + (void)loadDefaults;
 + (void)resetDefaults;

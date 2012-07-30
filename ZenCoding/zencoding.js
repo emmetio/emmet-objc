@@ -6,7 +6,7 @@
 //     For all details and documentation:
 //     http://documentcloud.github.com/underscore
 
-(function() {
+var _ = (function() {
 
   // Baseline setup
   // --------------
@@ -1055,12 +1055,12 @@
   wrapper.prototype.value = function() {
     return this._wrapped;
   };
-
-}).call(this);
+  return _;
+}).call({});
 /**
  * Core Zen Coding object, available in global scope
  */
-(function(global, _) {
+var zen_coding = (function(global, _) {
 	var defaultSyntax = 'html';
 	var defaultProfile = 'plain';
 	
@@ -1130,7 +1130,7 @@
 	 */
 	var moduleLoader = null;
 	
-	global.zen_coding = {
+	return {
 		/**
 		 * Simple, AMD-like module definition. The module will be added into
 		 * <code>zen_coding</code> object and will be available via
@@ -1179,6 +1179,9 @@
 		extend: function(protoProps, classProps) {
 			var child = inherits(this, protoProps, classProps);
 			child.extend = this.extend;
+			// a hack required to WSH inherit `toString` method
+			if (protoProps.hasOwnProperty('toString'))
+				child.prototype.toString = protoProps.toString;
 			return child;
 		},
 		
@@ -4633,10 +4636,15 @@ zen_coding.define('actions', function(require, _, zc) {
 		 */
 		add: function(name, fn, options) {
 			name = name.toLowerCase();
+			options = options || {};
+			if (!options.label) {
+				options.label = humanizeActionName(name);
+			}
+			
 			actions[name] = {
 				name: name,
 				fn: fn,
-				options: options || {}
+				options: options
 			};
 		},
 		
@@ -4888,6 +4896,7 @@ zen_coding.define('profile', function(require, _) {
 	createProfile('html', {self_closing_tag: false});
 	createProfile('xml', {self_closing_tag: true, tag_nl: true});
 	createProfile('plain', {tag_nl: false, indent: false, place_cursor: false});
+	createProfile('line', {tag_nl: false, indent: false});
 	
 	return  {
 		/**
@@ -4986,17 +4995,6 @@ zen_coding.define('profile', function(require, _) {
  */
 zen_coding.define('editorUtils', function(require, _) {
 	return  {
-		/**
-		 * Returns context-aware node counter
-		 * @param {node} ZenNode
-		 * @return {Number}
-		 * @memberOf editorUtils
-		 */
-		getCounterForNode: function(node) {
-			console.log('deprecated');
-			return node.counter;
-		},
-		
 		/**
 		 * Check if cursor is placed inside XHTML tag
 		 * @param {String} html Contents of the document
@@ -5483,7 +5481,8 @@ zen_coding.define('base64', function(require, _) {
 });/**
  * @author Sergey Chikuyonok (serge.che@gmail.com)
  * @link http://chikuyonok.ru
- */(function(){
+ */
+(function(){
 	// Regular Expressions for parsing tags and attributes
 	var start_tag = /^<([\w\:\-]+)((?:\s+[\w\-:]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/,
 		end_tag = /^<\/([\w\:\-]+)[^>]*>/,
@@ -6116,6 +6115,15 @@ zen_coding.define('preferences', function(require, _) {
 	var defaults = {};
 	var _dbgDefaults = null;
 	var _dbgPreferences = null;
+
+	function toBoolean(val) {
+		if (_.isString(val)) {
+			val = val.toLowerCase();
+			return val == 'yes' || val == 'true' || val == '1';
+		}
+
+		return !!val;
+	}
 	
 	function isValueObj(obj) {
 		return _.isObject(obj) 
@@ -6157,6 +6165,7 @@ zen_coding.define('preferences', function(require, _) {
 		 */
 		set: function(name, value) {
 			var prefs = name;
+      log('JS: call ' + name + ' of type ' + (typeof name));
 			if (_.isString(name)) {
 				prefs = {};
 				prefs[name] = value;
@@ -6169,6 +6178,19 @@ zen_coding.define('preferences', function(require, _) {
 				
 				// do not set value if it equals to default value
 				if (v !== defaults[k].value) {
+          log('JS: setting ' + k + ' to ' + v);
+					// make sure we have value of correct type
+					switch (typeof defaults[k].value) {
+						case 'boolean':
+							v = toBoolean(v);
+							break;
+						case 'number':
+							v = parseInt(v, 10) || 0;
+							break;
+						default: // convert to string
+							v += '';
+					}
+					
 					preferences[k] = v;
 				} else if  (k in preferences) {
 					delete preferences[p];
@@ -6244,6 +6266,7 @@ zen_coding.define('preferences', function(require, _) {
 				return {
 					name: key,
 					value: this.get(key),
+					type: typeof defaults[key].value,
 					description: defaults[key].description
 				};
 			}, this);
@@ -6258,6 +6281,14 @@ zen_coding.define('preferences', function(require, _) {
 			_.each(json, function(value, key) {
 				this.set(key, value);
 			}, this);
+		},
+
+		/**
+		 * Returns hash of user-modified preferences
+		 * @returns {Object}
+		 */
+		exportModified: function() {
+			return _.clone(preferences);
 		},
 		
 		/**
@@ -7115,6 +7146,27 @@ zen_coding.define('cssEditTree', function(require, _) {
 	}
 	
 	/**
+	 * A bit hacky way to identify invalid CSS property definition: when user
+	 * starts writing new abbreviation in CSS rule, he actually creates invalid
+	 * CSS property definition and this method tries to identify such abbreviation
+	 * and prevent it from being added to CSS edit tree 
+	 * @param {TokenIterator} it
+	 */
+	function isValidIdentifier(it) {
+//		return true;
+		var tokens = it.tokens;
+		for (var i = it._i + 1, il = tokens.length; i < il; i++) {
+			if (tokens[i].type == ':')
+				return true;
+			
+			if (tokens[i].type == 'identifier' || tokens[i].type == 'line')
+				return false;
+		}
+		
+		return false;
+	}
+	
+	/**
 	 * @class
 	 * @extends EditContainer
 	 */
@@ -7139,7 +7191,7 @@ zen_coding.define('cssEditTree', function(require, _) {
 	 		// consume properties
 	 		var propertyRange, valueRange, token;
 			while (token = it.next()) {
-				if (token.type == 'identifier') {
+				if (token.type == 'identifier' && isValidIdentifier(it)) {
 					propertyRange = range(token);
 					valueRange = findValueRange(it);
 					var end = (it.current() && it.current().type == ';') 
@@ -9344,7 +9396,7 @@ zen_coding.exec(function(require, _) {
 	 * Encodes image to base64
 	 * @requires zen_file
 	 * 
-	 * @param {zen_editor} editor
+	 * @param {IZenEditor} editor
 	 * @param {String} imgPath Path to image
 	 * @param {Number} pos Caret position where image is located in the editor
 	 * @return {Boolean}
@@ -11136,7 +11188,8 @@ zen_coding.exec(function(require, _) {
  * Filter for escaping unsafe XML characters: <, >, &
  * @author Sergey Chikuyonok (serge.che@gmail.com)
  * @link http://chikuyonok.ru
- */zen_coding.exec(function(require, _) {
+ */
+zen_coding.exec(function(require, _) {
 	var charMap = {
 		'<': '&lt;',
 		'>': '&gt;',
@@ -11559,7 +11612,8 @@ zen_coding.exec(function(require, _) {
 		
 		return tree;
 	});
-});/**
+});
+/**
  * Trim filter: removes characters at the beginning of the text
  * content that indicates lists: numbers, #, *, -, etc.
  * 
@@ -11595,7 +11649,8 @@ zen_coding.exec(function(require, _) {
 		var re = new RegExp(require('preferences').get('filter.trimRegexp'));
 		return process(tree, re);
 	});
-});/**
+});
+/**
  * Filter for trimming "select" attributes from some tags that contains
  * child elements
  * @author Sergey Chikuyonok (serge.che@gmail.com)
@@ -11605,7 +11660,8 @@ zen_coding.exec(function(require, _) {
  * @memberOf __xslFilterDefine
  * @param {Function} require
  * @param {Underscore} _
- */zen_coding.exec(function(require, _) {
+ */
+zen_coding.exec(function(require, _) {
 	var tags = {
 		'xsl:variable': 1,
 		'xsl:with-param': 1

@@ -63,6 +63,10 @@
 		A57C4BCB158DCF0A00566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BCC158DCF0A00566A1C /* zencoding.js in Resources */ = {isa = PBXBuildFile; fileRef = A5B91ACA14E82952002FA697 /* zencoding.js */; };
 		A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
+		A589861415C538BB00335E41 /* ZenCodingCorePreferencesController.h in Headers */ = {isa = PBXBuildFile; fileRef = A589861215C538BB00335E41 /* ZenCodingCorePreferencesController.h */; };
+		A589861515C538BB00335E41 /* ZenCodingCorePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = A589861315C538BB00335E41 /* ZenCodingCorePreferencesController.m */; };
+		A589861615C538BB00335E41 /* ZenCodingCorePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = A589861315C538BB00335E41 /* ZenCodingCorePreferencesController.m */; };
+		A589861715C538BB00335E41 /* ZenCodingCorePreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = A589861315C538BB00335E41 /* ZenCodingCorePreferencesController.m */; };
 		A596302615187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302715187FCE000D1A01 /* VariableEditor.xib in Resources */ = {isa = PBXBuildFile; fileRef = A596302515187FCE000D1A01 /* VariableEditor.xib */; };
 		A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -183,6 +187,8 @@
 		A57C4BAD158DC75D00566A1C /* CodaPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaPlugin.m; sourceTree = "<group>"; };
 		A57C4BAE158DC75D00566A1C /* CodaZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaZenEditor.h; sourceTree = "<group>"; };
 		A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaZenEditor.m; sourceTree = "<group>"; };
+		A589861215C538BB00335E41 /* ZenCodingCorePreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingCorePreferencesController.h; sourceTree = "<group>"; };
+		A589861315C538BB00335E41 /* ZenCodingCorePreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingCorePreferencesController.m; sourceTree = "<group>"; };
 		A596302515187FCE000D1A01 /* VariableEditor.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VariableEditor.xib; sourceTree = "<group>"; };
 		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
 		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
@@ -433,6 +439,8 @@
 				A562B88B1595007C007F9044 /* ZenCodingFile.h */,
 				A562B88C1595007C007F9044 /* ZenCodingFile.m */,
 				A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */,
+				A589861215C538BB00335E41 /* ZenCodingCorePreferencesController.h */,
+				A589861315C538BB00335E41 /* ZenCodingCorePreferencesController.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -551,6 +559,7 @@
 				A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */,
 				A5BE71DB15BF403E009CF514 /* ZenCodingJSContext.h in Headers */,
 				A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */,
+				A589861415C538BB00335E41 /* ZenCodingCorePreferencesController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +642,7 @@
 		A5994E5014BF52020067B42B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Аймобилко";
 			};
 			buildConfigurationList = A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */;
@@ -778,6 +787,7 @@
 				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
 				A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */,
 				A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
+				A589861715C538BB00335E41 /* ZenCodingCorePreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,6 +816,7 @@
 				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */,
 				A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
+				A589861515C538BB00335E41 /* ZenCodingCorePreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +843,7 @@
 				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */,
 				A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
+				A589861615C538BB00335E41 /* ZenCodingCorePreferencesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -971,10 +983,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lffi";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				SKIP_INSTALL = NO;
 			};
 			name = Debug;
@@ -993,9 +1005,9 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "-lffi";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				SKIP_INSTALL = NO;
 			};
 			name = Release;
@@ -1010,7 +1022,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCodingSample/ZenCodingSample-Prefix.pch";
 				INFOPLIST_FILE = "ZenCodingSample/ZenCodingSample-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1026,7 +1038,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZenCodingSample/ZenCodingSample-Prefix.pch";
 				INFOPLIST_FILE = "ZenCodingSample/ZenCodingSample-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

@@ -51,6 +51,9 @@ static Class jsCtxDelegateClass = nil;
 		// user preferences.
 		// Right now, the only easy way to understand if anything is changed
 		// is to listen to "close" event of preferences window
+		
+		// !!!
+		// TODO refactor, core should not be bound to Preferences
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(shouldReloadContext:) 
 													 name:PreferencesWindowClosed 
@@ -118,6 +121,8 @@ static Class jsCtxDelegateClass = nil;
 	
 	// load user preferences
 	[self loadUserData];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:JSContextLoaded object:self];
 }
 
 - (void)setContext:(id)ctx {

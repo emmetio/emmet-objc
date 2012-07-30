@@ -27,6 +27,8 @@
 @synthesize snippetsController;
 @synthesize abbreviationsController;
 @synthesize variablesController;
+@synthesize preferencesController;
+@synthesize corePreferencesView;
 @synthesize syntaxList;
 @synthesize extensionsPathField;
 @synthesize snippetsView;
@@ -69,6 +71,9 @@
 	[snippetsController setContent:[self contentForController:Snippets]];
 	[abbreviationsController setContent:[self contentForController:Abbreviations]];
 	[variablesController setContent:[self contentForController:Variables]];
+	
+//	_prefsController = [[ZenCodingCorePreferencesController alloc] initWithController:preferencesController];
+	_prefsController = [[ZenCodingCorePreferencesController alloc] initWithTableView:corePreferencesView];
 }
 
 - (void)windowDidLoad {
@@ -244,6 +249,7 @@
 
 - (void)dealloc {
 	[outputPreferences release];
+//	[_prefsController release];
 	[super dealloc];
 }
 

@@ -251,8 +251,8 @@ const JSClassDefinition kJSClassDefinitionEmpty = { 0, 0,
 	[self loadFrameworkWithName:@"AppKit"];
 	[self loadFrameworkWithName:@"CoreFoundation"];
 	[self loadFrameworkWithName:@"Foundation"];
-	[self loadFrameworkWithName:@"CoreGraphics" inPath:@"/System/Library/Frameworks/ApplicationServices.framework/Frameworks"];
-#endif	
+//	[self loadFrameworkWithName:@"CoreGraphics" inPath:@"/System/Library/Frameworks/ApplicationServices.framework/Frameworks"];
+#endif
 
 #if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
 	[BurksPool setJSFunctionHash:jsFunctionHash];

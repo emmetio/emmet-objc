@@ -183,7 +183,7 @@ var objcZenEditor = (function() {
 	};
 })();
 
-function  objcToString(str) {
+function objcToString(str) {
 	return str && str.length() 
 		? String(str) 
 		: '';
@@ -227,8 +227,13 @@ function objcLoadSystemSnippets(data) {
 
 function objcExtractTabstopsOnInsert(text) {
 	return zen_coding.require('tabStops').extract(String(text), {
-	  escpe: function(ch) {
+	  escape: function(ch) {
 		  return ch;
 	  }
 	});
+}
+
+function objcSetPreference(name, value) {
+	log('Value type: ' + (typeof value));
+	zen_coding.require('preferences').set(objcToString(name), value + '');
 }
