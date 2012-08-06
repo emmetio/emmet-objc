@@ -7,9 +7,9 @@
 //
 
 #import "ZenCoding.h"
-#import "ZenCodingDefaultsKeys.h"
 #import "ZenCodingNotifications.h"
 #import "ZenCodingFile.h"
+#import "ZCUserDataLoader.h"
 #import "NSMutableDictionary+ZCUtils.h"
 #import "JSONKit.h"
 
@@ -17,9 +17,6 @@
 @interface ZenCoding ()
 - (void)setupJSContext;
 - (void)loadUserData;
-- (NSDictionary *)settingsFromDefaults;
-- (void)shouldReloadContext:(NSNotification *)notification;
-- (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
 - (void)createMenuItemsFromArray:(NSArray *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target;
 @end
 
@@ -29,6 +26,7 @@
 
 static ZenCoding *instance = nil;
 static Class jsCtxDelegateClass = nil;
+static bool defaultsLoaded = false;
 
 + (void)setJSContextDelegateClass:(Class)class {
 	jsCtxDelegateClass = class;
@@ -43,22 +41,25 @@ static Class jsCtxDelegateClass = nil;
 	}
 }
 
++ (void)loadDefaults {
+	if (defaultsLoaded)
+		return;
+	
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSString *plistPath = [bundle pathForResource:@"PreferencesDefaults" ofType:@"plist"];
+	NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+	
+	[[NSUserDefaults standardUserDefaults] registerDefaults:prefs];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:prefs];
+	[prefs release];
+	
+	defaultsLoaded = true;
+}
+
 - (id)init {
     if (self = [super init]) {
+		[ZenCoding loadDefaults];
         [self setupJSContext];
-		// subscribe for user preferences change notifications:
-		// we have to re-create JS context in order to load the latest
-		// user preferences.
-		// Right now, the only easy way to understand if anything is changed
-		// is to listen to "close" event of preferences window
-		
-		// !!!
-		// TODO refactor, core should not be bound to Preferences
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(shouldReloadContext:) 
-													 name:PreferencesWindowClosed 
-												   object:nil];
-		
     }
     
     return self;
@@ -87,7 +88,7 @@ static Class jsCtxDelegateClass = nil;
 	}
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	[jsc evalFile:[bundle pathForResource:@"zencoding" ofType:@"js"]];
+	[jsc evalFile:[bundle pathForResource:@"zencoding-app" ofType:@"js"]];
 	[jsc evalFile:[bundle pathForResource:@"file-interface" ofType:@"js"]];
 	[jsc evalFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
 	
@@ -101,20 +102,25 @@ static Class jsCtxDelegateClass = nil;
 	
 	[jsc evalFunction:@"objcLoadSystemSnippets" withArguments:snippetsJSON, nil];
 	
-	// load Zen Coding extensions
+	// load Zen Coding extensions: create list of files in extensions folder
+	// and pass it to bootstrap
 	if (extensionsPath) {
 		NSString *extPath = extensionsPath;
 		BOOL isDir;
 		NSFileManager *fm = [NSFileManager defaultManager];
+		
 		if ([fm fileExistsAtPath:extPath isDirectory:&isDir] && isDir) {
 			NSDirectoryEnumerator *dirEnum = [fm enumeratorAtPath:extPath];
+			NSMutableArray *fileList = [NSMutableArray new];
 			
-			// find all JS files and eval them
+			// find all files in extensions folder
 			NSString *file;
 			while (file = [dirEnum nextObject]) {
-				if ([[[file pathExtension] lowercaseString] isEqualToString: @"js"]) {
-					[jsc evalFile:[extPath stringByAppendingPathComponent:file]];
-				}
+				[fileList addObject:[extPath stringByAppendingPathComponent:file]];
+			}
+			
+			if ([fileList count]) {
+				[jsc evalFunction:@"objcLoadExtensions" withArguments:[fileList JSONString], nil];
 			}
 		}
 	}
@@ -173,91 +179,13 @@ static Class jsCtxDelegateClass = nil;
 	return (BOOL)[jsc convertJSObject:result toNativeType:@"bool"];
 }
 
-- (NSString *)readUserJSON:(NSString *)fileName {
-	// check if json exists in extensions path
-	if (extensionsPath) {
-		NSString *outputFile = [extensionsPath stringByAppendingPathComponent:fileName];
-		if ([[NSFileManager defaultManager] isReadableFileAtPath:outputFile]) {
-			return [NSString stringWithContentsOfFile:outputFile encoding:NSUTF8StringEncoding error:nil];
-		}
-	}
-	
-	// file not fount or unavailable
-	return nil;
-}
-
 - (void)loadUserData {
-	NSString *settingsContents = [self readUserJSON:@"snippets.json"];
-	if (settingsContents == nil) {
-		settingsContents = @"{}";
-	}
-	
-	// pass data as JSON strings for safer internal types conversion
-	[jsc evalFunction:@"objcLoadUserSnippets" withArguments:settingsContents, [[self settingsFromDefaults] JSONString], nil];
-	
-	NSString *preferencesContents = [self readUserJSON:@"preferences.json"];
-	if (preferencesContents) {
-		[jsc evalFunction:@"objcLoadUserPreferences" withArguments:preferencesContents, nil];
-	}
+	NSDictionary *userData = [ZCUserDataLoader userData];
+	[jsc evalFunction:@"objcLoadUserData" withArguments:[userData JSONString], nil];
 }
 
-- (NSDictionary *)settingsFromDefaults {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	NSMutableDictionary *result = [NSMutableDictionary new];
-	NSMutableDictionary *ctx;
-	
-	// read variables
-	NSArray *defaultsCtx = [defaults arrayForKey:Variables];
-	if (defaultsCtx) {
-		ctx = [NSMutableDictionary new];
-		for (NSDictionary *item in defaultsCtx) {
-			[ctx setObject:[item objectForKey:@"value"] forKey:[item objectForKey:@"name"]];
-		}
-		
-		[result setObject:ctx forKey:@"variables"];
-		[ctx release];
-		defaultsCtx = nil;
-	}
-	
-	// Read abbreviations and snippets. Since they share the same syntax
-	// context, we need to create single context for both of them
-	ctx = [NSMutableDictionary new];
-	NSMutableDictionary *syntaxCtx;
-	NSString *syntax;
-	
-	defaultsCtx = [defaults arrayForKey:Abbreviations];
-	if (defaultsCtx) {
-		for (NSDictionary *item in defaultsCtx) {
-			syntax = [item objectForKey:@"syntax"];			
-			syntaxCtx = [[ctx dictionaryForKey:syntax] dictionaryForKey:@"abbreviations"];
-			[syntaxCtx setObject:[item objectForKey:@"value"] forKey:[item objectForKey:@"name"]];
-		}
-	}
-	
-	defaultsCtx = [defaults arrayForKey:Snippets];
-	if (defaultsCtx) {
-		for (NSDictionary *item in defaultsCtx) {
-			syntax = [item objectForKey:@"syntax"];			
-			syntaxCtx = [[ctx dictionaryForKey:syntax] dictionaryForKey:@"snippets"];
-			[syntaxCtx setObject:[item objectForKey:@"value"] forKey:[item objectForKey:@"name"]];
-		}
-	}
-	
-	// add output profiles
-	NSDictionary *output = [defaults dictionaryForKey:Output];
-	if (output) {
-		[output enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
-			[[ctx dictionaryForKey:key] setObject:[self createOutputProfileFromDict:obj] forKey:@"profile"];
-		}];
-	}
-	
-	[result addEntriesFromDictionary:ctx];
-	[ctx release];
-	
-	return [result autorelease];
-}
-
-- (void)shouldReloadContext:(NSNotification *)notification {
+// Reload JS context to hook-up all changes in prefernces and extensions
+- (void)reload {
 	// remember previously saved context
 	id ctx = self.context;
 	self.context = nil;
@@ -265,41 +193,8 @@ static Class jsCtxDelegateClass = nil;
 	self.context = ctx;
 }
 
-- (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict {
-	NSDictionary *keysMap = [NSDictionary dictionaryWithObjectsAndKeys:
-							 @"tag_case", @"tagCase",
-							 @"attr_case", @"attributeCase",
-							 @"attr_quotes", @"attributeQuote",
-							 @"indent", @"indent",
-							 @"tag_nl", @"tagNewline",
-							 @"inline_break", @"inlineBreaks",
-							 @"filters", @"filters",
-							 nil];
-	
-	
-	
-	NSMutableDictionary *result = [NSMutableDictionary dictionary];
-	
-	[keysMap enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-		if ([dict objectForKey:key]) {
-			[result setObject:[dict objectForKey:key] forKey:obj];
-		}
-	}];
-	
-	if ([[dict objectForKey:@"selfClosing"] isEqual:@"html"]) {
-		[result setObject:[NSNumber numberWithBool:NO] forKey:@"self_closing_tag"];
-	} else if ([[dict objectForKey:@"selfClosing"] isEqual:@"xml"]) {
-		[result setObject:[NSNumber numberWithBool:YES] forKey:@"self_closing_tag"];
-	} else {
-		[result setObject:@"xhtml" forKey:@"self_closing_tag"];
-	}
-	
-	return result;
-}
-
 - (NSArray *)actionsList {
-	id result = [jsc evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil];
-	
+	id result = [jsc evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil];	
 	return [jsc convertJSObject:result toNativeType:@"object"];
 }
 
@@ -354,7 +249,6 @@ static Class jsCtxDelegateClass = nil;
 	if (self->extensionsPath) {
 		[self->extensionsPath release];
 	}
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[super dealloc];
 }
 

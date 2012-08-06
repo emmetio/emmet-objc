@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#define PreferencesKey @"preferences"
-
 #import "ZenCodingCorePreferencesController.h"
 #import "ZenCodingNotifications.h"
 #import "ZenCoding.h"
@@ -57,7 +55,7 @@
 		
 		// get user’s preferences
 		NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-		NSDictionary *_val = [defaults dictionaryForKey:PreferencesKey];
+		NSDictionary *_val = [defaults dictionaryForKey:Preferences];
 		if (_val != nil) {
 			[_val enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 				NSMutableDictionary *d = [lookup objectForKey:key];
@@ -77,7 +75,7 @@
 	id jsPrefs = [zc.jsc evalFunction:@"zen_coding.require('preferences').exportModified" withArguments:nil];
 	NSDictionary *prefs = [zc.jsc convertJSObject:jsPrefs toNativeType:@"dictionary"];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setObject:prefs forKey:PreferencesKey];
+	[defaults setObject:prefs forKey:Preferences];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath

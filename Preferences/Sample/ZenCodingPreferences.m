@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
+#import "ZenCoding.h"
 #import "ZenCodingPreferences.h"
 #import "ZenCodingArrayTransformer.h"
 #import "ZenCodingTildePathTransformer.h"
@@ -109,6 +110,8 @@
 	[defaults setObject:[snippetsController content] forKey:Snippets];
 	[defaults setObject:[abbreviationsController content] forKey:Abbreviations];
 	[defaults setObject:[variablesController content] forKey:Variables];
+	
+	[[ZenCoding sharedInstance] reload];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:PreferencesWindowClosed object:self];
 	

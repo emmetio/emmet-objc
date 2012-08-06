@@ -15,5 +15,6 @@
 #define Abbreviations @"abbreviations"
 #define Variables @"variables"
 #define Output @"output"
+#define Preferences @"preferences"
 
 #endif

@@ -9,8 +9,6 @@
 #import "ZenCodingSampleAppDelegate.h"
 #import "ZenCoding.h"
 #import "ZenCodingPromptDialogController.h"
-#import "ZenCodingPreferences.h"
-#import "ZenCodingDefaultsKeys.h"
 #import "ZenCodingFile.h"
 #import "JSCocoaDelegate.h"
 
@@ -23,8 +21,6 @@
 
 + (void)initialize {
 	[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
-	// Load Zen Coding preferences defaults
-	[ZenCodingPreferences loadDefaults];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -69,7 +65,7 @@
 
 - (IBAction)showPreferences:(id)sender {
 	if (prefs == nil) {
-		prefs = [[ZenCodingPreferences alloc] init];
+		prefs = [[ZCBasicPreferencesWindowController alloc] init];
 	}
 	
 	[prefs showWindow:self];

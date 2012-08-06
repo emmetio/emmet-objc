@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ZenCodingJSContext.h"
+#import "ZenCodingDefaultsKeys.h"
 
 @interface ZenCoding : NSObject {
 	id context;
@@ -21,9 +22,13 @@
 
 + (ZenCoding *)sharedInstance;
 + (void)setJSContextDelegateClass:(Class)class;
++ (void)loadDefaults;
 
 // runs Zen Coding’s JS action
 - (BOOL)runAction:name;
+
+// Reload Zen Coding instance and update JS core
+- (void)reload;
 
 // returns Zen Coding actions as menu
 - (NSArray *)actionsList;

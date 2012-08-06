@@ -183,6 +183,10 @@ var objcZenEditor = (function() {
 	};
 })();
 
+function require() {
+	return zen_coding.require.apply(zen_coding, arguments);
+}
+
 function objcToString(str) {
 	return str && str.length() 
 		? String(str) 
@@ -190,12 +194,30 @@ function objcToString(str) {
 }
 
 function objcRunAction(name) {
-	return zen_coding.require('actions').run(String(name), objcZenEditor);
+	return zen_coding.require('actions').run(objcToString(name), objcZenEditor);
 }
 
 function objcSetContext(ctx) {
 	objcZenEditor.setContext(ctx);
 }
+
+function objcLoadSystemSnippets(data) {
+	require('bootstrap').loadSystemSnippets(objcToString(data));
+}
+
+function objcLoadUserData(data) {
+	require('bootstrap').loadUserData(objcToString(data));
+}
+
+function objcLoadExtensions(fileList) {
+	log('Loading extensions: ' + fileList);
+	var bs = require('bootstrap');
+	fileList = bs.parseJSON(objcToString(fileList));
+	require('bootstrap').loadExtensions(fileList);
+}
+
+/////////////////////////////////
+
 
 function objcToJSON(data) {
 	// do non-strict parsing of JSON data
@@ -217,12 +239,6 @@ function objcLoadUserSnippets(settingsData, userDefaults) {
 function objcLoadUserPreferences(data) {
 	if (data)
 		zen_coding.require('preferences').load(objcToJSON(data));
-}
-
-function objcLoadSystemSnippets(data) {
-	if (data) {
-		zen_coding.require('resources').setVocabulary(objcToJSON(data), 'system');
-	}
 }
 
 function objcExtractTabstopsOnInsert(text) {
