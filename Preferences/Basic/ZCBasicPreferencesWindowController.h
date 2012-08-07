@@ -13,6 +13,7 @@
 }
 @property (assign) IBOutlet NSArrayController *outputProfiles;
 
-+ (void)resetDefaults;
+- (IBAction)restoreDefaults:(id)sender;
+- (IBAction)reloadExtensions:(id)sender;
 
 @end

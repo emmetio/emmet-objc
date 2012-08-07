@@ -10,10 +10,12 @@
 #import "ZenCoding.h"
 #import "ZenCodingArrayTransformer.h"
 #import "ZenCodingTildePathTransformer.h"
+#import "ZCUserDataLoader.h"
 
 @interface ZCBasicPreferencesWindowController ()
 + (NSArray *)loadOutputPreferences;
 + (void)storeOutputPreferences:(NSArray *)prefs;
+- (void)setupOutputProfilesController;
 @end
 
 @implementation ZCBasicPreferencesWindowController
@@ -35,14 +37,6 @@
 	[NSValueTransformer setValueTransformer:selfClosingTransformer forName:@"ZenCodingSelfClosingTransformer"];
 	[NSValueTransformer setValueTransformer:pathTransformer forName:@"ZenCodingTildePathTransformer"];
 	[NSValueTransformer setValueTransformer:tagNlTransformer forName:@"ZenCodingTagNewlineTransformer"];
-}
-
-+ (void)resetDefaults {
-	NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
-	for (NSString *key in [defaultsDictionary allKeys]) {
-		[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
-	}
-	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 + (NSArray *)loadOutputPreferences {
@@ -82,7 +76,16 @@
 
 - (void)awakeFromNib {
 	[ZenCoding loadDefaults];
-	outputProfiles.content = [ZCBasicPreferencesWindowController loadOutputPreferences];
+	[self setupOutputProfilesController];
+}
+
+- (IBAction)restoreDefaults:(id)sender {
+	[ZCUserDataLoader resetDefaults];
+	[self setupOutputProfilesController];
+}
+
+- (IBAction)reloadExtensions:(id)sender {
+	[[ZenCoding sharedInstance] reload];
 }
 
 - (void)windowDidLoad {
@@ -93,6 +96,9 @@
 }
 
 - (BOOL)windowShouldClose:(NSWindow *)window {
+	 // validate editing
+	[window makeFirstResponder:nil];
+	
 	// save output preferences
 	[ZCBasicPreferencesWindowController storeOutputPreferences:outputProfiles.content];
 	
@@ -100,7 +106,7 @@
 	[defaults synchronize];
 	
 	[[ZenCoding sharedInstance] reload];
-    return [window makeFirstResponder:nil]; // validate editing
+    return YES;
 }
 
 - (IBAction)pickExtensionsFolder:(id)sender {
@@ -118,6 +124,10 @@
 			}
 	    }
 	}];
+}
+
+- (void)setupOutputProfilesController {
+	outputProfiles.content = [ZCBasicPreferencesWindowController loadOutputPreferences];
 }
 
 - (void)dealloc {

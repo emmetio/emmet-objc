@@ -4931,11 +4931,16 @@ zen_coding.define('profile', function(require, _) {
 				}
 			}
 			
+			if (!name)
+				return profiles.plain;
+			
+			if (name instanceof OutputProfile)
+				return name;
 			
 			if (_.isString(name) && name.toLowerCase() in profiles)
 				return profiles[name.toLowerCase()];
-				
-			return name && 'tag_case' in name ? this.create(name) : profiles['plain'];
+			
+			return this.create(name);
 		},
 		
 		/**
@@ -4956,36 +4961,7 @@ zen_coding.define('profile', function(require, _) {
 		 * <i>upper</i> and <i>leave</i>
 		 * @returns {String}
 		 */
-		stringCase: stringCase,
-		
-		/**
-		 * Returns quote character based on profile parameter
-		 * @param {String} param Quote parameter, can be <i>single</i> or
-		 * <i>double</i>
-		 * @returns {String}
-		 * @deprecated
-		 */
-		quote: function(param) {
-			console.log('deprecated');
-			return param == 'single' ? "'" : '"';
-		},
-		
-		/**
-		 * Returns self-closing tag symbol, based on passed parameter
-		 * @param {String} param
-		 * @returns {String}
-		 * @deprecated
-		 */
-		selfClosing: function(param) {
-			console.log('deprecated');
-			if (param == 'xhtml')
-				return ' /';
-			
-			if (param === true)
-				return '/';
-			
-			return '';
-		}
+		stringCase: stringCase
 	};
 });/**
  * Utility module used to prepare text for pasting into back-end editor
@@ -5481,8 +5457,7 @@ zen_coding.define('base64', function(require, _) {
 });/**
  * @author Sergey Chikuyonok (serge.che@gmail.com)
  * @link http://chikuyonok.ru
- */
-(function(){
+ */(function(){
 	// Regular Expressions for parsing tags and attributes
 	var start_tag = /^<([\w\:\-]+)((?:\s+[\w\-:]+(?:\s*=\s*(?:(?:"[^"]*")|(?:'[^']*')|[^>\s]+))?)*)\s*(\/?)>/,
 		end_tag = /^<\/([\w\:\-]+)[^>]*>/,
@@ -11186,8 +11161,7 @@ zen_coding.exec(function(require, _) {
  * Filter for escaping unsafe XML characters: <, >, &
  * @author Sergey Chikuyonok (serge.che@gmail.com)
  * @link http://chikuyonok.ru
- */
-zen_coding.exec(function(require, _) {
+ */zen_coding.exec(function(require, _) {
 	var charMap = {
 		'<': '&lt;',
 		'>': '&gt;',
@@ -11610,8 +11584,7 @@ zen_coding.exec(function(require, _) {
 		
 		return tree;
 	});
-});
-/**
+});/**
  * Trim filter: removes characters at the beginning of the text
  * content that indicates lists: numbers, #, *, -, etc.
  * 
@@ -11647,8 +11620,7 @@ zen_coding.exec(function(require, _) {
 		var re = new RegExp(require('preferences').get('filter.trimRegexp'));
 		return process(tree, re);
 	});
-});
-/**
+});/**
  * Filter for trimming "select" attributes from some tags that contains
  * child elements
  * @author Sergey Chikuyonok (serge.che@gmail.com)
@@ -11658,8 +11630,7 @@ zen_coding.exec(function(require, _) {
  * @memberOf __xslFilterDefine
  * @param {Function} require
  * @param {Underscore} _
- */
-zen_coding.exec(function(require, _) {
+ */zen_coding.exec(function(require, _) {
 	var tags = {
 		'xsl:variable': 1,
 		'xsl:with-param': 1
@@ -11897,6 +11868,7 @@ zen_coding.define('bootstrap', function(require, _) {
 		 */
 		loadExtensions: function(fileList) {
 			var file = require('file');
+			var payload = {};
 			_.each(fileList, function(f) {
 				switch (file.getExt(f)) {
 					case 'js':
@@ -11907,15 +11879,13 @@ zen_coding.define('bootstrap', function(require, _) {
 						}
 						break;
 					case 'json':
-						var fileName = getFileName(f).toLowerCase();
-						if (fileName == 'snippets.json') {
-							this.loadSnippets(file.read(f));
-						} else if (fileName == 'preferences.json') {
-							this.loadPreferences(file.read(f));
-						}
+						var fileName = getFileName(f).toLowerCase().replace(/\.json$/, '');
+						payload[fileName] = file.read(f);
 						break;
 				}
 			});
+			
+			this.loadUserData(payload);
 		},
 		
 		/**
@@ -11972,6 +11942,43 @@ zen_coding.define('bootstrap', function(require, _) {
 			if (data.preferences) {
 				this.loadPreferences(data.preferences);
 			}
+			
+			if (data.profiles) {
+				this.loadProfiles(data.profiles);
+			}
+			
+			if (data.syntaxProfiles) {
+				this.loadSyntaxProfiles(data.syntaxProfiles);
+			}
+		},
+		
+		/**
+		 * Load syntax-specific output profiles. These are essentially 
+		 * an extension to syntax snippets 
+		 * @param {Object} profiles Dictionary of profiles
+		 */
+		loadSyntaxProfiles: function(profiles) {
+			profiles = this.parseJSON(profiles);
+			var snippets = {};
+			_.each(profiles, function(options, syntax) {
+				if (!(syntax in snippets)) {
+					snippets[syntax] = {};
+				}
+				snippets[syntax].profile = options;
+			});
+			
+			this.loadSnippets(snippets);
+		},
+		
+		/**
+		 * Load named profiles
+		 * @param {Object} profiles
+		 */
+		loadProfiles: function(profiles) {
+			var profile = require('profile');
+			_.each(this.parseJSON(profiles), function(options, name) {
+				profile.create(name, options);
+			});
 		},
 		
 		/**

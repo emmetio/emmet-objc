@@ -10,18 +10,12 @@
 #import "NSMutableDictionary+ZCUtils.h"
 #import "JSONKit.h"
 
-@interface ZCUserDataLoader ()
-
-+ (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
-
-@end
-
 @implementation ZCUserDataLoader
 
 // Returns all user data as single autoreleased dictionary
 + (NSDictionary *)userData {
 	NSDictionary *data = [NSMutableDictionary dictionary];
-	NSArray *keys = [NSArray arrayWithObjects:@"variables", @"snippets", @"profiles", @"preferences", nil];
+	NSArray *keys = [NSArray arrayWithObjects:@"variables", @"snippets", @"syntaxProfiles", @"preferences", nil];
 	
 	// add non-nil values only
 	[keys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -79,13 +73,14 @@
 	return [defaults arrayForKey:Snippets];
 }
 
-+ (NSDictionary *)profiles {
++ (NSDictionary *)syntaxProfiles {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSDictionary *output = [defaults dictionaryForKey:Output];
 	if (output) {
 		NSMutableDictionary *result = [NSMutableDictionary dictionary];
 		[output enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
-			[[result dictionaryForKey:key] setObject:[ZCUserDataLoader createOutputProfileFromDict:obj] forKey:@"profile"];
+			[result setObject:[ZCUserDataLoader createOutputProfileFromDict:obj] forKey:key];
+//			[[result dictionaryForKey:key] setObject:[ZCUserDataLoader createOutputProfileFromDict:obj] forKey:@"profile"];
 		}];
 		return result;
 	}
@@ -128,5 +123,15 @@
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	return [defaults dictionaryForKey:Preferences];
 }
+
+// Reset all user-defined data
++ (void)resetDefaults {
+	NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
+	for (NSString *key in [defaultsDictionary allKeys]) {
+		[[NSUserDefaults standardUserDefaults] removeObjectForKey:key];
+	}
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 
 @end

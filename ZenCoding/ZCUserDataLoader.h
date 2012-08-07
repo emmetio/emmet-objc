@@ -13,6 +13,8 @@
 + (NSDictionary *)userData;
 + (NSDictionary *)variables;
 + (NSArray *)snippets;
-+ (NSDictionary *)profiles;
++ (NSDictionary *)syntaxProfiles;
++ (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
++ (void)resetDefaults;
 
 @end
