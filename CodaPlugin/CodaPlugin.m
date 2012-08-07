@@ -45,7 +45,6 @@
 	if ((self = [super init]) != nil) {
 		controller = aController;
 		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
-		[ZenCodingPreferences loadDefaults];
 		editor = [[CodaZenEditor alloc] initWithCodaView:nil];
 		[[ZenCoding sharedInstance] setContext:editor];
 		
@@ -120,7 +119,7 @@
 
 - (void)showPreferences:(id)sender {
 	if (prefs == nil) {
-		prefs = [[ZenCodingPreferences alloc] init];
+		prefs = [[ZCBasicPreferencesWindowController alloc] init];
 	}
 	
 	[prefs showWindow:self];

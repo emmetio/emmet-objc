@@ -8,13 +8,13 @@
 #import <Cocoa/Cocoa.h>
 #import "CodaPlugInsController.h"
 #import "CodaZenEditor.h"
-#import "ZenCodingPreferences.h"
+#import "ZCBasicPreferencesWindowController.h"
 
 @class CodaPlugInsController;
 @interface CodaPlugin : NSObject <CodaPlugIn> {
 	CodaPlugInsController* controller;
 	CodaZenEditor *editor;
-	ZenCodingPreferences *prefs;
+	ZCBasicPreferencesWindowController *prefs;
 	NSString *keyboardShortcutsPlist;
 }
 

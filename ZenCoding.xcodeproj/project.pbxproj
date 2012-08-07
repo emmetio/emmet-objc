@@ -14,6 +14,12 @@
 		A562B89615951696007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B897159516A8007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B898159516B1007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
+		A575604415D1C0E300CF9829 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
+		A575604515D1C0F800CF9829 /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
+		A575604615D1C10500CF9829 /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
+		A575604715D1C10900CF9829 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
+		A575604815D1C10C00CF9829 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
+		A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
 		A57C4A03158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -187,7 +193,6 @@
 		A5994E7A14BF52140067B42B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
 		A5AB74E514EE56BE00A59617 /* PromptDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptDialog.xib; sourceTree = "<group>"; };
-		A5B91ACA14E82952002FA697 /* zencoding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = zencoding.js; sourceTree = "<group>"; };
 		A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingJSContext.h; sourceTree = "<group>"; };
 		A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaDelegate.h; sourceTree = "<group>"; };
 		A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaDelegate.m; sourceTree = "<group>"; };
@@ -447,13 +452,12 @@
 		A5D2757414F0096200B3816D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A5E85FB015C87C91001302EA /* zencoding-app.js */,
 				A5D2757514F009B100B3816D /* ZenCoding-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
 				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
 				A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */,
 				A57C4A02158BEED300566A1C /* snippets.json */,
-				A5B91ACA14E82952002FA697 /* zencoding.js */,
+				A5E85FB015C87C91001302EA /* zencoding-app.js */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A562B8921595022F007F9044 /* file-interface.js */,
 			);
@@ -659,6 +663,7 @@
 				A57C4BCB158DCF0A00566A1C /* snippets.json in Resources */,
 				A5E85FB915C9BB05001302EA /* zencoding-app.js in Resources */,
 				A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */,
+				A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */,
 				A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */,
 				A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */,
 			);
@@ -733,6 +738,11 @@
 				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
 				A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */,
 				A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
+				A575604415D1C0E300CF9829 /* ZCUserDataLoader.m in Sources */,
+				A575604515D1C0F800CF9829 /* ZCBasicPreferencesWindowController.m in Sources */,
+				A575604615D1C10500CF9829 /* ZenCodingArrayTransformer.m in Sources */,
+				A575604715D1C10900CF9829 /* ZenCodingSyntaxNameTransformer.m in Sources */,
+				A575604815D1C10C00CF9829 /* ZenCodingTildePathTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -856,9 +866,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = ZenCoding;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = codaplugin;
 			};
 			name = Debug;
@@ -872,9 +882,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = ZenCoding;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = codaplugin;
 			};
 			name = Release;
