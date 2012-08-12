@@ -122,6 +122,8 @@ static bool defaultsLoaded = false;
 			if ([fileList count]) {
 				[jsc evalFunction:@"objcLoadExtensions" withArguments:[fileList JSONString], nil];
 			}
+			
+			[fileList release];
 		}
 	}
 	

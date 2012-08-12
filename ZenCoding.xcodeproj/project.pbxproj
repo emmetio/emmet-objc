@@ -62,6 +62,33 @@
 		A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
+		A5C722C115D5A28200CDA623 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
+		A5C722C715D5A28200CDA623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C722C515D5A28200CDA623 /* InfoPlist.strings */; };
+		A5C722CF15D5A2FA00CDA623 /* ZCTextmatePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C722CE15D5A2FA00CDA623 /* ZCTextmatePlugin.m */; };
+		A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
+		A5C722D115D5A77700CDA623 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
+		A5C722D215D5A77700CDA623 /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */; };
+		A5C722D315D5A77700CDA623 /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D014E03E05002BBA24 /* JSCocoaFFIArgument.m */; };
+		A5C722D415D5A77700CDA623 /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
+		A5C722D515D5A77700CDA623 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
+		A5C722D615D5A77700CDA623 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
+		A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
+		A5C722D815D5A77700CDA623 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
+		A5C722D915D5A77700CDA623 /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
+		A5C722DA15D5A77700CDA623 /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
+		A5C722DB15D5A77700CDA623 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
+		A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
+		A5C722DF15D5A7A200CDA623 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */; };
+		A5C722E015D5A7CD00CDA623 /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
+		A5C722E115D5A7CD00CDA623 /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
+		A5C722E215D5A7CD00CDA623 /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
+		A5C722E315D5A7CD00CDA623 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
+		A5C722E415D5A7CD00CDA623 /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
+		A5C722E515D5A7CD00CDA623 /* zencoding-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A5E85FB015C87C91001302EA /* zencoding-app.js */; };
+		A5C722E615D5A7CD00CDA623 /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
+		A5C722E715D5A7CD00CDA623 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
+		A5C722EE15D6CB0E00CDA623 /* TextMateZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C722ED15D6CB0E00CDA623 /* TextMateZenEditor.m */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A5D2751614F000FA00B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2751414F000FA00B3816D /* InfoPlist.strings */; };
 		A5D2751814F000FA00B3816D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D2751714F000FA00B3816D /* main.m */; };
@@ -196,6 +223,16 @@
 		A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingJSContext.h; sourceTree = "<group>"; };
 		A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaDelegate.h; sourceTree = "<group>"; };
 		A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaDelegate.m; sourceTree = "<group>"; };
+		A5C722C015D5A28200CDA623 /* TextMatePlugin.tmplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextMatePlugin.tmplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C722C415D5A28200CDA623 /* TextMatePlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TextMatePlugin-Info.plist"; sourceTree = "<group>"; };
+		A5C722C615D5A28200CDA623 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A5C722C815D5A28200CDA623 /* TextMatePlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TextMatePlugin-Prefix.pch"; sourceTree = "<group>"; };
+		A5C722CD15D5A2FA00CDA623 /* ZCTextmatePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTextmatePlugin.h; sourceTree = "<group>"; };
+		A5C722CE15D5A2FA00CDA623 /* ZCTextmatePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTextmatePlugin.m; sourceTree = "<group>"; };
+		A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		A5C722E815D5AA3900CDA623 /* OakTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OakTextView.h; sourceTree = "<group>"; };
+		A5C722EC15D6CB0E00CDA623 /* TextMateZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMateZenEditor.h; sourceTree = "<group>"; };
+		A5C722ED15D6CB0E00CDA623 /* TextMateZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMateZenEditor.m; sourceTree = "<group>"; };
 		A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
 		A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
 		A5CCC3AC14E03E05002BBA24 /* class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = class.js; sourceTree = "<group>"; };
@@ -268,6 +305,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5C722BD15D5A28200CDA623 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C722DF15D5A7A200CDA623 /* JavaScriptCore.framework in Frameworks */,
+				A5C722C115D5A28200CDA623 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5D2750B14F000FA00B3816D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -325,6 +371,7 @@
 		A5994E4E14BF52020067B42B = {
 			isa = PBXGroup;
 			children = (
+				A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */,
 				A596306B1519F582000D1A01 /* JSONKit */,
 				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
 				A5BE71DE15BF437E009CF514 /* JSCocoa Delegate */,
@@ -332,6 +379,7 @@
 				A5E85FDB15CB26D7001302EA /* Preferences */,
 				A5D2751114F000FA00B3816D /* ZenCodingSample */,
 				A57C4BA1158DC6BB00566A1C /* CodaPlugin */,
+				A5C722C215D5A28200CDA623 /* TextMatePlugin */,
 				A5994E5C14BF52030067B42B /* Frameworks */,
 				A5994E5A14BF52030067B42B /* Products */,
 			);
@@ -343,6 +391,7 @@
 				A5D2750E14F000FA00B3816D /* ZenCodingSample.app */,
 				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
 				A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */,
+				A5C722C015D5A28200CDA623 /* TextMatePlugin.tmplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -402,6 +451,29 @@
 				A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */,
 			);
 			path = "JSCocoa Delegate";
+			sourceTree = "<group>";
+		};
+		A5C722C215D5A28200CDA623 /* TextMatePlugin */ = {
+			isa = PBXGroup;
+			children = (
+				A5C722C315D5A28200CDA623 /* Supporting Files */,
+				A5C722CD15D5A2FA00CDA623 /* ZCTextmatePlugin.h */,
+				A5C722CE15D5A2FA00CDA623 /* ZCTextmatePlugin.m */,
+				A5C722E815D5AA3900CDA623 /* OakTextView.h */,
+				A5C722EC15D6CB0E00CDA623 /* TextMateZenEditor.h */,
+				A5C722ED15D6CB0E00CDA623 /* TextMateZenEditor.m */,
+			);
+			path = TextMatePlugin;
+			sourceTree = "<group>";
+		};
+		A5C722C315D5A28200CDA623 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5C722C415D5A28200CDA623 /* TextMatePlugin-Info.plist */,
+				A5C722C515D5A28200CDA623 /* InfoPlist.strings */,
+				A5C722C815D5A28200CDA623 /* TextMatePlugin-Prefix.pch */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A5CCC3A914E03E05002BBA24 /* JSCocoa */ = {
@@ -586,6 +658,23 @@
 			productReference = A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
+		A5C722BF15D5A28200CDA623 /* TextMatePlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5C722CB15D5A28200CDA623 /* Build configuration list for PBXNativeTarget "TextMatePlugin" */;
+			buildPhases = (
+				A5C722BC15D5A28200CDA623 /* Sources */,
+				A5C722BD15D5A28200CDA623 /* Frameworks */,
+				A5C722BE15D5A28200CDA623 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TextMatePlugin;
+			productName = TextMatePlugin;
+			productReference = A5C722C015D5A28200CDA623 /* TextMatePlugin.tmplugin */;
+			productType = "com.apple.product-type.bundle";
+		};
 		A5D2750D14F000FA00B3816D /* ZenCodingSample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "ZenCodingSample" */;
@@ -646,6 +735,7 @@
 				A5D2750D14F000FA00B3816D /* ZenCodingSample */,
 				A5D2753C14F004A800B3816D /* ZenCoding */,
 				A57C4B9E158DC6BB00566A1C /* CodaPlugin */,
+				A5C722BF15D5A28200CDA623 /* TextMatePlugin */,
 			);
 		};
 /* End PBXProject section */
@@ -666,6 +756,22 @@
 				A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */,
 				A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */,
 				A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5C722BE15D5A28200CDA623 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C722E015D5A7CD00CDA623 /* class.js in Resources */,
+				A5C722E115D5A7CD00CDA623 /* jslint-jscocoa.js in Resources */,
+				A5C722E215D5A7CD00CDA623 /* PromptDialog.xib in Resources */,
+				A5C722E315D5A7CD00CDA623 /* PreferencesDefaults.plist in Resources */,
+				A5C722E415D5A7CD00CDA623 /* snippets.json in Resources */,
+				A5C722E515D5A7CD00CDA623 /* zencoding-app.js in Resources */,
+				A5C722E615D5A7CD00CDA623 /* objc-zeneditor-wrap.js in Resources */,
+				A5C722E715D5A7CD00CDA623 /* file-interface.js in Resources */,
+				A5C722C715D5A28200CDA623 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +852,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A5C722BC15D5A28200CDA623 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */,
+				A5C722D115D5A77700CDA623 /* BridgeSupportController.m in Sources */,
+				A5C722D215D5A77700CDA623 /* JSCocoaController.m in Sources */,
+				A5C722D315D5A77700CDA623 /* JSCocoaFFIArgument.m in Sources */,
+				A5C722D415D5A77700CDA623 /* JSCocoaFFIClosure.m in Sources */,
+				A5C722D515D5A77700CDA623 /* JSCocoaLib.m in Sources */,
+				A5C722D615D5A77700CDA623 /* JSCocoaPrivateObject.m in Sources */,
+				A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */,
+				A5C722D815D5A77700CDA623 /* ZenCoding.m in Sources */,
+				A5C722D915D5A77700CDA623 /* ZenCodingPromptDialogController.m in Sources */,
+				A5C722DA15D5A77700CDA623 /* NSDictionary+Merge.m in Sources */,
+				A5C722DB15D5A77700CDA623 /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */,
+				A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */,
+				A5C722CF15D5A2FA00CDA623 /* ZCTextmatePlugin.m in Sources */,
+				A5C722EE15D6CB0E00CDA623 /* TextMateZenEditor.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A5D2750A14F000FA00B3816D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -818,6 +947,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				A57C4BA5158DC6BB00566A1C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A5C722C515D5A28200CDA623 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5C722C615D5A28200CDA623 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -938,6 +1075,44 @@
 			};
 			name = Release;
 		};
+		A5C722C915D5A28200CDA623 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TextMatePlugin/TextMatePlugin-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				WRAPPER_EXTENSION = tmplugin;
+			};
+			name = Debug;
+		};
+		A5C722CA15D5A28200CDA623 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TextMatePlugin/TextMatePlugin-Prefix.pch";
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.7;
+				WRAPPER_EXTENSION = tmplugin;
+			};
+			name = Release;
+		};
 		A5D2752414F000FA00B3816D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1026,6 +1201,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A5C722CB15D5A28200CDA623 /* Build configuration list for PBXNativeTarget "TextMatePlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5C722C915D5A28200CDA623 /* Debug */,
+				A5C722CA15D5A28200CDA623 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "ZenCodingSample" */ = {
 			isa = XCConfigurationList;
