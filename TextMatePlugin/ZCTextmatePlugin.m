@@ -18,10 +18,6 @@ static NSString * const ZenCodingBundleIdentifier = @"ru.chikuyonok.ZenCodingTex
 
 @implementation ZCTextmatePlugin
 
-+ (void)initialize {
-	[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
-}
-
 + (NSBundle *)bundle {
 	return [NSBundle bundleWithIdentifier:ZenCodingBundleIdentifier];
 }
@@ -30,16 +26,24 @@ static NSString * const ZenCodingBundleIdentifier = @"ru.chikuyonok.ZenCodingTex
 	self = [super init];
 	if (self != nil) {
 		NSApp = [NSApplication sharedApplication];
-		editor = [TextMateZenEditor new];
+		NSBundle *bundle = [ZCTextmatePlugin bundle];
+		
+		[ZenCoding addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
 		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
+		
+		editor = [TextMateZenEditor new];
 		[[ZenCoding sharedInstance] setContext:editor];
+		
 		[self installMenuItems];
 	}
 	return self;
 }
 
 - (void)installMenuItems {
-	NSMenu *menu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) forTarget:self];
+	NSString *keyboardShortcutsPlist = [[ZCTextmatePlugin bundle] pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
+	NSDictionary *shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
+	NSLog(@"Shortcuts: %@", shortcuts);
+	NSMenu *menu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
 	NSMenuItem *rootItem = [[NSApp mainMenu] addItemWithTitle:@"Zen Coding" action:nil keyEquivalent:@""];
 	rootItem.submenu = menu;
 }

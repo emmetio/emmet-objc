@@ -20,6 +20,10 @@ var objcZenEditor = (function() {
 		setContext: function(context) {
 			ctx = context;
 		},
+
+		getContext: function() {
+			return ctx;
+		},
 					 
 		setAutoHandleIndent: function(val) {
 			autoHandleIndent = val;

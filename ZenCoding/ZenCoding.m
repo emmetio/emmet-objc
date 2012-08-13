@@ -17,7 +17,7 @@
 @interface ZenCoding ()
 - (void)setupJSContext;
 - (void)loadUserData;
-- (void)createMenuItemsFromArray:(NSArray *)dict forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target;
+- (void)createMenuItemsFromArray:(NSArray *)dict forMenu:(NSMenu *)menu withAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts ofTarget:(id)target;
 @end
 
 @implementation ZenCoding
@@ -27,6 +27,16 @@
 static ZenCoding *instance = nil;
 static Class jsCtxDelegateClass = nil;
 static bool defaultsLoaded = false;
+static NSMutableArray *coreFiles = nil;
+
++ (void)initialize {
+	coreFiles = [NSMutableArray new];
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+	NSArray *files = [NSArray arrayWithObjects:@"zencoding-app", @"file-interface", @"objc-zeneditor-wrap", nil];
+	[files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[ZenCoding addCoreFile:[bundle pathForResource:obj ofType:@"js"]];
+	}];
+}
 
 + (void)setJSContextDelegateClass:(Class)class {
 	jsCtxDelegateClass = class;
@@ -39,6 +49,10 @@ static bool defaultsLoaded = false;
 		}
 		return instance;
 	}
+}
+
++ (void)addCoreFile:(NSString *)file {
+	[coreFiles addObject:file];
 }
 
 + (void)loadDefaults {
@@ -87,13 +101,13 @@ static bool defaultsLoaded = false;
 		self->jsc = [NSClassFromString(jscClassName) new];
 	}
 	
-	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	[jsc evalFile:[bundle pathForResource:@"zencoding-app" ofType:@"js"]];
-	[jsc evalFile:[bundle pathForResource:@"file-interface" ofType:@"js"]];
-	[jsc evalFile:[bundle pathForResource:@"objc-zeneditor-wrap" ofType:@"js"]];
-	
+	// load core files
+	[coreFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+		[jsc evalFile:obj];
+	}];
 	[jsc evalFunction:@"zen_coding.require('file').setContext" withArguments:[ZenCodingFile class], nil];
 	
+	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	// load system snippets
 	NSString *snippetsJSON = [NSString 
 						  stringWithContentsOfFile:[bundle pathForResource:@"snippets" ofType:@"json"] 
@@ -206,19 +220,23 @@ static bool defaultsLoaded = false;
 }
 
 - (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target {
+	return [self actionsMenuWithAction:action keyboardShortcuts:nil forTarget:target];
+}
+
+- (NSMenu *)actionsMenuWithAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts forTarget:(id)target {
 	NSMenu *rootMenu = [[NSMenu alloc] initWithTitle:@"Zen Coding"];
-	[self createMenuItemsFromArray:[self actionsList] forMenu:rootMenu withAction:action ofTarget:target];
+	[self createMenuItemsFromArray:[self actionsList] forMenu:rootMenu withAction:action keyboardShortcuts:shortcuts ofTarget:target];
 	return [rootMenu autorelease];
 }
 
-- (void)createMenuItemsFromArray:(NSArray *)items forMenu:(NSMenu *)menu withAction:(SEL)action ofTarget:(id)target {
+- (void)createMenuItemsFromArray:(NSArray *)items forMenu:(NSMenu *)menu withAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts ofTarget:(id)target {
 	[items enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		NSDictionary *objDict = (NSDictionary *)obj;
 		if ([[objDict objectForKey:@"type"] isEqual:@"submenu"]) {
 			// create submenu
 			NSString *submenuName = [objDict valueForKey:@"name"];
 			NSMenu *submenu = [[NSMenu alloc] initWithTitle:submenuName];
-			[self createMenuItemsFromArray:[objDict objectForKey:@"items"] forMenu:submenu withAction:action ofTarget:target];
+			[self createMenuItemsFromArray:[objDict objectForKey:@"items"] forMenu:submenu withAction:action keyboardShortcuts:shortcuts ofTarget:target];
 			
 			NSMenuItem *submenuItem = [[NSMenuItem alloc] initWithTitle:submenuName action:NULL keyEquivalent:@""];
 			[menu addItem:submenuItem];
@@ -227,7 +245,11 @@ static bool defaultsLoaded = false;
 			[submenu release];
 			[submenuItem release];
 		} else {
-			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:[objDict valueForKey:@"label"] action:action keyEquivalent:@""];
+			NSString *shortcut = [shortcuts objectForKey:[objDict valueForKey:@"name"]];
+			if (shortcut == nil)
+				shortcut = @"";
+			
+			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:[objDict valueForKey:@"label"] action:action keyEquivalent:shortcut];
 			[actionItem setTarget:target];
 			[menu addItem:actionItem];
 			[actionItem release];

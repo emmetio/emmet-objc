@@ -46,6 +46,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 - (id)init {
 	if (self = [super init]) {
 		NSApp = [NSApplication sharedApplication];
+		[[ZenCoding sharedInstance].jsc evalFunction:@"objcZenEditor.setAutoHandleIndent" withArguments:NO, nil];
 	}
 	
 	return self;
@@ -124,7 +125,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	return NSMakeRange(start, end - start);
 }
 
-- (void) setSelectionRange:(NSRange)range {
+- (void)setSelectionRange:(NSRange)range {
     OakTextView *tv = [self tv];
 	TMLocation loc = convertRangeToLocation(range, [self content]);
 	[tv goToLineNumber:[NSNumber numberWithInteger:loc.startLine]];
@@ -173,6 +174,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (void)replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent {
 	// check if range is in bounds
+	NSLog(@"Inserting:\n%@", value);
 	OakTextView *tv = [self tv];
 	if (end <= [[self content] length]) {
 		self.selectionRange = NSMakeRange(start, end - start);

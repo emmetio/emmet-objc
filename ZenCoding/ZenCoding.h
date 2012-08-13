@@ -23,6 +23,7 @@
 + (ZenCoding *)sharedInstance;
 + (void)setJSContextDelegateClass:(Class)class;
 + (void)loadDefaults;
++ (void)addCoreFile:(NSString *)file;
 
 // runs Zen Coding’s JS action
 - (BOOL)runAction:name;
@@ -34,5 +35,6 @@
 - (NSArray *)actionsList;
 - (NSMenu *)actionsMenu;
 - (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target;
+- (NSMenu *)actionsMenuWithAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts forTarget:(id)target;
 - (void)performMenuAction:(id)sender;
 @end
