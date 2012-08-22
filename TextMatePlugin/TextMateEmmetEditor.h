@@ -19,6 +19,6 @@ typedef struct _TMLocation {
 
 TMLocation convertRangeToLocation(NSRange range, NSString *string);
 
-@interface TextMateZenEditor : NSObject <ZenEditor>
+@interface TextMateEmmetEditor : NSObject <ZenEditor>
 
 @end

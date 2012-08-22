@@ -10,6 +10,8 @@
 #import "ZenCodingJSContext.h"
 #import "ZenCodingDefaultsKeys.h"
 
+void setKeyEquivalent(NSMenuItem *menuItem, NSString *key);
+
 @interface ZenCoding : NSObject {
 	id context;
 	id<ZenCodingJSContext> jsc;

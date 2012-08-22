@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ZenCoding.h"
-#import "TextMateZenEditor.h"
+#import "TextMateEmmetEditor.h"
 
 @protocol TMPlugInController
 - (CGFloat)version;
 @end
 
-@interface ZCTextmatePlugin : NSObject {
-	TextMateZenEditor *editor;
+@interface EMTextmatePlugin : NSObject {
+	TextMateEmmetEditor *editor;
 }
 
 + (NSBundle *)bundle;

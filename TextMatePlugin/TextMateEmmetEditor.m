@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "TextMateZenEditor.h"
+#import "TextMateEmmetEditor.h"
 #import "ZenCoding.h"
 #import "ZenCodingPromptDialogController.h"
 
@@ -33,7 +33,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	return loc;
 }
 
-@interface TextMateZenEditor ()
+@interface TextMateEmmetEditor ()
 
 - (NSArray *)linesOfText:(NSString *)text;
 - (OakTextView *)tv;
@@ -41,7 +41,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 @end
 
-@implementation TextMateZenEditor
+@implementation TextMateEmmetEditor
 
 - (id)init {
 	if (self = [super init]) {

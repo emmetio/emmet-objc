@@ -47,9 +47,14 @@
 		return event;
 	}];
 	
-	// add actions as global menu item	
+	// add actions as global menu item
+	
+	NSString *keyboardShortcutsPlist = [[NSBundle mainBundle] pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
+	NSDictionary *shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
+	NSLog(@"Shortcuts: %@", shortcuts);
+	
 	NSMenu *mainMenu = [NSApp mainMenu];
-	NSMenu *actionsMenu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) forTarget:self];
+	NSMenu *actionsMenu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
 	NSMenuItem *actionsItem = [[NSMenuItem alloc] initWithTitle:[actionsMenu title] action:NULL keyEquivalent:@""];
 	[actionsItem setSubmenu:actionsMenu];
 	[mainMenu insertItem:actionsItem atIndex:4];

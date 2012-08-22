@@ -6,32 +6,32 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZCTextmatePlugin.h"
+#import "EMTextmatePlugin.h"
 #import "JSCocoaDelegate.h"
-#import "TextMateZenEditor.h"
+#import "TextMateEmmetEditor.h"
 
-static NSString * const ZenCodingBundleIdentifier = @"ru.chikuyonok.ZenCodingTextmate";
+static NSString * const EmmetBundleIdentifier = @"ru.chikuyonok.EmmetTextmate";
 
-@interface ZCTextmatePlugin ()
+@interface EMTextmatePlugin ()
 - (void)performMenuAction:(id)sender;
 @end
 
-@implementation ZCTextmatePlugin
+@implementation EMTextmatePlugin
 
 + (NSBundle *)bundle {
-	return [NSBundle bundleWithIdentifier:ZenCodingBundleIdentifier];
+	return [NSBundle bundleWithIdentifier:EmmetBundleIdentifier];
 }
 
 - (id)initWithPlugInController:(id <TMPlugInController>)aController {
 	self = [super init];
 	if (self != nil) {
 		NSApp = [NSApplication sharedApplication];
-		NSBundle *bundle = [ZCTextmatePlugin bundle];
+		NSBundle *bundle = [EMTextmatePlugin bundle];
 		
 		[ZenCoding addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
 		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
 		
-		editor = [TextMateZenEditor new];
+		editor = [TextMateEmmetEditor new];
 		[[ZenCoding sharedInstance] setContext:editor];
 		
 		[self installMenuItems];
@@ -40,11 +40,11 @@ static NSString * const ZenCodingBundleIdentifier = @"ru.chikuyonok.ZenCodingTex
 }
 
 - (void)installMenuItems {
-	NSString *keyboardShortcutsPlist = [[ZCTextmatePlugin bundle] pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
+	NSString *keyboardShortcutsPlist = [[EMTextmatePlugin bundle] pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
 	NSDictionary *shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
 	NSLog(@"Shortcuts: %@", shortcuts);
 	NSMenu *menu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
-	NSMenuItem *rootItem = [[NSApp mainMenu] addItemWithTitle:@"Zen Coding" action:nil keyEquivalent:@""];
+	NSMenuItem *rootItem = [[NSApp mainMenu] addItemWithTitle:@"Emmet" action:nil keyEquivalent:@""];
 	rootItem.submenu = menu;
 }
 

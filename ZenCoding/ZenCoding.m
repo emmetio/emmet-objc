@@ -13,6 +13,46 @@
 #import "NSMutableDictionary+ZCUtils.h"
 #import "JSONKit.h"
 
+void setKeyEquivalent(NSMenuItem *menuItem, NSString *key) {
+	if (!key || [key isEqualToString:@""]) {
+		return;
+	}
+	
+	NSString *k = nil;
+	NSUInteger modifiers = 0;
+//	NSString *ch;
+	
+	for (int i = 0; i < [key length]; i++) {
+//		ch = [key characterAtIndex:i];
+//		if ([ch isEqualToString:@"$"]) {
+//			modifiers |= NSShiftKeyMask;
+//		} else if ([ch isEqualToString:@"^"]) {
+//			modifiers |= NSControlKeyMask;
+//		} else if ([ch isEqualToString:@"~"]) {
+//			modifiers |= NSAlternateKeyMask;
+//		}  else if ([ch isEqualToString:@"@"]) {
+//			modifiers |= NSCommandKeyMask;
+//		}  else if ([ch isEqualToString:@"#"]) {
+//			modifiers |= NSNumericPadKeyMask;
+//		}
+		
+		
+		switch ([key characterAtIndex:i]) {
+			case '$': modifiers |= NSShiftKeyMask;      break;
+			case '^': modifiers |= NSControlKeyMask;    break;
+			case '~': modifiers |= NSAlternateKeyMask;  break;
+			case '@': modifiers |= NSCommandKeyMask;    break;
+			case '#': modifiers |= NSNumericPadKeyMask; break;
+			default: k = [key substringWithRange:NSMakeRange(i, 1)];
+		}
+	}
+	
+	if (k && menuItem) {
+		[menuItem setKeyEquivalent:k];
+		[menuItem setKeyEquivalentModifierMask:modifiers];
+	}
+	
+}
 
 @interface ZenCoding ()
 - (void)setupJSContext;
@@ -96,7 +136,7 @@ static NSMutableArray *coreFiles = nil;
 		self->jsc = [jsCtxDelegateClass new];
 	} else {
 		// get JS delegate class name from bundle Info.plist
-		NSString *jscClassName = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"ZCJavascriptDelegate"];
+		NSString *jscClassName = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"EMJavascriptDelegate"];
 		
 		self->jsc = [NSClassFromString(jscClassName) new];
 	}
@@ -196,6 +236,7 @@ static NSMutableArray *coreFiles = nil;
 }
 
 - (void)loadUserData {
+	return;
 	NSDictionary *userData = [ZCUserDataLoader userData];
 	[jsc evalFunction:@"objcLoadUserData" withArguments:[userData JSONString], nil];
 }
@@ -224,7 +265,7 @@ static NSMutableArray *coreFiles = nil;
 }
 
 - (NSMenu *)actionsMenuWithAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts forTarget:(id)target {
-	NSMenu *rootMenu = [[NSMenu alloc] initWithTitle:@"Zen Coding"];
+	NSMenu *rootMenu = [[NSMenu alloc] initWithTitle:@"Emmet"];
 	[self createMenuItemsFromArray:[self actionsList] forMenu:rootMenu withAction:action keyboardShortcuts:shortcuts ofTarget:target];
 	return [rootMenu autorelease];
 }
@@ -245,11 +286,13 @@ static NSMutableArray *coreFiles = nil;
 			[submenu release];
 			[submenuItem release];
 		} else {
-			NSString *shortcut = [shortcuts objectForKey:[objDict valueForKey:@"name"]];
-			if (shortcut == nil)
-				shortcut = @"";
+			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:[objDict valueForKey:@"label"] action:action keyEquivalent:@""];
 			
-			NSMenuItem *actionItem = [[NSMenuItem alloc] initWithTitle:[objDict valueForKey:@"label"] action:action keyEquivalent:shortcut];
+			NSString *shortcut = [shortcuts objectForKey:[objDict valueForKey:@"name"]];
+			if (shortcut != nil) {
+				setKeyEquivalent(actionItem, shortcut);
+			}
+			
 			[actionItem setTarget:target];
 			[menu addItem:actionItem];
 			[actionItem release];
