@@ -20,23 +20,8 @@ void setKeyEquivalent(NSMenuItem *menuItem, NSString *key) {
 	
 	NSString *k = nil;
 	NSUInteger modifiers = 0;
-//	NSString *ch;
 	
 	for (int i = 0; i < [key length]; i++) {
-//		ch = [key characterAtIndex:i];
-//		if ([ch isEqualToString:@"$"]) {
-//			modifiers |= NSShiftKeyMask;
-//		} else if ([ch isEqualToString:@"^"]) {
-//			modifiers |= NSControlKeyMask;
-//		} else if ([ch isEqualToString:@"~"]) {
-//			modifiers |= NSAlternateKeyMask;
-//		}  else if ([ch isEqualToString:@"@"]) {
-//			modifiers |= NSCommandKeyMask;
-//		}  else if ([ch isEqualToString:@"#"]) {
-//			modifiers |= NSNumericPadKeyMask;
-//		}
-		
-		
 		switch ([key characterAtIndex:i]) {
 			case '$': modifiers |= NSShiftKeyMask;      break;
 			case '^': modifiers |= NSControlKeyMask;    break;
@@ -236,8 +221,8 @@ static NSMutableArray *coreFiles = nil;
 }
 
 - (void)loadUserData {
-	return;
 	NSDictionary *userData = [ZCUserDataLoader userData];
+//	NSLog(@"Loading user data:\n%@", [userData JSONString]);
 	[jsc evalFunction:@"objcLoadUserData" withArguments:[userData JSONString], nil];
 }
 

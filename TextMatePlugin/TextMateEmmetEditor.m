@@ -22,7 +22,8 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 			loc.startCol = range.location - lineRange.location + 1;
 		}
 		
-		if (NSLocationInRange(range.location + range.length, lineRange)) {
+		NSUInteger pos = range.location + range.length;
+		if (pos - lineRange.location <= lineRange.length) {
 			loc.endLine = numberOfLines + 1;
 			loc.endCol = range.location + range.length - lineRange.location + 1;
 		}
@@ -174,7 +175,6 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (void)replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent {
 	// check if range is in bounds
-	NSLog(@"Inserting:\n%@", value);
 	OakTextView *tv = [self tv];
 	if (end <= [[self content] length]) {
 		self.selectionRange = NSMakeRange(start, end - start);

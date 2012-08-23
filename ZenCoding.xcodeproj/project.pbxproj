@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A53F606815E587B700CF391B /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
+		A53F606915E6C49300CF391B /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
+		A53F606A15E6C49F00CF391B /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
+		A53F606B15E6C4C100CF391B /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
+		A53F606C15E6C4C100CF391B /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
+		A53F606D15E6C4C100CF391B /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
 		A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A562B88B1595007C007F9044 /* ZenCodingFile.h */; };
 		A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
 		A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
@@ -15,7 +20,6 @@
 		A562B89615951696007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B897159516A8007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B898159516B1007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
-		A56992E615D9091500D97C27 /* textmate-bootstrap.js in Sources */ = {isa = PBXBuildFile; fileRef = A56992E515D9091500D97C27 /* textmate-bootstrap.js */; };
 		A56992E715D90A1C00D97C27 /* textmate-bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A56992E515D9091500D97C27 /* textmate-bootstrap.js */; };
 		A56992E915D90F2100D97C27 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */; };
 		A575604415D1C0E300CF9829 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
@@ -773,6 +777,7 @@
 				A5C722C715D5A28200CDA623 /* InfoPlist.strings in Resources */,
 				A56992E715D90A1C00D97C27 /* textmate-bootstrap.js in Resources */,
 				A56992E915D90F2100D97C27 /* KeyboardShortcuts.plist in Resources */,
+				A53F606915E6C49300CF391B /* BasicPreferences.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +859,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53F606B15E6C4C100CF391B /* ZenCodingArrayTransformer.m in Sources */,
+				A53F606C15E6C4C100CF391B /* ZenCodingSyntaxNameTransformer.m in Sources */,
+				A53F606D15E6C4C100CF391B /* ZenCodingTildePathTransformer.m in Sources */,
 				A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */,
 				A5C722D115D5A77700CDA623 /* BridgeSupportController.m in Sources */,
 				A5C722D215D5A77700CDA623 /* JSCocoaController.m in Sources */,
@@ -870,7 +878,7 @@
 				A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */,
 				A5C722CF15D5A2FA00CDA623 /* EMTextmatePlugin.m in Sources */,
 				A5C722EE15D6CB0E00CDA623 /* TextMateEmmetEditor.m in Sources */,
-				A56992E615D9091500D97C27 /* textmate-bootstrap.js in Sources */,
+				A53F606A15E6C49F00CF391B /* ZCBasicPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
