@@ -28,6 +28,10 @@
 		A575604715D1C10900CF9829 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
 		A575604815D1C10C00CF9829 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
 		A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
+		A576DD4815E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
+		A576DD4915E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
+		A576DD4A15E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
+		A576DD4B15E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
 		A57C4A03158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -93,7 +97,6 @@
 		A5C722E215D5A7CD00CDA623 /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
 		A5C722E315D5A7CD00CDA623 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
 		A5C722E415D5A7CD00CDA623 /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
-		A5C722E515D5A7CD00CDA623 /* zencoding-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A5E85FB015C87C91001302EA /* zencoding-app.js */; };
 		A5C722E615D5A7CD00CDA623 /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A5C722E715D5A7CD00CDA623 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A5C722EE15D6CB0E00CDA623 /* TextMateEmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C722ED15D6CB0E00CDA623 /* TextMateEmmetEditor.m */; };
@@ -149,13 +152,9 @@
 		A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
 		A5DB23451510DABD009979C2 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
-		A5E85FB115C87C91001302EA /* zencoding-app.js in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB015C87C91001302EA /* zencoding-app.js */; };
 		A5E85FB415C8821C001302EA /* ZCUserDataLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FB215C8821C001302EA /* ZCUserDataLoader.h */; };
 		A5E85FB515C8821C001302EA /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
 		A5E85FB615C8821C001302EA /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
-		A5E85FB715C9BAEC001302EA /* zencoding-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A5E85FB015C87C91001302EA /* zencoding-app.js */; };
-		A5E85FB815C9BAF9001302EA /* zencoding-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A5E85FB015C87C91001302EA /* zencoding-app.js */; };
-		A5E85FB915C9BB05001302EA /* zencoding-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A5E85FB015C87C91001302EA /* zencoding-app.js */; };
 		A5E85FE215CB2743001302EA /* ZCSnippetsPreferencesDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FDD15CB2743001302EA /* ZCSnippetsPreferencesDataSource.h */; };
 		A5E85FE415CB2743001302EA /* ZCSnippetsPreferencesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FDE15CB2743001302EA /* ZCSnippetsPreferencesDataSource.m */; };
 		A5E85FE515CB2743001302EA /* ZCSnippetsPreferencesWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FDF15CB2743001302EA /* ZCSnippetsPreferencesWindow.h */; };
@@ -196,6 +195,7 @@
 		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
 		A56992E515D9091500D97C27 /* textmate-bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "textmate-bootstrap.js"; sourceTree = "<group>"; };
 		A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
+		A576DD4715E83213009B5E24 /* emmet-app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "emmet-app.js"; sourceTree = "<group>"; };
 		A57C4A02158BEED300566A1C /* snippets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snippets.json; sourceTree = "<group>"; };
 		A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCoding.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CodaPlugin-Info.plist"; sourceTree = "<group>"; };
@@ -224,7 +224,7 @@
 		A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingJSContext.h; sourceTree = "<group>"; };
 		A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaDelegate.h; sourceTree = "<group>"; };
 		A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaDelegate.m; sourceTree = "<group>"; };
-		A5C722C015D5A28200CDA623 /* TextMatePlugin.tmplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextMatePlugin.tmplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5C722C015D5A28200CDA623 /* Emmet.tmplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Emmet.tmplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C722C415D5A28200CDA623 /* TextMatePlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TextMatePlugin-Info.plist"; sourceTree = "<group>"; };
 		A5C722C615D5A28200CDA623 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5C722C815D5A28200CDA623 /* TextMatePlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TextMatePlugin-Prefix.pch"; sourceTree = "<group>"; };
@@ -267,7 +267,6 @@
 		A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2757B14F009D700B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults.plist; sourceTree = "<group>"; };
-		A5E85FB015C87C91001302EA /* zencoding-app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "zencoding-app.js"; sourceTree = "<group>"; };
 		A5E85FB215C8821C001302EA /* ZCUserDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUserDataLoader.h; sourceTree = "<group>"; };
 		A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUserDataLoader.m; sourceTree = "<group>"; };
 		A5E85FDD15CB2743001302EA /* ZCSnippetsPreferencesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSnippetsPreferencesDataSource.h; sourceTree = "<group>"; };
@@ -392,7 +391,7 @@
 				A5D2750E14F000FA00B3816D /* ZenCodingSample.app */,
 				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
 				A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */,
-				A5C722C015D5A28200CDA623 /* TextMatePlugin.tmplugin */,
+				A5C722C015D5A28200CDA623 /* Emmet.tmplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -527,12 +526,12 @@
 		A5D2757414F0096200B3816D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A576DD4715E83213009B5E24 /* emmet-app.js */,
 				A5D2757514F009B100B3816D /* ZenCoding-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
 				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
 				A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */,
 				A57C4A02158BEED300566A1C /* snippets.json */,
-				A5E85FB015C87C91001302EA /* zencoding-app.js */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
 				A562B8921595022F007F9044 /* file-interface.js */,
 			);
@@ -675,7 +674,7 @@
 			);
 			name = TextMatePlugin;
 			productName = TextMatePlugin;
-			productReference = A5C722C015D5A28200CDA623 /* TextMatePlugin.tmplugin */;
+			productReference = A5C722C015D5A28200CDA623 /* Emmet.tmplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 		A5D2750D14F000FA00B3816D /* ZenCodingSample */ = {
@@ -748,13 +747,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A576DD4A15E83213009B5E24 /* emmet-app.js in Resources */,
 				A562B898159516B1007F9044 /* file-interface.js in Resources */,
 				A57C4BC4158DCF0A00566A1C /* class.js in Resources */,
 				A57C4BC5158DCF0A00566A1C /* jslint-jscocoa.js in Resources */,
 				A57C4BC6158DCF0A00566A1C /* PromptDialog.xib in Resources */,
 				A57C4BCA158DCF0A00566A1C /* PreferencesDefaults.plist in Resources */,
 				A57C4BCB158DCF0A00566A1C /* snippets.json in Resources */,
-				A5E85FB915C9BB05001302EA /* zencoding-app.js in Resources */,
 				A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */,
 				A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */,
 				A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */,
@@ -766,12 +765,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A576DD4B15E83213009B5E24 /* emmet-app.js in Resources */,
 				A5C722E015D5A7CD00CDA623 /* class.js in Resources */,
 				A5C722E115D5A7CD00CDA623 /* jslint-jscocoa.js in Resources */,
 				A5C722E215D5A7CD00CDA623 /* PromptDialog.xib in Resources */,
 				A5C722E315D5A7CD00CDA623 /* PreferencesDefaults.plist in Resources */,
 				A5C722E415D5A7CD00CDA623 /* snippets.json in Resources */,
-				A5C722E515D5A7CD00CDA623 /* zencoding-app.js in Resources */,
 				A5C722E615D5A7CD00CDA623 /* objc-zeneditor-wrap.js in Resources */,
 				A5C722E715D5A7CD00CDA623 /* file-interface.js in Resources */,
 				A5C722C715D5A28200CDA623 /* InfoPlist.strings in Resources */,
@@ -785,10 +784,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A576DD4815E83213009B5E24 /* emmet-app.js in Resources */,
 				A562B89615951696007F9044 /* file-interface.js in Resources */,
 				A5D2751614F000FA00B3816D /* InfoPlist.strings in Resources */,
 				A5D2751C14F000FA00B3816D /* Credits.rtf in Resources */,
-				A5E85FB815C9BAF9001302EA /* zencoding-app.js in Resources */,
 				A5D2753414F0041800B3816D /* objc-zeneditor-wrap.js in Resources */,
 				A5D2753514F0041D00B3816D /* class.js in Resources */,
 				A5D2753614F0042000B3816D /* jslint-jscocoa.js in Resources */,
@@ -807,7 +806,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5E85FB715C9BAEC001302EA /* zencoding-app.js in Resources */,
+				A576DD4915E83213009B5E24 /* emmet-app.js in Resources */,
 				A562B897159516A8007F9044 /* file-interface.js in Resources */,
 				A5D2755A14F0056F00B3816D /* class.js in Resources */,
 				A5D2755B14F0057200B3816D /* jslint-jscocoa.js in Resources */,
@@ -928,7 +927,6 @@
 				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */,
 				A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
-				A5E85FB115C87C91001302EA /* zencoding-app.js in Sources */,
 				A5E85FB615C8821C001302EA /* ZCUserDataLoader.m in Sources */,
 				A5E85FE415CB2743001302EA /* ZCSnippetsPreferencesDataSource.m in Sources */,
 				A5E85FE715CB2743001302EA /* ZCSnippetsPreferencesWindow.m in Sources */,
@@ -1092,7 +1090,7 @@
 				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = tmplugin;
 			};
@@ -1111,7 +1109,7 @@
 				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = tmplugin;
 			};

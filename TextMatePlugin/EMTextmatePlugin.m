@@ -51,21 +51,28 @@ static NSString * const EmmetBundleIdentifier = @"ru.chikuyonok.EmmetTextmate";
 	[menu addItem:preferencesItem];
 	[preferencesItem release];
 	
-	NSMenuItem *rootItem = [[NSApp mainMenu] addItemWithTitle:@"Emmet" action:nil keyEquivalent:@""];
+
+	NSMenuItem *rootItem = [[NSMenuItem alloc] initWithTitle:@"Emmet" action:nil keyEquivalent:@""];
 	
 	rootItem.submenu = menu;
+	
+	NSMenu *mainMenu = [NSApp mainMenu];
+	NSUInteger refIndex = [mainMenu indexOfItemWithTitle:@"Window"];
+	if (refIndex != -1) {
+		[mainMenu insertItem:rootItem atIndex:refIndex];
+	} else {
+		[mainMenu addItem:rootItem];
+	}
 }
 
 - (void)performMenuAction:(id)sender {
-//	OakTextView *tv = [NSApp targetForAction:@selector(insertSnippetWithOptions:)];
-//	NSLog(@"Env: %@", [tv environmentVariables]);
-//	NSLog(@"XML: %@", [tv xmlRepresentation]);
 	[[ZenCoding sharedInstance] performMenuAction:sender];
 }
 
 - (void)showPreferences:(id)sender {
 	if (prefs == nil) {
 		prefs = [[ZCBasicPreferencesWindowController alloc] init];
+		[prefs hideTabExpanderControl];
 	}
 	
 	[prefs showWindow:self];

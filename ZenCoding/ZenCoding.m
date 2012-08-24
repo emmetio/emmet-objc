@@ -57,7 +57,7 @@ static NSMutableArray *coreFiles = nil;
 + (void)initialize {
 	coreFiles = [NSMutableArray new];
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
-	NSArray *files = [NSArray arrayWithObjects:@"zencoding-app", @"file-interface", @"objc-zeneditor-wrap", nil];
+	NSArray *files = [NSArray arrayWithObjects:@"emmet-app", @"file-interface", @"objc-zeneditor-wrap", nil];
 	[files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		[ZenCoding addCoreFile:[bundle pathForResource:obj ofType:@"js"]];
 	}];

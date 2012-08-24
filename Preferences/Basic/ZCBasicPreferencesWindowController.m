@@ -79,6 +79,37 @@
 	[self setupOutputProfilesController];
 }
 
+- (void)hideTabExpanderControl {
+	float __block offset = 0.0;
+	NSView *parentView = [[self window] contentView];
+	NSArray *subviews = [[parentView subviews] copy];
+	[subviews enumerateObjectsUsingBlock:^(NSView *view, NSUInteger idx, BOOL *stop) {
+		if (view.tag == 1) {
+			float delta = 0.0;
+			if (idx < [subviews count] - 1) {
+				NSView *nextView = [subviews objectAtIndex:idx + 1];
+				delta = nextView.frame.origin.y - view.frame.origin.y;
+
+				// reposition all siblings
+				[[subviews subarrayWithRange:NSMakeRange(idx + 1, [subviews count] - idx - 1)] enumerateObjectsUsingBlock:^(NSView *view, NSUInteger idx, BOOL *stop) {
+					[view setFrameOrigin:NSMakePoint(view.frame.origin.x, view.frame.origin.y - delta)];
+				}];
+			} else {
+				delta = view.frame.size.height;
+			}
+			
+			[view setHidden:YES];
+			
+			offset += delta;
+		}
+	}];
+	
+	if (offset) {
+		NSWindow *w = [self window];
+		[w setFrame:NSMakeRect(w.frame.origin.x, w.frame.origin.y, w.frame.size.width, w.frame.size.height + offset) display:YES];
+	}
+}
+
 - (IBAction)restoreDefaults:(id)sender {
 	[ZCUserDataLoader resetDefaults];
 	[self setupOutputProfilesController];

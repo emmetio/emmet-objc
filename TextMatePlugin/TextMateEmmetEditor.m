@@ -42,6 +42,14 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 @end
 
+@implementation NSString (EmmetUtils)
+
+- (BOOL)containsSubstring:(NSString *)str {
+	return [self rangeOfString:str].location != NSNotFound;
+}
+
+@end
+
 @implementation TextMateEmmetEditor
 
 - (id)init {
@@ -157,11 +165,28 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 }
 
 - (NSString *)syntax {
+	NSDictionary *env = [[self tv] environmentVariables];
+	NSString *scope = [env objectForKey:@"TM_SCOPE"];
+	
+	NSArray *syntaxes = [NSArray arrayWithObjects:@"xsl", @"xml", @"haml", @"css", @"less", @"less", @"scss", @"sass", nil];
+	NSString *syntax = nil;
+	for (int i = 0; i < [syntaxes count]; i++) {
+		syntax = [syntaxes objectAtIndex:i];
+		if ([scope containsSubstring:syntax]) {
+			return syntax;
+		}
+	}
+	
 	return @"html";
 }
 
 - (NSString *)profileName {
-	return @"xhtml";
+	NSString *syntax = [self syntax];
+	if ([syntax isEqualToString:@"xml"] || [syntax isEqualToString:@"xsl"]) {
+		return @"xml";
+	}
+	
+	return @"line";
 }
 
 - (NSString *)selection {
@@ -169,7 +194,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	if ([env objectForKey:@"TM_SELECTED_TEXT"]) {
 		return [env objectForKey:@"TM_SELECTED_TEXT"];
 	}
-	
+		
 	return @"";
 }
 

@@ -15,5 +15,6 @@
 
 - (IBAction)restoreDefaults:(id)sender;
 - (IBAction)reloadExtensions:(id)sender;
+- (void)hideTabExpanderControl;
 
 @end
