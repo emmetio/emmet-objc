@@ -42,7 +42,7 @@
 	
 	// register all arguments in JS context
 	for (NSUInteger i = 0; i < [arguments count]; i++) {
-		[argNames addObject:[NSString stringWithFormat:@"__objcArg%d", i]];
+		[argNames addObject:[NSString stringWithFormat:@"__objcArg%ld", i]];
 		[ctx setObject:[arguments objectAtIndex:i] withName:[argNames lastObject]];
 	}
 	

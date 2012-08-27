@@ -32,6 +32,38 @@
 		A576DD4915E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
 		A576DD4A15E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
 		A576DD4B15E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
+		A576DD5215E91267009B5E24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
+		A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD6015E9256F009B5E24 /* EMGenericAction.m */; };
+		A576DD7415E92DE0009B5E24 /* EspressoEmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD7315E92DE0009B5E24 /* EspressoEmmetEditor.m */; };
+		A576DD7515EA441B009B5E24 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
+		A576DD7615EA441B009B5E24 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
+		A576DD7715EA441B009B5E24 /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */; };
+		A576DD7815EA441B009B5E24 /* JSCocoaFFIArgument.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D014E03E05002BBA24 /* JSCocoaFFIArgument.m */; };
+		A576DD7915EA441B009B5E24 /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
+		A576DD7A15EA441B009B5E24 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
+		A576DD7B15EA441B009B5E24 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
+		A576DD7C15EA441B009B5E24 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
+		A576DD7D15EA441B009B5E24 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
+		A576DD7E15EA441B009B5E24 /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
+		A576DD7F15EA441B009B5E24 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A576DD8015EA441B009B5E24 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
+		A576DD8115EA441B009B5E24 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
+		A576DD8215EA441B009B5E24 /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
+		A576DD8315EA441B009B5E24 /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
+		A576DD8415EA441B009B5E24 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
+		A576DD8515EA441B009B5E24 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
+		A576DD8615EA4428009B5E24 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2752614F0011200B3816D /* JavaScriptCore.framework */; };
+		A576DD8715EA4528009B5E24 /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
+		A576DD8815EA4528009B5E24 /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
+		A576DD8915EA4528009B5E24 /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
+		A576DD8A15EA4528009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
+		A576DD8B15EA4528009B5E24 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
+		A576DD8C15EA4528009B5E24 /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
+		A576DD8D15EA4528009B5E24 /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
+		A576DD8E15EA4528009B5E24 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
+		A576DD8F15EA4528009B5E24 /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
+		A576DD9415EA5985009B5E24 /* textmate-bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A56992E515D9091500D97C27 /* textmate-bootstrap.js */; };
+		A576DD9715EB5F08009B5E24 /* EMPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD9615EB5F08009B5E24 /* EMPreferences.m */; };
 		A57C4A03158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
@@ -48,7 +80,6 @@
 		A57C4BB9158DCEB400566A1C /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
 		A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
 		A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
-		A57C4BBE158DCEB400566A1C /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
 		A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
 		A57C4BC3158DCEC000566A1C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2752614F0011200B3816D /* JavaScriptCore.framework */; };
 		A57C4BC4158DCF0A00566A1C /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
@@ -59,9 +90,6 @@
 		A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A596302F15189A08000D1A01 /* ZenCodingNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302E15189A07000D1A01 /* ZenCodingNotifications.h */; };
-		A596306315190223000D1A01 /* NSDictionary+Merge.h in Headers */ = {isa = PBXBuildFile; fileRef = A596306115190222000D1A01 /* NSDictionary+Merge.h */; };
-		A596306415190223000D1A01 /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
-		A596306515190223000D1A01 /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
 		A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */; };
 		A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
 		A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
@@ -87,7 +115,6 @@
 		A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A5C722D815D5A77700CDA623 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
 		A5C722D915D5A77700CDA623 /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
-		A5C722DA15D5A77700CDA623 /* NSDictionary+Merge.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306215190223000D1A01 /* NSDictionary+Merge.m */; };
 		A5C722DB15D5A77700CDA623 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
 		A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
 		A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
@@ -196,6 +223,17 @@
 		A56992E515D9091500D97C27 /* textmate-bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "textmate-bootstrap.js"; sourceTree = "<group>"; };
 		A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
 		A576DD4715E83213009B5E24 /* emmet-app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "emmet-app.js"; sourceTree = "<group>"; };
+		A576DD5115E91267009B5E24 /* Emmet.sugar */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Emmet.sugar; sourceTree = BUILT_PRODUCTS_DIR; };
+		A576DD5515E91267009B5E24 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		A576DD5615E91267009B5E24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A576DD5F15E9256F009B5E24 /* EMGenericAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMGenericAction.h; sourceTree = "<group>"; };
+		A576DD6015E9256F009B5E24 /* EMGenericAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMGenericAction.m; sourceTree = "<group>"; };
+		A576DD6315E92918009B5E24 /* Actions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Actions.xml; sourceTree = "<group>"; };
+		A576DD6415E92918009B5E24 /* Categories.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Categories.xml; sourceTree = "<group>"; };
+		A576DD7215E92DE0009B5E24 /* EspressoEmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoEmmetEditor.h; sourceTree = "<group>"; };
+		A576DD7315E92DE0009B5E24 /* EspressoEmmetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EspressoEmmetEditor.m; sourceTree = "<group>"; };
+		A576DD9515EB5F08009B5E24 /* EMPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMPreferences.h; sourceTree = "<group>"; };
+		A576DD9615EB5F08009B5E24 /* EMPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMPreferences.m; sourceTree = "<group>"; };
 		A57C4A02158BEED300566A1C /* snippets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snippets.json; sourceTree = "<group>"; };
 		A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCoding.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CodaPlugin-Info.plist"; sourceTree = "<group>"; };
@@ -208,8 +246,6 @@
 		A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaZenEditor.m; sourceTree = "<group>"; };
 		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
 		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
-		A596306115190222000D1A01 /* NSDictionary+Merge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Merge.h"; sourceTree = "<group>"; };
-		A596306215190223000D1A01 /* NSDictionary+Merge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Merge.m"; sourceTree = "<group>"; };
 		A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+ZCUtils.h"; sourceTree = "<group>"; };
 		A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ZCUtils.m"; sourceTree = "<group>"; };
 		A596306C1519F594000D1A01 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -296,6 +332,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A576DD4D15E91267009B5E24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A576DD8615EA4428009B5E24 /* JavaScriptCore.framework in Frameworks */,
+				A576DD5215E91267009B5E24 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A57C4B9C158DC6BB00566A1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -335,6 +380,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A576DD5315E91267009B5E24 /* EspressoPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				A576DD5715E91267009B5E24 /* XML Based */,
+				A576DD5415E91267009B5E24 /* Supporting Files */,
+				A576DD5F15E9256F009B5E24 /* EMGenericAction.h */,
+				A576DD6015E9256F009B5E24 /* EMGenericAction.m */,
+				A576DD7215E92DE0009B5E24 /* EspressoEmmetEditor.h */,
+				A576DD7315E92DE0009B5E24 /* EspressoEmmetEditor.m */,
+				A576DD9515EB5F08009B5E24 /* EMPreferences.h */,
+				A576DD9615EB5F08009B5E24 /* EMPreferences.m */,
+			);
+			path = EspressoPlugin;
+			sourceTree = "<group>";
+		};
+		A576DD5415E91267009B5E24 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A576DD5515E91267009B5E24 /* Prefix.pch */,
+				A576DD5615E91267009B5E24 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A576DD5715E91267009B5E24 /* XML Based */ = {
+			isa = PBXGroup;
+			children = (
+				A576DD6215E92918009B5E24 /* TextActions */,
+			);
+			path = "XML Based";
+			sourceTree = "<group>";
+		};
+		A576DD6215E92918009B5E24 /* TextActions */ = {
+			isa = PBXGroup;
+			children = (
+				A576DD6315E92918009B5E24 /* Actions.xml */,
+				A576DD6415E92918009B5E24 /* Categories.xml */,
+			);
+			path = TextActions;
+			sourceTree = "<group>";
+		};
 		A57C4BA1158DC6BB00566A1C /* CodaPlugin */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +466,7 @@
 				A5D2751114F000FA00B3816D /* ZenCodingSample */,
 				A57C4BA1158DC6BB00566A1C /* CodaPlugin */,
 				A5C722C215D5A28200CDA623 /* TextMatePlugin */,
+				A576DD5315E91267009B5E24 /* EspressoPlugin */,
 				A5994E5C14BF52030067B42B /* Frameworks */,
 				A5994E5A14BF52030067B42B /* Products */,
 			);
@@ -392,6 +479,7 @@
 				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
 				A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */,
 				A5C722C015D5A28200CDA623 /* Emmet.tmplugin */,
+				A576DD5115E91267009B5E24 /* Emmet.sugar */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -430,8 +518,6 @@
 				A5AB74E514EE56BE00A59617 /* PromptDialog.xib */,
 				A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */,
 				A596302E15189A07000D1A01 /* ZenCodingNotifications.h */,
-				A596306115190222000D1A01 /* NSDictionary+Merge.h */,
-				A596306215190223000D1A01 /* NSDictionary+Merge.m */,
 				A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */,
 				A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
@@ -621,7 +707,6 @@
 				A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */,
 				A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */,
 				A596302F15189A08000D1A01 /* ZenCodingNotifications.h in Headers */,
-				A596306315190223000D1A01 /* NSDictionary+Merge.h in Headers */,
 				A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */,
 				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
 				A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */,
@@ -643,6 +728,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A576DD5015E91267009B5E24 /* EspressoPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A576DD5815E91267009B5E24 /* Build configuration list for PBXNativeTarget "EspressoPlugin" */;
+			buildPhases = (
+				A576DD4C15E91267009B5E24 /* Sources */,
+				A576DD4D15E91267009B5E24 /* Frameworks */,
+				A576DD4E15E91267009B5E24 /* Resources */,
+				A576DD4F15E91267009B5E24 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EspressoPlugin;
+			productName = EspressoPlugin;
+			productReference = A576DD5115E91267009B5E24 /* Emmet.sugar */;
+			productType = "com.apple.product-type.bundle";
+		};
 		A57C4B9E158DC6BB00566A1C /* CodaPlugin */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */;
@@ -738,11 +841,29 @@
 				A5D2753C14F004A800B3816D /* ZenCoding */,
 				A57C4B9E158DC6BB00566A1C /* CodaPlugin */,
 				A5C722BF15D5A28200CDA623 /* TextMatePlugin */,
+				A576DD5015E91267009B5E24 /* EspressoPlugin */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A576DD4E15E91267009B5E24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A576DD9415EA5985009B5E24 /* textmate-bootstrap.js in Resources */,
+				A576DD8715EA4528009B5E24 /* class.js in Resources */,
+				A576DD8815EA4528009B5E24 /* jslint-jscocoa.js in Resources */,
+				A576DD8915EA4528009B5E24 /* PromptDialog.xib in Resources */,
+				A576DD8A15EA4528009B5E24 /* emmet-app.js in Resources */,
+				A576DD8B15EA4528009B5E24 /* PreferencesDefaults.plist in Resources */,
+				A576DD8C15EA4528009B5E24 /* snippets.json in Resources */,
+				A576DD8D15EA4528009B5E24 /* objc-zeneditor-wrap.js in Resources */,
+				A576DD8E15EA4528009B5E24 /* file-interface.js in Resources */,
+				A576DD8F15EA4528009B5E24 /* BasicPreferences.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A57C4B9D158DC6BB00566A1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -825,7 +946,50 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		A576DD4F15E91267009B5E24 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Copy all files in the \"XML Based\" folder into the root of the final Sugar\nrsync -a --exclude=\".*\"  \"$SRCROOT/$TARGET_NAME/XML Based/\" \"$TARGET_BUILD_DIR/$WRAPPER_NAME/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		A576DD4C15E91267009B5E24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A576DD7515EA441B009B5E24 /* JSONKit.m in Sources */,
+				A576DD7615EA441B009B5E24 /* BridgeSupportController.m in Sources */,
+				A576DD7715EA441B009B5E24 /* JSCocoaController.m in Sources */,
+				A576DD7815EA441B009B5E24 /* JSCocoaFFIArgument.m in Sources */,
+				A576DD7915EA441B009B5E24 /* JSCocoaFFIClosure.m in Sources */,
+				A576DD7A15EA441B009B5E24 /* JSCocoaLib.m in Sources */,
+				A576DD7B15EA441B009B5E24 /* JSCocoaPrivateObject.m in Sources */,
+				A576DD7C15EA441B009B5E24 /* JSCocoaDelegate.m in Sources */,
+				A576DD7D15EA441B009B5E24 /* ZenCoding.m in Sources */,
+				A576DD7E15EA441B009B5E24 /* ZenCodingPromptDialogController.m in Sources */,
+				A576DD7F15EA441B009B5E24 /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A576DD8015EA441B009B5E24 /* ZenCodingFile.m in Sources */,
+				A576DD8115EA441B009B5E24 /* ZCUserDataLoader.m in Sources */,
+				A576DD8215EA441B009B5E24 /* ZCBasicPreferencesWindowController.m in Sources */,
+				A576DD8315EA441B009B5E24 /* ZenCodingArrayTransformer.m in Sources */,
+				A576DD8415EA441B009B5E24 /* ZenCodingSyntaxNameTransformer.m in Sources */,
+				A576DD8515EA441B009B5E24 /* ZenCodingTildePathTransformer.m in Sources */,
+				A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */,
+				A576DD7415E92DE0009B5E24 /* EspressoEmmetEditor.m in Sources */,
+				A576DD9715EB5F08009B5E24 /* EMPreferences.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A57C4B9B158DC6BB00566A1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -840,7 +1004,6 @@
 				A57C4BB9158DCEB400566A1C /* NSTextView+ZenEditor.m in Sources */,
 				A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */,
 				A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */,
-				A57C4BBE158DCEB400566A1C /* NSDictionary+Merge.m in Sources */,
 				A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */,
 				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
@@ -871,7 +1034,6 @@
 				A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */,
 				A5C722D815D5A77700CDA623 /* ZenCoding.m in Sources */,
 				A5C722D915D5A77700CDA623 /* ZenCodingPromptDialogController.m in Sources */,
-				A5C722DA15D5A77700CDA623 /* NSDictionary+Merge.m in Sources */,
 				A5C722DB15D5A77700CDA623 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */,
 				A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */,
@@ -896,7 +1058,6 @@
 				A5D2753114F001A400B3816D /* ZenCodingPromptDialogController.m in Sources */,
 				A5D2751814F000FA00B3816D /* main.m in Sources */,
 				A5D2751F14F000FA00B3816D /* ZenCodingSampleAppDelegate.m in Sources */,
-				A596306415190223000D1A01 /* NSDictionary+Merge.m in Sources */,
 				A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */,
@@ -922,7 +1083,6 @@
 				A5D2755414F0052F00B3816D /* NSTextView+ZenEditor.m in Sources */,
 				A5D2755F14F006A500B3816D /* ZenCoding.m in Sources */,
 				A5D2755314F0052D00B3816D /* ZenCodingPromptDialogController.m in Sources */,
-				A596306515190223000D1A01 /* NSDictionary+Merge.m in Sources */,
 				A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
 				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */,
@@ -994,6 +1154,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A576DD5915E91267009B5E24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(ESPRESSO_PATH)/Contents/MacOS/Espresso";
+				COPY_PHASE_STRIP = NO;
+				ESPRESSO_PATH = /Applications/Espresso.app;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = EspressoPlugin/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BUILD_32_LIKE_64;
+				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
+				INFOPLIST_FILE = EspressoPlugin/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = Emmet;
+				WRAPPER_EXTENSION = sugar;
+			};
+			name = Debug;
+		};
+		A576DD5A15E91267009B5E24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(ESPRESSO_PATH)/Contents/MacOS/Espresso";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ESPRESSO_PATH = /Applications/Espresso.app;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = EspressoPlugin/Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BUILD_32_LIKE_64;
+				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
+				INFOPLIST_FILE = EspressoPlugin/Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				PRODUCT_NAME = Emmet;
+				WRAPPER_EXTENSION = sugar;
+			};
+			name = Release;
+		};
 		A57C4BA9158DC6BB00566A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1190,6 +1388,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A576DD5815E91267009B5E24 /* Build configuration list for PBXNativeTarget "EspressoPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A576DD5915E91267009B5E24 /* Debug */,
+				A576DD5A15E91267009B5E24 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

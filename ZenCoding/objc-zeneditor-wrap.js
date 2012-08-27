@@ -214,7 +214,6 @@ function objcLoadUserData(data) {
 }
 
 function objcLoadExtensions(fileList) {
-	log('Loading extensions: ' + fileList);
 	var bs = require('bootstrap');
 	fileList = bs.parseJSON(objcToString(fileList));
 	require('bootstrap').loadExtensions(fileList);
@@ -254,6 +253,5 @@ function objcExtractTabstopsOnInsert(text) {
 }
 
 function objcSetPreference(name, value) {
-	log('Value type: ' + (typeof value));
 	zen_coding.require('preferences').set(objcToString(name), value + '');
 }
