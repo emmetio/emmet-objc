@@ -55,6 +55,7 @@
 		}
 		
 		[outputProfiles addObject:profileObj];
+		[profileObj release];
 	}];
 	
 	return outputProfiles;

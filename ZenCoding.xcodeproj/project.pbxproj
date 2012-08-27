@@ -1167,6 +1167,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BUILD_32_LIKE_64;
 				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
 				INFOPLIST_FILE = EspressoPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = sugar;
@@ -1186,6 +1187,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BUILD_32_LIKE_64;
 				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
 				INFOPLIST_FILE = EspressoPlugin/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = sugar;
@@ -1395,6 +1397,7 @@
 				A576DD5A15E91267009B5E24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A57C4BA8158DC6BB00566A1C /* Build configuration list for PBXNativeTarget "CodaPlugin" */ = {
 			isa = XCConfigurationList;
