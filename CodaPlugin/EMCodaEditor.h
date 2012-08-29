@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "CodaPlugInsController.h"
-#import <ZenCoding/ZenEditor.h>
+#import "Emmet.h"
+#import "EmmetEditor.h"
 
 #define DEFAULT_SYNTAX @"html"
 #define DEFAULT_PROFILE @"xhtml"
 
-@interface EMCodaEditor : NSObject <ZenEditor> {
+@interface EMCodaEditor : NSObject <EmmetEditor> {
 	CodaTextView *tv;
 }
 

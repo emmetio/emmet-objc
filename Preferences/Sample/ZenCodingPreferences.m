@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZenCoding.h"
+#import "Emmet.h"
 #import "ZenCodingPreferences.h"
-#import "ZenCodingArrayTransformer.h"
-#import "ZenCodingTildePathTransformer.h"
+#import "EMArrayTransformer.h"
+#import "EMTildePathTransformer.h"
 #import "ZenCodingSnippetEditor.h"
 #import "ZenCodingDefaultsKeys.h"
 #import "ZenCodingNotifications.h"
@@ -38,14 +38,14 @@
 @synthesize syntaxPopup;
 
 + (void)initialize {
-	ZenCodingArrayTransformer *caseTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
+	EMArrayTransformer *caseTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
 	
-	ZenCodingArrayTransformer *quotesTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
+	EMArrayTransformer *quotesTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
 	
-	ZenCodingArrayTransformer *tagNlTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"yes", @"no", @"decide", nil]] autorelease];
+	EMArrayTransformer *tagNlTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"yes", @"no", @"decide", nil]] autorelease];
 	
-	ZenCodingArrayTransformer *selfClosingTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"html", @"xml", @"xhtml", nil]] autorelease];
-	ZenCodingTildePathTransformer *pathTransformer = [[ZenCodingTildePathTransformer new] autorelease];
+	EMArrayTransformer *selfClosingTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"html", @"xml", @"xhtml", nil]] autorelease];
+	EMTildePathTransformer *pathTransformer = [[EMTildePathTransformer new] autorelease];
 	
 	
 	[NSValueTransformer setValueTransformer:caseTransformer forName:@"ZenCodingCaseTransformer"];
@@ -111,7 +111,7 @@
 	[defaults setObject:[abbreviationsController content] forKey:Abbreviations];
 	[defaults setObject:[variablesController content] forKey:Variables];
 	
-	[[ZenCoding sharedInstance] reload];
+	[[Emmet sharedInstance] reload];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:PreferencesWindowClosed object:self];
 	

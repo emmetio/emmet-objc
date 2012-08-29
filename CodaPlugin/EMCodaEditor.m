@@ -7,8 +7,7 @@
 //
 
 #import "EMCodaEditor.h"
-#import <ZenCoding/ZenCoding.h>
-#import <ZenCoding/ZenCodingPromptDialogController.h>
+#import "EMPromptDialogController.h"
 
 @implementation EMCodaEditor
 
@@ -51,7 +50,7 @@
 	// detect syntax from file name
 	if ([self filePath]) {
 		NSString *ext = [[[self filePath] pathExtension] lowercaseString];
-		ZenCoding *zc = [ZenCoding sharedInstance];
+		Emmet *zc = [Emmet sharedInstance];
 		id jsSyntax = [zc.jsc evalFunction:@"zen_coding.require('resources').hasSyntax" withArguments:ext, nil];
 		if ([zc.jsc convertJSObject:jsSyntax toNativeType:@"bool"]) {
 			return ext;
@@ -80,7 +79,7 @@
 		[self.tv beginUndoGrouping];
 		
 		// extract tabstops and clean-up output
-		ZenCoding *zc = [ZenCoding sharedInstance];
+		Emmet *zc = [Emmet sharedInstance];
 		
 		id output = [zc.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
@@ -111,7 +110,7 @@
 }
 
 - (NSString *)prompt:(NSString *)label {	
-	return [ZenCodingPromptDialogController promptForWindow:[self.tv window] withLabel:label];
+	return [EMPromptDialogController promptForWindow:[self.tv window] withLabel:label];
 }
 
 - (NSString *)filePath {

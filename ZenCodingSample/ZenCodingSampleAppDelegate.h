@@ -7,13 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "ZCBasicPreferencesWindowController.h"
+#import "EMBasicPreferencesWindowController.h"
 
 @interface ZenCodingSampleAppDelegate : NSObject <NSApplicationDelegate> {
 	NSWindow *window;
 	NSTextView *tv;
 	IBOutlet NSTextView *textArea;
-	ZCBasicPreferencesWindowController *prefs;
+	EMBasicPreferencesWindowController *prefs;
 }
 
 @property (assign) IBOutlet NSWindow *window;

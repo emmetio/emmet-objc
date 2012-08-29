@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZenCoding.h"
+#import "Emmet.h"
 #import "EMTextMateEditor.h"
-#import "ZCBasicPreferencesWindowController.h"
+#import "EMBasicPreferencesWindowController.h"
 
 @protocol TMPlugInController
 - (CGFloat)version;
@@ -17,7 +17,7 @@
 
 @interface EMTextmatePlugin : NSObject {
 	EMTextMateEditor *editor;
-	ZCBasicPreferencesWindowController *prefs;
+	EMBasicPreferencesWindowController *prefs;
 }
 
 + (NSBundle *)bundle;

@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZCBasicPreferencesWindowController.h"
+#import "EMBasicPreferencesWindowController.h"
 
 @interface EMPreferences : NSObject {
-	ZCBasicPreferencesWindowController *prefs;
+	EMBasicPreferencesWindowController *prefs;
 }
 
 @end

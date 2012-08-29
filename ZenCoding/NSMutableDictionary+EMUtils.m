@@ -6,9 +6,9 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "NSMutableDictionary+ZCUtils.h"
+#import "NSMutableDictionary+EMUtils.h"
 
-@implementation NSMutableDictionary (ZCUtils)
+@implementation NSMutableDictionary (EMUtils)
 
 - (id)objectOfClass:(Class)cl forKey:(NSString *)key {
 	id val = [self objectForKey:key];

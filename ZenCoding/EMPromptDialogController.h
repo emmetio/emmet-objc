@@ -1,7 +1,4 @@
 //
-//  ZenCodingPromptDialogController.h
-//  ZenCoding
-//
 //  Created by Sergey on 2/17/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
@@ -13,7 +10,7 @@
 
 #define MODAL_DEFAULT_LABEL @"Enter value"
 
-@interface ZenCodingPromptDialogController : NSWindowController {
+@interface EMPromptDialogController : NSWindowController {
 	NSTextField *label;
 	NSTextField *inputField;
 }

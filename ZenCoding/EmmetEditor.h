@@ -1,14 +1,11 @@
-//
-//  ZenEditor.h
-//  ZenCoding
-//
+// 
 //  Created by Сергей Чикуёнок on 2/6/12.
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@protocol ZenEditor
+@protocol EmmetEditor
 
 @property (nonatomic, assign) NSRange selectionRange;
 

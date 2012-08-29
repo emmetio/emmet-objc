@@ -1,16 +1,11 @@
 //
-//  ZenCoding.m
-//  ZenCoding
-//
 //  Created by Сергей Чикуёнок on 2/9/12.
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZenCoding.h"
-#import "ZenCodingNotifications.h"
-#import "ZenCodingFile.h"
-#import "ZCUserDataLoader.h"
-#import "NSMutableDictionary+ZCUtils.h"
+#import "Emmet.h"
+#import "EMUserDataLoader.h"
+#import "NSMutableDictionary+EMUtils.h"
 #import "JSONKit.h"
 
 void setKeyEquivalent(NSMenuItem *menuItem, NSString *key) {
@@ -39,17 +34,17 @@ void setKeyEquivalent(NSMenuItem *menuItem, NSString *key) {
 	
 }
 
-@interface ZenCoding ()
+@interface Emmet ()
 - (void)setupJSContext;
 - (void)loadUserData;
 - (void)createMenuItemsFromArray:(NSArray *)dict forMenu:(NSMenu *)menu withAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts ofTarget:(id)target;
 @end
 
-@implementation ZenCoding
+@implementation Emmet
 
 @synthesize context, jsc, extensionsPath;
 
-static ZenCoding *instance = nil;
+static Emmet *instance = nil;
 static Class jsCtxDelegateClass = nil;
 static bool defaultsLoaded = false;
 static NSMutableArray *coreFiles = nil;
@@ -59,7 +54,7 @@ static NSMutableArray *coreFiles = nil;
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	NSArray *files = [NSArray arrayWithObjects:@"emmet-app", @"file-interface", @"objc-zeneditor-wrap", nil];
 	[files enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		[ZenCoding addCoreFile:[bundle pathForResource:obj ofType:@"js"]];
+		[Emmet addCoreFile:[bundle pathForResource:obj ofType:@"js"]];
 	}];
 }
 
@@ -67,10 +62,10 @@ static NSMutableArray *coreFiles = nil;
 	jsCtxDelegateClass = class;
 }
 
-+ (ZenCoding *)sharedInstance {
++ (Emmet *)sharedInstance {
 	@synchronized(self) {
 		if (instance == nil) {
-			instance = [ZenCoding new];
+			instance = [Emmet new];
 		}
 		return instance;
 	}
@@ -97,7 +92,7 @@ static NSMutableArray *coreFiles = nil;
 
 - (id)init {
     if (self = [super init]) {
-		[ZenCoding loadDefaults];
+		[Emmet loadDefaults];
         [self setupJSContext];
     }
     
@@ -130,7 +125,7 @@ static NSMutableArray *coreFiles = nil;
 	[coreFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		[jsc evalFile:obj];
 	}];
-	[jsc evalFunction:@"zen_coding.require('file').setContext" withArguments:[ZenCodingFile class], nil];
+	[jsc evalFunction:@"zen_coding.require('file').setContext" withArguments:[EmmetFile class], nil];
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	// load system snippets
@@ -221,7 +216,7 @@ static NSMutableArray *coreFiles = nil;
 }
 
 - (void)loadUserData {
-	NSDictionary *userData = [ZCUserDataLoader userData];
+	NSDictionary *userData = [EMUserDataLoader userData];
 //	NSLog(@"Loading user data:\n%@", [userData JSONString]);
 	[jsc evalFunction:@"objcLoadUserData" withArguments:[userData JSONString], nil];
 }

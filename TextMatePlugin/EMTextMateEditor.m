@@ -7,8 +7,8 @@
 //
 
 #import "EMTextMateEditor.h"
-#import "ZenCoding.h"
-#import "ZenCodingPromptDialogController.h"
+#import "Emmet.h"
+#import "EMPromptDialogController.h"
 
 TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	NSUInteger numberOfLines, index, stringLength = [string length];
@@ -55,7 +55,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 - (id)init {
 	if (self = [super init]) {
 		NSApp = [NSApplication sharedApplication];
-		[[ZenCoding sharedInstance].jsc evalFunction:@"objcZenEditor.setAutoHandleIndent" withArguments:NO, nil];
+		[[Emmet sharedInstance].jsc evalFunction:@"objcZenEditor.setAutoHandleIndent" withArguments:NO, nil];
 	}
 	
 	return self;
@@ -208,7 +208,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 }
 
 - (NSString *)prompt:(NSString *)label {
-	return [ZenCodingPromptDialogController promptForWindow:[[self tv] window] withLabel:label];
+	return [EMPromptDialogController promptForWindow:[[self tv] window] withLabel:label];
 }
 
 - (NSString *)filePath {

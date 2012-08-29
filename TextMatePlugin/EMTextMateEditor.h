@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "OakTextView.h"
-#import <ZenCoding/ZenEditor.h>
+#import "EmmetEditor.h"
 
 typedef struct _TMLocation {
 	NSUInteger startLine;
@@ -19,6 +19,6 @@ typedef struct _TMLocation {
 
 TMLocation convertRangeToLocation(NSRange range, NSString *string);
 
-@interface EMTextMateEditor : NSObject <ZenEditor>
+@interface EMTextMateEditor : NSObject <EmmetEditor>
 
 @end

@@ -1,14 +1,11 @@
 //
-//  ZenCodingFile.m
-//  ZenCoding
-//
 //  Created by Sergey Chikuyonok on 6/22/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZenCodingFile.h"
+#import "EmmetFile.h"
 
-@implementation ZenCodingFile
+@implementation EmmetFile
 
 + (NSString *)read:(NSString *)filePath {
 	return [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];

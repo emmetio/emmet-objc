@@ -7,9 +7,8 @@
 //
 
 #import "ZenCodingSampleAppDelegate.h"
-#import "ZenCoding.h"
-#import "ZenCodingPromptDialogController.h"
-#import "ZenCodingFile.h"
+#import "Emmet.h"
+#import "EMPromptDialogController.h"
 #import "JSCocoaDelegate.h"
 
 #define TabKeyCode 48
@@ -20,7 +19,7 @@
 @synthesize window;
 
 + (void)initialize {
-	[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
+	[Emmet setJSContextDelegateClass:[JSCocoaDelegate class]];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
@@ -33,7 +32,7 @@
 		if ([window isKeyWindow] && [window firstResponder] == textArea) {
 			if ([event keyCode] == TabKeyCode && ([event modifierFlags] & NoFlags) == 0 && [[NSUserDefaults standardUserDefaults] boolForKey:ExpandWithTabKey]) {
 				
-				ZenCoding *zc = [ZenCoding sharedInstance];
+				Emmet *zc = [Emmet sharedInstance];
 				[zc setContext:textArea];
 				
 				// if abbreviation expanded successfully, stop event.
@@ -51,10 +50,9 @@
 	
 	NSString *keyboardShortcutsPlist = [[NSBundle mainBundle] pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
 	NSDictionary *shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
-	NSLog(@"Shortcuts: %@", shortcuts);
 	
 	NSMenu *mainMenu = [NSApp mainMenu];
-	NSMenu *actionsMenu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
+	NSMenu *actionsMenu = [[Emmet sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
 	NSMenuItem *actionsItem = [[NSMenuItem alloc] initWithTitle:[actionsMenu title] action:NULL keyEquivalent:@""];
 	[actionsItem setSubmenu:actionsMenu];
 	[mainMenu insertItem:actionsItem atIndex:4];
@@ -63,14 +61,14 @@
 }
 
 - (void)performMenuAction:(id)sender {
-	ZenCoding *zc = [ZenCoding sharedInstance];
+	Emmet *zc = [Emmet sharedInstance];
 	[zc setContext:textArea];
 	[zc performMenuAction:sender];
 }
 
 - (IBAction)showPreferences:(id)sender {
 	if (prefs == nil) {
-		prefs = [[ZCBasicPreferencesWindowController alloc] init];
+		prefs = [[EMBasicPreferencesWindowController alloc] init];
 	}
 	
 	[prefs showWindow:self];

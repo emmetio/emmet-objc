@@ -6,10 +6,10 @@
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
+#import "Emmet.h"
 #import "EMCodaPlugin.h"
 #import "EMCodaEditor.h"
 #import "JSCocoaDelegate.h"
-#import <ZenCoding/ZenCoding.h>
 
 #define TabKeyCode 48
 #define NoFlags (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask)
@@ -44,9 +44,9 @@
 - (id)initWithController:(CodaPlugInsController *)aController {
 	if ((self = [super init]) != nil) {
 		controller = aController;
-		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
+		[Emmet setJSContextDelegateClass:[JSCocoaDelegate class]];
 		editor = [[EMCodaEditor alloc] initWithCodaView:nil];
-		[[ZenCoding sharedInstance] setContext:editor];
+		[[Emmet sharedInstance] setContext:editor];
 		
 		[self createMenu];
 		
@@ -60,7 +60,7 @@
 			NSWindow *wnd = [[controller focusedTextView:self] window];
 			if ([wnd isKeyWindow] && [event keyCode] == TabKeyCode && ([event modifierFlags] & NoFlags) == 0 && [[NSUserDefaults standardUserDefaults] boolForKey:@"expandWithTab"]) {
 				
-				ZenCoding *zc = [ZenCoding sharedInstance];
+				Emmet *zc = [Emmet sharedInstance];
 				editor.tv = [controller focusedTextView:self];
 				
 				// if abbreviation expanded successfully, stop event.
@@ -78,7 +78,7 @@
 }
 
 - (void)createMenu {
-	NSArray *actions = [[ZenCoding sharedInstance] actionsList];
+	NSArray *actions = [[Emmet sharedInstance] actionsList];
 	
 	NSDictionary *shortcuts = nil;
 	if (keyboardShortcutsPlist) {
@@ -112,14 +112,14 @@
 }
 
 - (void)performMenuAction:(id)sender {
-	ZenCoding *zc = [ZenCoding sharedInstance];
+	Emmet *zc = [Emmet sharedInstance];
 	editor.tv = [controller focusedTextView:self];
 	[zc performMenuAction:sender];
 }
 
 - (void)showPreferences:(id)sender {
 	if (prefs == nil) {
-		prefs = [[ZCBasicPreferencesWindowController alloc] init];
+		prefs = [[EMBasicPreferencesWindowController alloc] init];
 	}
 	
 	[prefs showWindow:self];

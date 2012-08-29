@@ -16,7 +16,7 @@
 
 - (BOOL)performActionWithContext:(NSObject *)context error:(NSError **)outError {
 	if (prefs == nil) {
-		prefs = [ZCBasicPreferencesWindowController new];
+		prefs = [EMBasicPreferencesWindowController new];
 		[prefs hideTabExpanderControl];
 	}
 	

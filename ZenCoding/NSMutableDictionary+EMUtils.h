@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSMutableDictionary (ZCUtils)
+@interface NSMutableDictionary (EMUtils)
 - (id)objectOfClass:(Class)cl forKey:(NSString *)key;
 - (NSMutableDictionary *) dictionaryForKey:(NSString *)key;
 - (NSMutableArray *) arrayForKey:(NSString *)key;

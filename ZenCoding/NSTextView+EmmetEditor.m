@@ -1,13 +1,10 @@
 //
-//  NSTextView+ZenEditor.m
-//  ZenCoding
-//
 //  Created by Сергей Чикуёнок on 2/6/12.
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
-#import "NSTextView+ZenEditor.h"
-#import "ZenCodingPromptDialogController.h"
+#import "NSTextView+EmmetEditor.h"
+#import "EMPromptDialogController.h"
 
 @implementation NSTextView (NSTextView_ZenEditor)
 
@@ -57,7 +54,7 @@
 	// check if range is in bounds
 	if (end <= [[self string] length]) {
 		// extract tabstops and clean-up output
-		ZenCoding *zc = [ZenCoding sharedInstance];
+		Emmet *zc = [Emmet sharedInstance];
 		
 		id output = [zc.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
@@ -85,7 +82,7 @@
 }
 
 - (NSString *)prompt:(NSString *)label {	
-	return [ZenCodingPromptDialogController prompt:label];
+	return [EMPromptDialogController prompt:label];
 }
 
 - (NSString *)filePath {

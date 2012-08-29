@@ -1,14 +1,11 @@
 //
-//  ZenCodingTildePathTransformer.m
-//  ZenCoding
-//
 //  Created by Сергей Чикуёнок on 3/10/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZenCodingTildePathTransformer.h"
+#import "EMTildePathTransformer.h"
 
-@implementation ZenCodingTildePathTransformer
+@implementation EMTildePathTransformer
 
 + (Class)transformedValueClass {
 	return [NSString class];

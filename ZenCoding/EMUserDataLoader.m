@@ -5,12 +5,12 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZCUserDataLoader.h"
-#import "ZenCoding.h"
-#import "NSMutableDictionary+ZCUtils.h"
+#import "EMUserDataLoader.h"
+#import "Emmet.h"
+#import "NSMutableDictionary+EMUtils.h"
 #import "JSONKit.h"
 
-@implementation ZCUserDataLoader
+@implementation EMUserDataLoader
 
 // Returns all user data as single autoreleased dictionary
 + (NSDictionary *)userData {
@@ -19,7 +19,7 @@
 	
 	// add non-nil values only
 	[keys enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-		id val = [[ZCUserDataLoader class] performSelector:NSSelectorFromString(obj)];
+		id val = [[EMUserDataLoader class] performSelector:NSSelectorFromString(obj)];
 		if (val != nil) {
 			[data setValue:val forKey:obj];
 		}
@@ -79,7 +79,7 @@
 	if (output) {
 		NSMutableDictionary *result = [NSMutableDictionary dictionary];
 		[output enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
-			[result setObject:[ZCUserDataLoader createOutputProfileFromDict:obj] forKey:key];
+			[result setObject:[EMUserDataLoader createOutputProfileFromDict:obj] forKey:key];
 //			[[result dictionaryForKey:key] setObject:[ZCUserDataLoader createOutputProfileFromDict:obj] forKey:@"profile"];
 		}];
 		return result;

@@ -7,26 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5224A3B15EE6D2700AE6103 /* EmmetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5224A3A15EE6D2700AE6103 /* EmmetEditor.h */; };
+		A5224A3E15EE6D9200AE6103 /* NSTextView+EmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */; };
+		A5224A3F15EE6D9200AE6103 /* NSTextView+EmmetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5224A3D15EE6D9200AE6103 /* NSTextView+EmmetEditor.h */; };
+		A5224A4015EE726A00AE6103 /* NSTextView+EmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */; };
+		A5224A4115EE748300AE6103 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2752614F0011200B3816D /* JavaScriptCore.framework */; };
 		A53F606815E587B700CF391B /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
 		A53F606915E6C49300CF391B /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
-		A53F606A15E6C49F00CF391B /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
-		A53F606B15E6C4C100CF391B /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
-		A53F606C15E6C4C100CF391B /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
-		A53F606D15E6C4C100CF391B /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
-		A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A562B88B1595007C007F9044 /* ZenCodingFile.h */; };
-		A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
-		A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
-		A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
+		A53F606A15E6C49F00CF391B /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
+		A53F606B15E6C4C100CF391B /* EMArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */; };
+		A53F606C15E6C4C100CF391B /* EMSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */; };
+		A53F606D15E6C4C100CF391B /* EMTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */; };
+		A562B88D1595007C007F9044 /* EmmetFile.h in Headers */ = {isa = PBXBuildFile; fileRef = A562B88B1595007C007F9044 /* EmmetFile.h */; };
+		A562B88E1595007C007F9044 /* EmmetFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* EmmetFile.m */; };
+		A562B88F1595007C007F9044 /* EmmetFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* EmmetFile.m */; };
+		A562B8901595007C007F9044 /* EmmetFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* EmmetFile.m */; };
 		A562B89615951696007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B897159516A8007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B898159516B1007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A56992E715D90A1C00D97C27 /* textmate-bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A56992E515D9091500D97C27 /* textmate-bootstrap.js */; };
 		A56992E915D90F2100D97C27 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */; };
-		A575604415D1C0E300CF9829 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
-		A575604515D1C0F800CF9829 /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
-		A575604615D1C10500CF9829 /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
-		A575604715D1C10900CF9829 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
-		A575604815D1C10C00CF9829 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
+		A575604415D1C0E300CF9829 /* EMUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* EMUserDataLoader.m */; };
+		A575604515D1C0F800CF9829 /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
+		A575604615D1C10500CF9829 /* EMArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */; };
+		A575604715D1C10900CF9829 /* EMSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */; };
+		A575604815D1C10C00CF9829 /* EMTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */; };
 		A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
 		A576DD4815E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
 		A576DD4915E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
@@ -43,15 +48,15 @@
 		A576DD7A15EA441B009B5E24 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
 		A576DD7B15EA441B009B5E24 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
 		A576DD7C15EA441B009B5E24 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
-		A576DD7D15EA441B009B5E24 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
-		A576DD7E15EA441B009B5E24 /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
-		A576DD7F15EA441B009B5E24 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
-		A576DD8015EA441B009B5E24 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
-		A576DD8115EA441B009B5E24 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
-		A576DD8215EA441B009B5E24 /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
-		A576DD8315EA441B009B5E24 /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
-		A576DD8415EA441B009B5E24 /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
-		A576DD8515EA441B009B5E24 /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
+		A576DD7D15EA441B009B5E24 /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
+		A576DD7E15EA441B009B5E24 /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
+		A576DD7F15EA441B009B5E24 /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
+		A576DD8015EA441B009B5E24 /* EmmetFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* EmmetFile.m */; };
+		A576DD8115EA441B009B5E24 /* EMUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* EMUserDataLoader.m */; };
+		A576DD8215EA441B009B5E24 /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
+		A576DD8315EA441B009B5E24 /* EMArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */; };
+		A576DD8415EA441B009B5E24 /* EMSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */; };
+		A576DD8515EA441B009B5E24 /* EMTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */; };
 		A576DD8615EA4428009B5E24 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2752614F0011200B3816D /* JavaScriptCore.framework */; };
 		A576DD8715EA4528009B5E24 /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
 		A576DD8815EA4528009B5E24 /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
@@ -77,10 +82,9 @@
 		A57C4BB6158DCEB400566A1C /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
 		A57C4BB7158DCEB400566A1C /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
 		A57C4BB8158DCEB400566A1C /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
-		A57C4BB9158DCEB400566A1C /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
-		A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
-		A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
-		A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A57C4BBA158DCEB400566A1C /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
+		A57C4BBB158DCEB400566A1C /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
+		A57C4BBF158DCEB400566A1C /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
 		A57C4BC3158DCEC000566A1C /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D2752614F0011200B3816D /* JavaScriptCore.framework */; };
 		A57C4BC4158DCF0A00566A1C /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
 		A57C4BC5158DCF0A00566A1C /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
@@ -88,16 +92,16 @@
 		A57C4BCA158DCF0A00566A1C /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
 		A57C4BCB158DCF0A00566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BCD158DCF0A00566A1C /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
-		A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A596302F15189A08000D1A01 /* ZenCodingNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302E15189A07000D1A01 /* ZenCodingNotifications.h */; };
-		A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */; };
-		A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
-		A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
+		A596302D151898B8000D1A01 /* EMDefaultsKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302C151898B8000D1A01 /* EMDefaultsKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A596302F15189A08000D1A01 /* EMNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = A596302E15189A07000D1A01 /* EMNotifications.h */; };
+		A59630681519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A59630661519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h */; };
+		A59630691519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
+		A596306A1519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
 		A596306E1519F594000D1A01 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A596306C1519F594000D1A01 /* JSONKit.h */; };
 		A596306F1519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A59630701519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
-		A5BE71DB15BF403E009CF514 /* ZenCodingJSContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */; };
+		A5BE71DB15BF403E009CF514 /* EMJSContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DA15BF403E009CF514 /* EMJSContext.h */; };
 		A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */; };
 		A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
@@ -113,12 +117,11 @@
 		A5C722D515D5A77700CDA623 /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
 		A5C722D615D5A77700CDA623 /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
 		A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
-		A5C722D815D5A77700CDA623 /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
-		A5C722D915D5A77700CDA623 /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
-		A5C722DB15D5A77700CDA623 /* NSMutableDictionary+ZCUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */; };
-		A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* ZenCodingFile.m */; };
-		A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
-		A5C722DF15D5A7A200CDA623 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */; };
+		A5C722D815D5A77700CDA623 /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
+		A5C722D915D5A77700CDA623 /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
+		A5C722DB15D5A77700CDA623 /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
+		A5C722DC15D5A77700CDA623 /* EmmetFile.m in Sources */ = {isa = PBXBuildFile; fileRef = A562B88C1595007C007F9044 /* EmmetFile.m */; };
+		A5C722DD15D5A77700CDA623 /* EMUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* EMUserDataLoader.m */; };
 		A5C722E015D5A7CD00CDA623 /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
 		A5C722E115D5A7CD00CDA623 /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
 		A5C722E215D5A7CD00CDA623 /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
@@ -139,9 +142,8 @@
 		A5D2752B14F001A400B3816D /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
 		A5D2752C14F001A400B3816D /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
 		A5D2752D14F001A400B3816D /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
-		A5D2752F14F001A400B3816D /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
-		A5D2753014F001A400B3816D /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
-		A5D2753114F001A400B3816D /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
+		A5D2753014F001A400B3816D /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
+		A5D2753114F001A400B3816D /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
 		A5D2753214F0041000B3816D /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
 		A5D2753414F0041800B3816D /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A5D2753514F0041D00B3816D /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
@@ -155,18 +157,15 @@
 		A5D2755014F004FB00B3816D /* JSCocoaFFIClosure.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D214E03E05002BBA24 /* JSCocoaFFIClosure.m */; };
 		A5D2755114F004FD00B3816D /* JSCocoaLib.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D414E03E05002BBA24 /* JSCocoaLib.m */; };
 		A5D2755214F0050100B3816D /* JSCocoaPrivateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */; };
-		A5D2755314F0052D00B3816D /* ZenCodingPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */; };
-		A5D2755414F0052F00B3816D /* NSTextView+ZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */; };
+		A5D2755314F0052D00B3816D /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
 		A5D2755514F0053D00B3816D /* JSCocoaController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3CD14E03E05002BBA24 /* JSCocoaController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5D2755614F0055100B3816D /* ZenEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC40114E04E8A002BBA24 /* ZenEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5D2755714F0055200B3816D /* ZenCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = A563EC4914E31951009472C9 /* ZenCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5D2755814F0055C00B3816D /* ZenCodingPromptDialogController.h in Headers */ = {isa = PBXBuildFile; fileRef = A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A5D2755914F0056000B3816D /* NSTextView+ZenEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC40314E05ADB002BBA24 /* NSTextView+ZenEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D2755714F0055200B3816D /* Emmet.h in Headers */ = {isa = PBXBuildFile; fileRef = A563EC4914E31951009472C9 /* Emmet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5D2755814F0055C00B3816D /* EMPromptDialogController.h in Headers */ = {isa = PBXBuildFile; fileRef = A55EC49B14EE560E00F9A09B /* EMPromptDialogController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5D2755A14F0056F00B3816D /* class.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3AC14E03E05002BBA24 /* class.js */; };
 		A5D2755B14F0057200B3816D /* jslint-jscocoa.js in Resources */ = {isa = PBXBuildFile; fileRef = A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */; };
 		A5D2755D14F0057700B3816D /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A5D2755E14F0057B00B3816D /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
-		A5D2755F14F006A500B3816D /* ZenCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* ZenCoding.m */; };
+		A5D2755F14F006A500B3816D /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
 		A5D2757714F009B100B3816D /* ZenCoding-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757514F009B100B3816D /* ZenCoding-Info.plist */; };
 		A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */; };
 		A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
@@ -179,9 +178,9 @@
 		A5D275B314F1589F00B3816D /* BridgeSupportController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
 		A5DB23451510DABD009979C2 /* PreferencesDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */; };
-		A5E85FB415C8821C001302EA /* ZCUserDataLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FB215C8821C001302EA /* ZCUserDataLoader.h */; };
-		A5E85FB515C8821C001302EA /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
-		A5E85FB615C8821C001302EA /* ZCUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */; };
+		A5E85FB415C8821C001302EA /* EMUserDataLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FB215C8821C001302EA /* EMUserDataLoader.h */; };
+		A5E85FB515C8821C001302EA /* EMUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* EMUserDataLoader.m */; };
+		A5E85FB615C8821C001302EA /* EMUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* EMUserDataLoader.m */; };
 		A5E85FE215CB2743001302EA /* ZCSnippetsPreferencesDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FDD15CB2743001302EA /* ZCSnippetsPreferencesDataSource.h */; };
 		A5E85FE415CB2743001302EA /* ZCSnippetsPreferencesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FDE15CB2743001302EA /* ZCSnippetsPreferencesDataSource.m */; };
 		A5E85FE515CB2743001302EA /* ZCSnippetsPreferencesWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FDF15CB2743001302EA /* ZCSnippetsPreferencesWindow.h */; };
@@ -196,30 +195,33 @@
 		A5E8600615CB28A1001302EA /* ZenCodingPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF115CB28A1001302EA /* ZenCodingPreferences.m */; };
 		A5E8600715CB28A1001302EA /* ZenCodingSnippetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF215CB28A1001302EA /* ZenCodingSnippetEditor.h */; };
 		A5E8600915CB28A1001302EA /* ZenCodingSnippetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF315CB28A1001302EA /* ZenCodingSnippetEditor.m */; };
-		A5E8600A15CB28A1001302EA /* ZenCodingArrayTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF515CB28A1001302EA /* ZenCodingArrayTransformer.h */; };
-		A5E8600B15CB28A1001302EA /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
-		A5E8600C15CB28A1001302EA /* ZenCodingArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */; };
-		A5E8600D15CB28A1001302EA /* ZenCodingSyntaxNameTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF715CB28A1001302EA /* ZenCodingSyntaxNameTransformer.h */; };
-		A5E8600E15CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
-		A5E8600F15CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */; };
-		A5E8601015CB28A1001302EA /* ZenCodingTildePathTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF915CB28A1001302EA /* ZenCodingTildePathTransformer.h */; };
-		A5E8601115CB28A1001302EA /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
-		A5E8601215CB28A1001302EA /* ZenCodingTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */; };
+		A5E8600A15CB28A1001302EA /* EMArrayTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF515CB28A1001302EA /* EMArrayTransformer.h */; };
+		A5E8600B15CB28A1001302EA /* EMArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */; };
+		A5E8600C15CB28A1001302EA /* EMArrayTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */; };
+		A5E8600D15CB28A1001302EA /* EMSyntaxNameTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF715CB28A1001302EA /* EMSyntaxNameTransformer.h */; };
+		A5E8600E15CB28A1001302EA /* EMSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */; };
+		A5E8600F15CB28A1001302EA /* EMSyntaxNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */; };
+		A5E8601015CB28A1001302EA /* EMTildePathTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E85FF915CB28A1001302EA /* EMTildePathTransformer.h */; };
+		A5E8601115CB28A1001302EA /* EMTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */; };
+		A5E8601215CB28A1001302EA /* EMTildePathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */; };
 		A5E8601415CB2989001302EA /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
 		A5E8601515CB2989001302EA /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
-		A5E8601915CB2A46001302EA /* ZCBasicPreferencesWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E8601715CB2A46001302EA /* ZCBasicPreferencesWindowController.h */; };
-		A5E8601A15CB2A46001302EA /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
-		A5E8601B15CB2A46001302EA /* ZCBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */; };
+		A5E8601915CB2A46001302EA /* EMBasicPreferencesWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E8601715CB2A46001302EA /* EMBasicPreferencesWindowController.h */; };
+		A5E8601A15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
+		A5E8601B15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingPromptDialogController.h; sourceTree = "<group>"; };
-		A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPromptDialogController.m; sourceTree = "<group>"; };
-		A562B88B1595007C007F9044 /* ZenCodingFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingFile.h; sourceTree = "<group>"; };
-		A562B88C1595007C007F9044 /* ZenCodingFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingFile.m; sourceTree = "<group>"; };
+		A5224A3A15EE6D2700AE6103 /* EmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmmetEditor.h; sourceTree = "<group>"; };
+		A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+EmmetEditor.m"; sourceTree = "<group>"; };
+		A5224A3D15EE6D9200AE6103 /* NSTextView+EmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+EmmetEditor.h"; sourceTree = "<group>"; };
+		A55EC49B14EE560E00F9A09B /* EMPromptDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMPromptDialogController.h; sourceTree = "<group>"; };
+		A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMPromptDialogController.m; sourceTree = "<group>"; };
+		A562B88B1595007C007F9044 /* EmmetFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmmetFile.h; sourceTree = "<group>"; };
+		A562B88C1595007C007F9044 /* EmmetFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmmetFile.m; sourceTree = "<group>"; };
 		A562B8921595022F007F9044 /* file-interface.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "file-interface.js"; sourceTree = "<group>"; };
-		A563EC4914E31951009472C9 /* ZenCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCoding.h; sourceTree = "<group>"; };
-		A563EC4A14E31951009472C9 /* ZenCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCoding.m; sourceTree = "<group>"; };
+		A563EC4914E31951009472C9 /* Emmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emmet.h; sourceTree = "<group>"; };
+		A563EC4A14E31951009472C9 /* Emmet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emmet.m; sourceTree = "<group>"; };
 		A56992E515D9091500D97C27 /* textmate-bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "textmate-bootstrap.js"; sourceTree = "<group>"; };
 		A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
 		A576DD4715E83213009B5E24 /* emmet-app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "emmet-app.js"; sourceTree = "<group>"; };
@@ -244,10 +246,10 @@
 		A57C4BAD158DC75D00566A1C /* EMCodaPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCodaPlugin.m; sourceTree = "<group>"; };
 		A57C4BAE158DC75D00566A1C /* EMCodaEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCodaEditor.h; sourceTree = "<group>"; };
 		A57C4BAF158DC75D00566A1C /* EMCodaEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCodaEditor.m; sourceTree = "<group>"; };
-		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
-		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
-		A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+ZCUtils.h"; sourceTree = "<group>"; };
-		A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+ZCUtils.m"; sourceTree = "<group>"; };
+		A596302C151898B8000D1A01 /* EMDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMDefaultsKeys.h; sourceTree = "<group>"; };
+		A596302E15189A07000D1A01 /* EMNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNotifications.h; sourceTree = "<group>"; };
+		A59630661519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+EMUtils.h"; sourceTree = "<group>"; };
+		A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+EMUtils.m"; sourceTree = "<group>"; };
 		A596306C1519F594000D1A01 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		A596306D1519F594000D1A01 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -257,7 +259,7 @@
 		A5994E7A14BF52140067B42B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
 		A5AB74E514EE56BE00A59617 /* PromptDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromptDialog.xib; sourceTree = "<group>"; };
-		A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingJSContext.h; sourceTree = "<group>"; };
+		A5BE71DA15BF403E009CF514 /* EMJSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMJSContext.h; sourceTree = "<group>"; };
 		A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaDelegate.h; sourceTree = "<group>"; };
 		A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaDelegate.m; sourceTree = "<group>"; };
 		A5C722C015D5A28200CDA623 /* Emmet.tmplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Emmet.tmplugin; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,7 +268,6 @@
 		A5C722C815D5A28200CDA623 /* TextMatePlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TextMatePlugin-Prefix.pch"; sourceTree = "<group>"; };
 		A5C722CD15D5A2FA00CDA623 /* EMTextmatePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextmatePlugin.h; sourceTree = "<group>"; };
 		A5C722CE15D5A2FA00CDA623 /* EMTextmatePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextmatePlugin.m; sourceTree = "<group>"; };
-		A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		A5C722E815D5AA3900CDA623 /* OakTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OakTextView.h; sourceTree = "<group>"; };
 		A5C722EC15D6CB0E00CDA623 /* EMTextMateEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextMateEditor.h; sourceTree = "<group>"; };
 		A5C722ED15D6CB0E00CDA623 /* EMTextMateEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextMateEditor.m; sourceTree = "<group>"; };
@@ -285,9 +286,6 @@
 		A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaPrivateObject.h; sourceTree = "<group>"; };
 		A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaPrivateObject.m; sourceTree = "<group>"; };
 		A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jslint-jscocoa.js"; sourceTree = "<group>"; };
-		A5CCC40114E04E8A002BBA24 /* ZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenEditor.h; sourceTree = "<group>"; };
-		A5CCC40314E05ADB002BBA24 /* NSTextView+ZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+ZenEditor.h"; sourceTree = "<group>"; };
-		A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+ZenEditor.m"; sourceTree = "<group>"; };
 		A5D2750E14F000FA00B3816D /* ZenCodingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCodingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D2751314F000FA00B3816D /* ZenCodingSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZenCodingSample-Info.plist"; sourceTree = "<group>"; };
 		A5D2751514F000FA00B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -303,8 +301,8 @@
 		A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2757B14F009D700B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults.plist; sourceTree = "<group>"; };
-		A5E85FB215C8821C001302EA /* ZCUserDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCUserDataLoader.h; sourceTree = "<group>"; };
-		A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCUserDataLoader.m; sourceTree = "<group>"; };
+		A5E85FB215C8821C001302EA /* EMUserDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMUserDataLoader.h; sourceTree = "<group>"; };
+		A5E85FB315C8821C001302EA /* EMUserDataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMUserDataLoader.m; sourceTree = "<group>"; };
 		A5E85FDD15CB2743001302EA /* ZCSnippetsPreferencesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSnippetsPreferencesDataSource.h; sourceTree = "<group>"; };
 		A5E85FDE15CB2743001302EA /* ZCSnippetsPreferencesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCSnippetsPreferencesDataSource.m; sourceTree = "<group>"; };
 		A5E85FDF15CB2743001302EA /* ZCSnippetsPreferencesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCSnippetsPreferencesWindow.h; sourceTree = "<group>"; };
@@ -319,15 +317,15 @@
 		A5E85FF115CB28A1001302EA /* ZenCodingPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingPreferences.m; sourceTree = "<group>"; };
 		A5E85FF215CB28A1001302EA /* ZenCodingSnippetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingSnippetEditor.h; sourceTree = "<group>"; };
 		A5E85FF315CB28A1001302EA /* ZenCodingSnippetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSnippetEditor.m; sourceTree = "<group>"; };
-		A5E85FF515CB28A1001302EA /* ZenCodingArrayTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingArrayTransformer.h; sourceTree = "<group>"; };
-		A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingArrayTransformer.m; sourceTree = "<group>"; };
-		A5E85FF715CB28A1001302EA /* ZenCodingSyntaxNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingSyntaxNameTransformer.h; sourceTree = "<group>"; };
-		A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSyntaxNameTransformer.m; sourceTree = "<group>"; };
-		A5E85FF915CB28A1001302EA /* ZenCodingTildePathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingTildePathTransformer.h; sourceTree = "<group>"; };
-		A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCodingTildePathTransformer.m; sourceTree = "<group>"; };
+		A5E85FF515CB28A1001302EA /* EMArrayTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMArrayTransformer.h; sourceTree = "<group>"; };
+		A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMArrayTransformer.m; sourceTree = "<group>"; };
+		A5E85FF715CB28A1001302EA /* EMSyntaxNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSyntaxNameTransformer.h; sourceTree = "<group>"; };
+		A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSyntaxNameTransformer.m; sourceTree = "<group>"; };
+		A5E85FF915CB28A1001302EA /* EMTildePathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTildePathTransformer.h; sourceTree = "<group>"; };
+		A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTildePathTransformer.m; sourceTree = "<group>"; };
 		A5E8601315CB2989001302EA /* BasicPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BasicPreferences.xib; path = Preferences/Basic/BasicPreferences.xib; sourceTree = SOURCE_ROOT; };
-		A5E8601715CB2A46001302EA /* ZCBasicPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZCBasicPreferencesWindowController.h; path = Basic/ZCBasicPreferencesWindowController.h; sourceTree = "<group>"; };
-		A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZCBasicPreferencesWindowController.m; path = Basic/ZCBasicPreferencesWindowController.m; sourceTree = "<group>"; };
+		A5E8601715CB2A46001302EA /* EMBasicPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMBasicPreferencesWindowController.h; path = Basic/EMBasicPreferencesWindowController.h; sourceTree = "<group>"; };
+		A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMBasicPreferencesWindowController.m; path = Basic/EMBasicPreferencesWindowController.m; sourceTree = "<group>"; };
 		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -354,8 +352,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C722DF15D5A7A200CDA623 /* JavaScriptCore.framework in Frameworks */,
 				A5C722C115D5A28200CDA623 /* Cocoa.framework in Frameworks */,
+				A5224A4115EE748300AE6103 /* JavaScriptCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +455,6 @@
 		A5994E4E14BF52020067B42B = {
 			isa = PBXGroup;
 			children = (
-				A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */,
 				A596306B1519F582000D1A01 /* JSONKit */,
 				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
 				A5BE71DE15BF437E009CF514 /* JSCocoa Delegate */,
@@ -508,24 +505,24 @@
 		A5994E6314BF52030067B42B /* ZenCoding */ = {
 			isa = PBXGroup;
 			children = (
-				A5CCC40114E04E8A002BBA24 /* ZenEditor.h */,
-				A5CCC40314E05ADB002BBA24 /* NSTextView+ZenEditor.h */,
-				A5CCC40414E05ADB002BBA24 /* NSTextView+ZenEditor.m */,
-				A563EC4914E31951009472C9 /* ZenCoding.h */,
-				A563EC4A14E31951009472C9 /* ZenCoding.m */,
-				A55EC49B14EE560E00F9A09B /* ZenCodingPromptDialogController.h */,
-				A55EC49C14EE560E00F9A09B /* ZenCodingPromptDialogController.m */,
+				A563EC4914E31951009472C9 /* Emmet.h */,
+				A563EC4A14E31951009472C9 /* Emmet.m */,
+				A5224A3A15EE6D2700AE6103 /* EmmetEditor.h */,
+				A5224A3D15EE6D9200AE6103 /* NSTextView+EmmetEditor.h */,
+				A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */,
+				A55EC49B14EE560E00F9A09B /* EMPromptDialogController.h */,
+				A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */,
 				A5AB74E514EE56BE00A59617 /* PromptDialog.xib */,
-				A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */,
-				A596302E15189A07000D1A01 /* ZenCodingNotifications.h */,
-				A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */,
-				A59630671519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m */,
+				A596302C151898B8000D1A01 /* EMDefaultsKeys.h */,
+				A596302E15189A07000D1A01 /* EMNotifications.h */,
+				A59630661519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h */,
+				A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */,
+				A562B88B1595007C007F9044 /* EmmetFile.h */,
+				A562B88C1595007C007F9044 /* EmmetFile.m */,
+				A5BE71DA15BF403E009CF514 /* EMJSContext.h */,
+				A5E85FB215C8821C001302EA /* EMUserDataLoader.h */,
+				A5E85FB315C8821C001302EA /* EMUserDataLoader.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
-				A562B88B1595007C007F9044 /* ZenCodingFile.h */,
-				A562B88C1595007C007F9044 /* ZenCodingFile.m */,
-				A5BE71DA15BF403E009CF514 /* ZenCodingJSContext.h */,
-				A5E85FB215C8821C001302EA /* ZCUserDataLoader.h */,
-				A5E85FB315C8821C001302EA /* ZCUserDataLoader.m */,
 			);
 			path = ZenCoding;
 			sourceTree = "<group>";
@@ -666,12 +663,12 @@
 		A5E85FF415CB28A1001302EA /* Transformers */ = {
 			isa = PBXGroup;
 			children = (
-				A5E85FF515CB28A1001302EA /* ZenCodingArrayTransformer.h */,
-				A5E85FF615CB28A1001302EA /* ZenCodingArrayTransformer.m */,
-				A5E85FF715CB28A1001302EA /* ZenCodingSyntaxNameTransformer.h */,
-				A5E85FF815CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m */,
-				A5E85FF915CB28A1001302EA /* ZenCodingTildePathTransformer.h */,
-				A5E85FFA15CB28A1001302EA /* ZenCodingTildePathTransformer.m */,
+				A5E85FF515CB28A1001302EA /* EMArrayTransformer.h */,
+				A5E85FF615CB28A1001302EA /* EMArrayTransformer.m */,
+				A5E85FF715CB28A1001302EA /* EMSyntaxNameTransformer.h */,
+				A5E85FF815CB28A1001302EA /* EMSyntaxNameTransformer.m */,
+				A5E85FF915CB28A1001302EA /* EMTildePathTransformer.h */,
+				A5E85FFA15CB28A1001302EA /* EMTildePathTransformer.m */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -680,8 +677,8 @@
 			isa = PBXGroup;
 			children = (
 				A5E8601315CB2989001302EA /* BasicPreferences.xib */,
-				A5E8601715CB2A46001302EA /* ZCBasicPreferencesWindowController.h */,
-				A5E8601815CB2A46001302EA /* ZCBasicPreferencesWindowController.m */,
+				A5E8601715CB2A46001302EA /* EMBasicPreferencesWindowController.h */,
+				A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */,
 			);
 			name = Basic;
 			sourceTree = "<group>";
@@ -700,28 +697,28 @@
 				A5D275AE14F156CF00B3816D /* JSCocoaFFIClosure.h in Headers */,
 				A5D275AF14F156D300B3816D /* JSCocoaLib.h in Headers */,
 				A5D275B014F156D600B3816D /* JSCocoaPrivateObject.h in Headers */,
-				A5D2755614F0055100B3816D /* ZenEditor.h in Headers */,
-				A5D2755714F0055200B3816D /* ZenCoding.h in Headers */,
-				A5D2755814F0055C00B3816D /* ZenCodingPromptDialogController.h in Headers */,
-				A5D2755914F0056000B3816D /* NSTextView+ZenEditor.h in Headers */,
-				A596302D151898B8000D1A01 /* ZenCodingDefaultsKeys.h in Headers */,
+				A5D2755714F0055200B3816D /* Emmet.h in Headers */,
+				A5D2755814F0055C00B3816D /* EMPromptDialogController.h in Headers */,
+				A596302D151898B8000D1A01 /* EMDefaultsKeys.h in Headers */,
 				A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */,
-				A596302F15189A08000D1A01 /* ZenCodingNotifications.h in Headers */,
-				A59630681519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h in Headers */,
+				A596302F15189A08000D1A01 /* EMNotifications.h in Headers */,
+				A59630681519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h in Headers */,
 				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
-				A562B88D1595007C007F9044 /* ZenCodingFile.h in Headers */,
-				A5BE71DB15BF403E009CF514 /* ZenCodingJSContext.h in Headers */,
+				A562B88D1595007C007F9044 /* EmmetFile.h in Headers */,
+				A5BE71DB15BF403E009CF514 /* EMJSContext.h in Headers */,
 				A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */,
-				A5E85FB415C8821C001302EA /* ZCUserDataLoader.h in Headers */,
+				A5E85FB415C8821C001302EA /* EMUserDataLoader.h in Headers */,
 				A5E85FE215CB2743001302EA /* ZCSnippetsPreferencesDataSource.h in Headers */,
 				A5E85FE515CB2743001302EA /* ZCSnippetsPreferencesWindow.h in Headers */,
 				A5E8600115CB28A1001302EA /* ZenCodingCorePreferencesController.h in Headers */,
 				A5E8600415CB28A1001302EA /* ZenCodingPreferences.h in Headers */,
 				A5E8600715CB28A1001302EA /* ZenCodingSnippetEditor.h in Headers */,
-				A5E8600A15CB28A1001302EA /* ZenCodingArrayTransformer.h in Headers */,
-				A5E8600D15CB28A1001302EA /* ZenCodingSyntaxNameTransformer.h in Headers */,
-				A5E8601015CB28A1001302EA /* ZenCodingTildePathTransformer.h in Headers */,
-				A5E8601915CB2A46001302EA /* ZCBasicPreferencesWindowController.h in Headers */,
+				A5E8600A15CB28A1001302EA /* EMArrayTransformer.h in Headers */,
+				A5E8600D15CB28A1001302EA /* EMSyntaxNameTransformer.h in Headers */,
+				A5E8601015CB28A1001302EA /* EMTildePathTransformer.h in Headers */,
+				A5E8601915CB2A46001302EA /* EMBasicPreferencesWindowController.h in Headers */,
+				A5224A3B15EE6D2700AE6103 /* EmmetEditor.h in Headers */,
+				A5224A3F15EE6D9200AE6103 /* NSTextView+EmmetEditor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -975,15 +972,15 @@
 				A576DD7A15EA441B009B5E24 /* JSCocoaLib.m in Sources */,
 				A576DD7B15EA441B009B5E24 /* JSCocoaPrivateObject.m in Sources */,
 				A576DD7C15EA441B009B5E24 /* JSCocoaDelegate.m in Sources */,
-				A576DD7D15EA441B009B5E24 /* ZenCoding.m in Sources */,
-				A576DD7E15EA441B009B5E24 /* ZenCodingPromptDialogController.m in Sources */,
-				A576DD7F15EA441B009B5E24 /* NSMutableDictionary+ZCUtils.m in Sources */,
-				A576DD8015EA441B009B5E24 /* ZenCodingFile.m in Sources */,
-				A576DD8115EA441B009B5E24 /* ZCUserDataLoader.m in Sources */,
-				A576DD8215EA441B009B5E24 /* ZCBasicPreferencesWindowController.m in Sources */,
-				A576DD8315EA441B009B5E24 /* ZenCodingArrayTransformer.m in Sources */,
-				A576DD8415EA441B009B5E24 /* ZenCodingSyntaxNameTransformer.m in Sources */,
-				A576DD8515EA441B009B5E24 /* ZenCodingTildePathTransformer.m in Sources */,
+				A576DD7D15EA441B009B5E24 /* Emmet.m in Sources */,
+				A576DD7E15EA441B009B5E24 /* EMPromptDialogController.m in Sources */,
+				A576DD7F15EA441B009B5E24 /* NSMutableDictionary+EMUtils.m in Sources */,
+				A576DD8015EA441B009B5E24 /* EmmetFile.m in Sources */,
+				A576DD8115EA441B009B5E24 /* EMUserDataLoader.m in Sources */,
+				A576DD8215EA441B009B5E24 /* EMBasicPreferencesWindowController.m in Sources */,
+				A576DD8315EA441B009B5E24 /* EMArrayTransformer.m in Sources */,
+				A576DD8415EA441B009B5E24 /* EMSyntaxNameTransformer.m in Sources */,
+				A576DD8515EA441B009B5E24 /* EMTildePathTransformer.m in Sources */,
 				A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */,
 				A576DD7415E92DE0009B5E24 /* EMEspressoEditor.m in Sources */,
 				A576DD9715EB5F08009B5E24 /* EMPreferences.m in Sources */,
@@ -1001,19 +998,18 @@
 				A57C4BB6158DCEB400566A1C /* JSCocoaFFIClosure.m in Sources */,
 				A57C4BB7158DCEB400566A1C /* JSCocoaLib.m in Sources */,
 				A57C4BB8158DCEB400566A1C /* JSCocoaPrivateObject.m in Sources */,
-				A57C4BB9158DCEB400566A1C /* NSTextView+ZenEditor.m in Sources */,
-				A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */,
-				A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */,
-				A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A57C4BBA158DCEB400566A1C /* Emmet.m in Sources */,
+				A57C4BBB158DCEB400566A1C /* EMPromptDialogController.m in Sources */,
+				A57C4BBF158DCEB400566A1C /* NSMutableDictionary+EMUtils.m in Sources */,
 				A57C4BB0158DC75D00566A1C /* EMCodaPlugin.m in Sources */,
 				A57C4BB1158DC75D00566A1C /* EMCodaEditor.m in Sources */,
-				A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */,
+				A562B8901595007C007F9044 /* EmmetFile.m in Sources */,
 				A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
-				A575604415D1C0E300CF9829 /* ZCUserDataLoader.m in Sources */,
-				A575604515D1C0F800CF9829 /* ZCBasicPreferencesWindowController.m in Sources */,
-				A575604615D1C10500CF9829 /* ZenCodingArrayTransformer.m in Sources */,
-				A575604715D1C10900CF9829 /* ZenCodingSyntaxNameTransformer.m in Sources */,
-				A575604815D1C10C00CF9829 /* ZenCodingTildePathTransformer.m in Sources */,
+				A575604415D1C0E300CF9829 /* EMUserDataLoader.m in Sources */,
+				A575604515D1C0F800CF9829 /* EMBasicPreferencesWindowController.m in Sources */,
+				A575604615D1C10500CF9829 /* EMArrayTransformer.m in Sources */,
+				A575604715D1C10900CF9829 /* EMSyntaxNameTransformer.m in Sources */,
+				A575604815D1C10C00CF9829 /* EMTildePathTransformer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1021,10 +1017,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A53F606B15E6C4C100CF391B /* ZenCodingArrayTransformer.m in Sources */,
-				A53F606C15E6C4C100CF391B /* ZenCodingSyntaxNameTransformer.m in Sources */,
-				A53F606D15E6C4C100CF391B /* ZenCodingTildePathTransformer.m in Sources */,
-				A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */,
 				A5C722D115D5A77700CDA623 /* BridgeSupportController.m in Sources */,
 				A5C722D215D5A77700CDA623 /* JSCocoaController.m in Sources */,
 				A5C722D315D5A77700CDA623 /* JSCocoaFFIArgument.m in Sources */,
@@ -1032,14 +1024,18 @@
 				A5C722D515D5A77700CDA623 /* JSCocoaLib.m in Sources */,
 				A5C722D615D5A77700CDA623 /* JSCocoaPrivateObject.m in Sources */,
 				A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */,
-				A5C722D815D5A77700CDA623 /* ZenCoding.m in Sources */,
-				A5C722D915D5A77700CDA623 /* ZenCodingPromptDialogController.m in Sources */,
-				A5C722DB15D5A77700CDA623 /* NSMutableDictionary+ZCUtils.m in Sources */,
-				A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */,
-				A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */,
+				A5C722D815D5A77700CDA623 /* Emmet.m in Sources */,
+				A5C722D915D5A77700CDA623 /* EMPromptDialogController.m in Sources */,
+				A5C722DB15D5A77700CDA623 /* NSMutableDictionary+EMUtils.m in Sources */,
+				A5C722DC15D5A77700CDA623 /* EmmetFile.m in Sources */,
+				A5C722DD15D5A77700CDA623 /* EMUserDataLoader.m in Sources */,
 				A5C722CF15D5A2FA00CDA623 /* EMTextmatePlugin.m in Sources */,
 				A5C722EE15D6CB0E00CDA623 /* EMTextMateEditor.m in Sources */,
-				A53F606A15E6C49F00CF391B /* ZCBasicPreferencesWindowController.m in Sources */,
+				A53F606A15E6C49F00CF391B /* EMBasicPreferencesWindowController.m in Sources */,
+				A53F606B15E6C4C100CF391B /* EMArrayTransformer.m in Sources */,
+				A53F606C15E6C4C100CF391B /* EMSyntaxNameTransformer.m in Sources */,
+				A53F606D15E6C4C100CF391B /* EMTildePathTransformer.m in Sources */,
+				A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1053,20 +1049,20 @@
 				A5D2752B14F001A400B3816D /* JSCocoaFFIClosure.m in Sources */,
 				A5D2752C14F001A400B3816D /* JSCocoaLib.m in Sources */,
 				A5D2752D14F001A400B3816D /* JSCocoaPrivateObject.m in Sources */,
-				A5D2752F14F001A400B3816D /* NSTextView+ZenEditor.m in Sources */,
-				A5D2753014F001A400B3816D /* ZenCoding.m in Sources */,
-				A5D2753114F001A400B3816D /* ZenCodingPromptDialogController.m in Sources */,
+				A5D2753014F001A400B3816D /* Emmet.m in Sources */,
+				A5D2753114F001A400B3816D /* EMPromptDialogController.m in Sources */,
 				A5D2751814F000FA00B3816D /* main.m in Sources */,
 				A5D2751F14F000FA00B3816D /* ZenCodingSampleAppDelegate.m in Sources */,
-				A59630691519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A59630691519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */,
 				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
-				A562B88E1595007C007F9044 /* ZenCodingFile.m in Sources */,
+				A562B88E1595007C007F9044 /* EmmetFile.m in Sources */,
 				A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
-				A5E85FB515C8821C001302EA /* ZCUserDataLoader.m in Sources */,
-				A5E8600B15CB28A1001302EA /* ZenCodingArrayTransformer.m in Sources */,
-				A5E8600E15CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m in Sources */,
-				A5E8601115CB28A1001302EA /* ZenCodingTildePathTransformer.m in Sources */,
-				A5E8601A15CB2A46001302EA /* ZCBasicPreferencesWindowController.m in Sources */,
+				A5E85FB515C8821C001302EA /* EMUserDataLoader.m in Sources */,
+				A5E8600B15CB28A1001302EA /* EMArrayTransformer.m in Sources */,
+				A5E8600E15CB28A1001302EA /* EMSyntaxNameTransformer.m in Sources */,
+				A5E8601115CB28A1001302EA /* EMTildePathTransformer.m in Sources */,
+				A5E8601A15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */,
+				A5224A4015EE726A00AE6103 /* NSTextView+EmmetEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,23 +1076,23 @@
 				A5D2755014F004FB00B3816D /* JSCocoaFFIClosure.m in Sources */,
 				A5D2755114F004FD00B3816D /* JSCocoaLib.m in Sources */,
 				A5D2755214F0050100B3816D /* JSCocoaPrivateObject.m in Sources */,
-				A5D2755414F0052F00B3816D /* NSTextView+ZenEditor.m in Sources */,
-				A5D2755F14F006A500B3816D /* ZenCoding.m in Sources */,
-				A5D2755314F0052D00B3816D /* ZenCodingPromptDialogController.m in Sources */,
-				A596306A1519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.m in Sources */,
+				A5D2755F14F006A500B3816D /* Emmet.m in Sources */,
+				A5D2755314F0052D00B3816D /* EMPromptDialogController.m in Sources */,
+				A596306A1519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */,
 				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
-				A562B88F1595007C007F9044 /* ZenCodingFile.m in Sources */,
+				A562B88F1595007C007F9044 /* EmmetFile.m in Sources */,
 				A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
-				A5E85FB615C8821C001302EA /* ZCUserDataLoader.m in Sources */,
+				A5E85FB615C8821C001302EA /* EMUserDataLoader.m in Sources */,
 				A5E85FE415CB2743001302EA /* ZCSnippetsPreferencesDataSource.m in Sources */,
 				A5E85FE715CB2743001302EA /* ZCSnippetsPreferencesWindow.m in Sources */,
 				A5E8600315CB28A1001302EA /* ZenCodingCorePreferencesController.m in Sources */,
 				A5E8600615CB28A1001302EA /* ZenCodingPreferences.m in Sources */,
 				A5E8600915CB28A1001302EA /* ZenCodingSnippetEditor.m in Sources */,
-				A5E8600C15CB28A1001302EA /* ZenCodingArrayTransformer.m in Sources */,
-				A5E8600F15CB28A1001302EA /* ZenCodingSyntaxNameTransformer.m in Sources */,
-				A5E8601215CB28A1001302EA /* ZenCodingTildePathTransformer.m in Sources */,
-				A5E8601B15CB2A46001302EA /* ZCBasicPreferencesWindowController.m in Sources */,
+				A5E8600C15CB28A1001302EA /* EMArrayTransformer.m in Sources */,
+				A5E8600F15CB28A1001302EA /* EMSyntaxNameTransformer.m in Sources */,
+				A5E8601215CB28A1001302EA /* EMTildePathTransformer.m in Sources */,
+				A5E8601B15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */,
+				A5224A3E15EE6D9200AE6103 /* NSTextView+EmmetEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

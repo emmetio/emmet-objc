@@ -29,11 +29,11 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 		NSApp = [NSApplication sharedApplication];
 		NSBundle *bundle = [EMTextmatePlugin bundle];
 		
-		[ZenCoding addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
-		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
+		[Emmet addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
+		[Emmet setJSContextDelegateClass:[JSCocoaDelegate class]];
 		
 		editor = [EMTextMateEditor new];
-		[[ZenCoding sharedInstance] setContext:editor];
+		[[Emmet sharedInstance] setContext:editor];
 		
 		[self installMenuItems];
 	}
@@ -43,7 +43,7 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 - (void)installMenuItems {
 	NSString *keyboardShortcutsPlist = [[EMTextmatePlugin bundle] pathForResource:@"KeyboardShortcuts" ofType:@"plist"];
 	NSDictionary *shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
-	NSMenu *menu = [[ZenCoding sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
+	NSMenu *menu = [[Emmet sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
 	[menu addItem:[NSMenuItem separatorItem]];
 	
 	NSMenuItem *preferencesItem = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(showPreferences:) keyEquivalent:@""];
@@ -68,12 +68,12 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 }
 
 - (void)performMenuAction:(id)sender {
-	[[ZenCoding sharedInstance] performMenuAction:sender];
+	[[Emmet sharedInstance] performMenuAction:sender];
 }
 
 - (void)showPreferences:(id)sender {
 	if (prefs == nil) {
-		prefs = [[ZCBasicPreferencesWindowController alloc] init];
+		prefs = [[EMBasicPreferencesWindowController alloc] init];
 		[prefs hideTabExpanderControl];
 	}
 	

@@ -7,8 +7,8 @@
 //
 
 #import "ZCSnippetsPreferencesDataSource.h"
-#import "ZCUserDataLoader.h"
-#import "ZenCoding.h"
+#import "EMUserDataLoader.h"
+#import "Emmet.h"
 
 static NSMutableArray *snippetsData;
 
@@ -26,12 +26,12 @@ static NSMutableArray *snippetsData;
 	
 	
 	// make sure defaults are loaded
-	[ZenCoding loadDefaults];
+	[Emmet loadDefaults];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *syntaxes = [defaults arrayForKey:@"syntax"];
 	
 	// create snippets representation
-	NSArray *userSnippets = [ZCUserDataLoader snippets];
+	NSArray *userSnippets = [EMUserDataLoader snippets];
 	NSMutableDictionary *snippetsLookup = [NSMutableDictionary new];
 	[userSnippets enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		NSString *syntax = [obj objectForKey:@"syntax"];

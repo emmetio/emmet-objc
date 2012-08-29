@@ -1,14 +1,11 @@
 //
-//  ZenCodingArrayTransformer.m
-//  ZenCoding
-//
 //  Created by Сергей Чикуёнок on 3/10/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZenCodingArrayTransformer.h"
+#import "EMArrayTransformer.h"
 
-@implementation ZenCodingArrayTransformer
+@implementation EMArrayTransformer
 
 - (id)initWithArray:(NSArray *)arr {
 	if (self = [super init]) {

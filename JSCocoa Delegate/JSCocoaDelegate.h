@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ZenCodingJSContext.h"
+#import "EMJSContext.h"
 #import "JSCocoa.h"
 
-@interface JSCocoaDelegate : NSObject <ZenCodingJSContext> {
+@interface JSCocoaDelegate : NSObject <EMJSContext> {
 	JSCocoa *ctx;
 }
 

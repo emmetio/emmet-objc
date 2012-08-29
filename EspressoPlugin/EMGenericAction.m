@@ -8,7 +8,7 @@
 
 #import "EMGenericAction.h"
 #import "EspressoSDK.h"
-#import "ZenCoding.h"
+#import "Emmet.h"
 #import "JSCocoaDelegate.h"
 #import "EMEspressoEditor.h"
 
@@ -21,9 +21,9 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EspressoPlugin";
 }
 
 + (void)initialize {
-	[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
+	[Emmet setJSContextDelegateClass:[JSCocoaDelegate class]];
 	NSBundle *bundle = [EMGenericAction bundle];
-	[ZenCoding addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
+	[Emmet addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
 }
 
 - (id)initWithDictionary:(NSDictionary *)dictionary bundlePath:(NSString *)bundlePath {
@@ -37,7 +37,7 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EspressoPlugin";
 
 - (BOOL)performActionWithContext:(NSObject *)context error:(NSError **)outError {
 	NSString *actionName = [actionParams objectForKey:@"name"];
-	ZenCoding *zc = [ZenCoding sharedInstance];
+	Emmet *zc = [Emmet sharedInstance];
 	EMEspressoEditor *editor = [[[EMEspressoEditor alloc] initWithContext:context] autorelease];
 	zc.context = editor;
 	

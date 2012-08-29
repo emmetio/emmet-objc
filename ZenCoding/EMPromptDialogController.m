@@ -1,14 +1,11 @@
 //
-//  ZenCodingPromptDialogController.m
-//  ZenCoding
-//
 //  Created by Sergey on 2/17/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZenCodingPromptDialogController.h"
+#import "EMPromptDialogController.h"
 
-@implementation ZenCodingPromptDialogController
+@implementation EMPromptDialogController
 @synthesize label;
 @synthesize inputField;
 
@@ -25,11 +22,11 @@
 }
 
 + (NSString *)prompt:(NSString *)labelText {
-	return [ZenCodingPromptDialogController promptForWindow:[NSApp mainWindow] withLabel:labelText];
+	return [EMPromptDialogController promptForWindow:[NSApp mainWindow] withLabel:labelText];
 }
 
 + (NSString *)promptForWindow:(NSWindow *)wnd withLabel :(NSString *)labelText {
-	ZenCodingPromptDialogController *dialog = [ZenCodingPromptDialogController new];
+	EMPromptDialogController *dialog = [EMPromptDialogController new];
 	NSString *value = [dialog promptForWindow:wnd withLabel:labelText];
 	[dialog release];
 	return value;

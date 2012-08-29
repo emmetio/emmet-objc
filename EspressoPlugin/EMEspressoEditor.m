@@ -7,8 +7,8 @@
 //
 
 #import "EMEspressoEditor.h"
-#import "ZenCoding.h"
-#import "ZenCodingPromptDialogController.h"
+#import "Emmet.h"
+#import "EMPromptDialogController.h"
 
 #import <EspressoSDK.h>
 
@@ -107,7 +107,7 @@
 }
 
 - (NSString *)prompt:(NSString *)label {
-	return [ZenCodingPromptDialogController promptForWindow:[ctx windowForSheet] withLabel:label];
+	return [EMPromptDialogController promptForWindow:[ctx windowForSheet] withLabel:label];
 }
 
 - (NSString *)filePath {

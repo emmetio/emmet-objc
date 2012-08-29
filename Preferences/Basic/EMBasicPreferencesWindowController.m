@@ -1,35 +1,32 @@
 //
-//  ZCBasicPreferencesWindowController.m
-//  ZenCoding
-//
 //  Created by Sergey Chikuyonok on 8/3/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "ZCBasicPreferencesWindowController.h"
-#import "ZenCoding.h"
-#import "ZenCodingArrayTransformer.h"
-#import "ZenCodingTildePathTransformer.h"
-#import "ZCUserDataLoader.h"
+#import "EMBasicPreferencesWindowController.h"
+#import "Emmet.h"
+#import "EMArrayTransformer.h"
+#import "EMTildePathTransformer.h"
+#import "EMUserDataLoader.h"
 
-@interface ZCBasicPreferencesWindowController ()
+@interface EMBasicPreferencesWindowController ()
 + (NSArray *)loadOutputPreferences;
 + (void)storeOutputPreferences:(NSArray *)prefs;
 - (void)setupOutputProfilesController;
 @end
 
-@implementation ZCBasicPreferencesWindowController
+@implementation EMBasicPreferencesWindowController
 @synthesize outputProfiles;
 
 + (void)initialize {
-	ZenCodingArrayTransformer *caseTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
+	EMArrayTransformer *caseTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"lower", @"upper", @"asis", nil]] autorelease];
 	
-	ZenCodingArrayTransformer *quotesTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
+	EMArrayTransformer *quotesTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"single", @"double", nil]] autorelease];
 	
-	ZenCodingArrayTransformer *tagNlTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"yes", @"no", @"decide", nil]] autorelease];
+	EMArrayTransformer *tagNlTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"yes", @"no", @"decide", nil]] autorelease];
 	
-	ZenCodingArrayTransformer *selfClosingTransformer = [[[ZenCodingArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"html", @"xml", @"xhtml", nil]] autorelease];
-	ZenCodingTildePathTransformer *pathTransformer = [[ZenCodingTildePathTransformer new] autorelease];
+	EMArrayTransformer *selfClosingTransformer = [[[EMArrayTransformer alloc] initWithArray:[NSArray arrayWithObjects:@"html", @"xml", @"xhtml", nil]] autorelease];
+	EMTildePathTransformer *pathTransformer = [[EMTildePathTransformer new] autorelease];
 	
 	
 	[NSValueTransformer setValueTransformer:caseTransformer forName:@"ZenCodingCaseTransformer"];
@@ -76,7 +73,7 @@
 }
 
 - (void)awakeFromNib {
-	[ZenCoding loadDefaults];
+	[Emmet loadDefaults];
 	[self setupOutputProfilesController];
 }
 
@@ -112,12 +109,12 @@
 }
 
 - (IBAction)restoreDefaults:(id)sender {
-	[ZCUserDataLoader resetDefaults];
+	[EMUserDataLoader resetDefaults];
 	[self setupOutputProfilesController];
 }
 
 - (IBAction)reloadExtensions:(id)sender {
-	[[ZenCoding sharedInstance] reload];
+	[[Emmet sharedInstance] reload];
 }
 
 - (void)windowDidLoad {
@@ -132,12 +129,12 @@
 	[window makeFirstResponder:nil];
 	
 	// save output preferences
-	[ZCBasicPreferencesWindowController storeOutputPreferences:outputProfiles.content];
+	[EMBasicPreferencesWindowController storeOutputPreferences:outputProfiles.content];
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults synchronize];
 	
-	[[ZenCoding sharedInstance] reload];
+	[[Emmet sharedInstance] reload];
     return YES;
 }
 
@@ -159,7 +156,7 @@
 }
 
 - (void)setupOutputProfilesController {
-	outputProfiles.content = [ZCBasicPreferencesWindowController loadOutputPreferences];
+	outputProfiles.content = [EMBasicPreferencesWindowController loadOutputPreferences];
 }
 
 - (void)dealloc {
