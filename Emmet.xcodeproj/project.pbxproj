@@ -166,8 +166,8 @@
 		A5D2755D14F0057700B3816D /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A5D2755E14F0057B00B3816D /* PromptDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AB74E514EE56BE00A59617 /* PromptDialog.xib */; };
 		A5D2755F14F006A500B3816D /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
-		A5D2757714F009B100B3816D /* ZenCoding-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757514F009B100B3816D /* ZenCoding-Info.plist */; };
-		A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */; };
+		A5D2757714F009B100B3816D /* Emmet-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757514F009B100B3816D /* Emmet-Info.plist */; };
+		A5D2757914F009B100B3816D /* Emmet-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = A5D2757614F009B100B3816D /* Emmet-Prefix.pch */; };
 		A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
 		A5D2757D14F009D700B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2757A14F009D700B3816D /* InfoPlist.strings */; };
 		A5D275A914F156A300B3816D /* JSCocoa.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CCC3C814E03E05002BBA24 /* JSCocoa.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -286,19 +286,19 @@
 		A5CCC3D514E03E05002BBA24 /* JSCocoaPrivateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSCocoaPrivateObject.h; sourceTree = "<group>"; };
 		A5CCC3D614E03E05002BBA24 /* JSCocoaPrivateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSCocoaPrivateObject.m; sourceTree = "<group>"; };
 		A5CCC3D714E03E05002BBA24 /* jslint-jscocoa.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jslint-jscocoa.js"; sourceTree = "<group>"; };
-		A5D2750E14F000FA00B3816D /* ZenCodingSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZenCodingSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5D2751314F000FA00B3816D /* ZenCodingSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZenCodingSample-Info.plist"; sourceTree = "<group>"; };
+		A5D2750E14F000FA00B3816D /* EmmetSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmmetSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D2751314F000FA00B3816D /* EmmetSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EmmetSample-Info.plist"; sourceTree = "<group>"; };
 		A5D2751514F000FA00B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5D2751714F000FA00B3816D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A5D2751914F000FA00B3816D /* ZenCodingSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZenCodingSample-Prefix.pch"; sourceTree = "<group>"; };
+		A5D2751914F000FA00B3816D /* EmmetSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EmmetSample-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2751B14F000FA00B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		A5D2751D14F000FA00B3816D /* ZenCodingSampleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZenCodingSampleAppDelegate.h; sourceTree = "<group>"; };
 		A5D2751E14F000FA00B3816D /* ZenCodingSampleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZenCodingSampleAppDelegate.m; sourceTree = "<group>"; };
 		A5D2752114F000FA00B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A5D2752614F0011200B3816D /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		A5D2753D14F004A800B3816D /* ZenCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZenCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A5D2757514F009B100B3816D /* ZenCoding-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ZenCoding-Info.plist"; sourceTree = "<group>"; };
-		A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenCoding-Prefix.pch"; sourceTree = "<group>"; };
+		A5D2753D14F004A800B3816D /* Emmet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Emmet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5D2757514F009B100B3816D /* Emmet-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Emmet-Info.plist"; sourceTree = "<group>"; };
+		A5D2757614F009B100B3816D /* Emmet-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Emmet-Prefix.pch"; sourceTree = "<group>"; };
 		A5D2757B14F009D700B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PreferencesDefaults.plist; sourceTree = "<group>"; };
 		A5E85FB215C8821C001302EA /* EMUserDataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMUserDataLoader.h; sourceTree = "<group>"; };
@@ -458,9 +458,9 @@
 				A596306B1519F582000D1A01 /* JSONKit */,
 				A5CCC3A914E03E05002BBA24 /* JSCocoa */,
 				A5BE71DE15BF437E009CF514 /* JSCocoa Delegate */,
-				A5994E6314BF52030067B42B /* ZenCoding */,
+				A5994E6314BF52030067B42B /* Emmet */,
 				A5E85FDB15CB26D7001302EA /* Preferences */,
-				A5D2751114F000FA00B3816D /* ZenCodingSample */,
+				A5D2751114F000FA00B3816D /* EmmetSample */,
 				A57C4BA1158DC6BB00566A1C /* CodaPlugin */,
 				A5C722C215D5A28200CDA623 /* TextMatePlugin */,
 				A576DD5315E91267009B5E24 /* EspressoPlugin */,
@@ -472,8 +472,8 @@
 		A5994E5A14BF52030067B42B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A5D2750E14F000FA00B3816D /* ZenCodingSample.app */,
-				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
+				A5D2750E14F000FA00B3816D /* EmmetSample.app */,
+				A5D2753D14F004A800B3816D /* Emmet.framework */,
 				A57C4B9F158DC6BB00566A1C /* Emmet.codaplugin */,
 				A5C722C015D5A28200CDA623 /* Emmet.tmplugin */,
 				A576DD5115E91267009B5E24 /* Emmet.sugar */,
@@ -502,7 +502,7 @@
 			name = "Other Frameworks";
 			sourceTree = "<group>";
 		};
-		A5994E6314BF52030067B42B /* ZenCoding */ = {
+		A5994E6314BF52030067B42B /* Emmet */ = {
 			isa = PBXGroup;
 			children = (
 				A563EC4914E31951009472C9 /* Emmet.h */,
@@ -524,6 +524,7 @@
 				A5E85FB315C8821C001302EA /* EMUserDataLoader.m */,
 				A5D2757414F0096200B3816D /* Supporting Files */,
 			);
+			name = Emmet;
 			path = ZenCoding;
 			sourceTree = "<group>";
 		};
@@ -583,7 +584,7 @@
 			path = JSCocoa;
 			sourceTree = "<group>";
 		};
-		A5D2751114F000FA00B3816D /* ZenCodingSample */ = {
+		A5D2751114F000FA00B3816D /* EmmetSample */ = {
 			isa = PBXGroup;
 			children = (
 				A5D2751D14F000FA00B3816D /* ZenCodingSampleAppDelegate.h */,
@@ -591,16 +592,17 @@
 				A5D2752014F000FA00B3816D /* MainMenu.xib */,
 				A5D2751214F000FA00B3816D /* Supporting Files */,
 			);
+			name = EmmetSample;
 			path = ZenCodingSample;
 			sourceTree = "<group>";
 		};
 		A5D2751214F000FA00B3816D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A5D2751314F000FA00B3816D /* ZenCodingSample-Info.plist */,
+				A5D2751314F000FA00B3816D /* EmmetSample-Info.plist */,
 				A5D2751414F000FA00B3816D /* InfoPlist.strings */,
 				A5D2751714F000FA00B3816D /* main.m */,
-				A5D2751914F000FA00B3816D /* ZenCodingSample-Prefix.pch */,
+				A5D2751914F000FA00B3816D /* EmmetSample-Prefix.pch */,
 				A5D2751A14F000FA00B3816D /* Credits.rtf */,
 			);
 			name = "Supporting Files";
@@ -610,9 +612,9 @@
 			isa = PBXGroup;
 			children = (
 				A576DD4715E83213009B5E24 /* emmet-app.js */,
-				A5D2757514F009B100B3816D /* ZenCoding-Info.plist */,
+				A5D2757514F009B100B3816D /* Emmet-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
-				A5D2757614F009B100B3816D /* ZenCoding-Prefix.pch */,
+				A5D2757614F009B100B3816D /* Emmet-Prefix.pch */,
 				A5DB23431510DABD009979C2 /* PreferencesDefaults.plist */,
 				A57C4A02158BEED300566A1C /* snippets.json */,
 				A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */,
@@ -700,7 +702,7 @@
 				A5D2755714F0055200B3816D /* Emmet.h in Headers */,
 				A5D2755814F0055C00B3816D /* EMPromptDialogController.h in Headers */,
 				A596302D151898B8000D1A01 /* EMDefaultsKeys.h in Headers */,
-				A5D2757914F009B100B3816D /* ZenCoding-Prefix.pch in Headers */,
+				A5D2757914F009B100B3816D /* Emmet-Prefix.pch in Headers */,
 				A596302F15189A08000D1A01 /* EMNotifications.h in Headers */,
 				A59630681519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h in Headers */,
 				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
@@ -777,9 +779,9 @@
 			productReference = A5C722C015D5A28200CDA623 /* Emmet.tmplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
-		A5D2750D14F000FA00B3816D /* ZenCodingSample */ = {
+		A5D2750D14F000FA00B3816D /* EmmetSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "ZenCodingSample" */;
+			buildConfigurationList = A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "EmmetSample" */;
 			buildPhases = (
 				A5D2750A14F000FA00B3816D /* Sources */,
 				A5D2750B14F000FA00B3816D /* Frameworks */,
@@ -789,14 +791,14 @@
 			);
 			dependencies = (
 			);
-			name = ZenCodingSample;
+			name = EmmetSample;
 			productName = ZenCodingSample;
-			productReference = A5D2750E14F000FA00B3816D /* ZenCodingSample.app */;
+			productReference = A5D2750E14F000FA00B3816D /* EmmetSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A5D2753C14F004A800B3816D /* ZenCoding */ = {
+		A5D2753C14F004A800B3816D /* Emmet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A5D2754914F004A800B3816D /* Build configuration list for PBXNativeTarget "ZenCoding" */;
+			buildConfigurationList = A5D2754914F004A800B3816D /* Build configuration list for PBXNativeTarget "Emmet" */;
 			buildPhases = (
 				A5D2753814F004A800B3816D /* Sources */,
 				A5D2753914F004A800B3816D /* Frameworks */,
@@ -807,9 +809,9 @@
 			);
 			dependencies = (
 			);
-			name = ZenCoding;
+			name = Emmet;
 			productName = ZenCoding;
-			productReference = A5D2753D14F004A800B3816D /* ZenCoding.framework */;
+			productReference = A5D2753D14F004A800B3816D /* Emmet.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -821,7 +823,7 @@
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Аймобилко";
 			};
-			buildConfigurationList = A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */;
+			buildConfigurationList = A5994E5314BF52020067B42B /* Build configuration list for PBXProject "Emmet" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -834,8 +836,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A5D2750D14F000FA00B3816D /* ZenCodingSample */,
-				A5D2753C14F004A800B3816D /* ZenCoding */,
+				A5D2750D14F000FA00B3816D /* EmmetSample */,
+				A5D2753C14F004A800B3816D /* Emmet */,
 				A57C4B9E158DC6BB00566A1C /* CodaPlugin */,
 				A5C722BF15D5A28200CDA623 /* TextMatePlugin */,
 				A576DD5015E91267009B5E24 /* EspressoPlugin */,
@@ -910,7 +912,7 @@
 				A5D2753514F0041D00B3816D /* class.js in Resources */,
 				A5D2753614F0042000B3816D /* jslint-jscocoa.js in Resources */,
 				A5DB23441510DABD009979C2 /* PreferencesDefaults.plist in Resources */,
-				A5D2757714F009B100B3816D /* ZenCoding-Info.plist in Resources */,
+				A5D2757714F009B100B3816D /* Emmet-Info.plist in Resources */,
 				A5D2757C14F009D700B3816D /* InfoPlist.strings in Resources */,
 				A5D2752214F000FA00B3816D /* MainMenu.xib in Resources */,
 				A5D2753214F0041000B3816D /* PromptDialog.xib in Resources */,
@@ -1320,11 +1322,11 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ZenCodingSample/ZenCodingSample-Prefix.pch";
+				GCC_PREFIX_HEADER = "ZenCodingSample/EmmetSample-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
-				INFOPLIST_FILE = "ZenCodingSample/ZenCodingSample-Info.plist";
+				INFOPLIST_FILE = "ZenCodingSample/EmmetSample-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EmmetSample;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1338,11 +1340,11 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ZenCodingSample/ZenCodingSample-Prefix.pch";
+				GCC_PREFIX_HEADER = "ZenCodingSample/EmmetSample-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
-				INFOPLIST_FILE = "ZenCodingSample/ZenCodingSample-Info.plist";
+				INFOPLIST_FILE = "ZenCodingSample/EmmetSample-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = EmmetSample;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1356,11 +1358,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
+				GCC_PREFIX_HEADER = "ZenCoding/Emmet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				INFOPLIST_FILE = "ZenCoding/Emmet-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1374,11 +1376,11 @@
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "ZenCoding/ZenCoding-Prefix.pch";
+				GCC_PREFIX_HEADER = "ZenCoding/Emmet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = "ZenCoding/ZenCoding-Info.plist";
+				INFOPLIST_FILE = "ZenCoding/Emmet-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1404,7 +1406,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "ZenCoding" */ = {
+		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "Emmet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5994E7514BF52030067B42B /* Debug */,
@@ -1422,7 +1424,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "ZenCodingSample" */ = {
+		A5D2752314F000FA00B3816D /* Build configuration list for PBXNativeTarget "EmmetSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5D2752414F000FA00B3816D /* Debug */,
@@ -1431,7 +1433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A5D2754914F004A800B3816D /* Build configuration list for PBXNativeTarget "ZenCoding" */ = {
+		A5D2754914F004A800B3816D /* Build configuration list for PBXNativeTarget "Emmet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A5D2754A14F004A800B3816D /* Debug */,
