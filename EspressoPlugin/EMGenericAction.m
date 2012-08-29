@@ -10,7 +10,7 @@
 #import "EspressoSDK.h"
 #import "ZenCoding.h"
 #import "JSCocoaDelegate.h"
-#import "EspressoEmmetEditor.h"
+#import "EMEspressoEditor.h"
 
 static NSString * const EmmetBundleIdentifier = @"io.emmet.EspressoPlugin";
 
@@ -38,7 +38,7 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EspressoPlugin";
 - (BOOL)performActionWithContext:(NSObject *)context error:(NSError **)outError {
 	NSString *actionName = [actionParams objectForKey:@"name"];
 	ZenCoding *zc = [ZenCoding sharedInstance];
-	EspressoEmmetEditor *editor = [[[EspressoEmmetEditor alloc] initWithContext:context] autorelease];
+	EMEspressoEditor *editor = [[[EMEspressoEditor alloc] initWithContext:context] autorelease];
 	zc.context = editor;
 	
 	if ([actionName isEqualToString:@"expand_abbreviation"]) {

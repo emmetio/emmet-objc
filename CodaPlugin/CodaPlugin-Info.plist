@@ -9,11 +9,11 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>ru.chikuyonok.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>io.emmet.EmmetCoda</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Zen Coding</string>
+	<string>Emmet</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -27,6 +27,6 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2012 serge.che@gmail.com. All rights reserved.</string>
 	<key>NSPrincipalClass</key>
-	<string>CodaPlugin</string>
+	<string>EMCodaPlugin</string>
 </dict>
 </plist>

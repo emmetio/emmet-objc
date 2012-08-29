@@ -7,13 +7,14 @@
 //
 #import <Cocoa/Cocoa.h>
 #import "CodaPlugInsController.h"
-#import "CodaZenEditor.h"
+#import "EMCodaEditor.h"
 #import "ZCBasicPreferencesWindowController.h"
 
 @class CodaPlugInsController;
-@interface CodaPlugin : NSObject <CodaPlugIn> {
+
+@interface EMCodaPlugin : NSObject <CodaPlugIn> {
 	CodaPlugInsController* controller;
-	CodaZenEditor *editor;
+	EMCodaEditor *editor;
 	ZCBasicPreferencesWindowController *prefs;
 	NSString *keyboardShortcutsPlist;
 }

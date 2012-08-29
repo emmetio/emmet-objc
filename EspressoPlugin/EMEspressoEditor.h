@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ZenEditor.h"
 
-@interface EspressoEmmetEditor : NSObject <ZenEditor> {
+@interface EMEspressoEditor : NSObject <ZenEditor> {
 	NSObject *ctx;
 }
 

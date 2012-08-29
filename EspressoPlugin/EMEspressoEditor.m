@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "EspressoEmmetEditor.h"
+#import "EMEspressoEditor.h"
 #import "ZenCoding.h"
 #import "ZenCodingPromptDialogController.h"
 
 #import <EspressoSDK.h>
 
-@implementation EspressoEmmetEditor
+@implementation EMEspressoEditor
 
 - (id)initWithContext:(NSObject *)context {
 	ctx = [context retain];

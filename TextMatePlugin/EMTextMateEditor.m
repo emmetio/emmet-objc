@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import "TextMateEmmetEditor.h"
+#import "EMTextMateEditor.h"
 #import "ZenCoding.h"
 #import "ZenCodingPromptDialogController.h"
 
 TMLocation convertRangeToLocation(NSRange range, NSString *string) {
-	unsigned numberOfLines, index, stringLength = [string length];
+	NSUInteger numberOfLines, index, stringLength = [string length];
 	TMLocation loc = (TMLocation){};
 	NSRange lineRange;
 	
@@ -34,7 +34,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	return loc;
 }
 
-@interface TextMateEmmetEditor ()
+@interface EMTextMateEditor ()
 
 - (NSArray *)linesOfText:(NSString *)text;
 - (OakTextView *)tv;
@@ -50,7 +50,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 @end
 
-@implementation TextMateEmmetEditor
+@implementation EMTextMateEditor
 
 - (id)init {
 	if (self = [super init]) {
@@ -67,7 +67,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (NSArray *)linesOfText:(NSString *)text {
 	NSMutableArray *lines = [NSMutableArray array];
-	unsigned numberOfLines, index, stringLength = [text length];
+	NSUInteger numberOfLines, index, stringLength = [text length];
 	NSRange lineRange;
 	for (index = 0, numberOfLines = 0; index < stringLength; numberOfLines++) {
 		lineRange = [text lineRangeForRange:NSMakeRange(index, 0)];

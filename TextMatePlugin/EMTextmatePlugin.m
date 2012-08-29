@@ -8,9 +8,9 @@
 
 #import "EMTextmatePlugin.h"
 #import "JSCocoaDelegate.h"
-#import "TextMateEmmetEditor.h"
+#import "EMTextMateEditor.h"
 
-static NSString * const EmmetBundleIdentifier = @"ru.chikuyonok.EmmetTextmate";
+static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 
 @interface EMTextmatePlugin ()
 - (void)performMenuAction:(id)sender;
@@ -32,7 +32,7 @@ static NSString * const EmmetBundleIdentifier = @"ru.chikuyonok.EmmetTextmate";
 		[ZenCoding addCoreFile:[bundle pathForResource:@"textmate-bootstrap" ofType:@"js"]];
 		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
 		
-		editor = [TextMateEmmetEditor new];
+		editor = [EMTextMateEditor new];
 		[[ZenCoding sharedInstance] setContext:editor];
 		
 		[self installMenuItems];
@@ -63,6 +63,8 @@ static NSString * const EmmetBundleIdentifier = @"ru.chikuyonok.EmmetTextmate";
 	} else {
 		[mainMenu addItem:rootItem];
 	}
+	
+	[rootItem release];
 }
 
 - (void)performMenuAction:(id)sender {

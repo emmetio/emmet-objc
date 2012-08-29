@@ -34,7 +34,7 @@
 		A576DD4B15E83213009B5E24 /* emmet-app.js in Resources */ = {isa = PBXBuildFile; fileRef = A576DD4715E83213009B5E24 /* emmet-app.js */; };
 		A576DD5215E91267009B5E24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD6015E9256F009B5E24 /* EMGenericAction.m */; };
-		A576DD7415E92DE0009B5E24 /* EspressoEmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD7315E92DE0009B5E24 /* EspressoEmmetEditor.m */; };
+		A576DD7415E92DE0009B5E24 /* EMEspressoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD7315E92DE0009B5E24 /* EMEspressoEditor.m */; };
 		A576DD7515EA441B009B5E24 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A576DD7615EA441B009B5E24 /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
 		A576DD7715EA441B009B5E24 /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */; };
@@ -68,8 +68,8 @@
 		A57C4A04158BEED300566A1C /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */; };
-		A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAD158DC75D00566A1C /* CodaPlugin.m */; };
-		A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */; };
+		A57C4BB0158DC75D00566A1C /* EMCodaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAD158DC75D00566A1C /* EMCodaPlugin.m */; };
+		A57C4BB1158DC75D00566A1C /* EMCodaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAF158DC75D00566A1C /* EMCodaEditor.m */; };
 		A57C4BB2158DCEB400566A1C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A57C4BB3158DCEB400566A1C /* BridgeSupportController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */; };
 		A57C4BB4158DCEB400566A1C /* JSCocoaController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CCC3CE14E03E05002BBA24 /* JSCocoaController.m */; };
@@ -126,7 +126,7 @@
 		A5C722E415D5A7CD00CDA623 /* snippets.json in Resources */ = {isa = PBXBuildFile; fileRef = A57C4A02158BEED300566A1C /* snippets.json */; };
 		A5C722E615D5A7CD00CDA623 /* objc-zeneditor-wrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */; };
 		A5C722E715D5A7CD00CDA623 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
-		A5C722EE15D6CB0E00CDA623 /* TextMateEmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C722ED15D6CB0E00CDA623 /* TextMateEmmetEditor.m */; };
+		A5C722EE15D6CB0E00CDA623 /* EMTextMateEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C722ED15D6CB0E00CDA623 /* EMTextMateEditor.m */; };
 		A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A5D2751614F000FA00B3816D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5D2751414F000FA00B3816D /* InfoPlist.strings */; };
 		A5D2751814F000FA00B3816D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D2751714F000FA00B3816D /* main.m */; };
@@ -230,20 +230,20 @@
 		A576DD6015E9256F009B5E24 /* EMGenericAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMGenericAction.m; sourceTree = "<group>"; };
 		A576DD6315E92918009B5E24 /* Actions.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Actions.xml; sourceTree = "<group>"; };
 		A576DD6415E92918009B5E24 /* Categories.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Categories.xml; sourceTree = "<group>"; };
-		A576DD7215E92DE0009B5E24 /* EspressoEmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EspressoEmmetEditor.h; sourceTree = "<group>"; };
-		A576DD7315E92DE0009B5E24 /* EspressoEmmetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EspressoEmmetEditor.m; sourceTree = "<group>"; };
+		A576DD7215E92DE0009B5E24 /* EMEspressoEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMEspressoEditor.h; sourceTree = "<group>"; };
+		A576DD7315E92DE0009B5E24 /* EMEspressoEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMEspressoEditor.m; sourceTree = "<group>"; };
 		A576DD9515EB5F08009B5E24 /* EMPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMPreferences.h; sourceTree = "<group>"; };
 		A576DD9615EB5F08009B5E24 /* EMPreferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMPreferences.m; sourceTree = "<group>"; };
 		A57C4A02158BEED300566A1C /* snippets.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = snippets.json; sourceTree = "<group>"; };
-		A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ZenCoding.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
+		A57C4B9F158DC6BB00566A1C /* Emmet.codaplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Emmet.codaplugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57C4BA3158DC6BB00566A1C /* CodaPlugin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CodaPlugin-Info.plist"; sourceTree = "<group>"; };
 		A57C4BA5158DC6BB00566A1C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A57C4BA7158DC6BB00566A1C /* CodaPlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CodaPlugin-Prefix.pch"; sourceTree = "<group>"; };
 		A57C4BAB158DC75D00566A1C /* CodaPlugInsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaPlugInsController.h; sourceTree = "<group>"; };
-		A57C4BAC158DC75D00566A1C /* CodaPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaPlugin.h; sourceTree = "<group>"; };
-		A57C4BAD158DC75D00566A1C /* CodaPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaPlugin.m; sourceTree = "<group>"; };
-		A57C4BAE158DC75D00566A1C /* CodaZenEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodaZenEditor.h; sourceTree = "<group>"; };
-		A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodaZenEditor.m; sourceTree = "<group>"; };
+		A57C4BAC158DC75D00566A1C /* EMCodaPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCodaPlugin.h; sourceTree = "<group>"; };
+		A57C4BAD158DC75D00566A1C /* EMCodaPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCodaPlugin.m; sourceTree = "<group>"; };
+		A57C4BAE158DC75D00566A1C /* EMCodaEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCodaEditor.h; sourceTree = "<group>"; };
+		A57C4BAF158DC75D00566A1C /* EMCodaEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCodaEditor.m; sourceTree = "<group>"; };
 		A596302C151898B8000D1A01 /* ZenCodingDefaultsKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingDefaultsKeys.h; sourceTree = "<group>"; };
 		A596302E15189A07000D1A01 /* ZenCodingNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCodingNotifications.h; sourceTree = "<group>"; };
 		A59630661519DAE7000D1A01 /* NSMutableDictionary+ZCUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+ZCUtils.h"; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 		A5C722CE15D5A2FA00CDA623 /* EMTextmatePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextmatePlugin.m; sourceTree = "<group>"; };
 		A5C722DE15D5A7A200CDA623 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		A5C722E815D5AA3900CDA623 /* OakTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OakTextView.h; sourceTree = "<group>"; };
-		A5C722EC15D6CB0E00CDA623 /* TextMateEmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextMateEmmetEditor.h; sourceTree = "<group>"; };
-		A5C722ED15D6CB0E00CDA623 /* TextMateEmmetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextMateEmmetEditor.m; sourceTree = "<group>"; };
+		A5C722EC15D6CB0E00CDA623 /* EMTextMateEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextMateEditor.h; sourceTree = "<group>"; };
+		A5C722ED15D6CB0E00CDA623 /* EMTextMateEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextMateEditor.m; sourceTree = "<group>"; };
 		A5CCC3AA14E03E05002BBA24 /* BridgeSupportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgeSupportController.h; sourceTree = "<group>"; };
 		A5CCC3AB14E03E05002BBA24 /* BridgeSupportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeSupportController.m; sourceTree = "<group>"; };
 		A5CCC3AC14E03E05002BBA24 /* class.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = class.js; sourceTree = "<group>"; };
@@ -387,8 +387,8 @@
 				A576DD5415E91267009B5E24 /* Supporting Files */,
 				A576DD5F15E9256F009B5E24 /* EMGenericAction.h */,
 				A576DD6015E9256F009B5E24 /* EMGenericAction.m */,
-				A576DD7215E92DE0009B5E24 /* EspressoEmmetEditor.h */,
-				A576DD7315E92DE0009B5E24 /* EspressoEmmetEditor.m */,
+				A576DD7215E92DE0009B5E24 /* EMEspressoEditor.h */,
+				A576DD7315E92DE0009B5E24 /* EMEspressoEditor.m */,
 				A576DD9515EB5F08009B5E24 /* EMPreferences.h */,
 				A576DD9615EB5F08009B5E24 /* EMPreferences.m */,
 			);
@@ -425,10 +425,10 @@
 			isa = PBXGroup;
 			children = (
 				A57C4BAB158DC75D00566A1C /* CodaPlugInsController.h */,
-				A57C4BAC158DC75D00566A1C /* CodaPlugin.h */,
-				A57C4BAD158DC75D00566A1C /* CodaPlugin.m */,
-				A57C4BAE158DC75D00566A1C /* CodaZenEditor.h */,
-				A57C4BAF158DC75D00566A1C /* CodaZenEditor.m */,
+				A57C4BAC158DC75D00566A1C /* EMCodaPlugin.h */,
+				A57C4BAD158DC75D00566A1C /* EMCodaPlugin.m */,
+				A57C4BAE158DC75D00566A1C /* EMCodaEditor.h */,
+				A57C4BAF158DC75D00566A1C /* EMCodaEditor.m */,
 				A57C4BA2158DC6BB00566A1C /* Supporting Files */,
 			);
 			path = CodaPlugin;
@@ -477,7 +477,7 @@
 			children = (
 				A5D2750E14F000FA00B3816D /* ZenCodingSample.app */,
 				A5D2753D14F004A800B3816D /* ZenCoding.framework */,
-				A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */,
+				A57C4B9F158DC6BB00566A1C /* Emmet.codaplugin */,
 				A5C722C015D5A28200CDA623 /* Emmet.tmplugin */,
 				A576DD5115E91267009B5E24 /* Emmet.sugar */,
 			);
@@ -546,8 +546,8 @@
 				A5C722CD15D5A2FA00CDA623 /* EMTextmatePlugin.h */,
 				A5C722CE15D5A2FA00CDA623 /* EMTextmatePlugin.m */,
 				A5C722E815D5AA3900CDA623 /* OakTextView.h */,
-				A5C722EC15D6CB0E00CDA623 /* TextMateEmmetEditor.h */,
-				A5C722ED15D6CB0E00CDA623 /* TextMateEmmetEditor.m */,
+				A5C722EC15D6CB0E00CDA623 /* EMTextMateEditor.h */,
+				A5C722ED15D6CB0E00CDA623 /* EMTextMateEditor.m */,
 			);
 			path = TextMatePlugin;
 			sourceTree = "<group>";
@@ -760,7 +760,7 @@
 			);
 			name = CodaPlugin;
 			productName = CodaPlugin;
-			productReference = A57C4B9F158DC6BB00566A1C /* ZenCoding.codaplugin */;
+			productReference = A57C4B9F158DC6BB00566A1C /* Emmet.codaplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 		A5C722BF15D5A28200CDA623 /* TextMatePlugin */ = {
@@ -985,7 +985,7 @@
 				A576DD8415EA441B009B5E24 /* ZenCodingSyntaxNameTransformer.m in Sources */,
 				A576DD8515EA441B009B5E24 /* ZenCodingTildePathTransformer.m in Sources */,
 				A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */,
-				A576DD7415E92DE0009B5E24 /* EspressoEmmetEditor.m in Sources */,
+				A576DD7415E92DE0009B5E24 /* EMEspressoEditor.m in Sources */,
 				A576DD9715EB5F08009B5E24 /* EMPreferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1005,8 +1005,8 @@
 				A57C4BBA158DCEB400566A1C /* ZenCoding.m in Sources */,
 				A57C4BBB158DCEB400566A1C /* ZenCodingPromptDialogController.m in Sources */,
 				A57C4BBF158DCEB400566A1C /* NSMutableDictionary+ZCUtils.m in Sources */,
-				A57C4BB0158DC75D00566A1C /* CodaPlugin.m in Sources */,
-				A57C4BB1158DC75D00566A1C /* CodaZenEditor.m in Sources */,
+				A57C4BB0158DC75D00566A1C /* EMCodaPlugin.m in Sources */,
+				A57C4BB1158DC75D00566A1C /* EMCodaEditor.m in Sources */,
 				A562B8901595007C007F9044 /* ZenCodingFile.m in Sources */,
 				A5BE71E415BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
 				A575604415D1C0E300CF9829 /* ZCUserDataLoader.m in Sources */,
@@ -1038,7 +1038,7 @@
 				A5C722DC15D5A77700CDA623 /* ZenCodingFile.m in Sources */,
 				A5C722DD15D5A77700CDA623 /* ZCUserDataLoader.m in Sources */,
 				A5C722CF15D5A2FA00CDA623 /* EMTextmatePlugin.m in Sources */,
-				A5C722EE15D6CB0E00CDA623 /* TextMateEmmetEditor.m in Sources */,
+				A5C722EE15D6CB0E00CDA623 /* EMTextMateEditor.m in Sources */,
 				A53F606A15E6C49F00CF391B /* ZCBasicPreferencesWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1205,7 +1205,7 @@
 				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = ZenCoding;
+				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = codaplugin;
 			};
@@ -1222,7 +1222,7 @@
 				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = ZenCoding;
+				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = codaplugin;
 			};

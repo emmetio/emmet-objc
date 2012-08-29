@@ -13,7 +13,7 @@
 #define DEFAULT_SYNTAX @"html"
 #define DEFAULT_PROFILE @"xhtml"
 
-@interface CodaZenEditor : NSObject <ZenEditor> {
+@interface EMCodaEditor : NSObject <ZenEditor> {
 	CodaTextView *tv;
 }
 

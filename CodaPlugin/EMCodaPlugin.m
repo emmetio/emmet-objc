@@ -6,15 +6,15 @@
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
-#import "CodaPlugin.h"
-#import "CodaZenEditor.h"
+#import "EMCodaPlugin.h"
+#import "EMCodaEditor.h"
 #import "JSCocoaDelegate.h"
 #import <ZenCoding/ZenCoding.h>
 
 #define TabKeyCode 48
 #define NoFlags (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask)
 
-@interface CodaPlugin ()
+@interface EMCodaPlugin ()
 
 - (id)initWithController:(CodaPlugInsController*)inController;
 - (void)createMenu;
@@ -22,10 +22,10 @@
 
 @end
 
-@implementation CodaPlugin
+@implementation EMCodaPlugin
 
 - (NSString*)name {
-	return @"Zen Coding";
+	return @"Emmet";
 }
 
 //2.0 and lower
@@ -45,7 +45,7 @@
 	if ((self = [super init]) != nil) {
 		controller = aController;
 		[ZenCoding setJSContextDelegateClass:[JSCocoaDelegate class]];
-		editor = [[CodaZenEditor alloc] initWithCodaView:nil];
+		editor = [[EMCodaEditor alloc] initWithCodaView:nil];
 		[[ZenCoding sharedInstance] setContext:editor];
 		
 		[self createMenu];

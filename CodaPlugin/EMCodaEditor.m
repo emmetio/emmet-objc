@@ -6,11 +6,11 @@
 //  Copyright 2012 Аймобилко. All rights reserved.
 //
 
-#import "CodaZenEditor.h"
+#import "EMCodaEditor.h"
 #import <ZenCoding/ZenCoding.h>
 #import <ZenCoding/ZenCodingPromptDialogController.h>
 
-@implementation CodaZenEditor
+@implementation EMCodaEditor
 
 @synthesize tv;
 
