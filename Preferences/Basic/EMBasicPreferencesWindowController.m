@@ -29,11 +29,11 @@
 	EMTildePathTransformer *pathTransformer = [[EMTildePathTransformer new] autorelease];
 	
 	
-	[NSValueTransformer setValueTransformer:caseTransformer forName:@"ZenCodingCaseTransformer"];
-	[NSValueTransformer setValueTransformer:quotesTransformer forName:@"ZenCodingQuotesTransformer"];
-	[NSValueTransformer setValueTransformer:selfClosingTransformer forName:@"ZenCodingSelfClosingTransformer"];
-	[NSValueTransformer setValueTransformer:pathTransformer forName:@"ZenCodingTildePathTransformer"];
-	[NSValueTransformer setValueTransformer:tagNlTransformer forName:@"ZenCodingTagNewlineTransformer"];
+	[NSValueTransformer setValueTransformer:caseTransformer forName:@"EMCaseTransformer"];
+	[NSValueTransformer setValueTransformer:quotesTransformer forName:@"EMQuotesTransformer"];
+	[NSValueTransformer setValueTransformer:selfClosingTransformer forName:@"EMSelfClosingTransformer"];
+	[NSValueTransformer setValueTransformer:pathTransformer forName:@"EMTildePathTransformer"];
+	[NSValueTransformer setValueTransformer:tagNlTransformer forName:@"EMTagNewlineTransformer"];
 }
 
 + (NSArray *)loadOutputPreferences {
