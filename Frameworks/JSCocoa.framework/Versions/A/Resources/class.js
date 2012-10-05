@@ -1,4 +1,13 @@
 
+
+	//
+	// class.js
+	//	Handles derivation, ObjJ syntax
+	//	
+	//	__globalJSFunctionRepository__ is a global hash that handles js functions defined on ObjC classes
+	//
+
+
 	// ObjC
 	var nil = null
 	var	YES	= true
@@ -67,7 +76,7 @@
 			//	{_NSPoint=ff}
 			//
 //			JSCocoaController.log('*' + structureEncoding + '*' + String(String(structureEncoding).replace(/"[^"]+"/gi, "")) + '*')
-			return String(String(structureEncoding).replace(/\"[^\"]+"/gi, ""))
+			return String(String(structureEncoding).replace(/"[^"]+"/gi, ""))
 		}
 		else
 		{
@@ -103,7 +112,7 @@
 				}
 				// Structure ?
 				var structureEncoding = JSCocoaFFIArgument.structureFullTypeEncodingFromStructureName(encoding)
-				if (structureEncoding)	return	String(String(structureEncoding).replace(/\"[^\"]+"/gi, ""))
+				if (structureEncoding)	return	String(String(structureEncoding).replace(/"[^"]+"/gi, ""))
 				throw	'invalid encoding : "' + encoding + '"'
 			}
 			return encodings[encoding]
@@ -585,7 +594,7 @@
 	
 
 	//
-	// type o
+	// type o (Handling methods that take pointers as arguments)
 	//
 	function	outArgument()
 	{
@@ -654,6 +663,11 @@
 		return str
 	}
 	
+
+
+	//
+	// ObjJ syntax
+	//
 
 	// JSLint
 	function	__logToken(token)

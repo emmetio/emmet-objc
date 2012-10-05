@@ -40,7 +40,7 @@
 	if (self->preferences == nil) {
 		// get defaults
 		Emmet *zc = [Emmet sharedInstance];
-		id jsPrefs = [zc.jsc evalFunction:@"zen_coding.require('preferences').list" withArguments:nil];
+		id jsPrefs = [zc.jsc evalFunction:@"emmet.require('preferences').list" withArguments:nil];
 		self->preferences = [[zc.jsc convertJSObject:jsPrefs toNativeType:@"array"] retain];
 		NSMutableDictionary *lookup = [NSMutableDictionary dictionary];
 		
@@ -72,7 +72,7 @@
 // Saves current preferences to NSUserDefaults
 - (void)save {
 	Emmet *zc = [Emmet sharedInstance];
-	id jsPrefs = [zc.jsc evalFunction:@"zen_coding.require('preferences').exportModified" withArguments:nil];
+	id jsPrefs = [zc.jsc evalFunction:@"emmet.require('preferences').exportModified" withArguments:nil];
 	NSDictionary *prefs = [zc.jsc convertJSObject:jsPrefs toNativeType:@"dictionary"];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:prefs forKey:Preferences];
@@ -87,7 +87,7 @@
 		// passes updated preference to JS core
 		NSDictionary *obj = (NSDictionary *)object;
 		Emmet *zc = [Emmet sharedInstance];
-		NSLog(@"Set %@ preference to %@", [obj valueForKey:@"name"], [obj valueForKey:@"value"]);
+//		NSLog(@"Set %@ preference to %@", [obj valueForKey:@"name"], [obj valueForKey:@"value"]);
 		[zc.jsc evalFunction:@"objcSetPreference" withArguments:[obj valueForKey:@"name"], [obj valueForKey:@"value"], nil];
 		
 		[self save];
@@ -97,7 +97,7 @@
 // Load all current preferences into JS core
 - (void)updatePreferencesForContext:(NSNotification *)notification {
 	Emmet *zc = [Emmet sharedInstance];
-	NSLog(@"Load preferences");
+//	NSLog(@"Load preferences");
 	NSMutableDictionary *prefs = [NSMutableDictionary new];
 	[self.preferences enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		[prefs setObject:[obj objectForKey:@"value"] forKey:[obj objectForKey:@"name"]];

@@ -1,6 +1,6 @@
 // override `replaceContent()` method of editor proxy
 // to provide desired output for back-end app
-objcZenEditor.replaceContent = function(value, start, end, noIndent) {
+objcEmmetEditor.replaceContent = function(value, start, end, noIndent) {
 	var content = this.getContent();
 	var caretPos = this.getCaretPos();
 
@@ -15,7 +15,7 @@ objcZenEditor.replaceContent = function(value, start, end, noIndent) {
 function tmUpdateTabStops(value) {
 	var base = 1000;
 	var zeroBase = 0;
-	return zen_coding.require('tabStops').processText(value, {
+	return emmet.require('tabStops').processText(value, {
 		tabstop: function(data) {
 			var group = parseInt(data.group, 10);
 			if (group === 0)

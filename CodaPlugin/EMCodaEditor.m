@@ -51,7 +51,7 @@
 	if ([self filePath]) {
 		NSString *ext = [[[self filePath] pathExtension] lowercaseString];
 		Emmet *zc = [Emmet sharedInstance];
-		id jsSyntax = [zc.jsc evalFunction:@"zen_coding.require('resources').hasSyntax" withArguments:ext, nil];
+		id jsSyntax = [zc.jsc evalFunction:@"emmet.require('resources').hasSyntax" withArguments:ext, nil];
 		if ([zc.jsc convertJSObject:jsSyntax toNativeType:@"bool"]) {
 			return ext;
 		}

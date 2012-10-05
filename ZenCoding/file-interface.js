@@ -1,4 +1,4 @@
-zen_coding.define('file', function(require, _) {
+emmet.define('file', function(require, _) {
 	var context;
 	return {
 		setContext: function(ctx) {

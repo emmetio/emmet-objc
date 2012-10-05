@@ -125,7 +125,7 @@ static NSMutableArray *coreFiles = nil;
 	[coreFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		[jsc evalFile:obj];
 	}];
-	[jsc evalFunction:@"zen_coding.require('file').setContext" withArguments:[EmmetFile class], nil];
+	[jsc evalFunction:@"emmet.require('file').setContext" withArguments:[EmmetFile class], nil];
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	// load system snippets
@@ -136,7 +136,7 @@ static NSMutableArray *coreFiles = nil;
 	
 	[jsc evalFunction:@"objcLoadSystemSnippets" withArguments:snippetsJSON, nil];
 	
-	// load Zen Coding extensions: create list of files in extensions folder
+	// load Emmet extensions: create list of files in extensions folder
 	// and pass it to bootstrap
 	if (extensionsPath) {
 		NSString *extPath = extensionsPath;
@@ -231,11 +231,11 @@ static NSMutableArray *coreFiles = nil;
 }
 
 - (NSArray *)actionsList {
-	id result = [jsc evalFunction:@"zen_coding.require('actions').getMenu" withArguments:nil];	
+	id result = [jsc evalFunction:@"emmet.require('actions').getMenu" withArguments:nil];
 	return [jsc convertJSObject:result toNativeType:@"object"];
 }
 
-// returns Zen Coding actions as menu
+// returns Emmet actions as menu
 - (NSMenu *)actionsMenu {
 	return [self actionsMenuWithAction:@selector(performMenuAction:) forTarget:self];
 }
@@ -283,7 +283,7 @@ static NSMutableArray *coreFiles = nil;
 - (void)performMenuAction:(id)sender {
 	if ([sender isKindOfClass:[NSMenuItem class]]) {
 		NSString *title = [(NSMenuItem *)sender title];
-		id jsActionName = [jsc evalFunction:@"zen_coding.require('actions').getActionNameForMenuTitle" withArguments:title, nil];
+		id jsActionName = [jsc evalFunction:@"emmet.require('actions').getActionNameForMenuTitle" withArguments:title, nil];
 		id actionName = [jsc convertJSObject:jsActionName toNativeType:@"string"];
 		
 		if (actionName != nil) {

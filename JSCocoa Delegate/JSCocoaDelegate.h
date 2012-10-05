@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "EMJSContext.h"
-#import "JSCocoa.h"
+#import "JSCocoa/JSCocoa.h"
 
 @interface JSCocoaDelegate : NSObject <EMJSContext> {
 	JSCocoa *ctx;

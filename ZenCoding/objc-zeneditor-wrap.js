@@ -1,4 +1,4 @@
-var objcZenEditor = (function() {
+var objcEmmetEditor = (function() {
 	var ctx;
 
 	function rangeToObj(range) {
@@ -13,8 +13,8 @@ var objcZenEditor = (function() {
 	return {
 		/**
 		 * Setup underlying editor context. You should call this method 
-		 * <code>before</code> using any Zen Coding action.
-		 * @memberOf IZenEditor
+		 * <code>before</code> using any Emmet action.
+		 * @memberOf IEmmetEditor
 		 * @param {Object} context
 		 */
 		setContext: function(context) {
@@ -36,7 +36,7 @@ var objcZenEditor = (function() {
 		 * to current caret position
 		 * @return {Object}
 		 * @example
-		 * var selection = zen_editor.getSelectionRange();
+		 * var selection = editor.getSelectionRange();
 		 * alert(selection.start + ', ' + selection.end); 
 		 */
 		getSelectionRange: function() {
@@ -50,10 +50,10 @@ var objcZenEditor = (function() {
 		 * @param {Number} start
 		 * @param {Number} [end]
 		 * @example
-		 * zen_editor.createSelection(10, 40);
+		 * editor.createSelection(10, 40);
 		 * 
 		 * //move caret to 15th character
-		 * zen_editor.createSelection(15);
+		 * editor.createSelection(15);
 		 */
 		createSelection: function(start, end) {
 			var range = NSMakeRange(start, end - start);
@@ -65,7 +65,7 @@ var objcZenEditor = (function() {
 		 * and <code>end</code> properties
 		 * @return {Object}
 		 * @example
-		 * var range = zen_editor.getCurrentLineRange();
+		 * var range = editor.getCurrentLineRange();
 		 * alert(range.start + ', ' + range.end);
 		 */
 		getCurrentLineRange: function() {
@@ -125,7 +125,7 @@ var objcZenEditor = (function() {
 			if (_.isUndefined(start)) start = 0;
 					 
 			if (!noIndent && autoHandleIndent) {
-				var utils = zen_coding.require('utils');
+				var utils = require('utils');
 				var lineRange = utils.findNewlineBounds(String(content), start);
 				value = utils.padString(value, utils.getLinePadding(lineRange.substring(content)));
 			}
@@ -150,7 +150,7 @@ var objcZenEditor = (function() {
 		},
 		
 		/**
-		 * Returns current output profile name (@see zen_coding#setupProfile)
+		 * Returns current output profile name (@see emmet#setupProfile)
 		 * @return {String}
 		 */
 		getProfileName: function() {
@@ -188,7 +188,7 @@ var objcZenEditor = (function() {
 })();
 
 function require() {
-	return zen_coding.require.apply(zen_coding, arguments);
+	return emmet.require.apply(emmet, arguments);
 }
 
 function objcToString(str) {
@@ -198,11 +198,11 @@ function objcToString(str) {
 }
 
 function objcRunAction(name) {
-	return zen_coding.require('actions').run(objcToString(name), objcZenEditor);
+	return require('actions').run(objcToString(name), objcEmmetEditor);
 }
 
 function objcSetContext(ctx) {
-	objcZenEditor.setContext(ctx);
+	objcEmmetEditor.setContext(ctx);
 }
 
 function objcLoadSystemSnippets(data) {
@@ -234,18 +234,18 @@ function objcToJSON(data) {
 function objcLoadUserSnippets(settingsData, userDefaults) {
 	settingsData = objcToJSON(settingsData);
 	userDefaults = objcToJSON(userDefaults);
-	var utils = zen_coding.require('utils');
+	var utils = require('utils');
 	var data = utils.deepMerge({}, settingsData, userDefaults);
-	zen_coding.require('resources').setVocabulary(data, 'user');
+	require('resources').setVocabulary(data, 'user');
 }
 
 function objcLoadUserPreferences(data) {
 	if (data)
-		zen_coding.require('preferences').load(objcToJSON(data));
+		require('preferences').load(objcToJSON(data));
 }
 
 function objcExtractTabstopsOnInsert(text) {
-	return zen_coding.require('tabStops').extract(String(text), {
+	return require('tabStops').extract(String(text), {
 	  escape: function(ch) {
 		  return ch;
 	  }
@@ -253,5 +253,5 @@ function objcExtractTabstopsOnInsert(text) {
 }
 
 function objcSetPreference(name, value) {
-	zen_coding.require('preferences').set(objcToString(name), value + '');
+	require('preferences').set(objcToString(name), value + '');
 }
