@@ -112,7 +112,7 @@
 
 - (NSString *)filePath {
 	NSObject *doc = ctx.documentContext;
-	return [doc.fileURL absoluteString];
+	return [doc.fileURL path];
 }
 
 
