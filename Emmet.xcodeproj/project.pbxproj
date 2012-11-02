@@ -1223,7 +1223,7 @@
 				GCC_PREFIX_HEADER = "TextMatePlugin/TextMatePlugin-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = /;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
@@ -1246,7 +1246,7 @@
 				GCC_PREFIX_HEADER = "TextMatePlugin/TextMatePlugin-Prefix.pch";
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = /;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;

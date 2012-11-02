@@ -12,6 +12,9 @@
 
 static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 
+#define TabKeyCode 48
+#define NoFlags (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | NSCommandKeyMask)
+
 @interface EMTextmatePlugin ()
 - (void)performMenuAction:(id)sender;
 - (void)showPreferences:(id)sender;
@@ -36,6 +39,27 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 		[[Emmet sharedInstance] setContext:editor];
 		
 		[self installMenuItems];
+		
+		// Implementing abbreviation expand by Tab key
+		// This logic must be implemented for each editor independently,
+		// because it should also check if current editor state allows Tab key
+		// interception (e.g. if there's no tabstops in editor)
+		[NSEvent addLocalMonitorForEventsMatchingMask:NSKeyDownMask handler:^(NSEvent *event) {
+			// handle event only for key text view
+			NSWindow *wnd = [[editor tv] window];
+			if ([wnd isKeyWindow] && [event keyCode] == TabKeyCode && ([event modifierFlags] & NoFlags) == 0 && [[NSUserDefaults standardUserDefaults] boolForKey:@"expandWithTab"]) {
+				// if abbreviation expanded successfully, stop event.
+				// otherwise, pass it further
+				if ([[Emmet sharedInstance] runAction:@"expand_abbreviation"]) {
+					return (NSEvent *)nil;
+				}
+			}
+			
+			return event;
+		}];
+
+		
+		
 	}
 	return self;
 }
@@ -74,7 +98,7 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 - (void)showPreferences:(id)sender {
 	if (prefs == nil) {
 		prefs = [[EMBasicPreferencesWindowController alloc] init];
-		[prefs hideTabExpanderControl];
+//		[prefs hideTabExpanderControl];
 	}
 	
 	[prefs showWindow:self];

@@ -20,5 +20,5 @@ typedef struct _TMLocation {
 TMLocation convertRangeToLocation(NSRange range, NSString *string);
 
 @interface EMTextMateEditor : NSObject <EmmetEditor>
-
+- (OakTextView *)tv;
 @end

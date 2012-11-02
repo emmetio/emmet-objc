@@ -37,7 +37,6 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 @interface EMTextMateEditor ()
 
 - (NSArray *)linesOfText:(NSString *)text;
-- (OakTextView *)tv;
 - (NSUInteger)positionFromLineNumber:(NSUInteger)line andColumn:(NSUInteger)col;
 
 @end
