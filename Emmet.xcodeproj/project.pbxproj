@@ -6,6 +6,22 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A583F09F164C5A160068C0E6 /* Plugins */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A583F0A0164C5A160068C0E6 /* Build configuration list for PBXAggregateTarget "Plugins" */;
+			buildPhases = (
+			);
+			dependencies = (
+				A583F0A4164C5A2C0068C0E6 /* PBXTargetDependency */,
+				A583F0A6164C5A2C0068C0E6 /* PBXTargetDependency */,
+				A583F0A8164C5A2C0068C0E6 /* PBXTargetDependency */,
+			);
+			name = Plugins;
+			productName = Plugins;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A5224A3B15EE6D2700AE6103 /* EmmetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5224A3A15EE6D2700AE6103 /* EmmetEditor.h */; };
 		A5224A3E15EE6D9200AE6103 /* NSTextView+EmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */; };
@@ -166,6 +182,30 @@
 		A5E8601A15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
 		A5E8601B15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A583F0A3164C5A2C0068C0E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5994E5014BF52020067B42B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A57C4B9E158DC6BB00566A1C;
+			remoteInfo = CodaPlugin;
+		};
+		A583F0A5164C5A2C0068C0E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5994E5014BF52020067B42B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5C722BF15D5A28200CDA623;
+			remoteInfo = TextMatePlugin;
+		};
+		A583F0A7164C5A2C0068C0E6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5994E5014BF52020067B42B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A576DD5015E91267009B5E24;
+			remoteInfo = EspressoPlugin;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		A566BFE6161F595D006ABFB0 /* CopyFiles */ = {
@@ -798,6 +838,7 @@
 				A57C4B9E158DC6BB00566A1C /* CodaPlugin */,
 				A5C722BF15D5A28200CDA623 /* TextMatePlugin */,
 				A576DD5015E91267009B5E24 /* EspressoPlugin */,
+				A583F09F164C5A160068C0E6 /* Plugins */,
 			);
 		};
 /* End PBXProject section */
@@ -1017,6 +1058,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		A583F0A4164C5A2C0068C0E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A57C4B9E158DC6BB00566A1C /* CodaPlugin */;
+			targetProxy = A583F0A3164C5A2C0068C0E6 /* PBXContainerItemProxy */;
+		};
+		A583F0A6164C5A2C0068C0E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5C722BF15D5A28200CDA623 /* TextMatePlugin */;
+			targetProxy = A583F0A5164C5A2C0068C0E6 /* PBXContainerItemProxy */;
+		};
+		A583F0A8164C5A2C0068C0E6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A576DD5015E91267009B5E24 /* EspressoPlugin */;
+			targetProxy = A583F0A7164C5A2C0068C0E6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
@@ -1156,6 +1215,20 @@
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = codaplugin;
+			};
+			name = Release;
+		};
+		A583F0A1164C5A160068C0E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A583F0A2164C5A160068C0E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -1348,6 +1421,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		A583F0A0164C5A160068C0E6 /* Build configuration list for PBXAggregateTarget "Plugins" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A583F0A1164C5A160068C0E6 /* Debug */,
+				A583F0A2164C5A160068C0E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "Emmet" */ = {
 			isa = XCConfigurationList;
