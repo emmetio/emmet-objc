@@ -54,17 +54,23 @@
 								   @"xml, xml *", @"xml",
 								   @"haml, haml *", @"haml", nil];
 	
+
+	SXZone *zone = ctx.syntaxTree.rootZone;
 	NSRange curRange = [self selectionRange];
-	NSString __block *syntax = @"html";
 	
+//	Having some issues with LESS.sugar: none of the defined LESS selectors
+//	matches *current* zone.
+//	So, we actually need current zone for HTML syntax only to get the embedded
+//	syntax (CSS, JS), in other cases, just using the root zone
+	
+	SXSelector *htmlSel = [SXSelector selectorWithString:@"html, html *"];
+	if ([htmlSel matches:zone] && [ctx.string length] != curRange.location) {
+		zone = [ctx.syntaxTree zoneAtCharacterIndex:curRange.location];
+	}
+	
+	NSString __block *syntax = @"html";
 	[knownSyntaxes enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *val, BOOL *stop) {
 		SXSelector *s = [SXSelector selectorWithString:val];
-		SXZone *zone = nil;
-		if ([ctx.string length] == curRange.location) {
-			zone = ctx.syntaxTree.rootZone;
-		} else {
-			zone = [ctx.syntaxTree zoneAtCharacterIndex:curRange.location];
-		}
 		
 		if ([s matches:zone]) {
 			syntax = key;
