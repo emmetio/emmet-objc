@@ -1,0 +1,1 @@
+xcodebuild -project ./Emmet.xcodeproj -target Plugins  -configuration 'Release' CONFIGURATION_BUILD_DIR='~/Projects/emmet-ws/'
