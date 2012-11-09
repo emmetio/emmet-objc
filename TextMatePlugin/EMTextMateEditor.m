@@ -38,6 +38,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (NSArray *)linesOfText:(NSString *)text;
 - (NSUInteger)positionFromLineNumber:(NSUInteger)line andColumn:(NSUInteger)col;
+- (NSString *)matchedSyntax;
 
 @end
 
@@ -104,7 +105,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	return lineRange.location;
 }
 
-- (NSUInteger) caretPos {
+- (NSUInteger)caretPos {
 	NSRange sel = [self selectionRange];
 	return sel.location;
 }
@@ -163,11 +164,11 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	return [[self tv] stringValue];
 }
 
-- (NSString *)syntax {
+- (NSString *)matchedSyntax {
 	NSDictionary *env = [[self tv] environmentVariables];
 	NSString *scope = [env objectForKey:@"TM_SCOPE"];
 	
-	NSArray *syntaxes = [NSArray arrayWithObjects:@"xsl", @"xml", @"haml", @"css", @"less", @"less", @"scss", @"sass", nil];
+	NSArray *syntaxes = [NSArray arrayWithObjects:@"xsl", @"xml", @"haml", @"css", @"less", @"less", @"scss", @"sass", @"html", nil];
 	NSString *syntax = nil;
 	for (int i = 0; i < [syntaxes count]; i++) {
 		syntax = [syntaxes objectAtIndex:i];
@@ -176,16 +177,30 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 		}
 	}
 	
-	return @"html";
+	return nil;
+}
+
+- (NSString *)syntax {
+	NSString *syntax = [self matchedSyntax];
+	if (!syntax) {
+		syntax = @"html";
+	}
+	
+	return syntax;
 }
 
 - (NSString *)profileName {
-	NSString *syntax = [self syntax];
+	NSString *syntax = [self matchedSyntax];
+	
+	if (!syntax) {
+		return @"line";
+	}
+	
 	if ([syntax isEqualToString:@"xml"] || [syntax isEqualToString:@"xsl"]) {
 		return @"xml";
 	}
 	
-	return @"line";
+	return @"html";
 }
 
 - (NSString *)selection {
