@@ -124,6 +124,12 @@
 	return [defaults dictionaryForKey:Preferences];
 }
 
+// Returns array of all available core preferences
++ (NSString *)extensionsPath {
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	return [defaults stringForKey:ExtensionsPath];
+}
+
 // Reset all user-defined data
 + (void)resetDefaults {
 	NSDictionary *defaultsDictionary = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];

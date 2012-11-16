@@ -12,6 +12,7 @@
 + (NSArray *)snippets;
 + (NSDictionary *)syntaxProfiles;
 + (NSDictionary *)createOutputProfileFromDict:(NSDictionary *)dict;
++ (NSString *)extensionsPath;
 + (void)resetDefaults;
 
 @end

@@ -138,8 +138,11 @@ static NSMutableArray *coreFiles = nil;
 	
 	// load Emmet extensions: create list of files in extensions folder
 	// and pass it to bootstrap
-	if (extensionsPath) {
-		NSString *extPath = extensionsPath;
+	NSString* extPath = extensionsPath;
+	if (!extPath) {
+		extPath = [EMUserDataLoader extensionsPath];
+	}
+	if (extPath) {
 		BOOL isDir;
 		NSFileManager *fm = [NSFileManager defaultManager];
 		
