@@ -196,11 +196,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 		return @"line";
 	}
 	
-	if ([syntax isEqualToString:@"xml"] || [syntax isEqualToString:@"xsl"]) {
-		return @"xml";
-	}
-	
-	return @"html";
+	return nil;
 }
 
 - (NSString *)selection {

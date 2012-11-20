@@ -38,7 +38,7 @@
 }
 
 - (NSString *)profileName {
-    return DEFAULT_PROFILE;
+    return nil;
 }
 
 - (NSRange)currentLineRange {

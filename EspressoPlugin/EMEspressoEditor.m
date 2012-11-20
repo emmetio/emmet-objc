@@ -82,12 +82,7 @@
 }
 
 - (NSString *)profileName {
-	NSString *syntax = [self syntax];
-	if ([syntax isEqualToString:@"xml"] || [syntax isEqualToString:@"xsl"]) {
-		return @"xml";
-	}
-	
-	return @"line";
+	return nil;
 }
 
 - (NSRange)currentLineRange {

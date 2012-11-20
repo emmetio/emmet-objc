@@ -60,7 +60,7 @@
 }
 
 - (NSString *)profileName {
-    return DEFAULT_PROFILE;
+    return nil;
 }
 
 - (NSRange)currentLineRange {
@@ -79,11 +79,11 @@
 		[self.tv beginUndoGrouping];
 		
 		// extract tabstops and clean-up output
-		Emmet *zc = [Emmet sharedInstance];
+		Emmet *emmet = [Emmet sharedInstance];
 		
-		id output = [zc.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
+		id output = [emmet.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
-		NSDictionary *tabstopData = [zc.jsc convertJSObject:output toNativeType:@"object"];
+		NSDictionary *tabstopData = [emmet.jsc convertJSObject:output toNativeType:@"object"];
 		value = [tabstopData valueForKey:@"text"];
 		[self.tv replaceCharactersInRange:NSMakeRange(start, end - start) withString:value];
 		
