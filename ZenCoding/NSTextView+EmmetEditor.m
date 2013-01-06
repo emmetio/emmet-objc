@@ -6,7 +6,7 @@
 #import "NSTextView+EmmetEditor.h"
 #import "EMPromptDialogController.h"
 
-@implementation NSTextView (NSTextView_ZenEditor)
+@implementation NSTextView (NSTextView_EmmetEditor)
 
 - (NSUInteger) caretPos {
 	NSRange sel = [self selectionRange];
@@ -54,13 +54,17 @@
 	// check if range is in bounds
 	if (end <= [[self string] length]) {
 		// extract tabstops and clean-up output
-		Emmet *zc = [Emmet sharedInstance];
+		Emmet *em = [Emmet sharedInstance];
 		
-		id output = [zc.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
+		id output = [em.jsc evalFunction:@"objcExtractTabstopsOnInsert" withArguments:value, nil];
 		
-		NSDictionary *tabstopData = [zc.jsc convertJSObject:output toNativeType:@"object"];
+		NSDictionary *tabstopData = [em.jsc convertJSObject:output toNativeType:@"object"];
 		value = [tabstopData valueForKey:@"text"];
-		[self replaceCharactersInRange:NSMakeRange(start, end - start) withString:value];
+
+		NSRange updateRange = NSMakeRange(start, end - start);
+		[self shouldChangeTextInRange:updateRange replacementString:value];
+		[self replaceCharactersInRange:updateRange withString:value];
+		[self didChangeText];
 		
 		// locate first tabstop and place cursor in it
 		NSArray *tabstops = [tabstopData objectForKey:@"tabstops"];

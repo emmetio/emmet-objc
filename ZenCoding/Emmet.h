@@ -38,5 +38,6 @@ void setKeyEquivalent(NSMenuItem *menuItem, NSString *key);
 - (NSMenu *)actionsMenu;
 - (NSMenu *)actionsMenuWithAction:(SEL)action forTarget:(id)target;
 - (NSMenu *)actionsMenuWithAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts forTarget:(id)target;
+- (NSString *)resolveActionNameFromMenu:(NSMenuItem *)menu;
 - (void)performMenuAction:(id)sender;
 @end

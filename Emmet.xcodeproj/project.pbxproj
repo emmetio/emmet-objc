@@ -27,6 +27,9 @@
 		A5224A3E15EE6D9200AE6103 /* NSTextView+EmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */; };
 		A5224A3F15EE6D9200AE6103 /* NSTextView+EmmetEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = A5224A3D15EE6D9200AE6103 /* NSTextView+EmmetEditor.h */; };
 		A5224A4015EE726A00AE6103 /* NSTextView+EmmetEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */; };
+		A5355DFC1699DC68008D0B37 /* MGSFragaria.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5355DFB1699DC68008D0B37 /* MGSFragaria.framework */; };
+		A5355DFE1699DC8E008D0B37 /* MGSFragaria.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5355DFB1699DC68008D0B37 /* MGSFragaria.framework */; };
+		A5355E011699FA6D008D0B37 /* EMFragariaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5355E001699FA6D008D0B37 /* EMFragariaEditor.m */; };
 		A53F606815E587B700CF391B /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
 		A53F606915E6C49300CF391B /* BasicPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E8601315CB2989001302EA /* BasicPreferences.xib */; };
 		A53F606A15E6C49F00CF391B /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
@@ -215,6 +218,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A566BFE7161F5991006ABFB0 /* JSCocoa.framework in CopyFiles */,
+				A5355DFE1699DC8E008D0B37 /* MGSFragaria.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +258,9 @@
 		A5224A3A15EE6D2700AE6103 /* EmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmmetEditor.h; sourceTree = "<group>"; };
 		A5224A3C15EE6D9200AE6103 /* NSTextView+EmmetEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextView+EmmetEditor.m"; sourceTree = "<group>"; };
 		A5224A3D15EE6D9200AE6103 /* NSTextView+EmmetEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextView+EmmetEditor.h"; sourceTree = "<group>"; };
+		A5355DFB1699DC68008D0B37 /* MGSFragaria.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MGSFragaria.framework; sourceTree = "<group>"; };
+		A5355DFF1699FA6D008D0B37 /* EMFragariaEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMFragariaEditor.h; sourceTree = "<group>"; };
+		A5355E001699FA6D008D0B37 /* EMFragariaEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMFragariaEditor.m; sourceTree = "<group>"; };
 		A55EC49B14EE560E00F9A09B /* EMPromptDialogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMPromptDialogController.h; sourceTree = "<group>"; };
 		A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMPromptDialogController.m; sourceTree = "<group>"; };
 		A562B88B1595007C007F9044 /* EmmetFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmmetFile.h; sourceTree = "<group>"; };
@@ -387,6 +394,7 @@
 			files = (
 				A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */,
 				A566BFE4161F58A2006ABFB0 /* JSCocoa.framework in Frameworks */,
+				A5355DFC1699DC68008D0B37 /* MGSFragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +514,7 @@
 		A5994E5C14BF52030067B42B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5355DFB1699DC68008D0B37 /* MGSFragaria.framework */,
 				A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */,
 				A5994E7A14BF52140067B42B /* Carbon.framework */,
 				A5994E5D14BF52030067B42B /* Cocoa.framework */,
@@ -591,6 +600,8 @@
 				A5D2751E14F000FA00B3816D /* ZenCodingSampleAppDelegate.m */,
 				A5D2752014F000FA00B3816D /* MainMenu.xib */,
 				A5D2751214F000FA00B3816D /* Supporting Files */,
+				A5355DFF1699FA6D008D0B37 /* EMFragariaEditor.h */,
+				A5355E001699FA6D008D0B37 /* EMFragariaEditor.m */,
 			);
 			name = EmmetSample;
 			path = ZenCodingSample;
@@ -1029,6 +1040,7 @@
 				A5E8601115CB28A1001302EA /* EMTildePathTransformer.m in Sources */,
 				A5E8601A15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */,
 				A5224A4015EE726A00AE6103 /* NSTextView+EmmetEditor.m in Sources */,
+				A5355E011699FA6D008D0B37 /* EMFragariaEditor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1429,6 +1441,7 @@
 				A583F0A2164C5A160068C0E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5994E5314BF52020067B42B /* Build configuration list for PBXProject "Emmet" */ = {
 			isa = XCConfigurationList;

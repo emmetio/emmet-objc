@@ -37,6 +37,7 @@ void setKeyEquivalent(NSMenuItem *menuItem, NSString *key) {
 @interface Emmet ()
 - (void)setupJSContext;
 - (void)loadUserData;
+- (void)loadExtensions;
 - (void)createMenuItemsFromArray:(NSArray *)dict forMenu:(NSMenu *)menu withAction:(SEL)action keyboardShortcuts:(NSDictionary *)shortcuts ofTarget:(id)target;
 @end
 
@@ -136,6 +137,12 @@ static NSMutableArray *coreFiles = nil;
 	
 	[jsc evalFunction:@"objcLoadSystemSnippets" withArguments:snippetsJSON, nil];
 	
+	[self loadExtensions];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:JSContextLoaded object:self];
+}
+
+- (void)loadExtensions {
 	// load Emmet extensions: create list of files in extensions folder
 	// and pass it to bootstrap
 	NSString* extPath = extensionsPath;
@@ -166,8 +173,6 @@ static NSMutableArray *coreFiles = nil;
 	
 	// load user preferences
 	[self loadUserData];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:JSContextLoaded object:self];
 }
 
 - (void)setContext:(id)ctx {
@@ -209,7 +214,7 @@ static NSMutableArray *coreFiles = nil;
 		
 		self->extensionsPath = [path retain];
 		
-		[self setupJSContext];
+		[self reload];
 	}
 }
 
@@ -227,10 +232,13 @@ static NSMutableArray *coreFiles = nil;
 // Reload JS context to hook-up all changes in prefernces and extensions
 - (void)reload {
 	// remember previously saved context
-	id ctx = self.context;
-	self.context = nil;
-	[self setupJSContext];
-	self.context = ctx;
+//	id ctx = self.context;
+//	self.context = nil;
+//	[self setupJSContext];
+//	self.context = ctx;
+	
+	[jsc evalFunction:@"emmet.require('bootstrap').resetUserData" withArguments:nil];
+	[self loadExtensions];
 }
 
 - (NSArray *)actionsList {
@@ -283,13 +291,16 @@ static NSMutableArray *coreFiles = nil;
 	}];
 }
 
+- (NSString *)resolveActionNameFromMenu:(NSMenuItem *)menu {
+	NSString *title = [(NSMenuItem *)menu title];
+	id jsActionName = [jsc evalFunction:@"emmet.require('actions').getActionNameForMenuTitle" withArguments:title, nil];
+	return [jsc convertJSObject:jsActionName toNativeType:@"string"];
+}
+
 - (void)performMenuAction:(id)sender {
 	if ([sender isKindOfClass:[NSMenuItem class]]) {
-		NSString *title = [(NSMenuItem *)sender title];
-		id jsActionName = [jsc evalFunction:@"emmet.require('actions').getActionNameForMenuTitle" withArguments:title, nil];
-		id actionName = [jsc convertJSObject:jsActionName toNativeType:@"string"];
-		
-		if (actionName != nil) {
+		NSString *actionName = [self resolveActionNameFromMenu:sender];
+		if (actionName) {
 			[self runAction:actionName];
 		}
 	}
