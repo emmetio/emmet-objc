@@ -80,7 +80,6 @@
 		NSMutableDictionary *result = [NSMutableDictionary dictionary];
 		[output enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop){
 			[result setObject:[EMUserDataLoader createOutputProfileFromDict:obj] forKey:key];
-//			[[result dictionaryForKey:key] setObject:[ZCUserDataLoader createOutputProfileFromDict:obj] forKey:@"profile"];
 		}];
 		return result;
 	}
@@ -103,10 +102,17 @@
 	
 	[keysMap enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 		if ([dict objectForKey:key]) {
-			[result setObject:[dict objectForKey:key] forKey:obj];
+			[result setValue:[dict valueForKey:key] forKey:obj];
 		}
 	}];
 	
+	NSString *tagNewline = [[dict objectForKey:@"tagNewline"] lowercaseString];
+	if ([tagNewline isEqual:@"yes"]) {
+		[result setObject:[NSNumber numberWithBool:YES] forKey:@"tag_nl"];
+	} else if ([tagNewline isEqual:@"no"]) {
+		[result setObject:[NSNumber numberWithBool:NO] forKey:@"tag_nl"];
+	}
+
 	if ([[dict objectForKey:@"selfClosing"] isEqual:@"html"]) {
 		[result setObject:[NSNumber numberWithBool:NO] forKey:@"self_closing_tag"];
 	} else if ([[dict objectForKey:@"selfClosing"] isEqual:@"xml"]) {
