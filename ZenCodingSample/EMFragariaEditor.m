@@ -66,6 +66,10 @@
 	return [tv prompt:label];
 }
 
+- (NSString *)filePath {
+	return [[NSFileManager defaultManager] currentDirectoryPath];
+}
+
 - (void)dealloc {
 	[_backend release];
 	[super dealloc];

@@ -5,13 +5,44 @@
 
 #import "EmmetFile.h"
 
+static BOOL isURL(NSString *path) {
+	return [path hasPrefix:@"http://"] || [path hasPrefix:@"https://"];
+}
+
 @implementation EmmetFile
 
-+ (NSString *)read:(NSString *)filePath {
-	return [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
++ (NSString *)read:(NSString *)filePath ofSize:(NSUInteger)size {
+	NSLog(@"Reading %@", filePath);
+	NSString *content = nil;
+	if (isURL(filePath)) {
+		NSLog(@"Load URL: %@", filePath);
+		NSURL *url = [NSURL URLWithString:filePath];
+		NSURLRequest *req = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:2.0];
+		NSError *error;
+		NSURLResponse *response;
+		NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
+		if (data) {
+			content = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+			NSLog(@"URL loaded");
+		} else {
+			NSLog(@"Error while loading URL: %@", error);
+		}
+	} else {
+		content = [NSString stringWithContentsOfFile:filePath encoding:NSASCIIStringEncoding error:nil];
+	}
+	
+	if (size > 0 && content) {
+		content = [content substringToIndex:size];
+	}
+	
+	return content;
 }
 
 + (NSString *)locateFile:(NSString *)fileName relativeTo:(NSString *)baseFile {
+	if (isURL(fileName)) {
+		return fileName;
+	}
+	
 	baseFile = [baseFile stringByDeletingLastPathComponent];
 	int loop = 100;
 	NSString *curPath;

@@ -7,7 +7,7 @@
 
 @interface EmmetFile : NSObject
 
-+ (NSString *)read:(NSString *)filePath;
++ (NSString *)read:(NSString *)filePath ofSize:(NSUInteger)size;
 + (NSString *)locateFile:(NSString *)fileName relativeTo:(NSString *)baseFile;
 + (NSString *)createPath:(NSString *)fileName relativeTo:(NSString *)basePath;
 + (BOOL)save:(NSString *)content atPath:(NSString *)filePath;
