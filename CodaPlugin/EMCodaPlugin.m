@@ -48,9 +48,6 @@
 		editor = [[EMCodaEditor alloc] initWithCodaView:nil];
 		[[Emmet sharedInstance] setContext:editor];
 		
-		[self createMenu];
-		
-		
 		// Implementing abbreviation expand by Tab key
 		// This logic must be implemented for each editor independently,
 		// because it should also check if current editor state allows Tab key
@@ -72,6 +69,14 @@
 			
 			return event;
 		}];
+		
+		// init updater
+		NSBundle *bundle = [NSBundle bundleWithIdentifier:@"io.emmet.EmmetCoda"];
+		updater = [SUUpdater updaterForBundle:bundle];
+		[updater setAutomaticallyChecksForUpdates:YES];
+		[updater resetUpdateCycle];
+		
+		[self createMenu];
 	}
 	
 	return self;
@@ -87,6 +92,7 @@
 	
 	[self createCodaMenuItemsFromArray:actions forSubmenuWithTitle:nil withShortcuts:shortcuts];
 	[controller registerActionWithTitle:@"Preferences..." target:self selector:@selector(showPreferences:)];
+	[controller registerActionWithTitle:@"Check for updates..." target:self selector:@selector(checkForUpdates:)];
 }
 
 - (void)createCodaMenuItemsFromArray:(NSArray *)items forSubmenuWithTitle:(NSString *)submenu withShortcuts:(NSDictionary *)shortcuts {
@@ -123,6 +129,10 @@
 	}
 	
 	[prefs showWindow:self];
+}
+
+- (void)checkForUpdates:(id)sender {
+	[updater checkForUpdates:sender];
 }
 
 @end

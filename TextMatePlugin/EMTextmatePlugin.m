@@ -38,8 +38,6 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 		editor = [EMTextMateEditor new];
 		[[Emmet sharedInstance] setContext:editor];
 		
-		[self installMenuItems];
-		
 		// Implementing abbreviation expand by Tab key
 		// This logic must be implemented for each editor independently,
 		// because it should also check if current editor state allows Tab key
@@ -57,9 +55,13 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 			
 			return event;
 		}];
-
 		
+		// init updater
+		updater = [SUUpdater updaterForBundle:bundle];
+		[updater setAutomaticallyChecksForUpdates:YES];
+		[updater resetUpdateCycle];
 		
+		[self installMenuItems];
 	}
 	return self;
 }
@@ -69,12 +71,18 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 	NSDictionary *shortcuts = [NSDictionary dictionaryWithContentsOfFile:keyboardShortcutsPlist];
 	NSMenu *menu = [[Emmet sharedInstance] actionsMenuWithAction:@selector(performMenuAction:) keyboardShortcuts:shortcuts forTarget:self];
 	[menu addItem:[NSMenuItem separatorItem]];
-	
+
+	// create Preferences... item
 	NSMenuItem *preferencesItem = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(showPreferences:) keyEquivalent:@""];
 	preferencesItem.target = self;
 	[menu addItem:preferencesItem];
 	[preferencesItem release];
 	
+	// create Check for updates... menu item
+	NSMenuItem *updatesItem = [[NSMenuItem alloc] initWithTitle:@"Check for updates..." action:@selector(checkForUpdates:) keyEquivalent:@""];
+	updatesItem.target = updater;
+	[menu addItem:updatesItem];
+	[updatesItem release];
 
 	NSMenuItem *rootItem = [[NSMenuItem alloc] initWithTitle:@"Emmet" action:nil keyEquivalent:@""];
 	

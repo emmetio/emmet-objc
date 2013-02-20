@@ -9,6 +9,7 @@
 #import "CodaPlugInsController.h"
 #import "EMCodaEditor.h"
 #import "EMBasicPreferencesWindowController.h"
+#import <Sparkle/Sparkle.h>
 
 @class CodaPlugInsController;
 
@@ -17,8 +18,10 @@
 	EMCodaEditor *editor;
 	EMBasicPreferencesWindowController *prefs;
 	NSString *keyboardShortcutsPlist;
+	SUUpdater *updater;
 }
 
 - (void)performMenuAction:(id)sender;
+- (void)checkForUpdates:(id)sender;
 
 @end

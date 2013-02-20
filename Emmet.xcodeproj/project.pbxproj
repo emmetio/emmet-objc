@@ -43,6 +43,25 @@
 		A562B89615951696007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B897159516A8007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
 		A562B898159516B1007F9044 /* file-interface.js in Resources */ = {isa = PBXBuildFile; fileRef = A562B8921595022F007F9044 /* file-interface.js */; };
+		A5656F9C16D5531500D69F55 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5656F9A16D5531500D69F55 /* Sparkle.framework */; };
+		A5656F9D16D5531500D69F55 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5656F9A16D5531500D69F55 /* Sparkle.framework */; };
+		A5656F9E16D5531500D69F55 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5656F9A16D5531500D69F55 /* Sparkle.framework */; };
+		A5656F9F16D5536800D69F55 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5656F9A16D5531500D69F55 /* Sparkle.framework */; };
+		A5656FA016D5537200D69F55 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5656F9A16D5531500D69F55 /* Sparkle.framework */; };
+		A5656FA116D5537700D69F55 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5656F9A16D5531500D69F55 /* Sparkle.framework */; };
+		A5656FA316D556A900D69F55 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA216D556A900D69F55 /* dsa_pub.pem */; };
+		A5656FA416D556A900D69F55 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA216D556A900D69F55 /* dsa_pub.pem */; };
+		A5656FA516D556A900D69F55 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA216D556A900D69F55 /* dsa_pub.pem */; };
+		A5656FA616D556A900D69F55 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA216D556A900D69F55 /* dsa_pub.pem */; };
+		A5656FA916D562FE00D69F55 /* logo@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA716D562FE00D69F55 /* logo@2x.tiff */; };
+		A5656FAA16D562FE00D69F55 /* logo@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA716D562FE00D69F55 /* logo@2x.tiff */; };
+		A5656FAB16D562FE00D69F55 /* logo@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA716D562FE00D69F55 /* logo@2x.tiff */; };
+		A5656FAC16D562FE00D69F55 /* logo@2x.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA716D562FE00D69F55 /* logo@2x.tiff */; };
+		A5656FAD16D562FE00D69F55 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA816D562FE00D69F55 /* logo.tiff */; };
+		A5656FAE16D562FE00D69F55 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA816D562FE00D69F55 /* logo.tiff */; };
+		A5656FAF16D562FE00D69F55 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA816D562FE00D69F55 /* logo.tiff */; };
+		A5656FB016D562FE00D69F55 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA816D562FE00D69F55 /* logo.tiff */; };
+		A5656FB316D56B8500D69F55 /* EMUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = A5656FB216D56B8500D69F55 /* EMUpdates.m */; };
 		A566BFE4161F58A2006ABFB0 /* JSCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
 		A566BFE7161F5991006ABFB0 /* JSCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
 		A566BFE8161F5E89006ABFB0 /* JSCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
@@ -229,6 +248,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A566BFEA161F5E9A006ABFB0 /* JSCocoa.framework in CopyFiles */,
+				A5656F9F16D5536800D69F55 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +259,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A566BFED161F5EB4006ABFB0 /* JSCocoa.framework in CopyFiles */,
+				A5656FA016D5537200D69F55 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +270,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				A566BFF0161F5EDD006ABFB0 /* JSCocoa.framework in CopyFiles */,
+				A5656FA116D5537700D69F55 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +290,12 @@
 		A562B8921595022F007F9044 /* file-interface.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "file-interface.js"; sourceTree = "<group>"; };
 		A563EC4914E31951009472C9 /* Emmet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Emmet.h; sourceTree = "<group>"; };
 		A563EC4A14E31951009472C9 /* Emmet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Emmet.m; sourceTree = "<group>"; };
+		A5656F9A16D5531500D69F55 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		A5656FA216D556A900D69F55 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		A5656FA716D562FE00D69F55 /* logo@2x.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "logo@2x.tiff"; sourceTree = "<group>"; };
+		A5656FA816D562FE00D69F55 /* logo.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = logo.tiff; sourceTree = "<group>"; };
+		A5656FB116D56B8500D69F55 /* EMUpdates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMUpdates.h; sourceTree = "<group>"; };
+		A5656FB216D56B8500D69F55 /* EMUpdates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMUpdates.m; sourceTree = "<group>"; };
 		A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JSCocoa.framework; path = Frameworks/JSCocoa.framework; sourceTree = "<group>"; };
 		A56992E515D9091500D97C27 /* textmate-bootstrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "textmate-bootstrap.js"; sourceTree = "<group>"; };
 		A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeyboardShortcuts.plist; sourceTree = "<group>"; };
@@ -367,6 +395,7 @@
 			files = (
 				A576DD5215E91267009B5E24 /* Cocoa.framework in Frameworks */,
 				A566BFEE161F5EBE006ABFB0 /* JSCocoa.framework in Frameworks */,
+				A5656F9E16D5531500D69F55 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +405,7 @@
 			files = (
 				A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */,
 				A566BFE8161F5E89006ABFB0 /* JSCocoa.framework in Frameworks */,
+				A5656F9C16D5531500D69F55 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,6 +415,7 @@
 			files = (
 				A5C722C115D5A28200CDA623 /* Cocoa.framework in Frameworks */,
 				A566BFEB161F5EA3006ABFB0 /* JSCocoa.framework in Frameworks */,
+				A5656F9D16D5531500D69F55 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +451,8 @@
 				A576DD7315E92DE0009B5E24 /* EMEspressoEditor.m */,
 				A576DD9515EB5F08009B5E24 /* EMPreferences.h */,
 				A576DD9615EB5F08009B5E24 /* EMPreferences.m */,
+				A5656FB116D56B8500D69F55 /* EMUpdates.h */,
+				A5656FB216D56B8500D69F55 /* EMUpdates.m */,
 			);
 			path = EspressoPlugin;
 			sourceTree = "<group>";
@@ -514,6 +547,7 @@
 		A5994E5C14BF52030067B42B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A5656F9A16D5531500D69F55 /* Sparkle.framework */,
 				A5355DFB1699DC68008D0B37 /* MGSFragaria.framework */,
 				A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */,
 				A5994E7A14BF52140067B42B /* Carbon.framework */,
@@ -622,6 +656,9 @@
 		A5D2757414F0096200B3816D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A5656FA716D562FE00D69F55 /* logo@2x.tiff */,
+				A5656FA816D562FE00D69F55 /* logo.tiff */,
+				A5656FA216D556A900D69F55 /* dsa_pub.pem */,
 				A576DD4715E83213009B5E24 /* emmet-app.js */,
 				A5D2757514F009B100B3816D /* Emmet-Info.plist */,
 				A5D2757A14F009D700B3816D /* InfoPlist.strings */,
@@ -867,6 +904,9 @@
 				A576DD8D15EA4528009B5E24 /* objc-zeneditor-wrap.js in Resources */,
 				A576DD8E15EA4528009B5E24 /* file-interface.js in Resources */,
 				A576DD8F15EA4528009B5E24 /* BasicPreferences.xib in Resources */,
+				A5656FA616D556A900D69F55 /* dsa_pub.pem in Resources */,
+				A5656FAC16D562FE00D69F55 /* logo@2x.tiff in Resources */,
+				A5656FB016D562FE00D69F55 /* logo.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +923,9 @@
 				A575604915D1C11F00CF9829 /* BasicPreferences.xib in Resources */,
 				A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */,
 				A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */,
+				A5656FA416D556A900D69F55 /* dsa_pub.pem in Resources */,
+				A5656FAA16D562FE00D69F55 /* logo@2x.tiff in Resources */,
+				A5656FAE16D562FE00D69F55 /* logo.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,6 +943,9 @@
 				A56992E715D90A1C00D97C27 /* textmate-bootstrap.js in Resources */,
 				A56992E915D90F2100D97C27 /* KeyboardShortcuts.plist in Resources */,
 				A53F606915E6C49300CF391B /* BasicPreferences.xib in Resources */,
+				A5656FA516D556A900D69F55 /* dsa_pub.pem in Resources */,
+				A5656FAB16D562FE00D69F55 /* logo@2x.tiff in Resources */,
+				A5656FAF16D562FE00D69F55 /* logo.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +966,9 @@
 				A57C4A03158BEED300566A1C /* snippets.json in Resources */,
 				A53F606815E587B700CF391B /* KeyboardShortcuts.plist in Resources */,
 				A5E8601415CB2989001302EA /* BasicPreferences.xib in Resources */,
+				A5656FA316D556A900D69F55 /* dsa_pub.pem in Resources */,
+				A5656FA916D562FE00D69F55 /* logo@2x.tiff in Resources */,
+				A5656FAD16D562FE00D69F55 /* logo.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -979,6 +1028,7 @@
 				A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */,
 				A576DD7415E92DE0009B5E24 /* EMEspressoEditor.m in Sources */,
 				A576DD9715EB5F08009B5E24 /* EMPreferences.m in Sources */,
+				A5656FB316D56B8500D69F55 /* EMUpdates.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,6 +1199,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -1174,6 +1225,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1196,6 +1248,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodaPlugin/CodaPlugin-Prefix.pch";
@@ -1217,6 +1270,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CodaPlugin/CodaPlugin-Prefix.pch";
@@ -1303,6 +1357,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextMatePlugin/TextMatePlugin-Prefix.pch";
@@ -1326,6 +1381,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TextMatePlugin/TextMatePlugin-Prefix.pch";

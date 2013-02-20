@@ -12,10 +12,8 @@ static BOOL isURL(NSString *path) {
 @implementation EmmetFile
 
 + (NSString *)read:(NSString *)filePath ofSize:(NSUInteger)size {
-	NSLog(@"Reading %@", filePath);
 	NSString *content = nil;
 	if (isURL(filePath)) {
-		NSLog(@"Load URL: %@", filePath);
 		NSURL *url = [NSURL URLWithString:filePath];
 		NSURLRequest *req = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:2.0];
 		NSError *error;
@@ -23,7 +21,6 @@ static BOOL isURL(NSString *path) {
 		NSData *data = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&error];
 		if (data) {
 			content = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
-			NSLog(@"URL loaded");
 		} else {
 			NSLog(@"Error while loading URL: %@", error);
 		}

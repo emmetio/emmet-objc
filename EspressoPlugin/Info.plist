@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>logo.tiff</string>
 	<key>CFBundleIdentifier</key>
 	<string>io.emmet.EspressoPlugin</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -24,6 +24,12 @@
 	<string>1</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2012 Sergey Chikuyonok. All rights reserved.</string>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
+	<key>SUEnableAutomaticChecks</key>
+	<false/>
+	<key>SUFeedURL</key>
+	<string>http://download.emmet.io/espresso/appcast.xml</string>
 </dict>
 
 </plist>

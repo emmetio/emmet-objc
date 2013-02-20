@@ -10,6 +10,7 @@
 #import "Emmet.h"
 #import "EMTextMateEditor.h"
 #import "EMBasicPreferencesWindowController.h"
+#import <Sparkle/Sparkle.h>
 
 @protocol TMPlugInController
 - (CGFloat)version;
@@ -18,6 +19,7 @@
 @interface EMTextmatePlugin : NSObject {
 	EMTextMateEditor *editor;
 	EMBasicPreferencesWindowController *prefs;
+	SUUpdater *updater;
 }
 
 + (NSBundle *)bundle;
