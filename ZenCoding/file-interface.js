@@ -12,7 +12,7 @@ emmet.define('file', function(require, _) {
 			if (!args.length) {
 				size = 0;
 			}
-			var content = context.read_ofSize(path, size);
+			var content = context.read_ofSize(path, 0);
 			if (content) {
 				callback(null, String(content));
 			} else {

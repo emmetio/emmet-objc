@@ -67,7 +67,8 @@
 }
 
 - (NSString *)filePath {
-	return [[NSFileManager defaultManager] currentDirectoryPath];
+	return @"/Users/Sergey/Projects/zc-ext/sample.css";
+//	return [[NSFileManager defaultManager] currentDirectoryPath];
 }
 
 - (void)dealloc {
