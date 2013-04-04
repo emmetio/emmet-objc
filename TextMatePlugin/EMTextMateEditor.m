@@ -1,6 +1,5 @@
 //
-//  TextMateZenEditor.m
-//  ZenCoding
+//  TextMateEmEditor.m
 //
 //  Created by Sergey Chikuyonok on 8/11/12.
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
@@ -34,11 +33,9 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	return loc;
 }
 
-@interface EMTextMateEditor ()
+@interface OTVStatusBar
 
-- (NSArray *)linesOfText:(NSString *)text;
-- (NSUInteger)positionFromLineNumber:(NSUInteger)line andColumn:(NSUInteger)col;
-- (NSString *)matchedSyntax;
+@property (nonatomic, assign) NSString* grammarName;
 
 @end
 
@@ -47,6 +44,15 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 - (BOOL)containsSubstring:(NSString *)str {
 	return [self rangeOfString:str].location != NSNotFound;
 }
+
+@end
+
+@interface EMTextMateEditor ()
+
+- (NSArray *)linesOfText:(NSString *)text;
+- (NSUInteger)positionFromLineNumber:(NSUInteger)line andColumn:(NSUInteger)col;
+- (NSString *)matchedSyntax;
+- (int)apiVersion;
 
 @end
 
@@ -63,6 +69,14 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (OakTextView *)tv {
 	return [NSApp targetForAction:@selector(insertSnippetWithOptions:)];
+}
+
+- (int)apiVersion {
+	if ([[self tv] respondsToSelector:@selector(delegate)]) {
+		return 2;
+	}
+	
+	return 1;
 }
 
 - (NSArray *)linesOfText:(NSString *)text {
@@ -115,44 +129,49 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 }
 
 - (NSRange)selectionRange {
-	NSDictionary *env = [[self tv] environmentVariables];
-	NSString *startLine, *startChar, *endLine, *endChar;
-	if ([env objectForKey:@"TM_INPUT_START_LINE_INDEX"]) {
-		startLine = [env objectForKey:@"TM_INPUT_START_LINE"];
-		startChar = [env objectForKey:@"TM_INPUT_START_LINE_INDEX"];
-	} else {
-		startLine = [env objectForKey:@"TM_LINE_NUMBER"];
-		startChar = [env objectForKey:@"TM_LINE_INDEX"];
+	OakTextView *tv = [self tv];
+	
+	if ([self apiVersion] == 1) {
+		// TextMate 1.x API
+		NSDictionary *env = [tv environmentVariables];
+		NSString *startLine, *startChar, *endLine, *endChar;
+		if ([env objectForKey:@"TM_INPUT_START_LINE_INDEX"]) {
+			startLine = [env objectForKey:@"TM_INPUT_START_LINE"];
+			startChar = [env objectForKey:@"TM_INPUT_START_LINE_INDEX"];
+		} else {
+			startLine = [env objectForKey:@"TM_LINE_NUMBER"];
+			startChar = [env objectForKey:@"TM_LINE_INDEX"];
+		}
+		
+		endLine = [env objectForKey:@"TM_LINE_NUMBER"];
+		endChar = [env objectForKey:@"TM_LINE_INDEX"];
+		
+		NSUInteger start = [self positionFromLineNumber:[startLine integerValue] - 1 andColumn:[startChar integerValue]];
+		NSUInteger end = [self positionFromLineNumber:[endLine integerValue] - 1 andColumn:[endChar integerValue]];
+		
+		return NSMakeRange(start, end - start);
 	}
 	
-	endLine = [env objectForKey:@"TM_LINE_NUMBER"];
-	endChar = [env objectForKey:@"TM_LINE_INDEX"];
-	
-	NSUInteger start = [self positionFromLineNumber:[startLine integerValue] - 1 andColumn:[startChar integerValue]];
-	NSUInteger end = [self positionFromLineNumber:[endLine integerValue] - 1 andColumn:[endChar integerValue]];
-	
-	return NSMakeRange(start, end - start);
+	// TextMate 2.x API
+	return [[tv accessibilityAttributeValue:NSAccessibilitySelectedTextRangeAttribute] rangeValue];
 }
 
 - (void)setSelectionRange:(NSRange)range {
     OakTextView *tv = [self tv];
-	TMLocation loc = convertRangeToLocation(range, [self content]);
-	[tv goToLineNumber:[NSNumber numberWithInteger:loc.startLine]];
-	[tv goToColumnNumber:[NSNumber numberWithInteger:loc.startCol]];
-	[tv selectToLine:[NSNumber numberWithInteger:loc.endLine] andColumn:[NSNumber numberWithInteger:loc.endCol]];
+	if ([self apiVersion] == 1) {
+		TMLocation loc = convertRangeToLocation(range, [self content]);
+		[tv goToLineNumber:[NSNumber numberWithInteger:loc.startLine]];
+		[tv goToColumnNumber:[NSNumber numberWithInteger:loc.startCol]];
+		[tv selectToLine:[NSNumber numberWithInteger:loc.endLine] andColumn:[NSNumber numberWithInteger:loc.endCol]];
+	} else {
+		[tv accessibilitySetValue:[NSValue valueWithRange:range] forAttribute:NSAccessibilitySelectedTextRangeAttribute];
+	}
 }
 
 - (NSRange)currentLineRange {
-	NSDictionary *env = [[self tv] environmentVariables];
-	NSString *line;
-	if ([env objectForKey:@"TM_INPUT_START_LINE"]) {
-		line = [env objectForKey:@"TM_INPUT_START_LINE"];
-	} else {
-		line = [env objectForKey:@"TM_LINE_NUMBER"];
-	}
-	
-	NSValue *lineRangeObj = [[self linesOfText:[self content]] objectAtIndex:[line integerValue] - 1];
-	return [lineRangeObj rangeValue];
+	NSString *content = [self content];
+	NSRange sel = [self selectionRange];
+	return [content lineRangeForRange:NSMakeRange(sel.location, 0)];
 }
 
 - (NSString *)currentLine {
@@ -161,19 +180,41 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 }
 
 - (NSString *)content {
+	OakTextView *tv = [self tv];
+	if ([tv respondsToSelector:@selector(string)]) {
+		return [tv string];
+	}
 	return [[self tv] stringValue];
 }
 
 - (NSString *)matchedSyntax {
-	NSDictionary *env = [[self tv] environmentVariables];
-	NSString *scope = [env objectForKey:@"TM_SCOPE"];
-	
-	NSArray *syntaxes = [NSArray arrayWithObjects:@"xsl", @"xml", @"haml", @"css", @"less", @"less", @"scss", @"sass", @"html", nil];
-	NSString *syntax = nil;
-	for (int i = 0; i < [syntaxes count]; i++) {
-		syntax = [syntaxes objectAtIndex:i];
-		if ([scope containsSubstring:syntax]) {
-			return syntax;
+	// TextMate 2 API
+	if ([self apiVersion] == 2) {
+		// a very, VERY hacky way to get syntax for current document:
+		// find status bar and get grammar name
+		NSView *docView = [NSApp targetForAction:@selector(setThemeWithUUID:)];
+		if (docView) {
+			NSArray *views = [docView subviews];
+			for (NSView *v in views) {
+				if ([v respondsToSelector:@selector(grammarName)]) {
+					return [v performSelector:@selector(grammarName)];
+
+				}
+			}
+		}
+	} else {
+		// TextMate 1.x
+		OakTextView *tv = [self tv];
+		NSDictionary *env = [tv environmentVariables];
+		NSString *scope = [env objectForKey:@"TM_SCOPE"];
+		
+		NSArray *syntaxes = [NSArray arrayWithObjects:@"xsl", @"xml", @"haml", @"css", @"less", @"less", @"scss", @"sass", @"html", nil];
+		NSString *syntax = nil;
+		for (int i = 0; i < [syntaxes count]; i++) {
+			syntax = [syntaxes objectAtIndex:i];
+			if ([scope containsSubstring:syntax]) {
+				return syntax;
+			}
 		}
 	}
 	
@@ -186,7 +227,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 		syntax = @"html";
 	}
 	
-	return syntax;
+	return [syntax lowercaseString];
 }
 
 - (NSString *)profileName {
@@ -200,6 +241,11 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 }
 
 - (NSString *)selection {
+	OakTextView *tv = [self tv];
+	if ([tv respondsToSelector:@selector(selectionString)]) {
+		return tv.selectionString;
+	}
+	
 	NSDictionary *env = [[self tv] environmentVariables];
 	if ([env objectForKey:@"TM_SELECTED_TEXT"]) {
 		return [env objectForKey:@"TM_SELECTED_TEXT"];

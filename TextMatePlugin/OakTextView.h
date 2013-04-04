@@ -14,5 +14,22 @@
 // Actions
 - (void)deleteSelection:(id)sender;
 
+// TextMate 2 API
+- (id)scopeContext;
+@property (nonatomic, assign) id          delegate;
+@property (nonatomic, retain) NSCursor*   ibeamCursor;
+@property (nonatomic, retain) NSFont*     font;
+@property (nonatomic, assign) BOOL        antiAlias;
+@property (nonatomic, assign) size_t      tabSize;
+@property (nonatomic, assign) BOOL        showInvisibles;
+@property (nonatomic, assign) BOOL        softWrap;
+@property (nonatomic, assign) BOOL        softTabs;
+@property (nonatomic, readonly) BOOL      continuousIndentCorrections;
+
+@property (nonatomic, readonly) BOOL      hasMultiLineSelection;
+@property (nonatomic, readonly) BOOL      hasSelection;
+@property (nonatomic, retain) NSString*   selectionString;
+@property (nonatomic, retain) NSString*   string;
+
 
 @end

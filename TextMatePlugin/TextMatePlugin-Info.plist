@@ -32,5 +32,7 @@
 	<true/>
 	<key>SUFeedURL</key>
 	<string>http://download.emmet.io/textmate/appcast.xml</string>
+	<key>TMPlugInAPIVersion</key>
+	<integer>2</integer>
 </dict>
 </plist>
