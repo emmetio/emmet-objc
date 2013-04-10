@@ -345,7 +345,7 @@
 		A5C722CE15D5A2FA00CDA623 /* EMTextmatePlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextmatePlugin.m; sourceTree = "<group>"; };
 		A5C722E815D5AA3900CDA623 /* OakTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OakTextView.h; sourceTree = "<group>"; };
 		A5C722EC15D6CB0E00CDA623 /* EMTextMateEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMTextMateEditor.h; sourceTree = "<group>"; };
-		A5C722ED15D6CB0E00CDA623 /* EMTextMateEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMTextMateEditor.m; sourceTree = "<group>"; };
+		A5C722ED15D6CB0E00CDA623 /* EMTextMateEditor.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; path = EMTextMateEditor.m; sourceTree = "<group>"; };
 		A5D2750E14F000FA00B3816D /* EmmetSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmmetSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5D2751314F000FA00B3816D /* EmmetSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EmmetSample-Info.plist"; sourceTree = "<group>"; };
 		A5D2751514F000FA00B3816D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };

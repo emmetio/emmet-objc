@@ -1,7 +1,6 @@
 @interface OakTextView : NSView <NSTextInput>
 - (NSString *)stringValue;
 - (void)insertSnippetWithOptions:(NSDictionary*)someOptions;
-- (id)scope;
 - (void)setSelectionString:(NSString*)aSelectionString;
 - (NSRange)selectedRange;
 - (id)xmlRepresentationForSelection;
@@ -16,6 +15,8 @@
 
 // TextMate 2 API
 - (id)scopeContext;
+- (NSString *)scope;
+- (NSString *)filePath;
 @property (nonatomic, assign) id          delegate;
 @property (nonatomic, retain) NSCursor*   ibeamCursor;
 @property (nonatomic, retain) NSFont*     font;

@@ -59,8 +59,8 @@ static NSMutableArray *coreFiles = nil;
 	}];
 }
 
-+ (void)setJSContextDelegateClass:(Class)class {
-	jsCtxDelegateClass = class;
++ (void)setJSContextDelegateClass:(Class)cl {
+	jsCtxDelegateClass = cl;
 }
 
 + (Emmet *)sharedInstance {

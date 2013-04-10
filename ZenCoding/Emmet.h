@@ -23,7 +23,7 @@ void setKeyEquivalent(NSMenuItem *menuItem, NSString *key);
 @property (nonatomic, retain) NSString *extensionsPath;
 
 + (Emmet *)sharedInstance;
-+ (void)setJSContextDelegateClass:(Class)class;
++ (void)setJSContextDelegateClass:(Class)cl;
 + (void)loadDefaults;
 + (void)addCoreFile:(NSString *)file;
 

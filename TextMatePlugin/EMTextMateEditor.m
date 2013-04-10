@@ -189,7 +189,12 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (NSString *)matchedSyntax {
 	// TextMate 2 API
+	OakTextView *tv = [self tv];
 	if ([self apiVersion] == 2) {
+		if ([tv respondsToSelector:@selector(scope)]) {
+			return [tv scope];
+		}
+		
 		// a very, VERY hacky way to get syntax for current document:
 		// find status bar and get grammar name
 		NSView *docView = [NSApp targetForAction:@selector(setThemeWithUUID:)];
@@ -204,18 +209,8 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 		}
 	} else {
 		// TextMate 1.x
-		OakTextView *tv = [self tv];
 		NSDictionary *env = [tv environmentVariables];
-		NSString *scope = [env objectForKey:@"TM_SCOPE"];
-		
-		NSArray *syntaxes = [NSArray arrayWithObjects:@"xsl", @"xml", @"haml", @"css", @"less", @"less", @"scss", @"sass", @"html", nil];
-		NSString *syntax = nil;
-		for (int i = 0; i < [syntaxes count]; i++) {
-			syntax = [syntaxes objectAtIndex:i];
-			if ([scope containsSubstring:syntax]) {
-				return syntax;
-			}
-		}
+		return [env objectForKey:@"TM_SCOPE"];
 	}
 	
 	return nil;
@@ -268,8 +263,19 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 }
 
 - (NSString *)filePath {
-	NSDictionary *env = [[self tv] environmentVariables];
-	return [env objectForKey:@"TM_FILEPATH"];
+	OakTextView *tv = [self tv];
+	if ([tv respondsToSelector:@selector(filePath)]) {
+		NSString *path = [tv filePath];
+		if (path == nil) {
+			return @"";
+		}
+		return path;
+	} else if ([tv respondsToSelector:@selector(environmentVariables)]) {
+		NSDictionary *env = [tv environmentVariables];
+		return [env objectForKey:@"TM_FILEPATH"];
+	}
+	
+	return nil;
 }
 
 @end
