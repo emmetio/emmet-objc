@@ -22,3 +22,8 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string);
 @interface EMTextMateEditor : NSObject <EmmetEditor>
 - (OakTextView *)tv;
 @end
+
+
+@interface TM2DocumentController : NSObject
+@property (nonatomic, assign) NSString* documentPath;
+@end

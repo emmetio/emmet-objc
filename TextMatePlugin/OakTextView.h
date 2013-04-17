@@ -15,8 +15,7 @@
 
 // TextMate 2 API
 - (id)scopeContext;
-- (NSString *)scope;
-- (NSString *)filePath;
+- (NSString *)scopeAsString;
 @property (nonatomic, assign) id          delegate;
 @property (nonatomic, retain) NSCursor*   ibeamCursor;
 @property (nonatomic, retain) NSFont*     font;

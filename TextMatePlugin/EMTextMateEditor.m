@@ -191,8 +191,8 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 	// TextMate 2 API
 	OakTextView *tv = [self tv];
 	if ([self apiVersion] == 2) {
-		if ([tv respondsToSelector:@selector(scope)]) {
-			return [tv scope];
+		if ([tv respondsToSelector:@selector(scopeAsString)]) {
+			return [tv scopeAsString];
 		}
 		
 		// a very, VERY hacky way to get syntax for current document:
@@ -264,12 +264,13 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 
 - (NSString *)filePath {
 	OakTextView *tv = [self tv];
-	if ([tv respondsToSelector:@selector(filePath)]) {
-		NSString *path = [tv filePath];
-		if (path == nil) {
+	if ([self apiVersion] == 2) {
+		TM2DocumentController *controller = (TM2DocumentController *)[[tv window] delegate];
+		if (controller != nil) {
+			return controller.documentPath;
+		} else {
 			return @"";
 		}
-		return path;
 	} else if ([tv respondsToSelector:@selector(environmentVariables)]) {
 		NSDictionary *env = [tv environmentVariables];
 		return [env objectForKey:@"TM_FILEPATH"];
