@@ -21,6 +21,16 @@
 	return self;
 }
 
+- (void)setTv:(CodaTextView *)textview {
+	self->tv = textview;
+	Emmet *em = [Emmet sharedInstance];
+	NSString *indentation = @"\t";
+	if (![textview usesTabs]) {
+		indentation = [@"" stringByPaddingToLength:[textview tabWidth] withString:@" " startingAtIndex:0];
+	}
+	[em.jsc evalFunction:@"objcSetIndentation" withArguments:indentation, nil];
+}
+
 - (NSUInteger) caretPos {
 	NSRange sel = [self selectionRange];
 	return sel.location;
