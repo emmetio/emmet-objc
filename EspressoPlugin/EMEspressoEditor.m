@@ -44,17 +44,8 @@
     return ctx.string;
 }
 
-- (NSString *)syntax {
-	NSDictionary *knownSyntaxes = [NSDictionary dictionaryWithObjectsAndKeys:
-								   @"css, css *", @"css",
-								   @"scss, scss *", @"scss",
-								   @"sass, sass *", @"sass",
-								   @"less, less *", @"less",
-								   @"xsl, xsl *", @"xsl",
-								   @"xml, xml *", @"xml",
-								   @"haml, haml *", @"haml", nil];
-	
-
+- (NSString *)syntax {	
+	NSArray *knownSyntaxes = @[@"css", @"scss", @"sass", @"less", @"xsl", @"xml", @"haml"];
 	SXZone *zone = ctx.syntaxTree.rootZone;
 	NSRange curRange = [self selectionRange];
 	
@@ -68,15 +59,14 @@
 		zone = [ctx.syntaxTree zoneAtCharacterIndex:curRange.location];
 	}
 	
-	NSString __block *syntax = @"html";
-	[knownSyntaxes enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *val, BOOL *stop) {
-		SXSelector *s = [SXSelector selectorWithString:val];
-		
+	NSString *syntax = @"html";
+	for (NSString *syn in knownSyntaxes) {
+		SXSelector *s = [SXSelector selectorWithString:[NSString stringWithFormat:@"%@, %@ *", syn, syn]];
 		if ([s matches:zone]) {
-			syntax = key;
-			*stop = YES;
+			syntax = syn;
+			break;
 		}
-	}];
+	}
 	
 	return syntax;
 }
