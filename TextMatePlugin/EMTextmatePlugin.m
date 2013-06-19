@@ -73,7 +73,7 @@ static NSString * const EmmetBundleIdentifier = @"io.emmet.EmmetTextmate";
 	[menu addItem:[NSMenuItem separatorItem]];
 
 	// create Preferences... item
-	NSMenuItem *preferencesItem = [[NSMenuItem alloc] initWithTitle:@"Preferences..." action:@selector(showPreferences:) keyEquivalent:@""];
+	NSMenuItem *preferencesItem = [[NSMenuItem alloc] initWithTitle:@"Emmet Preferences..." action:@selector(showPreferences:) keyEquivalent:@""];
 	preferencesItem.target = self;
 	[menu addItem:preferencesItem];
 	[preferencesItem release];

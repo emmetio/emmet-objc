@@ -91,7 +91,7 @@
 	}
 	
 	[self createCodaMenuItemsFromArray:actions forSubmenuWithTitle:nil withShortcuts:shortcuts];
-	[controller registerActionWithTitle:@"Preferences..." target:self selector:@selector(showPreferences:)];
+	[controller registerActionWithTitle:@"Emmet Preferences..." target:self selector:@selector(showPreferences:)];
 	[controller registerActionWithTitle:@"Check for updates..." target:self selector:@selector(checkForUpdates:)];
 }
 
