@@ -72,9 +72,12 @@
 		
 		// init updater
 		NSBundle *bundle = [NSBundle bundleWithIdentifier:@"io.emmet.EmmetCoda"];
-		updater = [SUUpdater updaterForBundle:bundle];
-		[updater setAutomaticallyChecksForUpdates:YES];
-		[updater resetUpdateCycle];
+		
+		if ([SUUpdater respondsToSelector:@selector(updaterForBundle:)]) {
+			updater = [SUUpdater updaterForBundle:bundle];
+			[updater setAutomaticallyChecksForUpdates:YES];
+			[updater resetUpdateCycle];
+		}
 		
 		[self createMenu];
 	}
@@ -132,7 +135,9 @@
 }
 
 - (void)checkForUpdates:(id)sender {
-	[updater checkForUpdates:sender];
+	if (updater) {
+		[updater checkForUpdates:sender];
+	}
 }
 
 @end
