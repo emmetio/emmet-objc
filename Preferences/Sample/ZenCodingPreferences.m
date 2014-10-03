@@ -11,8 +11,8 @@
 #import "EMArrayTransformer.h"
 #import "EMTildePathTransformer.h"
 #import "ZenCodingSnippetEditor.h"
-#import "ZenCodingDefaultsKeys.h"
-#import "ZenCodingNotifications.h"
+//#import "ZenCodingDefaultsKeys.h"
+//#import "ZenCodingNotifications.h"
 
 #define ChangeObserving @"ChangeObserving"
 
@@ -125,7 +125,7 @@
 	[panel setAllowsMultipleSelection:NO];
 
 	[panel beginSheetModalForWindow:[self window] completionHandler:^(NSInteger result) {
-	    if (result == NSOKButton) {
+	    if (result == NSModalResponseOK) {
 			NSURL *url = [[panel URLs] objectAtIndex:0];
 			if (url != nil) {
 				NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

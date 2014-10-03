@@ -61,7 +61,7 @@ TMLocation convertRangeToLocation(NSRange range, NSString *string) {
 - (id)init {
 	if (self = [super init]) {
 		NSApp = [NSApplication sharedApplication];
-		[[Emmet sharedInstance].jsc evalFunction:@"objcEmmetEditor.setAutoHandleIndent" withArguments:NO, nil];
+		[[Emmet sharedInstance].jsc evalFunction:@"objcEmmetEditor_setAutoHandleIndent" withArguments:@(NO), nil];
 	}
 	
 	return self;
