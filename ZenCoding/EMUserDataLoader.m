@@ -8,7 +8,6 @@
 #import "EMUserDataLoader.h"
 #import "Emmet.h"
 #import "NSMutableDictionary+EMUtils.h"
-#import "JSONKit.h"
 
 @implementation EMUserDataLoader
 

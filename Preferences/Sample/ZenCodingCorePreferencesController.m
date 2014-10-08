@@ -7,9 +7,8 @@
 //
 
 #import "ZenCodingCorePreferencesController.h"
-#import "ZenCodingNotifications.h"
+// #import "ZenCodingNotifications.h"
 #import "Emmet.h"
-#import "JSONKit.h"
 
 @interface ZenCodingCorePreferencesController()
 - (id)transformValueForDataSource:(id)value;
@@ -40,7 +39,7 @@
 	if (self->preferences == nil) {
 		// get defaults
 		Emmet *zc = [Emmet sharedInstance];
-		id jsPrefs = [zc.jsc evalFunction:@"emmet.require('preferences').list" withArguments:nil];
+		id jsPrefs = [zc.jsc evalFunction:@"emmet_preferences_list" withArguments:nil];
 		self->preferences = [[zc.jsc convertJSObject:jsPrefs toNativeType:@"array"] retain];
 		NSMutableDictionary *lookup = [NSMutableDictionary dictionary];
 		
@@ -72,7 +71,7 @@
 // Saves current preferences to NSUserDefaults
 - (void)save {
 	Emmet *zc = [Emmet sharedInstance];
-	id jsPrefs = [zc.jsc evalFunction:@"emmet.require('preferences').exportModified" withArguments:nil];
+	id jsPrefs = [zc.jsc evalFunction:@"emmet_preferences_exportModified" withArguments:nil];
 	NSDictionary *prefs = [zc.jsc convertJSObject:jsPrefs toNativeType:@"dictionary"];
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	[defaults setObject:prefs forKey:Preferences];
@@ -102,7 +101,7 @@
 	[self.preferences enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		[prefs setObject:[obj objectForKey:@"value"] forKey:[obj objectForKey:@"name"]];
 	}];
-	[zc.jsc evalFunction:@"objcLoadUserPreferences" withArguments:[prefs JSONString], nil];
+	[zc.jsc evalFunction:@"objcLoadUserPreferences" withArguments:[Emmet toJSON:prefs], nil];
 }
 
 # pragma mark Table Data Source

@@ -26,6 +26,7 @@ void setKeyEquivalent(NSMenuItem *menuItem, NSString *key);
 + (void)setJSContextDelegateClass:(Class)cl;
 + (void)loadDefaults;
 + (void)addCoreFile:(NSString *)file;
++ (NSString*)toJSON:(id)obj;
 
 // runs Emmet’s JS action
 - (BOOL)runAction:name;
