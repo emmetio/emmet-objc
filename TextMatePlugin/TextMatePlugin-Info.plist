@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string>logo.tiff</string>
 	<key>CFBundleIdentifier</key>
-	<string>io.emmet.EmmetTextmate</string>
+	<string>io.emmet.EmmetTM2</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
