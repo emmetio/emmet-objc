@@ -4,8 +4,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
-@protocol EmmetEditor
+@protocol EmmetEditor<JSExport>
 
 @property (nonatomic, assign) NSRange selectionRange;
 
@@ -18,7 +19,11 @@
 - (NSString *)syntax;
 - (NSString *)profileName;
 - (NSString *)selection;
-- (void)replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent;
+
+JSExportAs(replaceContentWithValue_from_to_withoutIndentation,
+- (void)replaceContentWithValue:(NSString *)value from:(NSUInteger)start to:(NSUInteger)end withoutIndentation:(BOOL)indent
+);
+
 - (NSString *)prompt:(NSString *)label;
 
 @optional

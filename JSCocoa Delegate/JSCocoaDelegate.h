@@ -6,12 +6,25 @@
 //  Copyright (c) 2012 Аймобилко. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "EMJSContext.h"
-#import "JSCocoa/JSCocoa.h"
 
-@interface JSCocoaDelegate : NSObject <EMJSContext> {
-	JSCocoa *ctx;
+#import <JavaScriptCore/JavaScriptCore.h>
+#import "EMJSContext.h"
+
+@protocol ConsoleMethods<JSExport>
+
+- (void)log:(id)msg;
+
+@end
+
+@interface Console : NSObject<ConsoleMethods>
+
+@end
+
+@interface JSCocoaDelegate : NSObject<EMJSContext> {
+    JSContext *jsc;
+    BOOL _isException;
 }
+
+- (BOOL)isException;
 
 @end

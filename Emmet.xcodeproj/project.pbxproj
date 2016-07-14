@@ -62,14 +62,6 @@
 		A5656FAF16D562FE00D69F55 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA816D562FE00D69F55 /* logo.tiff */; };
 		A5656FB016D562FE00D69F55 /* logo.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A5656FA816D562FE00D69F55 /* logo.tiff */; };
 		A5656FB316D56B8500D69F55 /* EMUpdates.m in Sources */ = {isa = PBXBuildFile; fileRef = A5656FB216D56B8500D69F55 /* EMUpdates.m */; };
-		A566BFE4161F58A2006ABFB0 /* JSCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFE7161F5991006ABFB0 /* JSCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFE8161F5E89006ABFB0 /* JSCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFEA161F5E9A006ABFB0 /* JSCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFEB161F5EA3006ABFB0 /* JSCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFED161F5EB4006ABFB0 /* JSCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFEE161F5EBE006ABFB0 /* JSCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
-		A566BFF0161F5EDD006ABFB0 /* JSCocoa.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */; };
 		A56992E715D90A1C00D97C27 /* textmate-bootstrap.js in Resources */ = {isa = PBXBuildFile; fileRef = A56992E515D9091500D97C27 /* textmate-bootstrap.js */; };
 		A56992E915D90F2100D97C27 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A56992E815D90F2100D97C27 /* KeyboardShortcuts.plist */; };
 		A575604415D1C0E300CF9829 /* EMUserDataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E85FB315C8821C001302EA /* EMUserDataLoader.m */; };
@@ -85,7 +77,6 @@
 		A576DD5215E91267009B5E24 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A576DD6115E9256F009B5E24 /* EMGenericAction.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD6015E9256F009B5E24 /* EMGenericAction.m */; };
 		A576DD7415E92DE0009B5E24 /* EMEspressoEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A576DD7315E92DE0009B5E24 /* EMEspressoEditor.m */; };
-		A576DD7515EA441B009B5E24 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A576DD7C15EA441B009B5E24 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A576DD7D15EA441B009B5E24 /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
 		A576DD7E15EA441B009B5E24 /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
@@ -111,7 +102,6 @@
 		A57C4BA6158DC6BB00566A1C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57C4BA4158DC6BB00566A1C /* InfoPlist.strings */; };
 		A57C4BB0158DC75D00566A1C /* EMCodaPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAD158DC75D00566A1C /* EMCodaPlugin.m */; };
 		A57C4BB1158DC75D00566A1C /* EMCodaEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = A57C4BAF158DC75D00566A1C /* EMCodaEditor.m */; };
-		A57C4BB2158DCEB400566A1C /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A57C4BBA158DCEB400566A1C /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
 		A57C4BBB158DCEB400566A1C /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
 		A57C4BBF158DCEB400566A1C /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
@@ -124,9 +114,6 @@
 		A59630681519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = A59630661519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h */; };
 		A59630691519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
 		A596306A1519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */; };
-		A596306E1519F594000D1A01 /* JSONKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A596306C1519F594000D1A01 /* JSONKit.h */; };
-		A596306F1519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
-		A59630701519F594000D1A01 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A59A5A41158FDAF2005B4EB4 /* KeyboardShortcuts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A59A5A40158FDAF2005B4EB4 /* KeyboardShortcuts.plist */; };
 		A5BE71DB15BF403E009CF514 /* EMJSContext.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DA15BF403E009CF514 /* EMJSContext.h */; };
 		A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BE71DF15BF43A3009CF514 /* JSCocoaDelegate.h */; };
@@ -136,7 +123,6 @@
 		A5C722C115D5A28200CDA623 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5994E5D14BF52030067B42B /* Cocoa.framework */; };
 		A5C722C715D5A28200CDA623 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5C722C515D5A28200CDA623 /* InfoPlist.strings */; };
 		A5C722CF15D5A2FA00CDA623 /* EMTextmatePlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C722CE15D5A2FA00CDA623 /* EMTextmatePlugin.m */; };
-		A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = A596306D1519F594000D1A01 /* JSONKit.m */; };
 		A5C722D715D5A77700CDA623 /* JSCocoaDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BE71E015BF43A3009CF514 /* JSCocoaDelegate.m */; };
 		A5C722D815D5A77700CDA623 /* Emmet.m in Sources */ = {isa = PBXBuildFile; fileRef = A563EC4A14E31951009472C9 /* Emmet.m */; };
 		A5C722D915D5A77700CDA623 /* EMPromptDialogController.m in Sources */ = {isa = PBXBuildFile; fileRef = A55EC49C14EE560E00F9A09B /* EMPromptDialogController.m */; };
@@ -203,6 +189,11 @@
 		A5E8601915CB2A46001302EA /* EMBasicPreferencesWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5E8601715CB2A46001302EA /* EMBasicPreferencesWindowController.h */; };
 		A5E8601A15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
 		A5E8601B15CB2A46001302EA /* EMBasicPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */; };
+		D72CB6EF19DEC074006ACA46 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */; };
+		D72CB6F119DEC19D006ACA46 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */; };
+		D72CB6F219DEC221006ACA46 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */; };
+		D72CB6F319DEC22E006ACA46 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */; };
+		D72CB6F419DEC238006ACA46 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,7 +227,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A566BFE7161F5991006ABFB0 /* JSCocoa.framework in CopyFiles */,
 				A5355DFE1699DC8E008D0B37 /* MGSFragaria.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +237,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A566BFEA161F5E9A006ABFB0 /* JSCocoa.framework in CopyFiles */,
 				A5656F9F16D5536800D69F55 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,7 +247,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A566BFED161F5EB4006ABFB0 /* JSCocoa.framework in CopyFiles */,
 				A5656FA016D5537200D69F55 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -269,7 +257,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A566BFF0161F5EDD006ABFB0 /* JSCocoa.framework in CopyFiles */,
 				A5656FA116D5537700D69F55 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,8 +312,6 @@
 		A596302E15189A07000D1A01 /* EMNotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMNotifications.h; sourceTree = "<group>"; };
 		A59630661519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+EMUtils.h"; sourceTree = "<group>"; };
 		A59630671519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+EMUtils.m"; sourceTree = "<group>"; };
-		A596306C1519F594000D1A01 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		A596306D1519F594000D1A01 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		A5994E5D14BF52030067B42B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A5994E6014BF52030067B42B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		A5994E6114BF52030067B42B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -386,6 +371,7 @@
 		A5E8601715CB2A46001302EA /* EMBasicPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EMBasicPreferencesWindowController.h; path = Basic/EMBasicPreferencesWindowController.h; sourceTree = "<group>"; };
 		A5E8601815CB2A46001302EA /* EMBasicPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EMBasicPreferencesWindowController.m; path = Basic/EMBasicPreferencesWindowController.m; sourceTree = "<group>"; };
 		A5EBAB7114E31437007DD2E2 /* objc-zeneditor-wrap.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "objc-zeneditor-wrap.js"; sourceTree = "<group>"; };
+		D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,8 +379,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72CB6F419DEC238006ACA46 /* JavaScriptCore.framework in Frameworks */,
 				A576DD5215E91267009B5E24 /* Cocoa.framework in Frameworks */,
-				A566BFEE161F5EBE006ABFB0 /* JSCocoa.framework in Frameworks */,
 				A5656F9E16D5531500D69F55 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,8 +389,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72CB6F319DEC22E006ACA46 /* JavaScriptCore.framework in Frameworks */,
 				A57C4BA0158DC6BB00566A1C /* Cocoa.framework in Frameworks */,
-				A566BFE8161F5E89006ABFB0 /* JSCocoa.framework in Frameworks */,
 				A5656F9C16D5531500D69F55 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,8 +399,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72CB6F219DEC221006ACA46 /* JavaScriptCore.framework in Frameworks */,
 				A5C722C115D5A28200CDA623 /* Cocoa.framework in Frameworks */,
-				A566BFEB161F5EA3006ABFB0 /* JSCocoa.framework in Frameworks */,
 				A5656F9D16D5531500D69F55 /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,8 +409,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72CB6EF19DEC074006ACA46 /* JavaScriptCore.framework in Frameworks */,
 				A5D2751014F000FA00B3816D /* Cocoa.framework in Frameworks */,
-				A566BFE4161F58A2006ABFB0 /* JSCocoa.framework in Frameworks */,
 				A5355DFC1699DC68008D0B37 /* MGSFragaria.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +419,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D72CB6F119DEC19D006ACA46 /* JavaScriptCore.framework in Frameworks */,
 				A5D2753E14F004A800B3816D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,19 +494,9 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		A596306B1519F582000D1A01 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-				A596306C1519F594000D1A01 /* JSONKit.h */,
-				A596306D1519F594000D1A01 /* JSONKit.m */,
-			);
-			name = JSONKit;
-			sourceTree = "<group>";
-		};
 		A5994E4E14BF52020067B42B = {
 			isa = PBXGroup;
 			children = (
-				A596306B1519F582000D1A01 /* JSONKit */,
 				A5BE71DE15BF437E009CF514 /* JSCocoa Delegate */,
 				A5994E6314BF52030067B42B /* Emmet */,
 				A5E85FDB15CB26D7001302EA /* Preferences */,
@@ -547,6 +524,7 @@
 		A5994E5C14BF52030067B42B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D72CB6ED19DEBA01006ACA46 /* JavaScriptCore.framework */,
 				A5656F9A16D5531500D69F55 /* Sparkle.framework */,
 				A5355DFB1699DC68008D0B37 /* MGSFragaria.framework */,
 				A566BFE3161F58A2006ABFB0 /* JSCocoa.framework */,
@@ -746,7 +724,6 @@
 				A5D2757914F009B100B3816D /* Emmet-Prefix.pch in Headers */,
 				A596302F15189A08000D1A01 /* EMNotifications.h in Headers */,
 				A59630681519DAE7000D1A01 /* NSMutableDictionary+EMUtils.h in Headers */,
-				A596306E1519F594000D1A01 /* JSONKit.h in Headers */,
 				A562B88D1595007C007F9044 /* EmmetFile.h in Headers */,
 				A5BE71DB15BF403E009CF514 /* EMJSContext.h in Headers */,
 				A5BE71E115BF43A3009CF514 /* JSCocoaDelegate.h in Headers */,
@@ -1014,7 +991,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A576DD7515EA441B009B5E24 /* JSONKit.m in Sources */,
 				A576DD7C15EA441B009B5E24 /* JSCocoaDelegate.m in Sources */,
 				A576DD7D15EA441B009B5E24 /* Emmet.m in Sources */,
 				A576DD7E15EA441B009B5E24 /* EMPromptDialogController.m in Sources */,
@@ -1036,7 +1012,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A57C4BB2158DCEB400566A1C /* JSONKit.m in Sources */,
 				A57C4BBA158DCEB400566A1C /* Emmet.m in Sources */,
 				A57C4BBB158DCEB400566A1C /* EMPromptDialogController.m in Sources */,
 				A57C4BBF158DCEB400566A1C /* NSMutableDictionary+EMUtils.m in Sources */,
@@ -1068,7 +1043,6 @@
 				A53F606B15E6C4C100CF391B /* EMArrayTransformer.m in Sources */,
 				A53F606C15E6C4C100CF391B /* EMSyntaxNameTransformer.m in Sources */,
 				A53F606D15E6C4C100CF391B /* EMTildePathTransformer.m in Sources */,
-				A5C722D015D5A77700CDA623 /* JSONKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,7 +1055,6 @@
 				A5D2751814F000FA00B3816D /* main.m in Sources */,
 				A5D2751F14F000FA00B3816D /* ZenCodingSampleAppDelegate.m in Sources */,
 				A59630691519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */,
-				A596306F1519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88E1595007C007F9044 /* EmmetFile.m in Sources */,
 				A5BE71E215BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
 				A5E85FB515C8821C001302EA /* EMUserDataLoader.m in Sources */,
@@ -1101,7 +1074,6 @@
 				A5D2755F14F006A500B3816D /* Emmet.m in Sources */,
 				A5D2755314F0052D00B3816D /* EMPromptDialogController.m in Sources */,
 				A596306A1519DAE7000D1A01 /* NSMutableDictionary+EMUtils.m in Sources */,
-				A59630701519F594000D1A01 /* JSONKit.m in Sources */,
 				A562B88F1595007C007F9044 /* EmmetFile.m in Sources */,
 				A5BE71E315BF43A3009CF514 /* JSCocoaDelegate.m in Sources */,
 				A5E85FB615C8821C001302EA /* EMUserDataLoader.m in Sources */,
@@ -1210,7 +1182,7 @@
 				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
 				INFOPLIST_FILE = EspressoPlugin/Info.plist;
 				INSTALL_PATH = /;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = sugar;
 			};
@@ -1236,7 +1208,7 @@
 				HEADER_SEARCH_PATHS = "$(ESPRESSO_PATH)/Contents/Headers";
 				INFOPLIST_FILE = EspressoPlugin/Info.plist;
 				INSTALL_PATH = /;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = sugar;
 			};
@@ -1257,7 +1229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = codaplugin;
@@ -1279,7 +1251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "CodaPlugin/CodaPlugin-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = codaplugin;
@@ -1327,7 +1299,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lffi";
 				SDKROOT = macosx;
@@ -1354,7 +1326,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lffi";
 				SDKROOT = macosx;
 				SKIP_INSTALL = NO;
@@ -1378,7 +1351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
 				INSTALL_PATH = /;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = tmplugin;
@@ -1402,7 +1375,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				INFOPLIST_FILE = "TextMatePlugin/TextMatePlugin-Info.plist";
 				INSTALL_PATH = /;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				SDKROOT = macosx;
 				WRAPPER_EXTENSION = tmplugin;
@@ -1422,7 +1395,8 @@
 				GCC_PREFIX_HEADER = "ZenCodingSample/EmmetSample-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "ZenCodingSample/EmmetSample-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = EmmetSample;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1441,7 +1415,8 @@
 				GCC_PREFIX_HEADER = "ZenCodingSample/EmmetSample-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 				INFOPLIST_FILE = "ZenCodingSample/EmmetSample-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = EmmetSample;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1459,7 +1434,7 @@
 				GCC_PREFIX_HEADER = "ZenCoding/Emmet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "ZenCoding/Emmet-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1477,7 +1452,7 @@
 				GCC_PREFIX_HEADER = "ZenCoding/Emmet-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "ZenCoding/Emmet-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = Emmet;
 				WRAPPER_EXTENSION = framework;
 			};

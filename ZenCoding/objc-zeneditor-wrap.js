@@ -1,3 +1,18 @@
+function inspect(obj) {
+    if (!obj) {
+        console.log('null');
+    }
+    if (typeof obj === 'object') {
+        for (var key in obj) {
+            console.log(key+':');
+            inspect(obj[key]);
+        }
+    } else {
+        console.log(obj);
+    }
+}
+
+
 var objcEmmetEditor = (function() {
 	var ctx;
 
@@ -40,7 +55,7 @@ var objcEmmetEditor = (function() {
 		 * alert(selection.start + ', ' + selection.end); 
 		 */
 		getSelectionRange: function() {
-			return rangeToObj(ctx.selectionRange());
+			return rangeToObj(ctx.selectionRange);
 		},
 		
 		/**
@@ -77,7 +92,7 @@ var objcEmmetEditor = (function() {
 		 * @return {Number}
 		 */
 		getCaretPos: function() {
-			return Number(ctx.caretPos());
+			return Number(ctx.caretPos);
 		},
 		
 		/**
@@ -214,7 +229,7 @@ function require() {
 }
 
 function objcToString(str) {
-	return str && str.length() 
+	return str
 		? String(str) 
 		: '';
 }
@@ -283,5 +298,32 @@ function objcSetIndentation(value) {
 }
 
 emmet.log = function(message) {
-	NSLog(message);
+	console.log(message);
 };
+
+
+// call function from objective-c
+function emmet_actions_getMenu() {
+    return emmet.require('actions').getMenu();
+}
+function emmet_bootstrap_resetUserData() {
+    return emmet.require('bootstrap').resetUserData();
+}
+function emmet_resources_hasSyntax(ext) {
+    return emmet.require('resources').hasSyntax(ext);
+}
+function emmet_file_setContext(ctx) {
+    return emmet.require('file').setContext(ctx);
+}
+function emmet_actions_getActionNameForMenuTitle(title) {
+    return emmet.require('actions').getActionNameForMenuTitle(title);
+}
+function objcEmmetEditor_setAutoHandleIndent(auto) {
+    return objcEmmetEditor.setAutoHandleIndent(auto);
+}
+function emmet_preferences_list() {
+    return emmet.require('preferences').list();
+}
+function emmet_preferences_exportModified() {
+    return emmet.require('preferences').exportModified();
+}

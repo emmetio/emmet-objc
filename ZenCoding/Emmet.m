@@ -6,7 +6,6 @@
 #import "Emmet.h"
 #import "EMUserDataLoader.h"
 #import "NSMutableDictionary+EMUtils.h"
-#import "JSONKit.h"
 
 void setKeyEquivalent(NSMenuItem *menuItem, NSString *key) {
 	if (!key || [key isEqualToString:@""]) {
@@ -90,6 +89,15 @@ static NSMutableArray *coreFiles = nil;
 	
 	defaultsLoaded = true;
 }
++ (NSString *)toJSON:(id)obj {
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:obj options:0 error:&error];
+    if (error) {
+        NSLog(@"Serialize object to JSON error: %@", error);
+        return @"{}";
+    }
+    return [[[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding] autorelease];
+}
 
 - (id)init {
     if (self = [super init]) {
@@ -126,7 +134,7 @@ static NSMutableArray *coreFiles = nil;
 	[coreFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
 		[jsc evalFile:obj];
 	}];
-	[jsc evalFunction:@"emmet.require('file').setContext" withArguments:[EmmetFile class], nil];
+	[jsc evalFunction:@"emmet_file_setContext" withArguments:[EmmetFile class], nil];
 	
 	NSBundle *bundle = [NSBundle bundleForClass:[self class]];
 	// load system snippets
@@ -164,7 +172,7 @@ static NSMutableArray *coreFiles = nil;
 			}
 			
 			if ([fileList count]) {
-				[jsc evalFunction:@"objcLoadExtensions" withArguments:[fileList JSONString], nil];
+				[jsc evalFunction:@"objcLoadExtensions" withArguments:[Emmet toJSON:fileList], nil];
 			}
 			
 			[fileList release];
@@ -225,8 +233,8 @@ static NSMutableArray *coreFiles = nil;
 
 - (void)loadUserData {
 	NSDictionary *userData = [EMUserDataLoader userData];
-//	NSLog(@"Loading user data:\n%@", [userData JSONString]);
-	[jsc evalFunction:@"objcLoadUserData" withArguments:[userData JSONString], nil];
+//	NSLog(@"Loading user data:\n%@", [Emmet toJSON:userData]);
+	[jsc evalFunction:@"objcLoadUserData" withArguments:[Emmet toJSON:userData], nil];
 }
 
 // Reload JS context to hook-up all changes in prefernces and extensions
@@ -237,12 +245,12 @@ static NSMutableArray *coreFiles = nil;
 //	[self setupJSContext];
 //	self.context = ctx;
 	
-	[jsc evalFunction:@"emmet.require('bootstrap').resetUserData" withArguments:nil];
+	[jsc evalFunction:@"emmet_bootstrap_resetUserData" withArguments:nil];
 	[self loadExtensions];
 }
 
 - (NSArray *)actionsList {
-	id result = [jsc evalFunction:@"emmet.require('actions').getMenu" withArguments:nil];
+	id result = [jsc evalFunction:@"emmet_actions_getMenu" withArguments:nil];
 	return [jsc convertJSObject:result toNativeType:@"object"];
 }
 
@@ -293,7 +301,7 @@ static NSMutableArray *coreFiles = nil;
 
 - (NSString *)resolveActionNameFromMenu:(NSMenuItem *)menu {
 	NSString *title = [(NSMenuItem *)menu title];
-	id jsActionName = [jsc evalFunction:@"emmet.require('actions').getActionNameForMenuTitle" withArguments:title, nil];
+	id jsActionName = [jsc evalFunction:@"emmet_actions_getActionNameForMenuTitle" withArguments:title, nil];
 	return [jsc convertJSObject:jsActionName toNativeType:@"string"];
 }
 
